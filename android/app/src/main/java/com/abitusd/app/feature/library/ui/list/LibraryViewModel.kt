@@ -26,7 +26,9 @@ data class LibraryFilters(
     val muscleId: Int? = null,
     val equipmentId: Int? = null,
     val difficulty: Int? = null,
-)
+) {
+    val activeCount: Int get() = listOfNotNull(disciplineId, muscleId, equipmentId, difficulty).size
+}
 
 data class LibraryState(
     val query: String = "",
@@ -36,6 +38,8 @@ data class LibraryState(
     val muscles: List<NamedRef> = emptyList(),
     val equipment: List<NamedRef> = emptyList(),
     val catalogEmpty: Boolean = false,
+    val icons: Map<Int, String> = emptyMap(),
+    val loading: Boolean = true,
 )
 
 private const val STOP_TIMEOUT_MS = 5000L
@@ -81,18 +85,35 @@ class LibraryViewModel
             }
 
         private val references =
-            combine(dao.disciplines(locale), dao.muscleGroups(locale), dao.equipment(locale), dao.catalogCount()) {
+            combine(
+                dao.disciplines(locale),
+                dao.muscleGroups(locale),
+                dao.equipment(locale),
+                dao.catalogCount(),
+                dao.disciplineIcons(),
+            ) {
                 d,
                 m,
                 e,
                 count,
+                icons,
                 ->
-                LibraryState(disciplines = d, muscles = m, equipment = e, catalogEmpty = count == 0)
+                LibraryState(
+                    disciplines = d,
+                    muscles = m,
+                    equipment = e,
+                    catalogEmpty = count == 0,
+                    icons =
+                        icons.associate {
+                            it.id to
+                                it.iconKey
+                        },
+                )
             }
 
         val state: StateFlow<LibraryState> =
             combine(query, filters, items, references) { q, f, list, refs ->
-                refs.copy(query = q, filters = f, items = list)
+                refs.copy(query = q, filters = f, items = list, loading = false)
             }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MS), LibraryState())
 
         fun onQuery(value: String) {

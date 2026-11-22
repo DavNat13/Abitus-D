@@ -15,11 +15,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import com.abitusd.app.R
 import com.abitusd.app.core.designsystem.icon.AppIcons
+import com.abitusd.app.core.designsystem.theme.AppElevation
+import com.abitusd.app.core.designsystem.theme.AppSizes
 import com.abitusd.app.core.designsystem.theme.AppTheme
+import com.abitusd.app.core.designsystem.theme.appShadow
 import com.abitusd.app.feature.library.ui.list.LibraryScreen
 import com.abitusd.app.feature.train.ui.TrainScreen
 
@@ -48,7 +52,11 @@ fun MainShell(
     Scaffold(
         containerColor = colors.background,
         bottomBar = {
-            NavigationBar(containerColor = colors.surface) {
+            NavigationBar(
+                containerColor = colors.surface,
+                tonalElevation = AppSizes.none,
+                modifier = Modifier.appShadow(AppElevation.Nav, RectangleShape),
+            ) {
                 MainTab.entries.forEach { tab ->
                     NavigationBarItem(
                         selected = tab == selected,

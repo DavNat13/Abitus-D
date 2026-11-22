@@ -51,4 +51,36 @@ object AppIcons {
     @DrawableRes val ExpandMore = R.drawable.ic_expand_more
 
     @DrawableRes val Sync = R.drawable.ic_sync
+
+    @DrawableRes val ChevronRight = R.drawable.ic_chevron_right
+
+    @DrawableRes val ChevronLeft = R.drawable.ic_chevron_left
+
+    @DrawableRes val FilterList = R.drawable.ic_filter_list
+
+    @DrawableRes val More = R.drawable.ic_more_vert
+
+    @DrawableRes val Check = R.drawable.ic_check
+
+    @DrawableRes val Calendar = R.drawable.ic_calendar_month
+
+    @DrawableRes val Duplicate = R.drawable.ic_content_copy
+
+    @DrawableRes val Archive = R.drawable.ic_archive
+
+    @DrawableRes val Unarchive = R.drawable.ic_unarchive
+
+    @DrawableRes val Share = R.drawable.ic_ios_share
+
+    @DrawableRes val MoveUp = R.drawable.ic_arrow_upward
+
+    @DrawableRes val MoveDown = R.drawable.ic_arrow_downward
+
+    @DrawableRes val Reschedule = R.drawable.ic_event_repeat
+
+    @DrawableRes val Skip = R.drawable.ic_skip_next
+
+    @DrawableRes val Today = R.drawable.ic_today
+
+    @DrawableRes val Rest = R.drawable.ic_bedtime
 }

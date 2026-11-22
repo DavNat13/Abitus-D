@@ -4,34 +4,38 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.heading
-import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.abitusd.app.R
-import com.abitusd.app.core.designsystem.component.AppButton
-import com.abitusd.app.core.designsystem.component.AppButtonStyle
+import com.abitusd.app.core.designsystem.component.EmptyState
+import com.abitusd.app.core.designsystem.component.ScreenHeader
+import com.abitusd.app.core.designsystem.component.SkeletonListItem
 import com.abitusd.app.core.designsystem.icon.AppIcons
+import com.abitusd.app.core.designsystem.motion.staggeredEnter
 import com.abitusd.app.core.designsystem.theme.AppSpacing
 import com.abitusd.app.core.designsystem.theme.AppTheme
 
-/** Library tab: search, filters and the list of catalog and own exercises (10b, Fase 2). */
+private const val SKELETON_ROWS = 6
+
 @Composable
 fun LibraryScreen(
     onOpenExercise: (String) -> Unit,
@@ -42,49 +46,15 @@ fun LibraryScreen(
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     val profile by viewModel.profile.collectAsStateWithLifecycle()
+    var showFilters by rememberSaveable { mutableStateOf(false) }
     val colors = AppTheme.colors
     Box(modifier.fillMaxSize().background(colors.background)) {
-        Column(Modifier.fillMaxSize().statusBarsPadding()) {
-            Text(
-                text = stringResource(R.string.nav_library),
-                style = AppTheme.typography.titleLarge,
-                color = colors.textPrimary,
-                modifier =
-                    Modifier
-                        .padding(horizontal = AppSpacing.screenMargin, vertical = AppSpacing.sm)
-                        .semantics { heading() },
-            )
+        Column(Modifier.fillMaxSize().statusBarsPadding(), verticalArrangement = Arrangement.spacedBy(AppSpacing.sm)) {
+            val subtitle = if (state.loading) null else stringResource(R.string.library_count, state.items.size)
+            ScreenHeader(stringResource(R.string.nav_library), subtitle = subtitle)
             LibrarySearchField(state.query, viewModel::onQuery)
-            LibraryFilterRow(state, viewModel::onFilters)
-            EquipmentProfileRow(profile, viewModel::onProfile)
-            when {
-                state.catalogEmpty && state.items.isEmpty() -> {
-                    CatalogMissing(viewModel::retryDownload)
-                }
-
-                state.items.isEmpty() -> {
-                    EmptyMessage(stringResource(R.string.library_no_results))
-                }
-
-                else -> {
-                    LazyColumn(
-                        verticalArrangement = Arrangement.spacedBy(AppSpacing.xs),
-                        modifier = Modifier.fillMaxWidth().padding(horizontal = AppSpacing.screenMargin),
-                    ) {
-                        item {
-                            Text(
-                                text = stringResource(R.string.library_count, state.items.size),
-                                style = AppTheme.typography.caption,
-                                color = colors.textSecondary,
-                            )
-                        }
-                        items(state.items, key = { it.id }) { row ->
-                            ExerciseRowCard(row, state.disciplines, onClick = { onOpenExercise(row.id) })
-                        }
-                        item { Box(Modifier.padding(bottom = AppSpacing.xxxl * 2)) }
-                    }
-                }
-            }
+            LibraryFilterBar(state, profile, { showFilters = true }, viewModel::onFilters, viewModel::onProfile)
+            LibraryContent(state, onOpenExercise, viewModel::retryDownload, showCreate)
         }
         if (showCreate) {
             ExtendedFloatingActionButton(
@@ -97,26 +67,61 @@ fun LibraryScreen(
             )
         }
     }
-}
-
-@Composable
-private fun CatalogMissing(onRetry: () -> Unit) {
-    Column(
-        modifier = Modifier.fillMaxWidth().padding(AppSpacing.screenMargin),
-        verticalArrangement = Arrangement.spacedBy(AppSpacing.md),
-    ) {
-        EmptyMessage(stringResource(R.string.library_needs_connection))
-        AppButton(stringResource(R.string.library_retry), onRetry, style = AppButtonStyle.Secondary)
+    if (showFilters) {
+        LibraryFilterSheet(state, profile, viewModel::onFilters, viewModel::onProfile) { showFilters = false }
     }
 }
 
 @Composable
-private fun EmptyMessage(text: String) {
-    Text(
-        text = text,
-        style = AppTheme.typography.body,
-        color = AppTheme.colors.textSecondary,
-        textAlign = TextAlign.Center,
-        modifier = Modifier.fillMaxWidth().padding(AppSpacing.xl),
-    )
+private fun LibraryContent(
+    state: LibraryState,
+    onOpenExercise: (String) -> Unit,
+    onRetry: () -> Unit,
+    hasFab: Boolean,
+) {
+    val bottom = if (hasFab) AppSpacing.fabClearance else AppSpacing.xl
+    val padding =
+        PaddingValues(
+            start = AppSpacing.screenMargin,
+            end = AppSpacing.screenMargin,
+            top = AppSpacing.xxs,
+            bottom = bottom,
+        )
+    when {
+        state.loading -> {
+            LazyColumn(
+                contentPadding = padding,
+                verticalArrangement = Arrangement.spacedBy(AppSpacing.sm),
+                userScrollEnabled = false,
+            ) {
+                items(SKELETON_ROWS) { SkeletonListItem() }
+            }
+        }
+
+        state.catalogEmpty && state.items.isEmpty() -> {
+            EmptyState(
+                AppIcons.Offline,
+                stringResource(R.string.library_needs_connection),
+                actionLabel = stringResource(R.string.library_retry),
+                onAction = onRetry,
+            )
+        }
+
+        state.items.isEmpty() -> {
+            EmptyState(AppIcons.Search, stringResource(R.string.library_no_results))
+        }
+
+        else -> {
+            LazyColumn(contentPadding = padding, verticalArrangement = Arrangement.spacedBy(AppSpacing.sm)) {
+                itemsIndexed(state.items, key = { _, row -> row.id }) { index, row ->
+                    ExerciseItem(
+                        row,
+                        state,
+                        onClick = { onOpenExercise(row.id) },
+                        modifier = Modifier.staggeredEnter(index),
+                    )
+                }
+            }
+        }
+    }
 }

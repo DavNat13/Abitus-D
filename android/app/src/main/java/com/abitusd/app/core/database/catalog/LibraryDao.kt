@@ -20,6 +20,12 @@ data class SlugId(
     val slug: String,
 )
 
+/** Icon key of a discipline (seed field icon). */
+data class DisciplineIcon(
+    val id: Int,
+    val iconKey: String,
+)
+
 data class NamedRef(
     val id: Int,
     val name: String,
@@ -74,6 +80,9 @@ interface LibraryDao {
         """,
     )
     fun disciplines(locale: String): Flow<List<NamedRef>>
+
+    @Query("SELECT id, iconKey FROM disciplines")
+    fun disciplineIcons(): Flow<List<DisciplineIcon>>
 
     @Query(
         """

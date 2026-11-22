@@ -5,6 +5,7 @@ import androidx.compose.ui.unit.dp
 
 /** Spacing scale on a 4 dp base (05b-UI-TOKENS.md). */
 object AppSpacing {
+    val xxxs = 2.dp
     val xxs = 4.dp
     val xs = 8.dp
     val sm = 12.dp
@@ -14,6 +15,7 @@ object AppSpacing {
     val xxl = 32.dp
     val xxxl = 48.dp
     val screenMargin = 20.dp
+    val fabClearance = 96.dp
 }
 
 /** Corner radii and sizes of components (05b and 05c). */
@@ -22,6 +24,7 @@ object AppShapes {
     val button = RoundedCornerShape(12.dp)
     val card = RoundedCornerShape(16.dp)
     val hero = RoundedCornerShape(24.dp)
+    val sheet = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp)
     val pill = RoundedCornerShape(percent = 50)
 }
 
@@ -29,7 +32,14 @@ object AppSizes {
     val buttonHeight = 52.dp
     val fieldHeight = 56.dp
     val touchTarget = 48.dp
+    val none = 0.dp
     val icon = 24.dp
+    val iconSmall = 20.dp
+    val badge = 40.dp
+    val listItemMin = 72.dp
+    val sheetHandleWidth = 32.dp
+    val sheetHandle = 4.dp
+    val skeletonLine = 14.dp
     val iconContainer = 64.dp
     val borderThin = 1.dp
     val borderButton = 1.5.dp

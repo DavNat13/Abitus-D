@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="library_filters">Filtros</string>
+    <string name="library_filters_count">Filtros (%1$d)</string>
+    <string name="library_filters_clear">Limpiar</string>
+    <string name="library_show_results">Ver %1$d ejercicios</string>
+    <string name="library_item_meta">%1$s · Nivel %2$d</string>
+    <string name="library_remove_filter">Quitar filtro: %1$s</string>
+</resources>
