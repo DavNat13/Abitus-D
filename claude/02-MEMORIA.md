@@ -12,19 +12,21 @@ Archivo vivo. Claude Code lo lee al iniciar cada sesión y lo actualiza al termi
 
 Fase 0: tareas 1 a 7 hechas y verificadas (estructura, verificaciones, scripts, backend, database, Docker, Android en emulador API 29); tarea 8 (despliegue en Vercel) diferida al final. Detalle en el historial de Git.
 
-## Plan de la Fase 1 (2026-11-22)
+Fase 1: tareas 1 a 9 hechas y verificadas (etiqueta `fase-1`); detalle en `02d-MEMORIA-FASE-1.md`.
+
+## Plan de la Fase 2 (2026-11-22)
 
 | N | Tarea | Estado |
 |---|---|---|
-| 1 | Migraciones 002 a 006: enumeraciones, usuarios y preferencias, dispositivos y refresco, códigos y consentimientos, cola de correo, auditoría y límites | Hecha |
-| 2 | Backend base: configuración validada, Kysely, errores problem+json, helmet, CORS cerrado, Zod | Hecha |
-| 3 | Backend auth: registro (18 años), verificación, reenvío, login, refresco rotativo con detección de reutilización, logout, recuperación, cambio de contraseña | Hecha |
-| 4 | Backend cuenta: dispositivos, consentimientos; límites de tasa en base de datos | Hecha |
-| 5 | Correo: Nodemailer, plantillas React Email es y en (código, bienvenida, dispositivo nuevo, recuperación, contraseña cambiada, sesiones cerradas), cola | Hecha |
-| 6 | Pruebas de seguridad del backend contra PostgreSQL real | Hecha |
-| 7 | Android base: tokens, Roboto, `AppIcons`, componentes, Hilt, Room base, DataStore, red, almacenamiento cifrado de tokens | Hecha |
-| 8 | Android acceso: bienvenida, registro, verificación, login, recuperación, navegación con barra inferior, política visible, unidades en `core/i18n` | Hecha |
-| 9 | Recorrido real en emulador con Mailpit, contraste AA de tokens, auditoría, memoria y etiqueta `fase-1` | Hecha |
+| 1 | Migraciones del catálogo (disciplinas, músculos, equipamiento, ejercicios, traducciones, relaciones, versión) y secuencia de sincronización | Pendiente |
+| 2 | Semillas base: disciplinas, 22 grupos musculares con `mesh_key` y `svg_key`, equipamiento, en es y en | Pendiente |
+| 3 | `tools/import-exercises` desde free-exercise-db (Unlicense) con mapeo de músculos y equipo; `source` y `license` por ejercicio | Pendiente |
+| 4 | Semillas de ejercicios por disciplina en JSON Lines (un ejercicio por línea), traducciones al español, relaciones; `REVIEW.md` | Pendiente |
+| 5 | Cargador idempotente de semillas que incrementa `catalog_version` | Pendiente |
+| 6 | Backend: `GET /v1/catalog` incremental con ETag; sincronización push y pull de ejercicios propios | Pendiente |
+| 7 | Android: catálogo en Room, descarga, biblioteca con búsqueda y filtros, detalle, cambio de idioma | Pendiente |
+| 8 | Android: ejercicios propios sin conexión con sincronización y detección de duplicados | Pendiente |
+| 9 | Muestra para revisión humana por disciplina, pruebas, verificación en emulador, memoria y etiqueta `fase-2` | Pendiente |
 
 Nota: la ronda 2 de decisiones (nombre Abitus-D, hosting sin tarjeta, correo, edad, unidades) está en `02b-MEMORIA-DECISIONES-2.md` y prevalece sobre lo que aquí contradiga.
 
