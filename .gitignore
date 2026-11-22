@@ -30,6 +30,9 @@ android/app/build/
 android/local.properties
 android/captures/
 android/.kotlin/
+android/buildSrc/build/
+android/buildSrc/.gradle/
+android/buildSrc/.kotlin/
 *.apk
 *.aab
 
