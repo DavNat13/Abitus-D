@@ -8,7 +8,9 @@ import { registerAccountRoutes } from '../modules/account/account.routes.js';
 import { registerAuthRoutes } from '../modules/auth/auth.routes.js';
 import { registerSessionRoutes } from '../modules/auth/session.routes.js';
 import { registerHealthRoutes } from '../modules/health/health.routes.js';
+import { registerCatalogRoutes } from '../modules/catalog/catalog.routes.js';
 import { registerJobRoutes } from '../modules/jobs/jobs.routes.js';
+import { registerSyncRoutes } from '../modules/sync/sync.routes.js';
 import type { AppDeps } from './app-deps.js';
 import { registerErrorHandler } from './error-handler.js';
 
@@ -50,6 +52,8 @@ export async function buildApp(deps: AppDeps): Promise<FastifyInstance> {
   registerAuthRoutes(app, deps);
   registerSessionRoutes(app, deps);
   registerAccountRoutes(app, deps);
+  registerCatalogRoutes(app, deps);
+  registerSyncRoutes(app, deps);
   registerJobRoutes(app, deps);
   return app;
 }

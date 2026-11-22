@@ -21,17 +21,11 @@ export default async function setup(): Promise<void> {
   await admin.query(`drop database if exists ${TEST_DB} with (force)`);
   await admin.query(`create database ${TEST_DB}`);
   await admin.end();
-  const migrate = path.resolve(
-    import.meta.dirname,
-    '..',
-    '..',
-    '..',
-    'database',
-    'scripts',
-    'migrate.mjs',
-  );
-  execFileSync(process.execPath, [migrate], {
-    env: { ...process.env, DATABASE_URL: testDatabaseUrl() },
-    stdio: 'ignore',
-  });
+  const scripts = path.resolve(import.meta.dirname, '..', '..', '..', 'database', 'scripts');
+  for (const script of ['migrate.mjs', 'seed.mjs']) {
+    execFileSync(process.execPath, [path.join(scripts, script)], {
+      env: { ...process.env, DATABASE_URL: testDatabaseUrl() },
+      stdio: 'ignore',
+    });
+  }
 }

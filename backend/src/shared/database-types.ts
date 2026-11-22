@@ -1,5 +1,6 @@
 // Kysely table types. Mirror of database/migrations; keep in sync by hand.
 import type { ColumnType, Generated } from 'kysely';
+import type { CatalogDatabase } from './database-catalog-types.js';
 
 type Timestamp = ColumnType<Date, Date | string | undefined, Date | string>;
 type NullableTimestamp = ColumnType<
@@ -110,7 +111,7 @@ export interface RateLimitEventsTable {
   created_at: Timestamp;
 }
 
-export interface Database {
+export interface Database extends CatalogDatabase {
   users: UsersTable;
   user_preferences: UserPreferencesTable;
   devices: DevicesTable;
