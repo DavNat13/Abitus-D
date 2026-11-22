@@ -5,7 +5,7 @@ Archivo vivo. Claude Code lo lee al iniciar cada sesión y lo actualiza al termi
 ## Estado actual
 
 - Fecha de creación de la documentación: 2026-11-22.
-- Fase actual: Fase 2 terminada salvo la revisión humana de la muestra (criterio de aceptación); al aprobarla, etiqueta fase-2 y Fase 3. Detalle en 02e-MEMORIA-FASE-2.md.
+- Fase actual: Fase 3 (planificación). Fase 2 cerrada (fase-2) con la muestra aprobada por el autor.
 - Repositorio remoto: https://github.com/DavNat13/Abitus-D (público). Versionado: un commit convencional por tarea verificada, push tras cada tarea y etiqueta `fase-N` al cerrar cada fase. Al ser público, revisar secretos antes de cada push.
 - Código: autenticación completa (backend, base de datos y app Android); detalle y decisiones de la Fase 1 en `02d-MEMORIA-FASE-1.md`. Verificaciones externas en `02c-MEMORIA-VERIFICACIONES.md`.
 - Siguiente paso: revisión de la muestra por el autor; luego Fase 3 (planificación). Pendiente al final: Vercel, Neon, keystore.
@@ -26,7 +26,7 @@ Fase 1: tareas 1 a 9 hechas y verificadas (etiqueta `fase-1`); detalle en `02d-M
 | 6 | Backend: `GET /v1/catalog` incremental con ETag; sincronización push y pull de ejercicios propios | Hecha |
 | 7 | Android: catálogo en Room, descarga, biblioteca con búsqueda y filtros, detalle, cambio de idioma | Hecha |
 | 8 | Android: ejercicios propios sin conexión con sincronización y detección de duplicados | Hecha |
-| 9 | Muestra para revisión humana por disciplina, pruebas, verificación en emulador, memoria y etiqueta `fase-2` | Falta solo la revisión humana del autor (muestra en database/seeds/REVIEW.md) |
+| 9 | Muestra para revisión humana por disciplina, pruebas, verificación en emulador, memoria y etiqueta `fase-2` | Hecha; muestra aprobada por el autor el 2026-11-22 |
 
 Nota: la ronda 2 de decisiones (nombre Abitus-D, hosting sin tarjeta, correo, edad, unidades) está en `02b-MEMORIA-DECISIONES-2.md` y prevalece sobre lo que aquí contradiga.
 
