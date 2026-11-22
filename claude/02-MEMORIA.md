@@ -14,7 +14,7 @@ Fase 0: tareas 1 a 7 hechas y verificadas (estructura, verificaciones, scripts, 
 
 Fase 1: tareas 1 a 9 hechas y verificadas (etiqueta `fase-1`); detalle en `02d-MEMORIA-FASE-1.md`.
 
-Fase 2: tareas 1 a 9 hechas y verificadas (etiqueta ); detalle en .
+Fase 2: tareas 1 a 9 hechas y verificadas (etiqueta `fase-2`); detalle en `02e-MEMORIA-FASE-2.md`.
 
 ## Plan de la Fase 3 (2026-11-22)
 
@@ -25,9 +25,9 @@ Fase 2: tareas 1 a 9 hechas y verificadas (etiqueta ); detalle en .
 | 3 | Repositorios de rutinas, programas y calendario; plantillas; volumen planificado | Hecha |
 | 4 | Pestaña Entrenar: rutinas (editor, carpetas, duplicar, archivar), programas, calendario, ICS | Hecha |
 | 5 | Perfiles de equipo que filtran la biblioteca | Hecha |
-| 6 | Verificación sin conexión en emulador, memoria y etiqueta  | Hecha |
+| 6 | Verificación sin conexión en emulador, memoria y etiqueta `fase-3` | Hecha |
 
-Detalle y aplazamientos en .
+Detalle y aplazamientos en `02f-MEMORIA-FASE-3.md`.
 
 Nota: la ronda 2 de decisiones (nombre Abitus-D, hosting sin tarjeta, correo, edad, unidades) está en `02b-MEMORIA-DECISIONES-2.md` y prevalece sobre lo que aquí contradiga.
 
