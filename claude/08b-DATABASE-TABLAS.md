@@ -11,7 +11,7 @@ Complemento de `08-DATABASE.md`. Definición de tablas y atributos. Convenciones
 `user_id` (PK y FK), `weight_unit`, `distance_unit`, `theme`, `locale`, `week_start_day`, `default_rest_seconds`, `timer_sound`, `timer_vibration`, `notify_rest_end`, `notify_reminders`, `e1rm_formula`, `weight_step_kg`, `updated_at`. Sincronizable.
 
 ### devices
-`id`, `user_id`, `name`, `platform`, `app_version`, `first_seen_at`, `last_seen_at`, `revoked_at`.
+`id`, `user_id`, `installation_id` (UUID generado por la app al instalarse; único por usuario), `name`, `platform`, `app_version`, `first_seen_at`, `last_seen_at`, `revoked_at`.
 
 ### refresh_tokens
 `id`, `user_id`, `device_id`, `family_id`, `token_hash` (único), `expires_at`, `rotated_at`, `revoked_at`, `created_at`. Índices por `user_id` y `family_id`.
@@ -20,13 +20,16 @@ Complemento de `08-DATABASE.md`. Definición de tablas y atributos. Convenciones
 `id`, `email`, `purpose` (`code_purpose`), `code_hash`, `attempts`, `expires_at`, `consumed_at`, `created_at`, `ip_hash`. Índice por (`email`, `purpose`, `created_at`).
 
 ### consents
-`id`, `user_id`, `document` (privacy, terms), `version`, `accepted_at`.
+`id`, `user_id`, `document` (privacy, terms, age: confirmación de 18 años o más), `version`, `accepted_at`.
 
 ### email_outbox
 `id`, `user_id` (nulo si aún no existe), `to_email`, `template`, `locale`, `payload` (jsonb sin datos sensibles innecesarios), `priority`, `status`, `attempts`, `last_error`, `created_at`, `sent_at`. Índice por (`status`, `priority`, `created_at`).
 
 ### audit_log
 `id`, `user_id`, `event` (login, new_device, password_change, account_delete, etc.), `device_id`, `ip_hash`, `created_at`. Sin contenido sensible.
+
+### rate_limit_events
+`id`, `action` (login, register, resend_code, forgot_password, etc.), `key_hash` (HMAC de IP o correo), `created_at`. Estado compartido de los límites de tasa, porque las instancias serverless no comparten memoria. Se purga por tarea programada.
 
 ## Tablas: catálogo (solo lectura para clientes)
 

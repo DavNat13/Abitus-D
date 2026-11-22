@@ -5,23 +5,26 @@ Archivo vivo. Claude Code lo lee al iniciar cada sesión y lo actualiza al termi
 ## Estado actual
 
 - Fecha de creación de la documentación: 2026-11-22.
-- Fase actual: Fase 0 (preparación), cerrada con excepción: por decisión del autor (2026-11-22) el despliegue en Vercel y el repositorio remoto en GitHub se hacen al final. El repositorio Git es solo local por ahora.
+- Fase actual: Fase 1 (fundaciones y acceso), iniciada el 2026-11-22. Fase 0 cerrada (`fase-0`); el despliegue en Vercel quedó diferido al final por decisión del autor.
+- Repositorio remoto: https://github.com/DavNat13/Abitus-D (público). Versionado: un commit convencional por tarea verificada, push tras cada tarea y etiqueta `fase-N` al cerrar cada fase. Al ser público, revisar secretos antes de cada push.
 - Código: proyectos vacíos que compilan en `android/`, `backend/` y `database/`; scripts en `tools/`. Verificaciones externas en `02c-MEMORIA-VERIFICACIONES.md`.
-- Siguiente paso: aprobación de la Fase 1. Pendiente al final: crear repositorio en GitHub, cuentas de Vercel y Neon, despliegue con `/health`.
+- Siguiente paso: tareas de la Fase 1. Pendiente al final: cuentas de Vercel y Neon, despliegue con `/health`.
 
-## Plan de la Fase 0 (2026-11-22)
+Fase 0: tareas 1 a 7 hechas y verificadas (estructura, verificaciones, scripts, backend, database, Docker, Android en emulador API 29); tarea 8 (despliegue en Vercel) diferida al final. Detalle en el historial de Git.
+
+## Plan de la Fase 1 (2026-11-22)
 
 | N | Tarea | Estado |
 |---|---|---|
-| 1 | Estructura de carpetas, Git, `.gitignore`, `.gitattributes` (LF), `.env.example` | Hecha |
-| 2 | Verificar Android fuera de Play, Vercel, Neon, Gmail y versiones (`02c`) | Hecha |
-| 3 | `tools/check-no-emoji` y `tools/check-file-length` (Node con envoltorio PowerShell) | Hecha |
-| 4 | `backend/` Fastify + TypeScript, ESLint, Prettier, Vitest, `/health` y `/ready`, Dockerfile | Hecha |
-| 5 | `database/` con migrador SQL propio y migración 001 | Hecha |
-| 6 | PostgreSQL 17 en Docker Compose; backend local responde `/health` y `/ready` | Hecha |
-| 7 | SDK de Android, `android/` (AGP 9.5.1, Compose, Room 3, Navigation 3), Detekt, ktlint; instalada en emulador API 29 | Hecha |
-| 8 | Despliegue vacío en Vercel respondiendo `/health` | Diferida al final por decisión del autor |
-| 9 | Cierre: auditoría, memoria, etiqueta `fase-0`, informe | Hecha, con la tarea 8 diferida |
+| 1 | Migraciones 002 a 006: enumeraciones, usuarios y preferencias, dispositivos y refresco, códigos y consentimientos, cola de correo, auditoría y límites | Pendiente |
+| 2 | Backend base: configuración validada, Kysely, errores problem+json, helmet, CORS cerrado, Zod | Pendiente |
+| 3 | Backend auth: registro (18 años), verificación, reenvío, login, refresco rotativo con detección de reutilización, logout, recuperación, cambio de contraseña | Pendiente |
+| 4 | Backend cuenta: dispositivos, consentimientos; límites de tasa en base de datos | Pendiente |
+| 5 | Correo: Nodemailer, plantillas React Email es y en (código, bienvenida, dispositivo nuevo, recuperación, contraseña cambiada, sesiones cerradas), cola | Pendiente |
+| 6 | Pruebas de seguridad del backend contra PostgreSQL real | Pendiente |
+| 7 | Android base: tokens, Roboto, `AppIcons`, componentes, Hilt, Room base, DataStore, red, almacenamiento cifrado de tokens | Pendiente |
+| 8 | Android acceso: bienvenida, registro, verificación, login, recuperación, navegación con barra inferior, política visible, unidades en `core/i18n` | Pendiente |
+| 9 | Recorrido real en emulador con Mailpit, contraste AA de tokens, auditoría, memoria y etiqueta `fase-1` | Pendiente |
 
 Nota: la ronda 2 de decisiones (nombre Abitus-D, hosting sin tarjeta, correo, edad, unidades) está en `02b-MEMORIA-DECISIONES-2.md` y prevalece sobre lo que aquí contradiga.
 
