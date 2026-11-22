@@ -8,7 +8,7 @@ Archivo vivo. Claude Code lo lee al iniciar cada sesión y lo actualiza al termi
 - Fase actual: Fase 1 cerrada el 2026-11-22 (etiqueta `fase-1`). Pendiente de aprobación del autor para empezar la Fase 2 (biblioteca de ejercicios). Fase 0 cerrada (`fase-0`); el despliegue en Vercel quedó diferido al final por decisión del autor.
 - Repositorio remoto: https://github.com/DavNat13/Abitus-D (público). Versionado: un commit convencional por tarea verificada, push tras cada tarea y etiqueta `fase-N` al cerrar cada fase. Al ser público, revisar secretos antes de cada push.
 - Código: autenticación completa (backend, base de datos y app Android); detalle y decisiones de la Fase 1 en `02d-MEMORIA-FASE-1.md`. Verificaciones externas en `02c-MEMORIA-VERIFICACIONES.md`.
-- Siguiente paso: aprobar la Fase 2. Pendiente al final: cuentas de Vercel y Neon, despliegue con `/health`, contraseña de aplicación de Gmail, keystore de firma.
+- Siguiente paso: Fase 2 (biblioteca de ejercicios), autorizada. Pendiente del autor: SMTP_USER y SMTP_PASSWORD en `.env`; al final, cuentas de Vercel y Neon, despliegue y keystore.
 
 Fase 0: tareas 1 a 7 hechas y verificadas (estructura, verificaciones, scripts, backend, database, Docker, Android en emulador API 29); tarea 8 (despliegue en Vercel) diferida al final. Detalle en el historial de Git.
 
@@ -55,6 +55,8 @@ Nota: la ronda 2 de decisiones (nombre Abitus-D, hosting sin tarjeta, correo, ed
 | 2026-11-22 | TypeScript 6.0 y no 7.0 | typescript-eslint 8.73 no soporta 7.0 |
 | 2026-11-22 | Detekt 2.0.0-alpha.6 (herramienta, no va en el APK) | La estable 1.23.8 no soporta Kotlin 2.4 ni AGP 9; cambiar a 2.0 estable al salir |
 | 2026-11-22 | PostgreSQL 17 en local | Igualar con Neon al crear el proyecto |
+| 2026-11-22 | Autorización del autor: al cerrar una fase con todo en verde se pasa a la siguiente sin pedir aprobación. Claude configura el `.env` local; `SMTP_USER` y `SMTP_PASSWORD` (contraseña de aplicación de Gmail) los completa el autor a mano | Avance continuo; las credenciales de Gmail no pasan por el chat |
+| 2026-11-22 | `.env` local apunta a Gmail SMTP (smtp.gmail.com, puerto 465, SSL); Mailpit queda comentado como alternativa | Probar el envío real cuando el autor ponga la contraseña |
 | 2026-11-22 | Copia de seguridad del sistema desactivada (`allowBackup=false`, reglas de extracción excluyen todo) | Tokens y datos de salud no salen del dispositivo; el respaldo es la sincronización y la exportación |
 
 ## Decisiones descartadas y por qué
