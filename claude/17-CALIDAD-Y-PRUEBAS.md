@@ -65,3 +65,4 @@ Una tarea está terminada solo si cumple todo lo siguiente:
 - Ejecutar linters y pruebas localmente antes de cada commit; opcionalmente con un flujo de integración continua gratuito (VERIFICAR límites).
 - Búsqueda de secretos y auditoría de dependencias en cada cierre de fase.
 - Scripts de `tools/` documentados y ejecutables en PowerShell.
+- `node tools/check-contrast.mjs` verifica el contraste AA de los tokens en ambos temas.

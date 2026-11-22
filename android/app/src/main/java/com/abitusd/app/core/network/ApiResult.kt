@@ -1,5 +1,7 @@
 package com.abitusd.app.core.network
 
+import android.util.Log
+import com.abitusd.app.BuildConfig
 import com.abitusd.app.core.network.dto.ProblemDto
 import kotlinx.coroutines.CancellationException
 import kotlinx.serialization.json.Json
@@ -34,8 +36,15 @@ suspend fun <T> apiCall(block: suspend () -> T): ApiResult<T> =
         val body = error.response()?.errorBody()?.string()
         val code = body?.let { runCatching { problemJson.decodeFromString<ProblemDto>(it).code }.getOrNull() }
         if (code != null) ApiResult.Problem(code) else ApiResult.Unexpected
-    } catch (_: IOException) {
+    } catch (error: IOException) {
+        debugLog(error)
         ApiResult.Offline
-    } catch (_: Exception) {
+    } catch (error: Exception) {
+        debugLog(error)
         ApiResult.Unexpected
     }
+
+/** Only the exception type in debug builds: messages may contain hosts or user data. */
+private fun debugLog(error: Exception) {
+    if (BuildConfig.DEBUG) Log.w("ApiResult", "request failed: ${error.javaClass.name}")
+}

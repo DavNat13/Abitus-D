@@ -5,10 +5,10 @@ Archivo vivo. Claude Code lo lee al iniciar cada sesión y lo actualiza al termi
 ## Estado actual
 
 - Fecha de creación de la documentación: 2026-11-22.
-- Fase actual: Fase 1 (fundaciones y acceso), iniciada el 2026-11-22. Fase 0 cerrada (`fase-0`); el despliegue en Vercel quedó diferido al final por decisión del autor.
+- Fase actual: Fase 1 cerrada el 2026-11-22 (etiqueta `fase-1`). Pendiente de aprobación del autor para empezar la Fase 2 (biblioteca de ejercicios). Fase 0 cerrada (`fase-0`); el despliegue en Vercel quedó diferido al final por decisión del autor.
 - Repositorio remoto: https://github.com/DavNat13/Abitus-D (público). Versionado: un commit convencional por tarea verificada, push tras cada tarea y etiqueta `fase-N` al cerrar cada fase. Al ser público, revisar secretos antes de cada push.
-- Código: proyectos vacíos que compilan en `android/`, `backend/` y `database/`; scripts en `tools/`. Verificaciones externas en `02c-MEMORIA-VERIFICACIONES.md`.
-- Siguiente paso: tareas de la Fase 1. Pendiente al final: cuentas de Vercel y Neon, despliegue con `/health`.
+- Código: autenticación completa (backend, base de datos y app Android); detalle y decisiones de la Fase 1 en `02d-MEMORIA-FASE-1.md`. Verificaciones externas en `02c-MEMORIA-VERIFICACIONES.md`.
+- Siguiente paso: aprobar la Fase 2. Pendiente al final: cuentas de Vercel y Neon, despliegue con `/health`, contraseña de aplicación de Gmail, keystore de firma.
 
 Fase 0: tareas 1 a 7 hechas y verificadas (estructura, verificaciones, scripts, backend, database, Docker, Android en emulador API 29); tarea 8 (despliegue en Vercel) diferida al final. Detalle en el historial de Git.
 
@@ -16,15 +16,15 @@ Fase 0: tareas 1 a 7 hechas y verificadas (estructura, verificaciones, scripts, 
 
 | N | Tarea | Estado |
 |---|---|---|
-| 1 | Migraciones 002 a 006: enumeraciones, usuarios y preferencias, dispositivos y refresco, códigos y consentimientos, cola de correo, auditoría y límites | Pendiente |
-| 2 | Backend base: configuración validada, Kysely, errores problem+json, helmet, CORS cerrado, Zod | Pendiente |
-| 3 | Backend auth: registro (18 años), verificación, reenvío, login, refresco rotativo con detección de reutilización, logout, recuperación, cambio de contraseña | Pendiente |
-| 4 | Backend cuenta: dispositivos, consentimientos; límites de tasa en base de datos | Pendiente |
-| 5 | Correo: Nodemailer, plantillas React Email es y en (código, bienvenida, dispositivo nuevo, recuperación, contraseña cambiada, sesiones cerradas), cola | Pendiente |
-| 6 | Pruebas de seguridad del backend contra PostgreSQL real | Pendiente |
-| 7 | Android base: tokens, Roboto, `AppIcons`, componentes, Hilt, Room base, DataStore, red, almacenamiento cifrado de tokens | Pendiente |
-| 8 | Android acceso: bienvenida, registro, verificación, login, recuperación, navegación con barra inferior, política visible, unidades en `core/i18n` | Pendiente |
-| 9 | Recorrido real en emulador con Mailpit, contraste AA de tokens, auditoría, memoria y etiqueta `fase-1` | Pendiente |
+| 1 | Migraciones 002 a 006: enumeraciones, usuarios y preferencias, dispositivos y refresco, códigos y consentimientos, cola de correo, auditoría y límites | Hecha |
+| 2 | Backend base: configuración validada, Kysely, errores problem+json, helmet, CORS cerrado, Zod | Hecha |
+| 3 | Backend auth: registro (18 años), verificación, reenvío, login, refresco rotativo con detección de reutilización, logout, recuperación, cambio de contraseña | Hecha |
+| 4 | Backend cuenta: dispositivos, consentimientos; límites de tasa en base de datos | Hecha |
+| 5 | Correo: Nodemailer, plantillas React Email es y en (código, bienvenida, dispositivo nuevo, recuperación, contraseña cambiada, sesiones cerradas), cola | Hecha |
+| 6 | Pruebas de seguridad del backend contra PostgreSQL real | Hecha |
+| 7 | Android base: tokens, Roboto, `AppIcons`, componentes, Hilt, Room base, DataStore, red, almacenamiento cifrado de tokens | Hecha |
+| 8 | Android acceso: bienvenida, registro, verificación, login, recuperación, navegación con barra inferior, política visible, unidades en `core/i18n` | Hecha |
+| 9 | Recorrido real en emulador con Mailpit, contraste AA de tokens, auditoría, memoria y etiqueta `fase-1` | Hecha |
 
 Nota: la ronda 2 de decisiones (nombre Abitus-D, hosting sin tarjeta, correo, edad, unidades) está en `02b-MEMORIA-DECISIONES-2.md` y prevalece sobre lo que aquí contradiga.
 
@@ -92,6 +92,8 @@ Verificaciones de la Fase 0 (Android fuera de Play, Vercel, Neon, Gmail y versio
 4. Tope de 1 GB en Neon gratuito. Mitigación: rutas GPS simplificadas y codificadas; derivados en caché mínimos.
 5. Verificación de desarrolladores de Android: llega a todos los países durante 2027. Mitigación: cuenta gratuita de distribución limitada (50 dispositivos) antes de la Fase 10.
 6. Detekt en alfa. Mitigación: solo afecta al análisis; pasar a 2.0 estable cuando salga.
+7. Correos dentro de la solicitud alargan registro y login con dispositivo nuevo si el SMTP es lento. Mitigación: tiempo máximo de 8 s y cola; medir con Gmail real.
+8. El relleno de 1,5 s contra enumeración no cubre un SMTP más lento que eso. Mitigación: medir con Gmail y ajustar en la Fase 10.
 
 ## Registro de progreso
 
@@ -102,6 +104,10 @@ Formato de cada entrada: `AAAA-MM-DD | área | qué se hizo | resultado de la ve
 - 2026-11-22 | tools | check-no-emoji y check-file-length | Probados con casos positivos y negativos; pasan | -
 - 2026-11-22 | backend y database | Fastify `/health` y `/ready`, migrador y 001 | tsc, ESLint, Prettier, 4 pruebas en verde; `/health` y `/ready` 200 contra PostgreSQL en Docker; imagen Docker responde `/health` | Desplegar en Vercel
 - 2026-11-22 | android | Proyecto vacío AGP 9.5.1, Compose, Room 3, Navigation 3 | assembleDebug, prueba unitaria, Detekt y ktlint en verde; instalada y abierta en emulador Android 10 (API 29) | Fase 1 tras aprobación
+- 2026-11-22 | database | Migraciones 002 a 006 de identidad y seguridad | Aplicadas sobre base limpia en cada corrida de pruebas | -
+- 2026-11-22 | backend | Auth, sesiones, cuenta, correo, límites, trabajos programados | 41 pruebas en verde contra PostgreSQL; ESLint, Prettier, tsc; npm audit sin vulnerabilidades; correo real a Mailpit | -
+- 2026-11-22 | android | Sistema de diseño, sesión cifrada, pantallas de acceso, barra inferior, política | 13 pruebas unitarias, Detekt y ktlint en verde; recorrido real en emulador API 29 (registro, código, verificación, reinicio con sesión, cierre, login, aviso de dispositivo nuevo) | Fase 2 tras aprobación
+- 2026-11-22 | diseño | tools/check-contrast sobre los tokens | 32 pares AA en ambos temas tras ajustar inputBorder oscuro a #777A8C | -
 
 ## Cómo actualizar este archivo
 

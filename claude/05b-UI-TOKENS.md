@@ -67,7 +67,7 @@ Derivado de `ink`. El tema claro es el predeterminado; el usuario puede elegir c
 | surface | #1E243E |
 | surfaceRaised | #282D46 |
 | outline | #363B53 |
-| inputBorder | #707384 |
+| inputBorder | #777A8C (3,2 a 1 sobre surfaceRaised; ajustado en la Fase 1 por contraste) |
 | textPrimary | #F7F4FF |
 | textSecondary | #B7B9C2 |
 | textDisabled | #707384 |
@@ -98,7 +98,7 @@ Músculo seleccionado: contorno de 2 dp en `navy` (claro) o `lavender` (oscuro).
 
 ## Tipografía
 
-Fuente: Roboto (licencia Apache 2.0). Es la tipografía nativa de Android, sobria y muy legible en pantallas pequeñas y a distancia, y encaja con el estilo limpio de la marca.
+Fuente: Roboto (licencia SIL Open Font License 1.1; la versión vigente en google/fonts dejó Apache 2.0). Es la tipografía nativa de Android, sobria y muy legible en pantallas pequeñas y a distancia, y encaja con el estilo limpio de la marca.
 
 - Se incluye en la app (pesos 400, 500 y 700) para que la interfaz se vea igual en dispositivos cuyo fabricante cambia la fuente del sistema. Roboto no trae un peso semibold: se usa Medium (500) y Bold (700).
 - Cifras: comprobar visualmente que las columnas de números (series, cargas, tiempos) se alinean; si no, activar numerales tabulares (`tnum`). VERIFICAR con la versión de la fuente incluida.

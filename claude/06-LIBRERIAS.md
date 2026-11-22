@@ -63,6 +63,7 @@ Imágenes y animación: evitar librerías de carga de imágenes salvo que haya f
 | gitleaks o equivalente | Detección de secretos en el repositorio |
 | npm audit (o equivalente) y revisión de dependencias de Gradle | Auditoría de vulnerabilidades |
 | Script propio `tools/check-no-emoji` | Cumplir regla de cero emojis |
+| Scripts `tools/check-contrast` y `tools/convert-material-symbol` | Contraste AA de los tokens; iconos Material Symbols a vectores |
 | GitHub Actions (opcional) | Integración continua gratuita; VERIFICAR límites del plan |
 
 ## Política de dependencias

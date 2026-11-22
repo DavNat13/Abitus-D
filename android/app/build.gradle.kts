@@ -48,6 +48,11 @@ android {
         buildConfig = true
     }
 
+    testOptions {
+        // android.util.Log and similar return defaults in JVM unit tests.
+        unitTests.isReturnDefaultValues = true
+    }
+
     androidResources {
         localeFilters += listOf("es", "en")
     }
