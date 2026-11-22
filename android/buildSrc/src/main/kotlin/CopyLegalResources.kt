@@ -1,5 +1,7 @@
 import org.gradle.api.DefaultTask
 import org.gradle.api.file.DirectoryProperty
+import org.gradle.api.file.RegularFileProperty
+import org.gradle.api.tasks.InputFile
 import org.gradle.api.tasks.InputDirectory
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.PathSensitive
@@ -12,6 +14,11 @@ abstract class CopyLegalResources : DefaultTask() {
     @get:InputDirectory
     @get:PathSensitive(PathSensitivity.RELATIVE)
     abstract val legalDir: DirectoryProperty
+
+    /** distribution/THIRD_PARTY.md, shown as credits; only in the default language. */
+    @get:InputFile
+    @get:PathSensitive(PathSensitivity.RELATIVE)
+    abstract val creditsFile: RegularFileProperty
 
     @get:OutputDirectory
     abstract val outputDir: DirectoryProperty
@@ -26,6 +33,7 @@ abstract class CopyLegalResources : DefaultTask() {
                 file.copyTo(File(out, "$dir/$target.md"), overwrite = true)
             }
         }
+        creditsFile.get().asFile.copyTo(File(out, "raw/third_party.md"), overwrite = true)
     }
 
     private companion object {

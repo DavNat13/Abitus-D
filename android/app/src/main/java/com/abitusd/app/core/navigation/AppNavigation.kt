@@ -13,8 +13,8 @@ import androidx.lifecycle.viewModelScope
 import com.abitusd.app.core.designsystem.theme.AppTheme
 import com.abitusd.app.core.session.SessionManager
 import com.abitusd.app.core.session.SessionState
-import dagger.hilt.android.lifecycle.HiltViewModel
 import com.abitusd.app.core.sync.SyncScheduler
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.filterIsInstance
 import kotlinx.coroutines.launch

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="library_search">Search exercises</string>
+    <string name="library_clear_search">Clear search</string>
+    <string name="library_filter_discipline">Discipline</string>
+    <string name="library_filter_muscle">Muscle</string>
+    <string name="library_filter_equipment">Equipment</string>
+    <string name="library_filter_difficulty">Difficulty</string>
+    <string name="library_filter_any">All</string>
+    <string name="library_own_tag">Own</string>
+    <string name="library_create">Create exercise</string>
+    <string name="library_no_results">No exercises match these filters.</string>
+    <string name="library_downloading">Downloading the exercise library.</string>
+    <string name="library_needs_connection">Connect to the internet once to download the library. After that it works offline.</string>
+    <string name="library_retry">Retry</string>
+    <string name="library_count">%1$d exercises</string>
+    <string name="difficulty_value">Difficulty %1$d of 5</string>
+
+    <string name="detail_summary">Summary</string>
+    <string name="detail_setup">Setup</string>
+    <string name="detail_execution">Execution</string>
+    <string name="detail_cues">Cues</string>
+    <string name="detail_mistakes">Common mistakes</string>
+    <string name="detail_safety">Safety</string>
+    <string name="detail_primary_muscles">Primary muscles</string>
+    <string name="detail_secondary_muscles">Secondary muscles</string>
+    <string name="detail_equipment">Equipment</string>
+    <string name="detail_progressions">Progressions</string>
+    <string name="detail_regressions">Regressions</string>
+    <string name="detail_alternatives">Alternatives</string>
+    <string name="detail_source">Source: %1$s. License: %2$s.</string>
+    <string name="detail_notes">Notes</string>
+    <string name="detail_edit">Edit</string>
+    <string name="detail_delete">Delete</string>
+    <string name="detail_delete_title">Delete this exercise?</string>
+    <string name="detail_delete_text">It will be removed from your library on all your devices.</string>
+    <string name="detail_delete_confirm">Delete</string>
+    <string name="detail_cancel">Cancel</string>
+    <string name="detail_not_found">This exercise is no longer available.</string>
+
+    <string name="form_new_title">New exercise</string>
+    <string name="form_edit_title">Edit exercise</string>
+    <string name="form_name">Name</string>
+    <string name="form_notes">Notes (optional)</string>
+    <string name="form_discipline">Discipline</string>
+    <string name="form_metric">What you log</string>
+    <string name="form_pattern">Movement type</string>
+    <string name="form_difficulty">Difficulty</string>
+    <string name="form_primary_muscles">Primary muscles</string>
+    <string name="form_secondary_muscles">Secondary muscles (optional)</string>
+    <string name="form_equipment">Equipment (optional)</string>
+    <string name="form_save">Save</string>
+    <string name="form_name_required">Enter a name.</string>
+    <string name="form_muscle_required">Choose at least one primary muscle.</string>
+    <string name="form_duplicate">A similar exercise already exists. You can use it instead of creating a new one.</string>
+    <string name="form_open_existing">View %1$s</string>
+    <string name="form_saved_offline">Saved on this device. It syncs when there is a connection.</string>
+
+    <string name="metric_weight_reps">Weight and reps</string>
+    <string name="metric_bodyweight_reps">Body weight reps</string>
+    <string name="metric_weighted_bodyweight_reps">Weighted reps</string>
+    <string name="metric_duration">Time</string>
+    <string name="metric_distance_duration">Distance and time</string>
+    <string name="metric_swim_laps">Pool lengths</string>
+    <string name="metric_plyo">Jumps (reps)</string>
+
+    <string name="pattern_push">Push</string>
+    <string name="pattern_pull">Pull</string>
+    <string name="pattern_squat">Squat</string>
+    <string name="pattern_hinge">Hip hinge</string>
+    <string name="pattern_lunge">Lunge</string>
+    <string name="pattern_carry">Carry</string>
+    <string name="pattern_core">Core</string>
+    <string name="pattern_jump">Jump</string>
+    <string name="pattern_locomotion">Locomotion</string>
+    <string name="pattern_swim">Swim</string>
+    <string name="pattern_mobility">Mobility</string>
+
+    <string name="profile_credits">Credits and licenses</string>
+</resources>

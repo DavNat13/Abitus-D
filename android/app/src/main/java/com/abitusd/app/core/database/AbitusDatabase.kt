@@ -1,13 +1,13 @@
 package com.abitusd.app.core.database
 
 import androidx.room3.AutoMigration
+import androidx.room3.ColumnTypeConverters
 import androidx.room3.Dao
 import androidx.room3.Database
 import androidx.room3.Entity
 import androidx.room3.PrimaryKey
 import androidx.room3.Query
 import androidx.room3.RoomDatabase
-import androidx.room3.ColumnTypeConverters
 import androidx.room3.Upsert
 import com.abitusd.app.core.database.catalog.CatalogWriteDao
 import com.abitusd.app.core.database.catalog.DisciplineEntity

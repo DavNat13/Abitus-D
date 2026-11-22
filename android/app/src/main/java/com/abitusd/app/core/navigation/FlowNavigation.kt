@@ -17,6 +17,8 @@ import com.abitusd.app.feature.auth.ui.verify.VerifyScreen
 import com.abitusd.app.feature.home.ui.MainShell
 import com.abitusd.app.feature.legal.LegalDocument
 import com.abitusd.app.feature.legal.LegalDocumentScreen
+import com.abitusd.app.feature.library.ui.detail.ExerciseDetailScreen
+import com.abitusd.app.feature.library.ui.form.OwnExerciseFormScreen
 import com.abitusd.app.feature.profile.ui.ProfileScreen
 
 @Composable
@@ -79,12 +81,38 @@ fun MainNavigation() {
     val stack = rememberNavBackStack(MainRoute)
     val back: () -> Unit = { stack.removeLastOrNull() }
     FlowDisplay(stack) {
-        entry<MainRoute> { MainShell(onOpenProfile = { stack.add(ProfileRoute) }) }
+        entry<MainRoute> {
+            MainShell(
+                onOpenProfile = { stack.add(ProfileRoute) },
+                onOpenExercise = { stack.add(ExerciseDetailRoute(it)) },
+                onCreateExercise = { stack.add(OwnExerciseFormRoute()) },
+            )
+        }
+        entry<ExerciseDetailRoute> { key ->
+            ExerciseDetailScreen(
+                id = key.id,
+                onBack = back,
+                onOpenExercise = { stack.add(ExerciseDetailRoute(it)) },
+                onEdit = { stack.add(OwnExerciseFormRoute(it)) },
+            )
+        }
+        entry<OwnExerciseFormRoute> { key ->
+            OwnExerciseFormScreen(
+                editId = key.editId,
+                onBack = back,
+                onSaved = { id ->
+                    stack.removeLastOrNull()
+                    if (key.editId == null) stack.add(ExerciseDetailRoute(id))
+                },
+                onOpenExisting = { stack.add(ExerciseDetailRoute(it)) },
+            )
+        }
         entry<ProfileRoute> {
             ProfileScreen(
                 onBack = back,
                 onOpenPrivacy = { stack.add(LegalRoute(LegalDocument.PRIVACY)) },
                 onOpenTerms = { stack.add(LegalRoute(LegalDocument.TERMS)) },
+                onOpenCredits = { stack.add(LegalRoute(LegalDocument.CREDITS)) },
             )
         }
         entry<LegalRoute> { key -> LegalDocumentScreen(document = key.document, onBack = back) }

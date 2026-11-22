@@ -20,6 +20,7 @@ import androidx.compose.ui.res.stringResource
 import com.abitusd.app.R
 import com.abitusd.app.core.designsystem.icon.AppIcons
 import com.abitusd.app.core.designsystem.theme.AppTheme
+import com.abitusd.app.feature.library.ui.list.LibraryScreen
 
 enum class MainTab(
     @param:StringRes val label: Int,
@@ -34,7 +35,11 @@ enum class MainTab(
 
 /** Bottom bar with four sections (05-UI-UX.md). Profile opens from the Home top bar. */
 @Composable
-fun MainShell(onOpenProfile: () -> Unit) {
+fun MainShell(
+    onOpenProfile: () -> Unit,
+    onOpenExercise: (String) -> Unit,
+    onCreateExercise: () -> Unit,
+) {
     val colors = AppTheme.colors
     var selected by rememberSaveable { mutableStateOf(MainTab.HOME) }
     Scaffold(
@@ -60,10 +65,14 @@ fun MainShell(onOpenProfile: () -> Unit) {
             }
         },
     ) { padding ->
-        SectionPlaceholder(
-            tab = selected,
-            onOpenProfile = if (selected == MainTab.HOME) onOpenProfile else null,
-            modifier = Modifier.padding(padding),
-        )
+        if (selected == MainTab.LIBRARY) {
+            LibraryScreen(onOpenExercise, onCreateExercise, Modifier.padding(padding))
+        } else {
+            SectionPlaceholder(
+                tab = selected,
+                onOpenProfile = if (selected == MainTab.HOME) onOpenProfile else null,
+                modifier = Modifier.padding(padding),
+            )
+        }
     }
 }

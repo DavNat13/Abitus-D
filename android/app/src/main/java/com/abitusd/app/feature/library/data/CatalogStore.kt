@@ -27,9 +27,18 @@ class CatalogStore
                     apply(CatalogMapper.toRows(result.value, System.currentTimeMillis()), result.value.version)
                     ApiResult.Success(result.value.exercises.size)
                 }
-                is ApiResult.Problem -> result
-                ApiResult.Offline -> ApiResult.Offline
-                ApiResult.Unexpected -> ApiResult.Unexpected
+
+                is ApiResult.Problem -> {
+                    result
+                }
+
+                ApiResult.Offline -> {
+                    ApiResult.Offline
+                }
+
+                ApiResult.Unexpected -> {
+                    ApiResult.Unexpected
+                }
             }
         }
 

@@ -31,3 +31,11 @@ import kotlinx.serialization.Serializable
 @Serializable data object MainRoute : NavKey
 
 @Serializable data object ProfileRoute : NavKey
+
+@Serializable data class ExerciseDetailRoute(
+    val id: String,
+) : NavKey
+
+@Serializable data class OwnExerciseFormRoute(
+    val editId: String? = null,
+) : NavKey

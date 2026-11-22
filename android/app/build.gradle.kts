@@ -61,6 +61,7 @@ android {
 val copyLegalResources =
     tasks.register<CopyLegalResources>("copyLegalResources") {
         legalDir.set(rootProject.layout.projectDirectory.dir("../legal"))
+        creditsFile.set(rootProject.layout.projectDirectory.file("../distribution/THIRD_PARTY.md"))
         outputDir.set(layout.buildDirectory.dir("generated/legal-res"))
     }
 

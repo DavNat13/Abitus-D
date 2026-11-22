@@ -80,7 +80,12 @@ object OwnExerciseMapper {
                 (input.secondaryMuscles - input.primaryMuscles).map {
                     ExerciseMuscleEntity(input.id, it, "secondary", SECONDARY)
                 }
-        return OwnExerciseRows(exercise, text, muscles, input.equipmentIds.map { ExerciseEquipmentEntity(input.id, it) })
+        return OwnExerciseRows(
+            exercise,
+            text,
+            muscles,
+            input.equipmentIds.map { ExerciseEquipmentEntity(input.id, it) },
+        )
     }
 
     fun toDto(rows: OwnExerciseRows): OwnExerciseDto =
@@ -111,8 +116,16 @@ object OwnExerciseMapper {
             metricType = dto.metricType,
             movementPattern = dto.movementPattern,
             difficulty = dto.difficulty,
-            primaryMuscles = dto.muscles.filter { it.role == "primary" }.map { it.muscleGroupId }.toSet(),
-            secondaryMuscles = dto.muscles.filter { it.role == "secondary" }.map { it.muscleGroupId }.toSet(),
+            primaryMuscles =
+                dto.muscles
+                    .filter { it.role == "primary" }
+                    .map { it.muscleGroupId }
+                    .toSet(),
+            secondaryMuscles =
+                dto.muscles
+                    .filter { it.role == "secondary" }
+                    .map { it.muscleGroupId }
+                    .toSet(),
             equipmentIds = dto.equipmentIds.toSet(),
             defaultRestSeconds = dto.defaultRestSeconds,
         )

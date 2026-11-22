@@ -11,3 +11,7 @@ complexity:
   LongMethod:
     ignoreAnnotated:
       - Composable
+  TooManyFunctions:
+    # Room DAO interfaces hold one function per query; the 150-line limit bounds them.
+    ignoreAnnotated:
+      - Dao

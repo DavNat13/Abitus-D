@@ -32,9 +32,13 @@ class OwnExerciseRepository
         }
 
         suspend fun load(id: String): OwnExerciseRows? {
-            val exercise = dao.exercise(id)?.takeIf { it.isOwn } ?: return null
-            val text = dao.texts(id).firstOrNull() ?: return null
-            return OwnExerciseRows(exercise, text, dao.muscles(id), dao.equipment(id))
+            val exercise = dao.exercise(id)?.takeIf { it.isOwn }
+            val text = exercise?.let { dao.texts(id).firstOrNull() }
+            return if (exercise != null && text != null) {
+                OwnExerciseRows(exercise, text, dao.muscles(id), dao.equipment(id))
+            } else {
+                null
+            }
         }
 
         /** Pending local changes as push operations, with the local time of each edit. */
@@ -44,7 +48,10 @@ class OwnExerciseRepository
                     val row = DeletedRowDto(exercise.id, Instant.ofEpochMilli(exercise.updatedAt).toString())
                     PushChangeDto.Delete(row = row) to exercise.updatedAt
                 } else {
-                    load(exercise.id)?.let { PushChangeDto.Upsert(row = OwnExerciseMapper.toDto(it)) to exercise.updatedAt }
+                    load(exercise.id)?.let {
+                        PushChangeDto.Upsert(row = OwnExerciseMapper.toDto(it)) to
+                            exercise.updatedAt
+                    }
                 }
             }
 
@@ -56,17 +63,30 @@ class OwnExerciseRepository
 
         suspend fun applyPulled(changes: List<PullChangeDto>) {
             database.withWriteTransaction {
-                for (change in changes) {
-                    val remoteTime = Instant.parse(change.row.updatedAt).toEpochMilli()
-                    val local = dao.exercise(change.row.id)
-                    if (local != null && local.dirty && local.updatedAt > remoteTime) continue
-                    if (change.op == "delete") {
-                        val base = local ?: continue
-                        dao.upsertExercises(listOf(base.copy(deletedAt = remoteTime, dirty = false, serverSeq = change.serverSeq)))
-                    } else {
-                        val input = OwnExerciseMapper.fromDto(change.row)
-                        write(OwnExerciseMapper.rows(input, remoteTime, dirty = false, serverSeq = change.serverSeq))
+                changes.forEach { applyOne(it) }
+            }
+        }
+
+        private suspend fun applyOne(change: PullChangeDto) {
+            val remoteTime = Instant.parse(change.row.updatedAt).toEpochMilli()
+            val local = dao.exercise(change.row.id)
+            val localIsNewer = local != null && local.dirty && local.updatedAt > remoteTime
+            when {
+                localIsNewer -> {
+                    Unit
+                }
+
+                change.op == "delete" -> {
+                    local?.let {
+                        dao.upsertExercises(
+                            listOf(it.copy(deletedAt = remoteTime, dirty = false, serverSeq = change.serverSeq)),
+                        )
                     }
+                }
+
+                else -> {
+                    val input = OwnExerciseMapper.fromDto(change.row)
+                    write(OwnExerciseMapper.rows(input, remoteTime, dirty = false, serverSeq = change.serverSeq))
                 }
             }
         }

@@ -17,6 +17,7 @@ enum class LegalDocument(
 ) {
     PRIVACY(R.raw.privacy_policy),
     TERMS(R.raw.terms),
+    CREDITS(R.raw.third_party),
 }
 
 /** Shows a document from legal/ (copied at build time) with headings and paragraphs. */
@@ -32,12 +33,24 @@ fun LegalDocumentScreen(
                 .openRawResource(document.raw)
                 .bufferedReader()
                 .use { it.readLines() }
-                .filter { it.isNotBlank() }
+                .filter { it.isNotBlank() && !it.startsWith("|---") }
+                .map(::plainLine)
         }
     val title = lines.firstOrNull()?.removePrefix("# ").orEmpty()
     FormScreen(title = title, onBack = onBack) {
         lines.drop(1).forEach { line -> LegalLine(line) }
     }
+}
+
+/** Table rows become one line of text; code marks are removed. */
+private fun plainLine(line: String): String {
+    val text = line.replace("`", "")
+    if (!text.startsWith("|")) return text
+    return text
+        .split('|')
+        .map { it.trim() }
+        .filter { it.isNotEmpty() }
+        .joinToString(" - ")
 }
 
 @Composable

@@ -28,10 +28,9 @@ class SyncEngine
         private val syncState: SyncStateDao,
     ) {
         suspend fun run(): SyncOutcome {
-            val catalogResult = catalog.refresh()
-            if (catalogResult.needsRetry()) return SyncOutcome.RETRY
-            if (!push()) return SyncOutcome.RETRY
-            return if (pull()) SyncOutcome.DONE else SyncOutcome.RETRY
+            // Each step runs only if the previous one did not ask for a retry.
+            val completed = !catalog.refresh().needsRetry() && push() && pull()
+            return if (completed) SyncOutcome.DONE else SyncOutcome.RETRY
         }
 
         private suspend fun push(): Boolean {
@@ -40,10 +39,14 @@ class SyncEngine
                 when (val result = apiCall { api.push(request) }) {
                     is ApiResult.Success -> {
                         val handled = result.value.accepted + result.value.rejected.map { it.id }
-                        batch.filter { (change, _) -> changeId(change) in handled }
+                        batch
+                            .filter { (change, _) -> changeId(change) in handled }
                             .forEach { (change, time) -> ownExercises.markSent(changeId(change), time) }
                     }
-                    else -> return !result.needsRetry()
+
+                    else -> {
+                        return !result.needsRetry()
+                    }
                 }
             }
             return true

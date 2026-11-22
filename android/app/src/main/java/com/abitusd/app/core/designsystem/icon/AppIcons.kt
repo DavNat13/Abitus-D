@@ -35,4 +35,20 @@ object AppIcons {
     @DrawableRes val Offline = R.drawable.ic_cloud_off
 
     @DrawableRes val Devices = R.drawable.ic_devices
+
+    @DrawableRes val Search = R.drawable.ic_search
+
+    @DrawableRes val Add = R.drawable.ic_add
+
+    @DrawableRes val Edit = R.drawable.ic_edit
+
+    @DrawableRes val Delete = R.drawable.ic_delete
+
+    @DrawableRes val Filter = R.drawable.ic_tune
+
+    @DrawableRes val Close = R.drawable.ic_close
+
+    @DrawableRes val ExpandMore = R.drawable.ic_expand_more
+
+    @DrawableRes val Sync = R.drawable.ic_sync
 }

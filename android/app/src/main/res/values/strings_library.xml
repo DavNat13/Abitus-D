@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="library_search">Buscar ejercicios</string>
+    <string name="library_clear_search">Borrar búsqueda</string>
+    <string name="library_filter_discipline">Disciplina</string>
+    <string name="library_filter_muscle">Músculo</string>
+    <string name="library_filter_equipment">Equipo</string>
+    <string name="library_filter_difficulty">Dificultad</string>
+    <string name="library_filter_any">Todos</string>
+    <string name="library_own_tag">Propio</string>
+    <string name="library_create">Crear ejercicio</string>
+    <string name="library_no_results">No hay ejercicios con esos filtros.</string>
+    <string name="library_downloading">Descargando la biblioteca de ejercicios.</string>
+    <string name="library_needs_connection">Conéctate a internet una vez para descargar la biblioteca. Después funciona sin conexión.</string>
+    <string name="library_retry">Reintentar</string>
+    <string name="library_count">%1$d ejercicios</string>
+    <string name="difficulty_value">Dificultad %1$d de 5</string>
+
+    <string name="detail_summary">Resumen</string>
+    <string name="detail_setup">Preparación</string>
+    <string name="detail_execution">Ejecución</string>
+    <string name="detail_cues">Claves</string>
+    <string name="detail_mistakes">Errores comunes</string>
+    <string name="detail_safety">Seguridad</string>
+    <string name="detail_primary_muscles">Músculos principales</string>
+    <string name="detail_secondary_muscles">Músculos secundarios</string>
+    <string name="detail_equipment">Equipo</string>
+    <string name="detail_progressions">Progresiones</string>
+    <string name="detail_regressions">Regresiones</string>
+    <string name="detail_alternatives">Alternativas</string>
+    <string name="detail_source">Fuente: %1$s. Licencia: %2$s.</string>
+    <string name="detail_notes">Notas</string>
+    <string name="detail_edit">Editar</string>
+    <string name="detail_delete">Eliminar</string>
+    <string name="detail_delete_title">¿Eliminar este ejercicio?</string>
+    <string name="detail_delete_text">Se eliminará de tu biblioteca en todos tus dispositivos.</string>
+    <string name="detail_delete_confirm">Eliminar</string>
+    <string name="detail_cancel">Cancelar</string>
+    <string name="detail_not_found">Este ejercicio ya no está disponible.</string>
+
+    <string name="form_new_title">Nuevo ejercicio</string>
+    <string name="form_edit_title">Editar ejercicio</string>
+    <string name="form_name">Nombre</string>
+    <string name="form_notes">Notas (opcional)</string>
+    <string name="form_discipline">Disciplina</string>
+    <string name="form_metric">Qué registras</string>
+    <string name="form_pattern">Tipo de movimiento</string>
+    <string name="form_difficulty">Dificultad</string>
+    <string name="form_primary_muscles">Músculos principales</string>
+    <string name="form_secondary_muscles">Músculos secundarios (opcional)</string>
+    <string name="form_equipment">Equipo (opcional)</string>
+    <string name="form_save">Guardar</string>
+    <string name="form_name_required">Escribe un nombre.</string>
+    <string name="form_muscle_required">Elige al menos un músculo principal.</string>
+    <string name="form_duplicate">Ya existe un ejercicio parecido. Puedes usarlo en lugar de crear uno nuevo.</string>
+    <string name="form_open_existing">Ver %1$s</string>
+    <string name="form_saved_offline">Guardado en este dispositivo. Se sincroniza cuando haya conexión.</string>
+
+    <string name="metric_weight_reps">Peso y repeticiones</string>
+    <string name="metric_bodyweight_reps">Repeticiones con el peso del cuerpo</string>
+    <string name="metric_weighted_bodyweight_reps">Repeticiones con lastre</string>
+    <string name="metric_duration">Tiempo</string>
+    <string name="metric_distance_duration">Distancia y tiempo</string>
+    <string name="metric_swim_laps">Largos de piscina</string>
+    <string name="metric_plyo">Saltos (repeticiones)</string>
+
+    <string name="pattern_push">Empuje</string>
+    <string name="pattern_pull">Tirón</string>
+    <string name="pattern_squat">Sentadilla</string>
+    <string name="pattern_hinge">Bisagra de cadera</string>
+    <string name="pattern_lunge">Zancada</string>
+    <string name="pattern_carry">Acarreo</string>
+    <string name="pattern_core">Core</string>
+    <string name="pattern_jump">Salto</string>
+    <string name="pattern_locomotion">Desplazamiento</string>
+    <string name="pattern_swim">Nado</string>
+    <string name="pattern_mobility">Movilidad</string>
+
+    <string name="profile_credits">Créditos y licencias</string>
+</resources>

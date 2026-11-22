@@ -2,8 +2,8 @@ package com.abitusd.app.feature.auth.ui
 
 import androidx.annotation.StringRes
 import com.abitusd.app.R
+import com.abitusd.app.core.i18n.AppLocale
 import com.abitusd.app.core.network.ApiResult
-import java.util.Locale
 
 /** Maps server problem codes (07-BACKEND.md) and network states to localized texts. */
 @StringRes
@@ -36,7 +36,4 @@ fun ApiResult<*>.errorText(): Int? =
     }
 
 /** Language sent at registration: the app language if supported, Spanish otherwise. */
-fun appLanguage(): String {
-    val language = Locale.getDefault().language
-    return if (language == "en") "en" else "es"
-}
+fun appLanguage(): String = AppLocale.current()

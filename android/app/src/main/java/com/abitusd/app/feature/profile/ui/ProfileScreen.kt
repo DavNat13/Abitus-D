@@ -44,12 +44,14 @@ fun ProfileScreen(
     onBack: () -> Unit,
     onOpenPrivacy: () -> Unit,
     onOpenTerms: () -> Unit,
+    onOpenCredits: () -> Unit,
     viewModel: ProfileViewModel = hiltViewModel(),
 ) {
     val signingOut by viewModel.signingOut.collectAsStateWithLifecycle()
     FormScreen(title = stringResource(R.string.profile_title), onBack = onBack) {
         AppButton(stringResource(R.string.profile_privacy), onOpenPrivacy, style = AppButtonStyle.Text)
         AppButton(stringResource(R.string.profile_terms), onOpenTerms, style = AppButtonStyle.Text)
+        AppButton(stringResource(R.string.profile_credits), onOpenCredits, style = AppButtonStyle.Text)
         Text(
             text = stringResource(R.string.profile_sign_out_note),
             style = AppTheme.typography.caption,
