@@ -5,6 +5,8 @@ import androidx.room3.Room
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import com.abitusd.app.core.database.AbitusDatabase
 import com.abitusd.app.core.database.SyncStateDao
+import com.abitusd.app.core.database.catalog.CatalogWriteDao
+import com.abitusd.app.core.database.catalog.LibraryDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,4 +29,10 @@ object DatabaseModule {
 
     @Provides
     fun syncStateDao(database: AbitusDatabase): SyncStateDao = database.syncStateDao()
+
+    @Provides
+    fun catalogWriteDao(database: AbitusDatabase): CatalogWriteDao = database.catalogWriteDao()
+
+    @Provides
+    fun libraryDao(database: AbitusDatabase): LibraryDao = database.libraryDao()
 }

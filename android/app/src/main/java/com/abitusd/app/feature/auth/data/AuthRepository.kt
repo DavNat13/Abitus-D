@@ -15,6 +15,8 @@ import com.abitusd.app.core.network.dto.ResetPasswordRequest
 import com.abitusd.app.core.network.dto.TokensDto
 import com.abitusd.app.core.network.dto.VerifyEmailRequest
 import com.abitusd.app.core.session.SessionManager
+import com.abitusd.app.core.sync.SyncScheduler
+import com.abitusd.app.feature.library.data.OwnExerciseRepository
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -33,6 +35,8 @@ class AuthRepository
         private val accountApi: AccountApi,
         private val sessions: SessionManager,
         private val syncState: SyncStateDao,
+        private val ownExercises: OwnExerciseRepository,
+        private val syncScheduler: SyncScheduler,
     ) {
         suspend fun register(
             email: String,
@@ -71,6 +75,8 @@ class AuthRepository
         /** Ends the session on the server when possible and always clears local data. */
         suspend fun logout() {
             apiCall { accountApi.logout() }
+            syncScheduler.cancel()
+            ownExercises.clear()
             syncState.clear()
             sessions.clear()
         }

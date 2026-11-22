@@ -14,7 +14,9 @@ import com.abitusd.app.core.designsystem.theme.AppTheme
 import com.abitusd.app.core.session.SessionManager
 import com.abitusd.app.core.session.SessionState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import com.abitusd.app.core.sync.SyncScheduler
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.filterIsInstance
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -23,11 +25,16 @@ class RootViewModel
     @Inject
     constructor(
         sessions: SessionManager,
+        syncScheduler: SyncScheduler,
     ) : ViewModel() {
         val session: StateFlow<SessionState> = sessions.state
 
         init {
             viewModelScope.launch { sessions.restore() }
+            // Every sign-in (or app start with a session) syncs catalog and own data.
+            viewModelScope.launch {
+                sessions.state.filterIsInstance<SessionState.SignedIn>().collect { syncScheduler.requestSync() }
+            }
         }
     }
 

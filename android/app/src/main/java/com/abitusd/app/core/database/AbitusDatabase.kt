@@ -1,20 +1,59 @@
 package com.abitusd.app.core.database
 
+import androidx.room3.AutoMigration
 import androidx.room3.Dao
 import androidx.room3.Database
 import androidx.room3.Entity
 import androidx.room3.PrimaryKey
 import androidx.room3.Query
 import androidx.room3.RoomDatabase
+import androidx.room3.ColumnTypeConverters
 import androidx.room3.Upsert
+import com.abitusd.app.core.database.catalog.CatalogWriteDao
+import com.abitusd.app.core.database.catalog.DisciplineEntity
+import com.abitusd.app.core.database.catalog.DisciplineTextEntity
+import com.abitusd.app.core.database.catalog.EquipmentEntity
+import com.abitusd.app.core.database.catalog.EquipmentTextEntity
+import com.abitusd.app.core.database.catalog.ExerciseEntity
+import com.abitusd.app.core.database.catalog.ExerciseEquipmentEntity
+import com.abitusd.app.core.database.catalog.ExerciseMuscleEntity
+import com.abitusd.app.core.database.catalog.ExerciseRelationEntity
+import com.abitusd.app.core.database.catalog.ExerciseTextEntity
+import com.abitusd.app.core.database.catalog.LibraryDao
+import com.abitusd.app.core.database.catalog.MuscleGroupEntity
+import com.abitusd.app.core.database.catalog.MuscleGroupTextEntity
+import com.abitusd.app.core.database.catalog.StringListConverter
 
 /**
- * Local source of truth (09b-FRONTEND-OFFLINE-SYNC.md). Phase 1 only creates the base and the
- * sync state table; user tables arrive with their phases through versioned migrations.
+ * Local source of truth (09b-FRONTEND-OFFLINE-SYNC.md). Version 2 adds the exercise catalog
+ * and own exercises; schemas are exported to app/schemas and migrations are tested.
  */
-@Database(entities = [SyncStateEntity::class], version = 1, exportSchema = true)
+@Database(
+    entities = [
+        SyncStateEntity::class,
+        DisciplineEntity::class,
+        DisciplineTextEntity::class,
+        MuscleGroupEntity::class,
+        MuscleGroupTextEntity::class,
+        EquipmentEntity::class,
+        EquipmentTextEntity::class,
+        ExerciseEntity::class,
+        ExerciseTextEntity::class,
+        ExerciseMuscleEntity::class,
+        ExerciseEquipmentEntity::class,
+        ExerciseRelationEntity::class,
+    ],
+    version = 2,
+    exportSchema = true,
+    autoMigrations = [AutoMigration(from = 1, to = 2)],
+)
+@ColumnTypeConverters(StringListConverter::class)
 abstract class AbitusDatabase : RoomDatabase() {
     abstract fun syncStateDao(): SyncStateDao
+
+    abstract fun catalogWriteDao(): CatalogWriteDao
+
+    abstract fun libraryDao(): LibraryDao
 
     companion object {
         const val NAME = "abitusd.db"
