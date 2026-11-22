@@ -5,28 +5,29 @@ Archivo vivo. Claude Code lo lee al iniciar cada sesión y lo actualiza al termi
 ## Estado actual
 
 - Fecha de creación de la documentación: 2026-11-22.
-- Fase actual: Fase 3 (planificación). Fase 2 cerrada (fase-2) con la muestra aprobada por el autor.
+- Fase actual: Fase 4 (registro de sesiones). Fase 3 cerrada (fase-3); Fase 2 cerrada (fase-2) con la muestra aprobada por el autor.
 - Repositorio remoto: https://github.com/DavNat13/Abitus-D (público). Versionado: un commit convencional por tarea verificada, push tras cada tarea y etiqueta `fase-N` al cerrar cada fase. Al ser público, revisar secretos antes de cada push.
 - Código: autenticación completa (backend, base de datos y app Android); detalle y decisiones de la Fase 1 en `02d-MEMORIA-FASE-1.md`. Verificaciones externas en `02c-MEMORIA-VERIFICACIONES.md`.
-- Siguiente paso: revisión de la muestra por el autor; luego Fase 3 (planificación). Pendiente al final: Vercel, Neon, keystore.
+- Siguiente paso: Fase 4 según 10b. Pendiente al final: Vercel, Neon, keystore.
 
 Fase 0: tareas 1 a 7 hechas y verificadas (estructura, verificaciones, scripts, backend, database, Docker, Android en emulador API 29); tarea 8 (despliegue en Vercel) diferida al final. Detalle en el historial de Git.
 
 Fase 1: tareas 1 a 9 hechas y verificadas (etiqueta `fase-1`); detalle en `02d-MEMORIA-FASE-1.md`.
 
-## Plan de la Fase 2 (2026-11-22)
+Fase 2: tareas 1 a 9 hechas y verificadas (etiqueta ); detalle en .
+
+## Plan de la Fase 3 (2026-11-22)
 
 | N | Tarea | Estado |
 |---|---|---|
-| 1 | Migraciones del catálogo (disciplinas, músculos, equipamiento, ejercicios, traducciones, relaciones, versión) y secuencia de sincronización | Hecha |
-| 2 | Semillas base: disciplinas, 22 grupos musculares con `mesh_key` y `svg_key`, equipamiento, en es y en | Hecha |
-| 3 | `tools/import-exercises` desde free-exercise-db (Unlicense) con mapeo de músculos y equipo; `source` y `license` por ejercicio | Hecha |
-| 4 | Semillas de ejercicios por disciplina en JSON Lines (un ejercicio por línea), traducciones al español, relaciones; `REVIEW.md` | Hecha |
-| 5 | Cargador idempotente de semillas que incrementa `catalog_version` | Hecha |
-| 6 | Backend: `GET /v1/catalog` incremental con ETag; sincronización push y pull de ejercicios propios | Hecha |
-| 7 | Android: catálogo en Room, descarga, biblioteca con búsqueda y filtros, detalle, cambio de idioma | Hecha |
-| 8 | Android: ejercicios propios sin conexión con sincronización y detección de duplicados | Hecha |
-| 9 | Muestra para revisión humana por disciplina, pruebas, verificación en emulador, memoria y etiqueta `fase-2` | Hecha; muestra aprobada por el autor el 2026-11-22 |
+| 1 | Migración 012 de planificación y sincronización genérica por tabla en el backend | Hecha |
+| 2 | Room v3 con las tablas de planificación y motor de sincronización genérico | Hecha |
+| 3 | Repositorios de rutinas, programas y calendario; plantillas; volumen planificado | Hecha |
+| 4 | Pestaña Entrenar: rutinas (editor, carpetas, duplicar, archivar), programas, calendario, ICS | Hecha |
+| 5 | Perfiles de equipo que filtran la biblioteca | Hecha |
+| 6 | Verificación sin conexión en emulador, memoria y etiqueta  | Hecha |
+
+Detalle y aplazamientos en .
 
 Nota: la ronda 2 de decisiones (nombre Abitus-D, hosting sin tarjeta, correo, edad, unidades) está en `02b-MEMORIA-DECISIONES-2.md` y prevalece sobre lo que aquí contradiga.
 
@@ -111,6 +112,7 @@ Formato de cada entrada: `AAAA-MM-DD | área | qué se hizo | resultado de la ve
 - 2026-11-22 | database | Migraciones 002 a 006 de identidad y seguridad | Aplicadas sobre base limpia en cada corrida de pruebas | -
 - 2026-11-22 | backend | Auth, sesiones, cuenta, correo, límites, trabajos programados | 41 pruebas en verde contra PostgreSQL; ESLint, Prettier, tsc; npm audit sin vulnerabilidades; correo real a Mailpit | -
 - 2026-11-22 | android | Sistema de diseño, sesión cifrada, pantallas de acceso, barra inferior, política | 13 pruebas unitarias, Detekt y ktlint en verde; recorrido real en emulador API 29 (registro, código, verificación, reinicio con sesión, cierre, login, aviso de dispositivo nuevo) | Fase 2 tras aprobación
+- 2026-11-22 | planificación | Fase 3 completa (backend, Room v3, pestaña Entrenar, perfiles de equipo) | 56 pruebas de backend y pruebas unitarias Android en verde; Detekt, ktlint, longitudes y emojis OK; en emulador sin red: plantilla, programa activado, reprogramación; al volver la red el servidor tiene 3 rutinas, 12 ejercicios, 1 programa, 12 días y 12 programados | Fase 4
 - 2026-11-22 | diseño | tools/check-contrast sobre los tokens | 32 pares AA en ambos temas tras ajustar inputBorder oscuro a #777A8C | -
 
 ## Cómo actualizar este archivo
