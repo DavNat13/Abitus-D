@@ -5,10 +5,10 @@ Archivo vivo. Claude Code lo lee al iniciar cada sesión y lo actualiza al termi
 ## Estado actual
 
 - Fecha de creación de la documentación: 2026-11-22.
-- Fase actual: Fase 3b (rediseño visual; piloto de biblioteca esperando visto bueno del autor, ver `02g`). Fase 3 cerrada (fase-3); Fase 2 cerrada (fase-2) con la muestra aprobada por el autor.
+- Fase actual: Fase 3b (rediseño visual) en pausa por decisión del autor; estilo aprobado (ver `02g` y `05d`). Hecho: biblioteca, detalle, ejercicio propio, Entrenar, idioma. Falta: acceso, inicio, perfil y auditoría final (accesibilidad, rendimiento, tema oscuro); luego etiqueta `fase-3b-rediseno`. Fase 3 cerrada (fase-3); Fase 2 cerrada (fase-2) con la muestra aprobada por el autor.
 - Repositorio remoto: https://github.com/DavNat13/Abitus-D (público). Versionado: un commit convencional por tarea verificada, push tras cada tarea y etiqueta `fase-N` al cerrar cada fase. Al ser público, revisar secretos antes de cada push.
 - Código: autenticación completa (backend, base de datos y app Android); detalle y decisiones de la Fase 1 en `02d-MEMORIA-FASE-1.md`. Verificaciones externas en `02c-MEMORIA-VERIFICACIONES.md`.
-- Siguiente paso: aprobación del piloto de la Fase 3b; luego el resto de pantallas por grupos. Fase 4 solo con aprobación del autor. Pendiente al final: Vercel, Neon, keystore.
+- Siguiente paso: al retomar, terminar la Fase 3b con el mismo estilo. Fase 4 solo con aprobación del autor. Pendiente al final: Vercel, Neon, keystore.
 
 Fase 0: tareas 1 a 7 hechas y verificadas (estructura, verificaciones, scripts, backend, database, Docker, Android en emulador API 29); tarea 8 (despliegue en Vercel) diferida al final. Detalle en el historial de Git.
 
