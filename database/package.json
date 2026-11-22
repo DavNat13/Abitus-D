@@ -1,0 +1,20 @@
+{
+  "name": "abitus-d-database",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "migrate": "node --env-file-if-exists=../.env scripts/migrate.mjs",
+    "migrate:status": "node --env-file-if-exists=../.env scripts/migrate.mjs --status",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "pg": "^8.23.1"
+  },
+  "devDependencies": {
+    "prettier": "^3.10.1"
+  }
+}

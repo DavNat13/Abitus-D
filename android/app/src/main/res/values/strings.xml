@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Abitus-D</string>
+    <string name="home_placeholder">Preparación lista. Las funciones llegan en la Fase 1.</string>
+</resources>

@@ -1,0 +1,9 @@
+# Detekt overrides on top of the default configuration.
+naming:
+  FunctionNaming:
+    ignoreAnnotated:
+      - Composable
+complexity:
+  LongMethod:
+    ignoreAnnotated:
+      - Composable
