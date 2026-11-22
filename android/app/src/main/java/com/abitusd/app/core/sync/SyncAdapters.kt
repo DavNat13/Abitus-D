@@ -1,5 +1,6 @@
 package com.abitusd.app.core.sync
 
+import com.abitusd.app.core.database.planning.SyncRow
 import com.abitusd.app.core.network.dto.PullChangeDto
 import com.abitusd.app.core.network.dto.PushChangeDto
 import kotlinx.serialization.KSerializer
@@ -27,21 +28,17 @@ interface SyncTableAdapter {
 }
 
 /** Local access to one planning table; built in SyncAdaptersModule from PlanningDao. */
-class PlanningTableAccess<T>(
+class PlanningTableAccess<T : SyncRow>(
     val table: String,
     val serializer: KSerializer<T>,
     val dirty: suspend () -> List<T>,
     val find: suspend (String) -> T?,
     val upsert: suspend (List<T>) -> Unit,
     val clean: suspend (String, Long) -> Unit,
-    val idOf: (T) -> String,
-    val updatedAtOf: (T) -> Long,
-    val isDirty: (T) -> Boolean,
-    val isDeleted: (T) -> Boolean,
 )
 
 /** Generic adapter for flat planning rows: last write wins, pending local edits are kept. */
-class PlanningSyncAdapter<T>(
+class PlanningSyncAdapter<T : SyncRow>(
     private val access: PlanningTableAccess<T>,
 ) : SyncTableAdapter {
     override val table: String = access.table
@@ -49,9 +46,9 @@ class PlanningSyncAdapter<T>(
     override suspend fun pending(): List<PendingChange> =
         access.dirty().map { row ->
             val wire = PlanningCodec.toWire(access.serializer, row)
-            val op = if (access.isDeleted(row)) "delete" else "upsert"
+            val op = if (row.deletedAt != null) "delete" else "upsert"
             val body = if (op == "delete") pickDeleteFields(wire) else wire
-            PendingChange(PushChangeDto(table, op, body), access.idOf(row), access.updatedAtOf(row))
+            PendingChange(PushChangeDto(table, op, body), row.id, row.updatedAt)
         }
 
     override suspend fun markSent(
@@ -68,7 +65,7 @@ class PlanningSyncAdapter<T>(
                         .jsonPrimitive.content
                 val local = access.find(id)
                 val remoteTime = PlanningCodec.updatedAtOf(change.row)
-                val keepLocal = local != null && access.isDirty(local) && access.updatedAtOf(local) > remoteTime
+                val keepLocal = local != null && local.dirty && local.updatedAt > remoteTime
                 if (keepLocal) {
                     null
                 } else {
