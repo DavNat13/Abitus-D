@@ -36,6 +36,8 @@ object AppSizes {
     val icon = 24.dp
     val iconSmall = 20.dp
     val badge = 40.dp
+    val stepBadge = 28.dp
+    val headerBadge = 32.dp
     val listItemMin = 72.dp
     val sheetHandleWidth = 32.dp
     val sheetHandle = 4.dp

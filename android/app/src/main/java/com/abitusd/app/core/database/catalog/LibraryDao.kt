@@ -40,7 +40,8 @@ interface LibraryDao {
     @Query(
         """
         SELECT e.id, e.isOwn, e.disciplineId, e.difficulty,
-            COALESCE(t1.name, t2.name, t3.name, e.slug, '') AS name,
+            CASE WHEN e.disciplineId IN (:englishDisciplines) THEN COALESCE(t2.name, t1.name, t3.name, e.slug, '')
+                ELSE COALESCE(t1.name, t2.name, t3.name, e.slug, '') END AS name,
             COALESCE(t1.searchName, t2.searchName, t3.searchName, '') AS searchName
         FROM exercises e
         LEFT JOIN exercise_texts t1 ON t1.exerciseId = e.id AND t1.locale = :locale
@@ -69,6 +70,7 @@ interface LibraryDao {
         difficulty: Int?,
         profile: Int = 0,
         slugs: List<String> = emptyList(),
+        englishDisciplines: List<Int> = emptyList(),
     ): Flow<List<ExerciseListRow>>
 
     @Query(

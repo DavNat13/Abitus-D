@@ -8,6 +8,7 @@ import com.abitusd.app.core.database.catalog.NamedRef
 import com.abitusd.app.core.i18n.AppLocale
 import com.abitusd.app.core.i18n.SearchText
 import com.abitusd.app.core.sync.SyncScheduler
+import com.abitusd.app.feature.library.domain.EnglishNamesStore
 import com.abitusd.app.feature.library.domain.EquipmentProfile
 import com.abitusd.app.feature.library.domain.EquipmentProfileStore
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -44,6 +45,13 @@ data class LibraryState(
 
 private const val STOP_TIMEOUT_MS = 5000L
 
+private data class ItemsQuery(
+    val query: String,
+    val filters: LibraryFilters,
+    val profile: EquipmentProfile,
+    val english: Set<Int>,
+)
+
 /** Library list: reads only Room, so it works offline after the first download. */
 @OptIn(ExperimentalCoroutinesApi::class)
 @HiltViewModel
@@ -53,6 +61,7 @@ class LibraryViewModel
         private val dao: LibraryDao,
         private val syncScheduler: SyncScheduler,
         private val profiles: EquipmentProfileStore,
+        private val englishNames: EnglishNamesStore,
     ) : ViewModel() {
         val profile = profiles.profile
 
@@ -63,7 +72,14 @@ class LibraryViewModel
         private val filters = MutableStateFlow(LibraryFilters())
 
         private val items =
-            combine(query, filters, profiles.profile) { q, f, p -> Triple(q, f, p) }.flatMapLatest { (q, f, p) ->
+            combine(
+                query,
+                filters,
+                profiles.profile,
+                englishNames.disciplines,
+            ) { q, f, p, en -> ItemsQuery(q, f, p, en) }.flatMapLatest { iq ->
+                val f = iq.filters
+                val p = iq.profile
                 val mode =
                     if (p.allowed == null) {
                         0
@@ -74,13 +90,14 @@ class LibraryViewModel
                     }
                 dao.exercises(
                     locale,
-                    SearchText.normalize(q),
+                    SearchText.normalize(iq.query),
                     f.disciplineId,
                     f.muscleId,
                     f.equipmentId,
                     f.difficulty,
                     mode,
                     p.allowed.orEmpty().toList(),
+                    iq.english.toList(),
                 )
             }
 

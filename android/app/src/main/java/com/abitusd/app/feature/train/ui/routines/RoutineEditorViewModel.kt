@@ -3,10 +3,10 @@ package com.abitusd.app.feature.train.ui.routines
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.abitusd.app.R
-import com.abitusd.app.core.database.catalog.LibraryDao
 import com.abitusd.app.core.database.planning.RoutineEntity
 import com.abitusd.app.core.database.planning.RoutineExerciseEntity
 import com.abitusd.app.core.i18n.AppLocale
+import com.abitusd.app.feature.library.domain.ExerciseNames
 import com.abitusd.app.feature.train.data.CalendarRepository
 import com.abitusd.app.feature.train.data.RoutineRepository
 import com.abitusd.app.feature.train.data.VolumeCalculator
@@ -19,7 +19,6 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -33,8 +32,8 @@ class RoutineEditorViewModel
         @Assisted private val routineId: String?,
         private val repository: RoutineRepository,
         private val calendar: CalendarRepository,
-        private val library: LibraryDao,
         private val volumes: VolumeCalculator,
+        private val exerciseNames: ExerciseNames,
     ) : ViewModel() {
         private val locale = AppLocale.current()
         private val mutable = MutableStateFlow(RoutineEditorState())
@@ -44,7 +43,7 @@ class RoutineEditorViewModel
 
         init {
             viewModelScope.launch {
-                val names = library.exercises(locale, "", null, null, null, null).first().associate { it.id to it.name }
+                val names = exerciseNames.all()
                 val routine = routineId?.let { repository.routine(it) }
                 val items = routineId?.let { repository.exercisesOnce(it) }.orEmpty()
                 mutable.update {

@@ -1,7 +1,6 @@
 package com.abitusd.app.feature.library.ui.list
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
@@ -12,14 +11,13 @@ import com.abitusd.app.core.database.catalog.NamedRef
 import com.abitusd.app.core.designsystem.component.AppBottomSheet
 import com.abitusd.app.core.designsystem.component.AppButton
 import com.abitusd.app.core.designsystem.component.AppButtonStyle
-import com.abitusd.app.core.designsystem.component.AppChip
-import com.abitusd.app.core.designsystem.component.SectionHeader
-import com.abitusd.app.core.designsystem.icon.DisciplineIcons
+import com.abitusd.app.core.designsystem.component.AppDropdown
+import com.abitusd.app.core.designsystem.component.ChoiceOption
 import com.abitusd.app.core.designsystem.theme.AppSpacing
 import com.abitusd.app.feature.library.domain.EquipmentProfile
 import com.abitusd.app.feature.library.ui.LibraryLabels
 
-/** All library filters in one sheet; changes apply live and the count shows on the main button. */
+/** All library filters as compact dropdowns in one sheet; changes apply live. */
 @Composable
 fun LibraryFilterSheet(
     state: LibraryState,
@@ -29,31 +27,33 @@ fun LibraryFilterSheet(
     onDismiss: () -> Unit,
 ) {
     val f = state.filters
+    val any = stringResource(R.string.library_filter_any)
     AppBottomSheet(stringResource(R.string.library_filters), onDismiss) {
-        SectionHeader(stringResource(R.string.profile_equipment))
-        ChipFlow {
-            EquipmentProfile.entries.forEach { p -> AppChip(stringResource(p.label), p == profile, { onProfile(p) }) }
-        }
-        SectionHeader(stringResource(R.string.library_filter_discipline))
-        ChipFlow {
-            state.disciplines.forEach { d ->
-                val selected = d.id == f.disciplineId
-                AppChip(d.name, selected, {
-                    onFilters { it.copy(disciplineId = toggle(selected, d.id)) }
-                }, leadingIcon = DisciplineIcons.of(state.icons[d.id]))
-            }
-        }
-        SectionHeader(stringResource(R.string.library_filter_difficulty))
-        ChipFlow {
-            LibraryLabels.DIFFICULTIES.forEach { level ->
-                val selected = level == f.difficulty
-                AppChip(level.toString(), selected, { onFilters { it.copy(difficulty = toggle(selected, level)) } })
-            }
-        }
-        SectionHeader(stringResource(R.string.library_filter_muscle))
-        RefChips(state.muscles, f.muscleId) { id -> onFilters { it.copy(muscleId = id) } }
-        SectionHeader(stringResource(R.string.library_filter_equipment))
-        RefChips(state.equipment, f.equipmentId) { id -> onFilters { it.copy(equipmentId = id) } }
+        val profiles = EquipmentProfile.entries.map { ChoiceOption(it, stringResource(it.label)) }
+        AppDropdown(stringResource(R.string.profile_equipment), profiles, profile, {
+            onProfile(it ?: EquipmentProfile.ALL)
+        })
+        AppDropdown(
+            stringResource(
+                R.string.library_filter_discipline,
+            ),
+            state.disciplines.options(),
+            f.disciplineId,
+            { v ->
+                onFilters { it.copy(disciplineId = v) }
+            },
+            noneLabel = any,
+        )
+        AppDropdown(stringResource(R.string.library_filter_muscle), state.muscles.options(), f.muscleId, { v ->
+            onFilters { it.copy(muscleId = v) }
+        }, noneLabel = any)
+        AppDropdown(stringResource(R.string.library_filter_equipment), state.equipment.options(), f.equipmentId, { v ->
+            onFilters { it.copy(equipmentId = v) }
+        }, noneLabel = any)
+        val levels = LibraryLabels.DIFFICULTIES.map { ChoiceOption(it, stringResource(R.string.difficulty_value, it)) }
+        AppDropdown(stringResource(R.string.library_filter_difficulty), levels, f.difficulty, { v ->
+            onFilters { it.copy(difficulty = v) }
+        }, noneLabel = any)
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(AppSpacing.xs)) {
             AppButton(
                 stringResource(R.string.library_filters_clear),
@@ -69,26 +69,4 @@ fun LibraryFilterSheet(
     }
 }
 
-@Composable
-private fun RefChips(
-    refs: List<NamedRef>,
-    selectedId: Int?,
-    onSelect: (Int?) -> Unit,
-) {
-    ChipFlow {
-        refs.forEach { ref ->
-            val selected = ref.id == selectedId
-            AppChip(ref.name, selected, { onSelect(toggle(selected, ref.id)) })
-        }
-    }
-}
-
-@Composable
-private fun ChipFlow(content: @Composable () -> Unit) {
-    FlowRow(horizontalArrangement = Arrangement.spacedBy(AppSpacing.xs)) { content() }
-}
-
-private fun toggle(
-    selected: Boolean,
-    id: Int,
-): Int? = if (selected) null else id
+private fun List<NamedRef>.options() = map { ChoiceOption(it.id, it.name) }

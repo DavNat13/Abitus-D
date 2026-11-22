@@ -83,4 +83,26 @@ object AppIcons {
     @DrawableRes val Today = R.drawable.ic_today
 
     @DrawableRes val Rest = R.drawable.ic_bedtime
+
+    @DrawableRes val Info = R.drawable.ic_info
+
+    @DrawableRes val Steps = R.drawable.ic_format_list_numbered
+
+    @DrawableRes val Tip = R.drawable.ic_lightbulb
+
+    @DrawableRes val Mistake = R.drawable.ic_report
+
+    @DrawableRes val Safety = R.drawable.ic_health_and_safety
+
+    @DrawableRes val Progression = R.drawable.ic_trending_up
+
+    @DrawableRes val Regression = R.drawable.ic_trending_down
+
+    @DrawableRes val Alternative = R.drawable.ic_swap_horiz
+
+    @DrawableRes val Notes = R.drawable.ic_sticky_note_2
+
+    @DrawableRes val Setup = R.drawable.ic_settings_accessibility
+
+    @DrawableRes val Muscles = R.drawable.ic_accessibility_new
 }

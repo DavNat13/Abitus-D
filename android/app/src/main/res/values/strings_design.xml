@@ -6,4 +6,10 @@
     <string name="library_show_results">Ver %1$d ejercicios</string>
     <string name="library_item_meta">%1$s · Nivel %2$d</string>
     <string name="library_remove_filter">Quitar filtro: %1$s</string>
+    <string name="profile_language">Idioma</string>
+    <string name="language_spanish" translatable="false">Español</string>
+    <string name="language_english" translatable="false">English</string>
+    <string name="detail_muscles_equipment">Músculos y equipo</string>
+    <string name="profile_english_names">Nombres de ejercicios en inglés</string>
+    <string name="profile_english_names_hint">Elige las disciplinas cuyos nombres prefieres en inglés. Las explicaciones siguen en tu idioma.</string>
 </resources>

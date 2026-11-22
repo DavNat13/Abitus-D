@@ -10,8 +10,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.abitusd.app.R
 import com.abitusd.app.core.designsystem.component.AppButton
 import com.abitusd.app.core.designsystem.component.AppButtonStyle
+import com.abitusd.app.core.designsystem.component.AppDropdown
+import com.abitusd.app.core.designsystem.component.AppMultiDropdown
 import com.abitusd.app.core.designsystem.component.AppTextField
-import com.abitusd.app.core.designsystem.component.ChipGroup
 import com.abitusd.app.core.designsystem.component.ChoiceOption
 import com.abitusd.app.core.designsystem.component.FormScreen
 import com.abitusd.app.core.designsystem.component.StatusBanner
@@ -49,56 +50,68 @@ fun OwnExerciseFormScreen(
                 it.copy(notes = v.take(MAX_NOTES))
             }
         }, stringResource(R.string.form_notes))
-        Label(R.string.form_discipline)
-        ChipGroup(
+        AppDropdown(
+            stringResource(R.string.form_discipline),
             s.disciplines.map {
                 ChoiceOption(it.id, it.name)
             },
-            { it == s.disciplineId },
-            { v -> viewModel.update { it.copy(disciplineId = v) } },
+            s.disciplineId,
+            { v ->
+                v?.let { value -> viewModel.update { it.copy(disciplineId = value) } }
+            },
         )
-        Label(R.string.form_metric)
-        ChipGroup(
-            LibraryLabels.METRICS.map { (key, res) -> ChoiceOption(key, stringResource(res)) },
-            { it == s.metricType },
-            { v -> viewModel.update { it.copy(metricType = v) } },
+        AppDropdown(
+            stringResource(R.string.form_metric),
+            LibraryLabels.METRICS.map { (key, res) ->
+                ChoiceOption(key, stringResource(res))
+            },
+            s.metricType,
+            { v ->
+                v?.let { value -> viewModel.update { it.copy(metricType = value) } }
+            },
         )
-        Label(R.string.form_pattern)
-        ChipGroup(
-            LibraryLabels.PATTERNS.map { (key, res) -> ChoiceOption(key, stringResource(res)) },
-            { it == s.movementPattern },
-            { v -> viewModel.update { it.copy(movementPattern = v) } },
+        AppDropdown(
+            stringResource(R.string.form_pattern),
+            LibraryLabels.PATTERNS.map { (key, res) ->
+                ChoiceOption(key, stringResource(res))
+            },
+            s.movementPattern,
+            { v ->
+                v?.let { value -> viewModel.update { it.copy(movementPattern = value) } }
+            },
         )
-        Label(R.string.form_difficulty)
-        ChipGroup(
+        AppDropdown(
+            stringResource(R.string.form_difficulty),
             LibraryLabels.DIFFICULTIES.map {
-                ChoiceOption(it, it.toString())
+                ChoiceOption(it, stringResource(R.string.difficulty_value, it))
             },
-            { it == s.difficulty },
-            { v -> viewModel.update { it.copy(difficulty = v) } },
+            s.difficulty,
+            { v ->
+                v?.let { value -> viewModel.update { it.copy(difficulty = value) } }
+            },
         )
-        Label(R.string.form_primary_muscles)
-        ChipGroup(
-            s.muscles.map {
-                ChoiceOption(it.id, it.name)
+        val muscles = s.muscles.map { ChoiceOption(it.id, it.name) }
+        AppMultiDropdown(stringResource(R.string.form_primary_muscles), muscles, s.primary, { v ->
+            viewModel.update {
+                it.copy(primary = it.primary.toggle(v))
+            }
+        })
+        AppMultiDropdown(
+            stringResource(
+                R.string.form_secondary_muscles,
+            ),
+            muscles,
+            s.secondary,
+            { v ->
+                viewModel.update {
+                    it.copy(secondary = it.secondary.toggle(v))
+                }
             },
-            { it in s.primary },
-            { v -> viewModel.update { it.copy(primary = it.primary.toggle(v)) } },
         )
-        Label(R.string.form_secondary_muscles)
-        ChipGroup(
-            s.muscles.map {
-                ChoiceOption(it.id, it.name)
-            },
-            { it in s.secondary },
-            { v -> viewModel.update { it.copy(secondary = it.secondary.toggle(v)) } },
-        )
-        Label(R.string.form_equipment)
-        ChipGroup(
-            s.equipmentOptions.map {
-                ChoiceOption(it.id, it.name)
-            },
-            { it in s.equipment },
+        AppMultiDropdown(
+            stringResource(R.string.form_equipment),
+            s.equipmentOptions.map { ChoiceOption(it.id, it.name) },
+            s.equipment,
             { v -> viewModel.update { it.copy(equipment = it.equipment.toggle(v)) } },
         )
         s.error?.let { StatusBanner(stringResource(it), StatusKind.Error) }
@@ -114,8 +127,3 @@ fun OwnExerciseFormScreen(
 private const val MAX_NOTES = 500
 
 private fun Set<Int>.toggle(value: Int): Set<Int> = if (value in this) this - value else this + value
-
-@Composable
-private fun Label(res: Int) {
-    Text(stringResource(res), style = AppTheme.typography.titleMedium, color = AppTheme.colors.textPrimary)
-}
