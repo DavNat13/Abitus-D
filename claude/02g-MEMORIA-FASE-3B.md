@@ -25,3 +25,8 @@ Complemento de `02-MEMORIA.md`. Dirección visual en `05d-UI-DIRECCION-VISUAL.md
 
 ## Decisiones
 - Sin librerías nuevas: Material 3 de Compose ya trae hojas inferiores, snackbars, menús y animaciones.
+- Idioma: la app arranca en español siempre (AppLanguage envuelve el contexto de Activity y Application); el inglés se elige en Perfil. Antes seguía el idioma del sistema.
+- Nombres de ejercicios en inglés por disciplina (Perfil, EnglishNamesStore), pedido del autor para calistenia; las explicaciones siguen en el idioma de la app.
+- Filtros de la biblioteca y formulario de ejercicio propio con desplegables (AppDropdown y AppMultiDropdown) en lugar de nubes de chips, a pedido del autor.
+- Detalle de ejercicio, formulario propio, rutinas, editor, programas y calendario en tarjetas por sección con icono (SectionCard), acciones secundarias en menú contextual y confirmación antes de eliminar.
+- Las rutinas creadas desde plantillas guardan el nombre en el idioma activo al crearlas; no se traducen después.

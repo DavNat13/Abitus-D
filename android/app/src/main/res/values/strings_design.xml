@@ -12,4 +12,13 @@
     <string name="detail_muscles_equipment">Músculos y equipo</string>
     <string name="profile_english_names">Nombres de ejercicios en inglés</string>
     <string name="profile_english_names_hint">Elige las disciplinas cuyos nombres prefieres en inglés. Las explicaciones siguen en tu idioma.</string>
+    <string name="common_more_actions">Más acciones</string>
+    <string name="routine_details">Datos de la rutina</string>
+    <string name="routine_exercises">Ejercicios</string>
+    <string name="routine_delete_title">Eliminar rutina</string>
+    <string name="routine_delete_text">La rutina se borra de todos tus dispositivos. Los entrenamientos ya programados no se modifican.</string>
+    <string name="form_section_basics">Datos básicos</string>
+    <string name="form_section_type">Tipo de ejercicio</string>
+    <string name="program_delete_title">Eliminar programa</string>
+    <string name="program_delete_text">El programa se borra de todos tus dispositivos. Los entrenamientos ya programados no se modifican.</string>
 </resources>

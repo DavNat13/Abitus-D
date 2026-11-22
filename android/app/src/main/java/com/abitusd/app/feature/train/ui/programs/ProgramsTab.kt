@@ -1,15 +1,9 @@
 package com.abitusd.app.feature.train.ui.programs
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Text
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -19,14 +13,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewModelScope
 import com.abitusd.app.R
-import com.abitusd.app.core.database.planning.ProgramEntity
 import com.abitusd.app.core.designsystem.component.AppButton
-import com.abitusd.app.core.designsystem.theme.AppShapes
-import com.abitusd.app.core.designsystem.theme.AppSizes
+import com.abitusd.app.core.designsystem.component.EmptyState
+import com.abitusd.app.core.designsystem.component.InfoPill
+import com.abitusd.app.core.designsystem.component.ListItemCard
+import com.abitusd.app.core.designsystem.icon.AppIcons
+import com.abitusd.app.core.designsystem.motion.staggeredEnter
 import com.abitusd.app.core.designsystem.theme.AppSpacing
-import com.abitusd.app.core.designsystem.theme.AppTheme
 import com.abitusd.app.feature.train.data.ProgramRepository
-import com.abitusd.app.feature.train.ui.routines.Hint
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
@@ -57,40 +51,25 @@ fun ProgramsTab(
 ) {
     val programs by viewModel.programs.collectAsStateWithLifecycle()
     LazyColumn(
-        modifier = Modifier.fillMaxWidth().padding(horizontal = AppSpacing.screenMargin),
-        verticalArrangement = Arrangement.spacedBy(AppSpacing.xs),
+        contentPadding =
+            PaddingValues(
+                start = AppSpacing.screenMargin,
+                end = AppSpacing.screenMargin,
+                bottom = AppSpacing.xl,
+            ),
+        verticalArrangement = Arrangement.spacedBy(AppSpacing.sm),
     ) {
-        item { AppButton(stringResource(R.string.train_new_program), { onOpenProgram(null) }) }
-        if (programs.isEmpty()) item { Hint(stringResource(R.string.train_no_programs)) }
-        items(programs, key = { it.id }) { ProgramCard(it) { onOpenProgram(it.id) } }
-    }
-}
-
-@Composable
-private fun ProgramCard(
-    program: ProgramEntity,
-    onClick: () -> Unit,
-) {
-    Card(
-        onClick = onClick,
-        shape = AppShapes.card,
-        colors = CardDefaults.cardColors(containerColor = AppTheme.colors.surface),
-        border = BorderStroke(AppSizes.borderThin, AppTheme.colors.outline),
-        modifier = Modifier.fillMaxWidth(),
-    ) {
-        Column(Modifier.padding(AppSpacing.md)) {
-            Text(program.name, style = AppTheme.typography.titleMedium, color = AppTheme.colors.textPrimary)
-            Text(
-                stringResource(R.string.program_summary, program.weeksCount),
-                style = AppTheme.typography.caption,
-                color = AppTheme.colors.textSecondary,
-            )
-            if (program.isActive) {
-                Text(
-                    stringResource(R.string.program_active),
-                    style = AppTheme.typography.caption,
-                    color = AppTheme.colors.primary,
-                )
+        item { AppButton(stringResource(R.string.train_new_program), { onOpenProgram(null) }, icon = AppIcons.Add) }
+        if (programs.isEmpty()) item { EmptyState(AppIcons.Calendar, stringResource(R.string.train_no_programs)) }
+        itemsIndexed(programs, key = { _, p -> p.id }) { index, program ->
+            ListItemCard(
+                title = program.name,
+                onClick = { onOpenProgram(program.id) },
+                modifier = Modifier.staggeredEnter(index),
+                icon = AppIcons.Calendar,
+                meta = stringResource(R.string.program_summary, program.weeksCount),
+            ) {
+                if (program.isActive) InfoPill(stringResource(R.string.program_active), emphasized = true)
             }
         }
     }
