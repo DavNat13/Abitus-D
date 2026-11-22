@@ -21,6 +21,7 @@ import com.abitusd.app.R
 import com.abitusd.app.core.designsystem.icon.AppIcons
 import com.abitusd.app.core.designsystem.theme.AppTheme
 import com.abitusd.app.feature.library.ui.list.LibraryScreen
+import com.abitusd.app.feature.train.ui.TrainScreen
 
 enum class MainTab(
     @param:StringRes val label: Int,
@@ -39,6 +40,8 @@ fun MainShell(
     onOpenProfile: () -> Unit,
     onOpenExercise: (String) -> Unit,
     onCreateExercise: () -> Unit,
+    onOpenRoutine: (String?) -> Unit,
+    onOpenProgram: (String?) -> Unit,
 ) {
     val colors = AppTheme.colors
     var selected by rememberSaveable { mutableStateOf(MainTab.HOME) }
@@ -67,6 +70,8 @@ fun MainShell(
     ) { padding ->
         if (selected == MainTab.LIBRARY) {
             LibraryScreen(onOpenExercise, onCreateExercise, Modifier.padding(padding))
+        } else if (selected == MainTab.TRAIN) {
+            TrainScreen(onOpenRoutine, onOpenProgram, Modifier.padding(padding))
         } else {
             SectionPlaceholder(
                 tab = selected,

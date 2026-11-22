@@ -39,3 +39,11 @@ import kotlinx.serialization.Serializable
 @Serializable data class OwnExerciseFormRoute(
     val editId: String? = null,
 ) : NavKey
+
+@Serializable data class RoutineEditorRoute(
+    val id: String? = null,
+) : NavKey
+
+@Serializable data class ProgramEditorRoute(
+    val id: String? = null,
+) : NavKey

@@ -37,9 +37,11 @@ fun LibraryScreen(
     onOpenExercise: (String) -> Unit,
     onCreateExercise: () -> Unit,
     modifier: Modifier = Modifier,
+    showCreate: Boolean = true,
     viewModel: LibraryViewModel = hiltViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
+    val profile by viewModel.profile.collectAsStateWithLifecycle()
     val colors = AppTheme.colors
     Box(modifier.fillMaxSize().background(colors.background)) {
         Column(Modifier.fillMaxSize().statusBarsPadding()) {
@@ -54,6 +56,7 @@ fun LibraryScreen(
             )
             LibrarySearchField(state.query, viewModel::onQuery)
             LibraryFilterRow(state, viewModel::onFilters)
+            EquipmentProfileRow(profile, viewModel::onProfile)
             when {
                 state.catalogEmpty && state.items.isEmpty() -> {
                     CatalogMissing(viewModel::retryDownload)
@@ -83,14 +86,16 @@ fun LibraryScreen(
                 }
             }
         }
-        ExtendedFloatingActionButton(
-            onClick = onCreateExercise,
-            icon = { Icon(painterResource(AppIcons.Add), contentDescription = null) },
-            text = { Text(stringResource(R.string.library_create), style = AppTheme.typography.label) },
-            containerColor = colors.primary,
-            contentColor = colors.onPrimary,
-            modifier = Modifier.align(Alignment.BottomEnd).padding(AppSpacing.screenMargin),
-        )
+        if (showCreate) {
+            ExtendedFloatingActionButton(
+                onClick = onCreateExercise,
+                icon = { Icon(painterResource(AppIcons.Add), contentDescription = null) },
+                text = { Text(stringResource(R.string.library_create), style = AppTheme.typography.label) },
+                containerColor = colors.primary,
+                contentColor = colors.onPrimary,
+                modifier = Modifier.align(Alignment.BottomEnd).padding(AppSpacing.screenMargin),
+            )
+        }
     }
 }
 

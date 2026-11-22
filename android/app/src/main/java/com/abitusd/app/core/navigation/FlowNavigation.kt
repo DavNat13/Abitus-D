@@ -20,6 +20,8 @@ import com.abitusd.app.feature.legal.LegalDocumentScreen
 import com.abitusd.app.feature.library.ui.detail.ExerciseDetailScreen
 import com.abitusd.app.feature.library.ui.form.OwnExerciseFormScreen
 import com.abitusd.app.feature.profile.ui.ProfileScreen
+import com.abitusd.app.feature.train.ui.programs.ProgramEditorScreen
+import com.abitusd.app.feature.train.ui.routines.RoutineEditorScreen
 
 @Composable
 private fun FlowDisplay(
@@ -86,6 +88,8 @@ fun MainNavigation() {
                 onOpenProfile = { stack.add(ProfileRoute) },
                 onOpenExercise = { stack.add(ExerciseDetailRoute(it)) },
                 onCreateExercise = { stack.add(OwnExerciseFormRoute()) },
+                onOpenRoutine = { stack.add(RoutineEditorRoute(it)) },
+                onOpenProgram = { stack.add(ProgramEditorRoute(it)) },
             )
         }
         entry<ExerciseDetailRoute> { key ->
@@ -107,6 +111,8 @@ fun MainNavigation() {
                 onOpenExisting = { stack.add(ExerciseDetailRoute(it)) },
             )
         }
+        entry<RoutineEditorRoute> { key -> RoutineEditorScreen(key.id, onBack = back) }
+        entry<ProgramEditorRoute> { key -> ProgramEditorScreen(key.id, onBack = back) }
         entry<ProfileRoute> {
             ProfileScreen(
                 onBack = back,

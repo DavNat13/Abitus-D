@@ -8,6 +8,8 @@ import com.abitusd.app.core.database.catalog.NamedRef
 import com.abitusd.app.core.i18n.AppLocale
 import com.abitusd.app.core.i18n.SearchText
 import com.abitusd.app.core.sync.SyncScheduler
+import com.abitusd.app.feature.library.domain.EquipmentProfile
+import com.abitusd.app.feature.library.domain.EquipmentProfileStore
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -46,14 +48,36 @@ class LibraryViewModel
     constructor(
         private val dao: LibraryDao,
         private val syncScheduler: SyncScheduler,
+        private val profiles: EquipmentProfileStore,
     ) : ViewModel() {
+        val profile = profiles.profile
+
+        fun onProfile(value: EquipmentProfile) = profiles.set(value)
+
         private val locale = AppLocale.current()
         private val query = MutableStateFlow("")
         private val filters = MutableStateFlow(LibraryFilters())
 
         private val items =
-            combine(query, filters) { q, f -> q to f }.flatMapLatest { (q, f) ->
-                dao.exercises(locale, SearchText.normalize(q), f.disciplineId, f.muscleId, f.equipmentId, f.difficulty)
+            combine(query, filters, profiles.profile) { q, f, p -> Triple(q, f, p) }.flatMapLatest { (q, f, p) ->
+                val mode =
+                    if (p.allowed == null) {
+                        0
+                    } else if (p.excludes) {
+                        1
+                    } else {
+                        2
+                    }
+                dao.exercises(
+                    locale,
+                    SearchText.normalize(q),
+                    f.disciplineId,
+                    f.muscleId,
+                    f.equipmentId,
+                    f.difficulty,
+                    mode,
+                    p.allowed.orEmpty().toList(),
+                )
             }
 
         private val references =

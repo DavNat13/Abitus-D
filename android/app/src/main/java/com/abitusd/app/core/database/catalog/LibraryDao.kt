@@ -14,6 +14,12 @@ data class ExerciseListRow(
     val searchName: String,
 )
 
+/** Catalog id of a slug. */
+data class SlugId(
+    val id: String,
+    val slug: String,
+)
+
 data class NamedRef(
     val id: Int,
     val name: String,
@@ -43,6 +49,8 @@ interface LibraryDao {
                WHERE m.exerciseId = e.id AND m.muscleGroupId = :muscleId))
           AND (:equipmentId IS NULL OR EXISTS (SELECT 1 FROM exercise_equipment q
                WHERE q.exerciseId = e.id AND q.equipmentId = :equipmentId))
+          AND (:profile = 0 OR NOT EXISTS (SELECT 1 FROM exercise_equipment p JOIN equipment k ON k.id = p.equipmentId
+               WHERE p.exerciseId = e.id AND ((:profile = 1 AND k.slug IN (:slugs)) OR (:profile = 2 AND k.slug NOT IN (:slugs)))))
         ORDER BY name COLLATE NOCASE
         """,
     )
@@ -53,6 +61,8 @@ interface LibraryDao {
         muscleId: Int?,
         equipmentId: Int?,
         difficulty: Int?,
+        profile: Int = 0,
+        slugs: List<String> = emptyList(),
     ): Flow<List<ExerciseListRow>>
 
     @Query(
@@ -99,6 +109,12 @@ interface LibraryDao {
 
     @Query("SELECT * FROM exercise_relations WHERE exerciseId = :id")
     fun relations(id: String): Flow<List<ExerciseRelationEntity>>
+
+    @Query("SELECT id, slug FROM exercises WHERE slug IN (:slugs) AND deletedAt IS NULL")
+    suspend fun idsBySlug(slugs: List<String>): List<SlugId>
+
+    @Query("SELECT * FROM exercise_muscles WHERE exerciseId IN (:ids)")
+    suspend fun musclesOf(ids: List<String>): List<ExerciseMuscleEntity>
 
     @Query("SELECT COUNT(*) FROM exercises WHERE isOwn = 0")
     fun catalogCount(): Flow<Int>
