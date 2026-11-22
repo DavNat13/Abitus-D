@@ -1,23 +1,17 @@
 // Entry point for local runs and for Vercel (zero-config Fastify detects src/server.ts).
+import { createDeps } from './app/app-deps.js';
 import { buildApp } from './app/build-app.js';
 import { loadConfig } from './app/config.js';
-import { closePool, getPool } from './shared/database-pool.js';
+import { createSmtpSender } from './modules/mail/mail-sender.js';
+import { createDatabase } from './shared/database.js';
 
 const config = loadConfig();
-const databaseUrl = config.databaseUrl;
+const db = createDatabase(config.databaseUrl);
+const app = await buildApp(createDeps(config, db, createSmtpSender(config.smtp)));
 
-const app = buildApp({
-  logLevel: config.logLevel,
-  ...(databaseUrl === undefined
-    ? {}
-    : {
-        databaseProbe: async () => {
-          await getPool(databaseUrl).query('select 1');
-        },
-      }),
+app.addHook('onClose', async () => {
+  await db.destroy();
 });
-
-app.addHook('onClose', closePool);
 
 try {
   await app.listen({ port: config.port, host: '0.0.0.0' });

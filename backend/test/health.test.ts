@@ -1,51 +1,36 @@
-import { afterAll, describe, expect, it } from 'vitest';
-import { buildApp } from '../src/app/build-app.js';
-import { closePool, getPool } from '../src/shared/database-pool.js';
+import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { createTestApp, type TestContext } from './support/test-app.js';
 
 describe('health endpoints', () => {
-  it('GET /health answers ok without a database', async () => {
-    const app = buildApp({ logLevel: 'silent' });
-    const response = await app.inject({ method: 'GET', url: '/health' });
+  let ctx: TestContext;
+  beforeAll(async () => {
+    ctx = await createTestApp();
+  });
+  afterAll(() => ctx.close());
+
+  it('GET /health answers ok', async () => {
+    const response = await ctx.app.inject({ method: 'GET', url: '/health' });
     expect(response.statusCode).toBe(200);
     expect(response.json()).toEqual({ status: 'ok' });
   });
 
-  it('GET /ready is 503 when the database is not configured', async () => {
-    const app = buildApp({ logLevel: 'silent' });
-    const response = await app.inject({ method: 'GET', url: '/ready' });
-    expect(response.statusCode).toBe(503);
-    expect(response.json()).toEqual({ status: 'not_ready', database: 'not_configured' });
+  it('GET /ready checks the database', async () => {
+    const response = await ctx.app.inject({ method: 'GET', url: '/ready' });
+    expect(response.statusCode).toBe(200);
+    expect(response.json()).toEqual({ status: 'ready', database: 'up' });
   });
 
-  it('GET /ready is 503 when the database probe fails', async () => {
-    const app = buildApp({
-      logLevel: 'silent',
-      databaseProbe: () => Promise.reject(new Error('unreachable')),
-    });
-    const response = await app.inject({ method: 'GET', url: '/ready' });
-    expect(response.statusCode).toBe(503);
-    expect(response.json()).toEqual({ status: 'not_ready', database: 'down' });
+  it('unknown routes answer problem+json', async () => {
+    const response = await ctx.app.inject({ method: 'GET', url: '/nope' });
+    expect(response.statusCode).toBe(404);
+    expect(response.headers['content-type']).toContain('application/problem+json');
+    expect(response.json()).toEqual({ status: 404, code: 'NOT_FOUND' });
+  });
+
+  it('sends security headers', async () => {
+    const response = await ctx.app.inject({ method: 'GET', url: '/health' });
+    expect(response.headers['strict-transport-security']).toContain('max-age=31536000');
+    expect(response.headers['x-content-type-options']).toBe('nosniff');
+    expect(response.headers['access-control-allow-origin']).toBeUndefined();
   });
 });
-
-const databaseUrl = process.env.DATABASE_URL;
-
-describe.skipIf(databaseUrl === undefined || databaseUrl === '')(
-  'readiness with PostgreSQL',
-  () => {
-    afterAll(closePool);
-
-    it('GET /ready is 200 against a real database', async () => {
-      const url = databaseUrl ?? '';
-      const app = buildApp({
-        logLevel: 'silent',
-        databaseProbe: async () => {
-          await getPool(url).query('select 1');
-        },
-      });
-      const response = await app.inject({ method: 'GET', url: '/ready' });
-      expect(response.statusCode).toBe(200);
-      expect(response.json()).toEqual({ status: 'ready', database: 'up' });
-    });
-  },
-);

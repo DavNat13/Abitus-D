@@ -127,4 +127,4 @@ Detalle en `15-CORREOS.md`. Puntos clave:
 
 ## Configuración por entorno
 
-Variables (ejemplo, sin valores): `NODE_ENV`, `PORT`, `DATABASE_URL`, `JWT_ACCESS_SECRET` o par de claves, `REFRESH_PEPPER`, `OTP_PEPPER`, `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `MAIL_FROM`, `APP_BASE_URL`, `JOBS_SECRET`, `LOG_LEVEL`. Documentarlas en `.env.example` sin valores reales. El servidor falla al arrancar si falta una obligatoria.
+Variables (sin valores) documentadas en `.env.example`: `NODE_ENV`, `PORT`, `LOG_LEVEL`, `DATABASE_URL`, `JWT_ACCESS_SECRET`, `REFRESH_TOKEN_PEPPER`, `CODE_PEPPER`, `IP_HASH_PEPPER`, `JOBS_SECRET`, `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`, `MAIL_FROM`, `MAIL_DAILY_CAP`. El servidor falla al arrancar si falta una obligatoria o si un secreto tiene menos de 32 caracteres.
