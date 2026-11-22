@@ -5,9 +5,9 @@ Archivo vivo. Claude Code lo lee al iniciar cada sesión y lo actualiza al termi
 ## Estado actual
 
 - Fecha de creación de la documentación: 2026-11-22.
-- Fase actual: Fase 0 (preparación), casi cerrada. Falta solo el despliegue en Vercel, que espera las cuentas del autor (GitHub, Vercel, Neon).
+- Fase actual: Fase 0 (preparación), cerrada con excepción: por decisión del autor (2026-11-22) el despliegue en Vercel y el repositorio remoto en GitHub se hacen al final. El repositorio Git es solo local por ahora.
 - Código: proyectos vacíos que compilan en `android/`, `backend/` y `database/`; scripts en `tools/`. Verificaciones externas en `02c-MEMORIA-VERIFICACIONES.md`.
-- Siguiente paso: el autor crea las cuentas; despliegue en Vercel con `/health`; etiqueta `fase-0`; aprobación de la Fase 1.
+- Siguiente paso: aprobación de la Fase 1. Pendiente al final: crear repositorio en GitHub, cuentas de Vercel y Neon, despliegue con `/health`.
 
 ## Plan de la Fase 0 (2026-11-22)
 
@@ -20,8 +20,8 @@ Archivo vivo. Claude Code lo lee al iniciar cada sesión y lo actualiza al termi
 | 5 | `database/` con migrador SQL propio y migración 001 | Hecha |
 | 6 | PostgreSQL 17 en Docker Compose; backend local responde `/health` y `/ready` | Hecha |
 | 7 | SDK de Android, `android/` (AGP 9.5.1, Compose, Room 3, Navigation 3), Detekt, ktlint; instalada en emulador API 29 | Hecha |
-| 8 | Despliegue vacío en Vercel respondiendo `/health` | Bloqueada: cuentas del autor |
-| 9 | Cierre: auditoría, memoria, etiqueta `fase-0`, informe | Parcial (falta 8) |
+| 8 | Despliegue vacío en Vercel respondiendo `/health` | Diferida al final por decisión del autor |
+| 9 | Cierre: auditoría, memoria, etiqueta `fase-0`, informe | Hecha, con la tarea 8 diferida |
 
 Nota: la ronda 2 de decisiones (nombre Abitus-D, hosting sin tarjeta, correo, edad, unidades) está en `02b-MEMORIA-DECISIONES-2.md` y prevalece sobre lo que aquí contradiga.
 
