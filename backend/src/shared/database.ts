@@ -3,6 +3,10 @@ import { Kysely, PostgresDialect } from 'kysely';
 import pg from 'pg';
 import type { Database } from './database-types.js';
 
+// DATE columns stay as YYYY-MM-DD strings: no time zone shifts for calendar days.
+
+pg.types.setTypeParser(pg.types.builtins.DATE, (value) => value);
+
 const POOL_MAX_CONNECTIONS = 3;
 const CONNECT_TIMEOUT_MS = 5000;
 const STATEMENT_TIMEOUT_MS = 10000;

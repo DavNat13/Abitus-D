@@ -1,5 +1,6 @@
 // Closed schemas of the sync protocol (07-BACKEND.md, Sincronización). Batches of up to 200.
 import { z } from 'zod';
+import { PLANNING_TABLES, planningSchemas } from './planning-tables.js';
 
 export const MAX_BATCH = 200;
 export const MAX_PULL = 500;
@@ -57,15 +58,19 @@ const exerciseUpsert = z.strictObject({
   row: ownExerciseRow,
 });
 
-const exerciseDelete = z.strictObject({
-  table: z.literal('exercises'),
+const deleteChange = z.strictObject({
+  table: z.enum(['exercises', ...PLANNING_TABLES]),
   op: z.literal('delete'),
   row: z.strictObject({ id: z.uuid(), updatedAt: z.iso.datetime({ offset: true }) }),
 });
 
+const planningUpserts = PLANNING_TABLES.map((table) =>
+  z.strictObject({ table: z.literal(table), op: z.literal('upsert'), row: planningSchemas[table] }),
+);
+
 export const pushBody = z.strictObject({
   changes: z
-    .array(z.discriminatedUnion('op', [exerciseUpsert, exerciseDelete]))
+    .array(z.union([exerciseUpsert, deleteChange, ...planningUpserts]))
     .min(1)
     .max(MAX_BATCH),
 });
