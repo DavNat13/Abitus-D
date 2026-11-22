@@ -9,7 +9,8 @@
   "scripts": {
     "migrate": "node --env-file-if-exists=../.env scripts/migrate.mjs",
     "migrate:status": "node --env-file-if-exists=../.env scripts/migrate.mjs --status",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "seed": "node --env-file-if-exists=../.env scripts/seed.mjs"
   },
   "dependencies": {
     "pg": "^8.23.1"

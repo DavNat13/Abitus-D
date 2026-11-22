@@ -1,0 +1,32 @@
+{"id":1,"slug":"bodyweight","es":"Peso corporal","en":"Body weight"}
+{"id":2,"slug":"barbell","es":"Barra olímpica","en":"Barbell"}
+{"id":3,"slug":"dumbbell","es":"Mancuernas","en":"Dumbbells"}
+{"id":4,"slug":"kettlebell","es":"Kettlebell","en":"Kettlebell"}
+{"id":5,"slug":"cable","es":"Polea","en":"Cable machine"}
+{"id":6,"slug":"machine","es":"Máquina","en":"Machine"}
+{"id":7,"slug":"bands","es":"Bandas elásticas","en":"Resistance bands"}
+{"id":8,"slug":"medicine_ball","es":"Balón medicinal","en":"Medicine ball"}
+{"id":9,"slug":"stability_ball","es":"Pelota de estabilidad","en":"Stability ball"}
+{"id":10,"slug":"ez_bar","es":"Barra Z","en":"EZ bar"}
+{"id":11,"slug":"foam_roller","es":"Rodillo de espuma","en":"Foam roller"}
+{"id":12,"slug":"pull_up_bar","es":"Barra de dominadas","en":"Pull-up bar"}
+{"id":13,"slug":"dip_bars","es":"Paralelas","en":"Dip bars"}
+{"id":14,"slug":"bench","es":"Banco","en":"Bench"}
+{"id":15,"slug":"box","es":"Cajón","en":"Box"}
+{"id":16,"slug":"jump_rope","es":"Cuerda de saltar","en":"Jump rope"}
+{"id":17,"slug":"rings","es":"Anillas","en":"Gymnastic rings"}
+{"id":18,"slug":"sled","es":"Trineo","en":"Sled"}
+{"id":19,"slug":"trap_bar","es":"Barra hexagonal","en":"Trap bar"}
+{"id":20,"slug":"smith_machine","es":"Máquina Smith","en":"Smith machine"}
+{"id":21,"slug":"suspension_trainer","es":"Entrenador de suspensión","en":"Suspension trainer"}
+{"id":22,"slug":"chains","es":"Cadenas","en":"Chains"}
+{"id":23,"slug":"plate","es":"Disco","en":"Weight plate"}
+{"id":24,"slug":"pool","es":"Piscina","en":"Swimming pool"}
+{"id":25,"slug":"bicycle","es":"Bicicleta","en":"Bicycle"}
+{"id":26,"slug":"stationary_bike","es":"Bicicleta estática","en":"Stationary bike"}
+{"id":27,"slug":"rowing_machine","es":"Máquina de remo","en":"Rowing machine"}
+{"id":28,"slug":"treadmill","es":"Cinta de correr","en":"Treadmill"}
+{"id":29,"slug":"kickboard","es":"Tabla de natación","en":"Kickboard"}
+{"id":30,"slug":"pull_buoy","es":"Pull buoy","en":"Pull buoy"}
+{"id":31,"slug":"fins","es":"Aletas","en":"Fins"}
+{"id":32,"slug":"other","es":"Otro","en":"Other"}

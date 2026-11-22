@@ -1,0 +1,21 @@
+{"id":1,"slug":"chest","region":"upper","view":"front","sort":1,"es":"Pecho","en":"Chest"}
+{"id":2,"slug":"deltoid_anterior","region":"upper","view":"front","sort":2,"es":"Deltoides anterior","en":"Front deltoid"}
+{"id":3,"slug":"deltoid_lateral","region":"upper","view":"front","sort":3,"es":"Deltoides lateral","en":"Side deltoid"}
+{"id":4,"slug":"biceps","region":"upper","view":"front","sort":4,"es":"Bíceps","en":"Biceps"}
+{"id":5,"slug":"forearm_flexors","region":"upper","view":"front","sort":5,"es":"Antebrazos (flexores)","en":"Forearms (flexors)"}
+{"id":6,"slug":"abdominals","region":"core","view":"front","sort":6,"es":"Abdominales (recto abdominal)","en":"Abdominals (rectus abdominis)"}
+{"id":7,"slug":"obliques","region":"core","view":"front","sort":7,"es":"Oblicuos","en":"Obliques"}
+{"id":8,"slug":"quadriceps","region":"lower","view":"front","sort":8,"es":"Cuádriceps","en":"Quadriceps"}
+{"id":9,"slug":"adductors","region":"lower","view":"front","sort":9,"es":"Aductores","en":"Adductors"}
+{"id":10,"slug":"tibialis_anterior","region":"lower","view":"front","sort":10,"es":"Tibial anterior","en":"Tibialis anterior"}
+{"id":11,"slug":"traps_upper","region":"upper","view":"back","sort":11,"es":"Trapecio superior","en":"Upper trapezius"}
+{"id":12,"slug":"traps_middle_lower","region":"upper","view":"back","sort":12,"es":"Trapecio medio e inferior","en":"Middle and lower trapezius"}
+{"id":13,"slug":"deltoid_posterior","region":"upper","view":"back","sort":13,"es":"Deltoides posterior","en":"Rear deltoid"}
+{"id":14,"slug":"lats","region":"upper","view":"back","sort":14,"es":"Dorsales","en":"Lats"}
+{"id":15,"slug":"rhomboids","region":"upper","view":"back","sort":15,"es":"Romboides","en":"Rhomboids"}
+{"id":16,"slug":"lower_back","region":"core","view":"back","sort":16,"es":"Lumbares (erectores)","en":"Lower back (erectors)"}
+{"id":17,"slug":"triceps","region":"upper","view":"back","sort":17,"es":"Tríceps","en":"Triceps"}
+{"id":18,"slug":"forearm_extensors","region":"upper","view":"back","sort":18,"es":"Antebrazos (extensores)","en":"Forearms (extensors)"}
+{"id":19,"slug":"glutes","region":"lower","view":"back","sort":19,"es":"Glúteos","en":"Glutes"}
+{"id":20,"slug":"hamstrings","region":"lower","view":"back","sort":20,"es":"Isquiotibiales","en":"Hamstrings"}
+{"id":21,"slug":"calves","region":"lower","view":"back","sort":21,"es":"Gemelos y sóleo","en":"Calves (gastrocnemius and soleus)"}
