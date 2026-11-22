@@ -1,5 +1,9 @@
 # Detekt overrides on top of the default configuration.
 naming:
+  # Compose files hold a small enum or state class next to the composable they serve;
+  # ktlint filename rule already enforces names of single-declaration files.
+  MatchingDeclarationName:
+    active: false
   FunctionNaming:
     ignoreAnnotated:
       - Composable

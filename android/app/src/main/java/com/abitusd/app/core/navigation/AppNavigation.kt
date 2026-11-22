@@ -1,22 +1,51 @@
 package com.abitusd.app.core.navigation
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.remember
-import androidx.navigation3.runtime.entryProvider
-import androidx.navigation3.ui.NavDisplay
-import com.abitusd.app.feature.home.ui.HomeScreen
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewModelScope
+import com.abitusd.app.core.designsystem.theme.AppTheme
+import com.abitusd.app.core.session.SessionManager
+import com.abitusd.app.core.session.SessionState
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-/** Navigation 3 host. Phase 0 has a single placeholder destination. */
+@HiltViewModel
+class RootViewModel
+    @Inject
+    constructor(
+        sessions: SessionManager,
+    ) : ViewModel() {
+        val session: StateFlow<SessionState> = sessions.state
+
+        init {
+            viewModelScope.launch { sessions.restore() }
+        }
+    }
+
+/** The stored session decides the start: access flow or the app (09-FRONTEND-ANDROID.md). */
 @Composable
-fun AppNavigation() {
-    val backStack = remember { mutableStateListOf<Any>(HomeRoute) }
-    NavDisplay(
-        backStack = backStack,
-        onBack = { backStack.removeLastOrNull() },
-        entryProvider =
-            entryProvider {
-                entry<HomeRoute> { HomeScreen() }
-            },
-    )
+fun AppNavigation(viewModel: RootViewModel = hiltViewModel()) {
+    val session by viewModel.session.collectAsStateWithLifecycle()
+    when (session) {
+        SessionState.Loading -> {
+            Box(Modifier.fillMaxSize().background(AppTheme.colors.background))
+        }
+
+        SessionState.SignedOut -> {
+            AuthNavigation()
+        }
+
+        is SessionState.SignedIn -> {
+            MainNavigation()
+        }
+    }
 }
