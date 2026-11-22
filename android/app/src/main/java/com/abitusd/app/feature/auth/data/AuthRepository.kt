@@ -37,6 +37,7 @@ class AuthRepository
         private val syncState: SyncStateDao,
         private val ownExercises: OwnExerciseRepository,
         private val syncScheduler: SyncScheduler,
+        private val planning: com.abitusd.app.core.database.planning.PlanningDao,
     ) {
         suspend fun register(
             email: String,
@@ -77,6 +78,7 @@ class AuthRepository
             apiCall { accountApi.logout() }
             syncScheduler.cancel()
             ownExercises.clear()
+            planning.clearAll()
             syncState.clear()
             sessions.clear()
         }

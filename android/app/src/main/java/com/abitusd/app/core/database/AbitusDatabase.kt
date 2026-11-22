@@ -23,10 +23,16 @@ import com.abitusd.app.core.database.catalog.LibraryDao
 import com.abitusd.app.core.database.catalog.MuscleGroupEntity
 import com.abitusd.app.core.database.catalog.MuscleGroupTextEntity
 import com.abitusd.app.core.database.catalog.StringListConverter
+import com.abitusd.app.core.database.planning.PlanningDao
+import com.abitusd.app.core.database.planning.ProgramDayEntity
+import com.abitusd.app.core.database.planning.ProgramEntity
+import com.abitusd.app.core.database.planning.RoutineEntity
+import com.abitusd.app.core.database.planning.RoutineExerciseEntity
+import com.abitusd.app.core.database.planning.ScheduledWorkoutEntity
 
 /**
- * Local source of truth (09b-FRONTEND-OFFLINE-SYNC.md). Version 2 adds the exercise catalog
- * and own exercises; schemas are exported to app/schemas and migrations are tested.
+ * Local source of truth (09b-FRONTEND-OFFLINE-SYNC.md). v2: catalog and own exercises;
+ * v3: planning. Schemas are exported to app/schemas.
  */
 @Database(
     entities = [
@@ -42,10 +48,15 @@ import com.abitusd.app.core.database.catalog.StringListConverter
         ExerciseMuscleEntity::class,
         ExerciseEquipmentEntity::class,
         ExerciseRelationEntity::class,
+        RoutineEntity::class,
+        RoutineExerciseEntity::class,
+        ProgramEntity::class,
+        ProgramDayEntity::class,
+        ScheduledWorkoutEntity::class,
     ],
-    version = 2,
+    version = 3,
     exportSchema = true,
-    autoMigrations = [AutoMigration(from = 1, to = 2)],
+    autoMigrations = [AutoMigration(from = 1, to = 2), AutoMigration(from = 2, to = 3)],
 )
 @ColumnTypeConverters(StringListConverter::class)
 abstract class AbitusDatabase : RoomDatabase() {
@@ -54,6 +65,8 @@ abstract class AbitusDatabase : RoomDatabase() {
     abstract fun catalogWriteDao(): CatalogWriteDao
 
     abstract fun libraryDao(): LibraryDao
+
+    abstract fun planningDao(): PlanningDao
 
     companion object {
         const val NAME = "abitusd.db"

@@ -7,6 +7,7 @@ import com.abitusd.app.core.database.AbitusDatabase
 import com.abitusd.app.core.database.SyncStateDao
 import com.abitusd.app.core.database.catalog.CatalogWriteDao
 import com.abitusd.app.core.database.catalog.LibraryDao
+import com.abitusd.app.core.database.planning.PlanningDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -35,4 +36,7 @@ object DatabaseModule {
 
     @Provides
     fun libraryDao(database: AbitusDatabase): LibraryDao = database.libraryDao()
+
+    @Provides
+    fun planningDao(database: AbitusDatabase): PlanningDao = database.planningDao()
 }

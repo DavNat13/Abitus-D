@@ -1,8 +1,7 @@
 package com.abitusd.app.core.network.dto
 
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.JsonClassDiscriminator
+import kotlinx.serialization.json.JsonObject
 
 /** Wire contract of POST /v1/sync/push and GET /v1/sync/pull (07-BACKEND.md). */
 @Serializable
@@ -35,26 +34,13 @@ data class DeletedRowDto(
     val updatedAt: String,
 )
 
-@OptIn(kotlinx.serialization.ExperimentalSerializationApi::class)
+/** One change of any synced table; the row is validated by the server per table. */
 @Serializable
-@JsonClassDiscriminator("op")
-sealed interface PushChangeDto {
-    val table: String
-
-    @Serializable
-    @SerialName("upsert")
-    data class Upsert(
-        override val table: String = "exercises",
-        val row: OwnExerciseDto,
-    ) : PushChangeDto
-
-    @Serializable
-    @SerialName("delete")
-    data class Delete(
-        override val table: String = "exercises",
-        val row: DeletedRowDto,
-    ) : PushChangeDto
-}
+data class PushChangeDto(
+    val table: String,
+    val op: String,
+    val row: JsonObject,
+)
 
 @Serializable
 data class PushRequest(
@@ -79,7 +65,7 @@ data class PullChangeDto(
     val table: String,
     val op: String,
     val serverSeq: Long,
-    val row: OwnExerciseDto,
+    val row: JsonObject,
 )
 
 @Serializable

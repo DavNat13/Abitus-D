@@ -3,8 +3,13 @@ package com.abitusd.app.feature.library.data
 import androidx.room3.withWriteTransaction
 import com.abitusd.app.core.database.AbitusDatabase
 import com.abitusd.app.core.network.dto.DeletedRowDto
+import com.abitusd.app.core.network.dto.OwnExerciseDto
 import com.abitusd.app.core.network.dto.PullChangeDto
 import com.abitusd.app.core.network.dto.PushChangeDto
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.decodeFromJsonElement
+import kotlinx.serialization.json.encodeToJsonElement
+import kotlinx.serialization.json.jsonObject
 import java.time.Instant
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -20,6 +25,7 @@ class OwnExerciseRepository
         private val database: AbitusDatabase,
     ) {
         private val dao get() = database.catalogWriteDao()
+        private val wire = Json { encodeDefaults = true }
 
         suspend fun save(input: OwnExerciseInput) {
             write(OwnExerciseMapper.rows(input, System.currentTimeMillis(), dirty = true))
@@ -46,10 +52,14 @@ class OwnExerciseRepository
             dao.dirtyOwnExercises().mapNotNull { exercise ->
                 if (exercise.deletedAt != null) {
                     val row = DeletedRowDto(exercise.id, Instant.ofEpochMilli(exercise.updatedAt).toString())
-                    PushChangeDto.Delete(row = row) to exercise.updatedAt
+                    PushChangeDto("exercises", "delete", wire.encodeToJsonElement(row).jsonObject) to exercise.updatedAt
                 } else {
                     load(exercise.id)?.let {
-                        PushChangeDto.Upsert(row = OwnExerciseMapper.toDto(it)) to
+                        PushChangeDto(
+                            "exercises",
+                            "upsert",
+                            wire.encodeToJsonElement(OwnExerciseMapper.toDto(it)).jsonObject,
+                        ) to
                             exercise.updatedAt
                     }
                 }
@@ -68,8 +78,9 @@ class OwnExerciseRepository
         }
 
         private suspend fun applyOne(change: PullChangeDto) {
-            val remoteTime = Instant.parse(change.row.updatedAt).toEpochMilli()
-            val local = dao.exercise(change.row.id)
+            val dto = wire.decodeFromJsonElement<OwnExerciseDto>(change.row)
+            val remoteTime = Instant.parse(dto.updatedAt).toEpochMilli()
+            val local = dao.exercise(dto.id)
             val localIsNewer = local != null && local.dirty && local.updatedAt > remoteTime
             when {
                 localIsNewer -> {
@@ -85,7 +96,7 @@ class OwnExerciseRepository
                 }
 
                 else -> {
-                    val input = OwnExerciseMapper.fromDto(change.row)
+                    val input = OwnExerciseMapper.fromDto(dto)
                     write(OwnExerciseMapper.rows(input, remoteTime, dirty = false, serverSeq = change.serverSeq))
                 }
             }
