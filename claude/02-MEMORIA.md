@@ -5,10 +5,10 @@ Archivo vivo. Claude Code lo lee al iniciar cada sesión y lo actualiza al termi
 ## Estado actual
 
 - Fecha de creación de la documentación: 2026-11-22.
-- Fase actual: Fase 1 cerrada el 2026-11-22 (etiqueta `fase-1`). Pendiente de aprobación del autor para empezar la Fase 2 (biblioteca de ejercicios). Fase 0 cerrada (`fase-0`); el despliegue en Vercel quedó diferido al final por decisión del autor.
+- Fase actual: Fase 2 terminada salvo la revisión humana de la muestra (criterio de aceptación); al aprobarla, etiqueta fase-2 y Fase 3. Detalle en 02e-MEMORIA-FASE-2.md.
 - Repositorio remoto: https://github.com/DavNat13/Abitus-D (público). Versionado: un commit convencional por tarea verificada, push tras cada tarea y etiqueta `fase-N` al cerrar cada fase. Al ser público, revisar secretos antes de cada push.
 - Código: autenticación completa (backend, base de datos y app Android); detalle y decisiones de la Fase 1 en `02d-MEMORIA-FASE-1.md`. Verificaciones externas en `02c-MEMORIA-VERIFICACIONES.md`.
-- Siguiente paso: Fase 2 (biblioteca de ejercicios), autorizada. Pendiente del autor: SMTP_USER y SMTP_PASSWORD en `.env`; al final, cuentas de Vercel y Neon, despliegue y keystore.
+- Siguiente paso: revisión de la muestra por el autor; luego Fase 3 (planificación). Pendiente al final: Vercel, Neon, keystore.
 
 Fase 0: tareas 1 a 7 hechas y verificadas (estructura, verificaciones, scripts, backend, database, Docker, Android en emulador API 29); tarea 8 (despliegue en Vercel) diferida al final. Detalle en el historial de Git.
 
@@ -18,15 +18,15 @@ Fase 1: tareas 1 a 9 hechas y verificadas (etiqueta `fase-1`); detalle en `02d-M
 
 | N | Tarea | Estado |
 |---|---|---|
-| 1 | Migraciones del catálogo (disciplinas, músculos, equipamiento, ejercicios, traducciones, relaciones, versión) y secuencia de sincronización | Pendiente |
-| 2 | Semillas base: disciplinas, 22 grupos musculares con `mesh_key` y `svg_key`, equipamiento, en es y en | Pendiente |
-| 3 | `tools/import-exercises` desde free-exercise-db (Unlicense) con mapeo de músculos y equipo; `source` y `license` por ejercicio | Pendiente |
-| 4 | Semillas de ejercicios por disciplina en JSON Lines (un ejercicio por línea), traducciones al español, relaciones; `REVIEW.md` | Pendiente |
-| 5 | Cargador idempotente de semillas que incrementa `catalog_version` | Pendiente |
-| 6 | Backend: `GET /v1/catalog` incremental con ETag; sincronización push y pull de ejercicios propios | Pendiente |
-| 7 | Android: catálogo en Room, descarga, biblioteca con búsqueda y filtros, detalle, cambio de idioma | Pendiente |
-| 8 | Android: ejercicios propios sin conexión con sincronización y detección de duplicados | Pendiente |
-| 9 | Muestra para revisión humana por disciplina, pruebas, verificación en emulador, memoria y etiqueta `fase-2` | Pendiente |
+| 1 | Migraciones del catálogo (disciplinas, músculos, equipamiento, ejercicios, traducciones, relaciones, versión) y secuencia de sincronización | Hecha |
+| 2 | Semillas base: disciplinas, 22 grupos musculares con `mesh_key` y `svg_key`, equipamiento, en es y en | Hecha |
+| 3 | `tools/import-exercises` desde free-exercise-db (Unlicense) con mapeo de músculos y equipo; `source` y `license` por ejercicio | Hecha |
+| 4 | Semillas de ejercicios por disciplina en JSON Lines (un ejercicio por línea), traducciones al español, relaciones; `REVIEW.md` | Hecha |
+| 5 | Cargador idempotente de semillas que incrementa `catalog_version` | Hecha |
+| 6 | Backend: `GET /v1/catalog` incremental con ETag; sincronización push y pull de ejercicios propios | Hecha |
+| 7 | Android: catálogo en Room, descarga, biblioteca con búsqueda y filtros, detalle, cambio de idioma | Hecha |
+| 8 | Android: ejercicios propios sin conexión con sincronización y detección de duplicados | Hecha |
+| 9 | Muestra para revisión humana por disciplina, pruebas, verificación en emulador, memoria y etiqueta `fase-2` | Falta solo la revisión humana del autor (muestra en database/seeds/REVIEW.md) |
 
 Nota: la ronda 2 de decisiones (nombre Abitus-D, hosting sin tarjeta, correo, edad, unidades) está en `02b-MEMORIA-DECISIONES-2.md` y prevalece sobre lo que aquí contradiga.
 

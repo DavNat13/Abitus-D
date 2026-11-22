@@ -9,6 +9,7 @@ Carpeta de contexto para Claude Code. Cada archivo cubre un área; léelo antes 
 | 02b-MEMORIA-DECISIONES-2.md | Decisiones cerradas de la ronda 2 y hechos verificados | Siempre, junto con 02 |
 | 02c-MEMORIA-VERIFICACIONES.md | Verificaciones externas de la Fase 0 y versiones elegidas | Al depender de límites externos o versiones |
 | 02d-MEMORIA-FASE-1.md | Decisiones técnicas, hallazgos y versiones de la Fase 1 | Al trabajar en acceso, correo, sesión o el sistema de diseño |
+| 02e-MEMORIA-FASE-2.md | Decisiones y hallazgos de la Fase 2 (catálogo, sincronización, biblioteca) | Al trabajar en catálogo, semillas o sincronización |
 | 03-REGLAS-DE-ORO.md | Reglas que nunca se rompen | Siempre |
 | 04-STACK.md | Tecnologías elegidas, motivos y alternativas descartadas | Al configurar proyectos o cambiar tecnología |
 | 05-UI-UX.md | Principios, navegación, flujos, microcopy y accesibilidad | Al construir cualquier pantalla |

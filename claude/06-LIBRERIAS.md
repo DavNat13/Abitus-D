@@ -13,7 +13,7 @@ Para cada dependencia nueva fuera de esta lista: justificar propósito, mantenim
 | Navigation 3 | Navegación | Rutas tipadas; reemplaza a Navigation Compose |
 | Hilt | Inyección de dependencias | |
 | Room 3 | Base de datos local | Esquemas exportados y migraciones probadas |
-| WorkManager | Sincronización en segundo plano | Restricción de red, reintento exponencial |
+| WorkManager 2.12.0 y hilt-work 1.4.0 | Sincronización en segundo plano | Restricción de red, reintento exponencial |
 | DataStore | Preferencias | Sin SharedPreferences nuevas |
 | Retrofit y OkHttp | Cliente HTTP | Interceptor de autenticación con renovación de token |
 | kotlinx.serialization | JSON | |
