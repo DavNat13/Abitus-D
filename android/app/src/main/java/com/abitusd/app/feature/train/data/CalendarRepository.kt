@@ -65,6 +65,27 @@ class CalendarRepository
             write(listOf(row.copy(status = "done", sessionId = sessionId)))
         }
 
+        /** Missed workout (10f): moves every planned workout from [from] onward by [days]. */
+        suspend fun pushPlan(
+            from: LocalDate,
+            days: Long,
+        ) {
+            val rows =
+                dao.scheduledBetweenOnce(from.toString(), from.plusYears(1).toString()).filter {
+                    it.status ==
+                        "planned"
+                }
+            write(
+                rows.map {
+                    it.copy(
+                        date = LocalDate.parse(it.date).plusDays(days).toString(),
+                        rescheduledFrom =
+                            it.rescheduledFrom ?: it.date,
+                    )
+                },
+            )
+        }
+
         suspend fun delete(id: String) {
             val row = dao.scheduled(id) ?: return
             write(listOf(row.copy(deletedAt = System.currentTimeMillis())))

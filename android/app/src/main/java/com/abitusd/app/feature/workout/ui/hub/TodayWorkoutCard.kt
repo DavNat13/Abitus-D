@@ -74,6 +74,7 @@ fun TodayWorkoutCard(
         Modifier.padding(horizontal = AppSpacing.screenMargin),
         verticalArrangement = Arrangement.spacedBy(AppSpacing.xs),
     ) {
+        MissedSessionCard()
         when {
             s.activeTitle != null -> {
                 HeroCard(

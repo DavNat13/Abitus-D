@@ -23,7 +23,10 @@ fun EntryProviderScope<NavKey>.workoutEntries(
         ActiveSessionScreen(onBack = back, onFinish = { id -> stack.add(SessionSummaryRoute(id)) })
     }
     entry<SessionSummaryRoute> { key ->
-        SummaryScreen(key.sessionId, key.finished, onBack = back, onDone = {
+        SummaryScreen(key.sessionId, key.finished, onBack = back, onRepeated = {
+            stack.removeAll { it is SessionSummaryRoute || it is HistoryRoute }
+            stack.add(ActiveSessionRoute)
+        }, onDone = {
             if (key.finished) {
                 back()
             } else {

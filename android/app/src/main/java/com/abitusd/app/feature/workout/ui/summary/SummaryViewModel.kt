@@ -46,11 +46,14 @@ class SummaryViewModel
         private val history: WorkoutHistoryDao,
         private val exerciseNames: ExerciseNames,
         private val templates: SessionTemplate,
+        private val repeater: com.abitusd.app.feature.workout.data.SessionRepeater,
     ) : ViewModel() {
         private val mutable = MutableStateFlow(SummaryState())
         val state: StateFlow<SummaryState> = mutable.asStateFlow()
         private val doneChannel = Channel<Unit>(Channel.BUFFERED)
         val done = doneChannel.receiveAsFlow()
+        private val repeatChannel = Channel<Unit>(Channel.BUFFERED)
+        val repeated = repeatChannel.receiveAsFlow()
 
         init {
             viewModelScope.launch {
@@ -103,6 +106,12 @@ class SummaryViewModel
             launch {
                 templates.fromSession(sessionId, state.value.title)
                 mutable.update { it.copy(templateSaved = true) }
+            }
+
+        fun repeat() =
+            launch {
+                repeater.repeat(sessionId)
+                repeatChannel.send(Unit)
             }
 
         fun discard() =

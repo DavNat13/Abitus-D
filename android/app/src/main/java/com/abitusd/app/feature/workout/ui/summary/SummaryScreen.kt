@@ -37,6 +37,7 @@ fun SummaryScreen(
     finished: Boolean,
     onBack: () -> Unit,
     onDone: () -> Unit,
+    onRepeated: () -> Unit = {},
     viewModel: SummaryViewModel =
         hiltViewModel<SummaryViewModel, SummaryViewModel.Factory>(key = "summary-$sessionId", creationCallback = {
             it.create(sessionId)
@@ -45,6 +46,7 @@ fun SummaryScreen(
     val s by viewModel.state.collectAsStateWithLifecycle()
     var confirmDiscard by rememberSaveable { mutableStateOf(false) }
     LaunchedEffect(viewModel) { viewModel.done.collect { onDone() } }
+    LaunchedEffect(viewModel) { viewModel.repeated.collect { onRepeated() } }
     val summary = s.summary
     FormScreen(
         title = if (finished) s.title else stringResource(R.string.summary_title),
@@ -94,6 +96,7 @@ fun SummaryScreen(
                 }
             }
         }
+        if (finished) AppButton(stringResource(R.string.history_repeat), viewModel::repeat, icon = AppIcons.Start)
         if (!finished) {
             SectionCard(stringResource(R.string.summary_notes), icon = AppIcons.Notes) {
                 val rpe = (1..MAX_RPE).map { ChoiceOption(it, it.toString()) }

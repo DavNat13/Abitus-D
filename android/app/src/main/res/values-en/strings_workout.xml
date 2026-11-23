@@ -93,4 +93,9 @@
     <string name="workout_increase">Increase</string>
     <string name="workout_bodyweight">Bodyweight</string>
     <string name="workout_sets_title">Sets</string>
+    <string name="missed_title">Missed: %1$s on %2$s</string>
+    <string name="missed_today">Do it today</string>
+    <string name="missed_push">Push the whole plan</string>
+    <string name="missed_skip">Skip it</string>
+    <string name="history_repeat">Repeat this session</string>
 </resources>
