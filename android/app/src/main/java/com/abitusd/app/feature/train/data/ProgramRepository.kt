@@ -59,7 +59,7 @@ class ProgramRepository
             val program = program(id) ?: return
             save(program.copy(isActive = true, startDate = start.toString()), daysOnce(id))
             val rows =
-                daysOnce(id).filter { !it.isRest && it.routineId != null }.map { day ->
+                daysOnce(id).filter { (!it.isRest && it.routineId != null) || it.activeRest }.map { day ->
                     ScheduledWorkoutEntity(
                         id = UUID.randomUUID().toString(),
                         date = start.plusDays(day.weekIndex * DAYS_PER_WEEK + day.dayIndex.toLong()).toString(),

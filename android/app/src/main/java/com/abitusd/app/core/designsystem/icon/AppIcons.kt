@@ -121,4 +121,6 @@ object AppIcons {
     @DrawableRes val Calculator = R.drawable.ic_calculate
 
     @DrawableRes val Remove = R.drawable.ic_remove
+
+    @DrawableRes val ActiveRest = R.drawable.ic_directions_walk
 }

@@ -67,21 +67,24 @@ fun HomeScreen(
             verticalArrangement = Arrangement.spacedBy(AppSpacing.sm),
         ) {
             if (s.loading) return@Column
-            if (s.today.isNotEmpty()) {
+            val training = s.today.filterNot { it.activeRest }
+            if (training.isNotEmpty()) {
                 HeroCard(
                     stringResource(R.string.home_today),
-                    s.today.first().routineName,
+                    training.first().routineName,
                     stringResource(R.string.home_go_train),
                     onGoTrain,
                 ) {
-                    if (s.today.size > 1) {
+                    if (training.size > 1) {
                         Text(
-                            stringResource(R.string.home_more_today, s.today.size - 1),
+                            stringResource(R.string.home_more_today, training.size - 1),
                             style = AppTheme.typography.body,
                             color = LightAppColors.onPrimary,
                         )
                     }
                 }
+            } else if (s.today.any { it.activeRest }) {
+                EmptyState(AppIcons.ActiveRest, stringResource(R.string.home_active_rest))
             } else {
                 EmptyState(
                     AppIcons.Rest,

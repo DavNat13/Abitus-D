@@ -48,7 +48,7 @@ fun ProgramEditorScreen(
                 { v -> v.toIntOrNull()?.let(viewModel::setWeeks) },
             )
         }
-        if (s.days.any { it.isRest }) StatusBanner(stringResource(R.string.program_active_rest), StatusKind.Success)
+        if (s.days.any { it.activeRest }) StatusBanner(stringResource(R.string.program_active_rest), StatusKind.Success)
         repeat(s.program.weeksCount) { week -> WeekCard(week, s.days, names) { day -> editing = week to day } }
         s.error?.let { StatusBanner(stringResource(it), StatusKind.Error) }
         AppButton(stringResource(R.string.program_save), viewModel::save, icon = AppIcons.Check)
@@ -80,6 +80,9 @@ fun ProgramEditorScreen(
             },
         ) {
             ListItemCard(stringResource(R.string.program_rest), { pick(DayChoice.Rest) }, icon = AppIcons.Rest)
+            ListItemCard(stringResource(R.string.program_active_rest_day), {
+                pick(DayChoice.ActiveRest)
+            }, icon = AppIcons.ActiveRest)
             ListItemCard(
                 stringResource(R.string.program_unassigned),
                 { pick(DayChoice.Unassigned) },

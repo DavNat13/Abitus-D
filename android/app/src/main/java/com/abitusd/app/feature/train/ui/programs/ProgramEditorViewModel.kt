@@ -38,6 +38,8 @@ sealed interface DayChoice {
 
     data object Rest : DayChoice
 
+    data object ActiveRest : DayChoice
+
     data class Train(
         val routineId: String,
     ) : DayChoice
@@ -93,8 +95,9 @@ class ProgramEditorViewModel
             val updated =
                 when (choice) {
                     DayChoice.Unassigned -> null
-                    DayChoice.Rest -> base.copy(isRest = true, routineId = null)
-                    is DayChoice.Train -> base.copy(isRest = false, routineId = choice.routineId)
+                    DayChoice.Rest -> base.copy(isRest = true, activeRest = false, routineId = null)
+                    DayChoice.ActiveRest -> base.copy(isRest = true, activeRest = true, routineId = null)
+                    is DayChoice.Train -> base.copy(isRest = false, activeRest = false, routineId = choice.routineId)
                 }
             s.copy(days = others + listOfNotNull(updated))
         }

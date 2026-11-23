@@ -20,6 +20,7 @@ data class HomeWorkout(
     val date: LocalDate,
     val routineName: String,
     val status: String,
+    val activeRest: Boolean = false,
 )
 
 data class HomeState(
@@ -46,14 +47,15 @@ class HomeViewModel
                 val names = list.associate { it.id to it.name }
 
                 fun ScheduledWorkoutEntity.toHome() =
-                    HomeWorkout(LocalDate.parse(date), names[routineId].orEmpty(), status)
+                    HomeWorkout(LocalDate.parse(date), names[routineId].orEmpty(), status, routineId == null)
                 val active = rows.filter { it.status != STATUS_SKIPPED }
-                val week = active.filter { LocalDate.parse(it.date) < weekStart.plusDays(DAYS_PER_WEEK) }
+                val training = active.filter { it.routineId != null }
+                val week = training.filter { LocalDate.parse(it.date) < weekStart.plusDays(DAYS_PER_WEEK) }
                 HomeState(
                     loading = false,
                     today = active.filter { it.date == today.toString() }.map { it.toHome() },
                     next =
-                        active
+                        training
                             .filter {
                                 LocalDate.parse(it.date) > today && it.status == STATUS_PLANNED
                             }.minByOrNull { it.date }

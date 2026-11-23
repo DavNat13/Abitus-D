@@ -51,7 +51,15 @@ fun CalendarDayDetail(
         if (rows.isEmpty()) Hint(stringResource(R.string.calendar_empty_day))
         rows.forEachIndexed { index, row ->
             if (index > 0) HorizontalDivider(color = AppTheme.colors.outline)
-            WorkoutRow(row, s.routineNames[row.routineId].orEmpty(), viewModel) { moving = row }
+            val name =
+                if (row.routineId ==
+                    null
+                ) {
+                    stringResource(R.string.program_active_rest_day)
+                } else {
+                    s.routineNames[row.routineId].orEmpty()
+                }
+            WorkoutRow(row, name, viewModel) { moving = row }
         }
         if (s.dayLoad > 0) InfoPill(stringResource(R.string.calendar_day_load, s.dayLoad), emphasized = true)
         AppButton(

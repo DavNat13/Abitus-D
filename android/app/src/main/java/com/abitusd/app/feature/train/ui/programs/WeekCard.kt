@@ -42,6 +42,7 @@ fun WeekCard(
             val (icon, label) =
                 when {
                     cell == null -> null to stringResource(R.string.program_unassigned)
+                    cell.activeRest -> AppIcons.ActiveRest to stringResource(R.string.program_active_rest_day)
                     cell.isRest -> AppIcons.Rest to stringResource(R.string.program_rest)
                     else -> AppIcons.Train to routineNames[cell.routineId].orEmpty()
                 }
