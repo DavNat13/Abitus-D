@@ -1,7 +1,13 @@
-// Synced planning tables (08b): closed row schemas and their column mapping.
+// Synced planning and session tables (08b): closed row schemas and their column mapping.
 // Wire rows use camelCase; database columns use snake_case. Only these tables and
 // columns can ever be written by the generic sync (identifiers are never user input).
 import { z } from 'zod';
+
+import {
+  SESSION_INSTANT_COLUMNS,
+  SESSION_NUMERIC_COLUMNS,
+  sessionSchemas,
+} from './session-tables.js';
 
 const isoDate = z.iso.date();
 const updatedAt = z.iso.datetime({ offset: true });
@@ -52,6 +58,7 @@ export const planningSchemas = {
     dayIndex: z.number().int().min(0).max(6),
     routineId: z.uuid().nullable(),
     isRest: z.boolean(),
+    activeRest: z.boolean(),
     updatedAt,
   }),
   scheduled_workouts: z.strictObject({
@@ -64,13 +71,19 @@ export const planningSchemas = {
     rescheduledFrom: isoDate.nullable(),
     updatedAt,
   }),
+  ...sessionSchemas,
 } as const;
 
 export type PlanningTable = keyof typeof planningSchemas;
 export const PLANNING_TABLES = Object.keys(planningSchemas) as PlanningTable[];
 
 /** numeric columns come back from pg as strings and are sent as numbers. */
-const NUMERIC_COLUMNS = new Set(['target_load_kg', 'target_rpe', 'target_distance_m']);
+const NUMERIC_COLUMNS = new Set([
+  'target_load_kg',
+  'target_rpe',
+  'target_distance_m',
+  ...SESSION_NUMERIC_COLUMNS,
+]);
 
 export const toSnake = (key: string): string => key.replace(/[A-Z]/g, (c) => `_${c.toLowerCase()}`);
 const toCamel = (key: string): string =>
@@ -93,6 +106,8 @@ export function fromColumns(table: PlanningTable, row: Record<string, unknown>) 
     const column = key === 'updatedAt' ? 'updated_at' : toSnake(key);
     const value = row[column];
     if (key === 'updatedAt') out[key] = (value as Date).toISOString();
+    else if (SESSION_INSTANT_COLUMNS.has(column))
+      out[key] = value === null ? null : (value as Date).toISOString();
     else if (NUMERIC_COLUMNS.has(column) && value !== null) out[key] = Number(value);
     else out[toCamel(column)] = value;
   }
