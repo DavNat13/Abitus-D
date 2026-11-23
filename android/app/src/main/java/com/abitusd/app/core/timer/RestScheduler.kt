@@ -4,6 +4,7 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import androidx.core.app.AlarmManagerCompat
 import androidx.core.app.NotificationManagerCompat
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
@@ -27,10 +28,10 @@ class RestScheduler
             endsAt: Long,
             title: String,
         ) {
-            if (alarms.canScheduleExactAlarms()) {
-                alarms.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, endsAt, endIntent())
+            if (AlarmManagerCompat.canScheduleExactAlarms(alarms)) {
+                AlarmManagerCompat.setExactAndAllowWhileIdle(alarms, AlarmManager.RTC_WAKEUP, endsAt, endIntent())
             } else {
-                alarms.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, endsAt, endIntent())
+                AlarmManagerCompat.setAndAllowWhileIdle(alarms, AlarmManager.RTC_WAKEUP, endsAt, endIntent())
             }
             RestNotifications.showCountdown(context, endsAt, title)
         }

@@ -5,7 +5,7 @@ Archivo vivo. Claude Code lo lee al iniciar cada sesión y lo actualiza al termi
 ## Estado actual
 
 - Fecha de creación de la documentación: 2026-11-22.
-- Fase actual: Fase 4 en curso (aprobada por el autor el 2026-11-23; plan en `10f-FASE-4-Y-4B.md`). Fase 3b cerrada (fase-3b-rediseno). Fase 3 cerrada (fase-3); Fase 2 cerrada (fase-2) con la muestra aprobada por el autor.
+- Fase actual: Fase 4 en curso (aprobada por el autor el 2026-11-23; plan en `10f-FASE-4-Y-4B.md`, avance y pendientes en `02h-MEMORIA-FASE-4.md`). Fase 3b cerrada (fase-3b-rediseno). Fase 3 cerrada (fase-3); Fase 2 cerrada (fase-2) con la muestra aprobada por el autor.
 - Repositorio remoto: https://github.com/DavNat13/Abitus-D (público). Versionado: un commit convencional por tarea verificada, push tras cada tarea y etiqueta `fase-N` al cerrar cada fase. Al ser público, revisar secretos antes de cada push.
 - Código: autenticación completa (backend, base de datos y app Android); detalle y decisiones de la Fase 1 en `02d-MEMORIA-FASE-1.md`. Verificaciones externas en `02c-MEMORIA-VERIFICACIONES.md`.
 - Siguiente paso: Fase 4 según `10f`; después Fase 4b (planificación avanzada). Fase 5 solo con aprobación del autor.

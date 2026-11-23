@@ -102,7 +102,7 @@ fun SummaryScreen(
                     rpe,
                     s.rpe,
                     viewModel::setRpe,
-                    noneLabel = stringResource(R.string.library_filter_any),
+                    noneLabel = stringResource(R.string.workout_not_set),
                 )
                 AppTextField(s.notes, viewModel::setNotes, stringResource(R.string.summary_notes))
             }

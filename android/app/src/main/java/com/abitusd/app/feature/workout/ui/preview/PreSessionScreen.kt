@@ -69,7 +69,7 @@ fun PreSessionScreen(
             }
         }
         SectionCard(stringResource(R.string.workout_readiness), icon = AppIcons.Rest) {
-            val none = stringResource(R.string.library_filter_any)
+            val none = stringResource(R.string.workout_not_set)
             AppDropdown(
                 stringResource(R.string.workout_sleep),
                 scale,

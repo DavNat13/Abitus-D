@@ -14,7 +14,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import com.abitusd.app.core.designsystem.theme.AppShapes
 import com.abitusd.app.core.designsystem.theme.AppTheme
 
-/** Small numeric field; empty means "not set". Decimals allowed when [decimal] is true. */
+/** Small numeric field; empty means "not set". [compact] drops the floating label (column headers). */
 @Composable
 fun NumberField(
     value: Number?,
@@ -22,6 +22,7 @@ fun NumberField(
     onValue: (String) -> Unit,
     modifier: Modifier = Modifier,
     decimal: Boolean = false,
+    compact: Boolean = false,
 ) {
     var text by remember(value) { mutableStateOf(value?.let { formatNumber(it) }.orEmpty()) }
     OutlinedTextField(
@@ -31,7 +32,8 @@ fun NumberField(
             text = clean
             onValue(clean)
         },
-        label = { Text(label, style = AppTheme.typography.caption) },
+        label = if (compact) null else ({ Text(label, style = AppTheme.typography.caption) }),
+        placeholder = if (compact) ({ Text(label, style = AppTheme.typography.caption, maxLines = 1) }) else null,
         singleLine = true,
         shape = AppShapes.field,
         textStyle = AppTheme.typography.body,

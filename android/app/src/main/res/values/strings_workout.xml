@@ -82,4 +82,15 @@
     <string name="summary_volume_value">Volumen: %1$s kg</string>
     <string name="summary_sets_value">Series: %1$d</string>
     <string name="summary_template_saved">Plantilla guardada en Rutinas.</string>
+    <string name="workout_not_set">Sin indicar</string>
+    <string name="workout_load_kg">Carga (kg)</string>
+    <string name="workout_reps_long">Repeticiones</string>
+    <string name="workout_previous_value">Anterior: %1$s</string>
+    <string name="workout_rpe_value">RPE %1$s</string>
+    <string name="workout_done">Listo</string>
+    <string name="workout_edit_set">Serie %1$d</string>
+    <string name="workout_decrease">Restar</string>
+    <string name="workout_increase">Sumar</string>
+    <string name="workout_bodyweight">Peso corporal</string>
+    <string name="workout_sets_title">Series</string>
 </resources>

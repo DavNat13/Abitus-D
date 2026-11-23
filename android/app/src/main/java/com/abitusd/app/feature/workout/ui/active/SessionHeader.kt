@@ -4,6 +4,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -18,8 +20,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import com.abitusd.app.R
-import com.abitusd.app.core.designsystem.component.AppButton
 import com.abitusd.app.core.designsystem.icon.AppIcons
+import com.abitusd.app.core.designsystem.theme.AppShapes
 import com.abitusd.app.core.designsystem.theme.AppSpacing
 import com.abitusd.app.core.designsystem.theme.AppTheme
 import kotlinx.coroutines.delay
@@ -68,11 +70,12 @@ fun SessionHeader(
         IconButton(onClick = onMap) {
             Icon(painterResource(AppIcons.Steps), stringResource(R.string.workout_map), tint = colors.primary)
         }
-        AppButton(
-            stringResource(R.string.workout_finish),
-            onFinish,
-            Modifier.padding(end = AppSpacing.xs).fillMaxWidth(FINISH_FRACTION),
-        )
+        Button(
+            onClick = onFinish,
+            modifier = Modifier.padding(end = AppSpacing.xs),
+            shape = AppShapes.button,
+            colors = ButtonDefaults.buttonColors(containerColor = colors.primary, contentColor = colors.onPrimary),
+        ) { Text(stringResource(R.string.workout_finish), style = AppTheme.typography.label, maxLines = 1) }
     }
 }
 
@@ -91,4 +94,3 @@ private const val TICK_MS = 1000L
 private const val MS = 1000L
 private const val SECONDS_PER_MIN = 60
 private const val SECONDS_PER_HOUR = 3600
-private const val FINISH_FRACTION = 0.45f

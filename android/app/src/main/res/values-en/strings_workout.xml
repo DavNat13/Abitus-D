@@ -82,4 +82,15 @@
     <string name="summary_volume_value">Volume: %1$s kg</string>
     <string name="summary_sets_value">Sets: %1$d</string>
     <string name="summary_template_saved">Template saved in Routines.</string>
+    <string name="workout_not_set">Not set</string>
+    <string name="workout_load_kg">Load (kg)</string>
+    <string name="workout_reps_long">Repetitions</string>
+    <string name="workout_previous_value">Previous: %1$s</string>
+    <string name="workout_rpe_value">RPE %1$s</string>
+    <string name="workout_done">Done</string>
+    <string name="workout_edit_set">Set %1$d</string>
+    <string name="workout_decrease">Decrease</string>
+    <string name="workout_increase">Increase</string>
+    <string name="workout_bodyweight">Bodyweight</string>
+    <string name="workout_sets_title">Sets</string>
 </resources>

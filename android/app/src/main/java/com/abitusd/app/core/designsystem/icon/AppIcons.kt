@@ -119,4 +119,6 @@ object AppIcons {
     @DrawableRes val Redo = R.drawable.ic_redo
 
     @DrawableRes val Calculator = R.drawable.ic_calculate
+
+    @DrawableRes val Remove = R.drawable.ic_remove
 }
