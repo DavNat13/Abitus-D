@@ -41,10 +41,10 @@ object SessionStats {
 
     /** Epley estimated one-repetition maximum; null when the set has no load or reps. */
     fun estimatedMax(set: SetEntity): Double? {
-        val load = set.loadKg ?: return null
-        val reps = set.reps ?: return null
-        if (reps <= 0 || reps > MAX_REPS_FOR_RECORD || load <= 0.0) return null
-        return load * (1 + reps / EPLEY_DIVISOR)
+        val load = set.loadKg ?: 0.0
+        val reps = set.reps ?: 0
+        val valid = reps in 1..MAX_REPS_FOR_RECORD && load > 0.0
+        return if (valid) load * (1 + reps / EPLEY_DIVISOR) else null
     }
 
     private fun records(
@@ -57,6 +57,12 @@ object SessionStats {
                 val best = sets.maxByOrNull { estimatedMax(it) ?: 0.0 } ?: return@mapNotNull null
                 val max = estimatedMax(best) ?: return@mapNotNull null
                 val before = previousBest[exerciseId]
-                if (before != null && max > before) PersonalRecord(exerciseId, best.loadKg ?: 0.0, best.reps ?: 0) else null
+                if (before != null &&
+                    max > before
+                ) {
+                    PersonalRecord(exerciseId, best.loadKg ?: 0.0, best.reps ?: 0)
+                } else {
+                    null
+                }
             }
 }

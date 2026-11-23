@@ -105,6 +105,7 @@ object AppIcons {
     @DrawableRes val Setup = R.drawable.ic_settings_accessibility
 
     @DrawableRes val Muscles = R.drawable.ic_accessibility_new
+
     @DrawableRes val Timer = R.drawable.ic_timer
 
     @DrawableRes val Start = R.drawable.ic_play_arrow

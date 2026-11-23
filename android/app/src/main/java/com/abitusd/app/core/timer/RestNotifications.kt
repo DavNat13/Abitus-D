@@ -23,10 +23,18 @@ object RestNotifications {
     fun createChannels(context: Context) {
         val manager = context.getSystemService(NotificationManager::class.java)
         manager.createNotificationChannel(
-            NotificationChannel(CHANNEL_COUNTDOWN, context.getString(R.string.rest_channel_countdown), NotificationManager.IMPORTANCE_LOW),
+            NotificationChannel(
+                CHANNEL_COUNTDOWN,
+                context.getString(R.string.rest_channel_countdown),
+                NotificationManager.IMPORTANCE_LOW,
+            ),
         )
         manager.createNotificationChannel(
-            NotificationChannel(CHANNEL_DONE, context.getString(R.string.rest_channel_done), NotificationManager.IMPORTANCE_HIGH).apply {
+            NotificationChannel(
+                CHANNEL_DONE,
+                context.getString(R.string.rest_channel_done),
+                NotificationManager.IMPORTANCE_HIGH,
+            ).apply {
                 enableVibration(true)
             },
         )
@@ -77,7 +85,9 @@ object RestNotifications {
         id: Int,
         notification: android.app.Notification,
     ) {
-        val granted = ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED
+        val granted =
+            ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) ==
+                PackageManager.PERMISSION_GRANTED
         if (granted) NotificationManagerCompat.from(context).notify(id, notification)
     }
 

@@ -42,4 +42,8 @@ object DatabaseModule {
 
     @Provides
     fun sessionDao(database: AbitusDatabase): com.abitusd.app.core.database.session.SessionDao = database.sessionDao()
+
+    @Provides
+    fun workoutHistoryDao(database: AbitusDatabase): com.abitusd.app.core.database.session.WorkoutHistoryDao =
+        database.workoutHistoryDao()
 }

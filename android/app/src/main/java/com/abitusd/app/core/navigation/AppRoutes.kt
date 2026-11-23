@@ -47,3 +47,17 @@ import kotlinx.serialization.Serializable
 @Serializable data class ProgramEditorRoute(
     val id: String? = null,
 ) : NavKey
+
+@Serializable data class PreSessionRoute(
+    val routineId: String? = null,
+    val scheduledWorkoutId: String? = null,
+) : NavKey
+
+@Serializable data object ActiveSessionRoute : NavKey
+
+@Serializable data class SessionSummaryRoute(
+    val sessionId: String,
+    val finished: Boolean = false,
+) : NavKey
+
+@Serializable data object HistoryRoute : NavKey

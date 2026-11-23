@@ -20,6 +20,7 @@ import com.abitusd.app.feature.legal.LegalDocumentScreen
 import com.abitusd.app.feature.library.ui.detail.ExerciseDetailScreen
 import com.abitusd.app.feature.library.ui.form.OwnExerciseFormScreen
 import com.abitusd.app.feature.profile.ui.ProfileScreen
+import com.abitusd.app.feature.train.ui.WorkoutActions
 import com.abitusd.app.feature.train.ui.programs.ProgramEditorScreen
 import com.abitusd.app.feature.train.ui.routines.RoutineEditorScreen
 
@@ -90,6 +91,10 @@ fun MainNavigation() {
                 onCreateExercise = { stack.add(OwnExerciseFormRoute()) },
                 onOpenRoutine = { stack.add(RoutineEditorRoute(it)) },
                 onOpenProgram = { stack.add(ProgramEditorRoute(it)) },
+                workout =
+                    WorkoutActions({ r, sch -> stack.add(PreSessionRoute(r, sch)) }, {
+                        stack.add(ActiveSessionRoute)
+                    }, { stack.add(HistoryRoute) }),
             )
         }
         entry<ExerciseDetailRoute> { key ->
@@ -113,6 +118,7 @@ fun MainNavigation() {
         }
         entry<RoutineEditorRoute> { key -> RoutineEditorScreen(key.id, onBack = back) }
         entry<ProgramEditorRoute> { key -> ProgramEditorScreen(key.id, onBack = back) }
+        workoutEntries(stack, back)
         entry<ProfileRoute> {
             ProfileScreen(
                 onBack = back,

@@ -84,6 +84,8 @@ abstract class AbitusDatabase : RoomDatabase() {
 
     abstract fun sessionDao(): SessionDao
 
+    abstract fun workoutHistoryDao(): com.abitusd.app.core.database.session.WorkoutHistoryDao
+
     companion object {
         const val NAME = "abitusd.db"
     }

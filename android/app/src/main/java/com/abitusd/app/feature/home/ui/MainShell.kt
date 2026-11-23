@@ -27,6 +27,7 @@ import com.abitusd.app.core.designsystem.theme.AppTheme
 import com.abitusd.app.core.designsystem.theme.appShadow
 import com.abitusd.app.feature.library.ui.list.LibraryScreen
 import com.abitusd.app.feature.train.ui.TrainScreen
+import com.abitusd.app.feature.train.ui.WorkoutActions
 
 enum class MainTab(
     @param:StringRes val label: Int,
@@ -47,6 +48,7 @@ fun MainShell(
     onCreateExercise: () -> Unit,
     onOpenRoutine: (String?) -> Unit,
     onOpenProgram: (String?) -> Unit,
+    workout: WorkoutActions,
 ) {
     val colors = AppTheme.colors
     var selected by rememberSaveable { mutableStateOf(MainTab.HOME) }
@@ -89,7 +91,7 @@ fun MainShell(
         } else if (selected == MainTab.HOME) {
             HomeScreen(onOpenProfile, { selected = MainTab.TRAIN }, Modifier.padding(padding))
         } else if (selected == MainTab.TRAIN) {
-            TrainScreen(onOpenRoutine, onOpenProgram, Modifier.padding(padding))
+            TrainScreen(onOpenRoutine, onOpenProgram, workout, Modifier.padding(padding))
         } else {
             SectionPlaceholder(
                 tab = selected,

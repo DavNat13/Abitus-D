@@ -42,10 +42,12 @@ class RestAlarmReceiver : BroadcastReceiver() {
                 if (active != null) dao.setActive(active.copy(restEndsAt = null))
                 RestNotifications.showDone(context)
             }
+
             ACTION_SKIP -> {
                 scheduler.cancel()
                 if (active != null) dao.setActive(active.copy(restEndsAt = null))
             }
+
             ACTION_ADD -> {
                 val endsAt = active?.restEndsAt ?: return
                 val next = endsAt + EXTRA_MS

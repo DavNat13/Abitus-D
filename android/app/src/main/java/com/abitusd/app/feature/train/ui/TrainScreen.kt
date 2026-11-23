@@ -21,6 +21,7 @@ import com.abitusd.app.core.designsystem.theme.AppTheme
 import com.abitusd.app.feature.train.ui.calendar.CalendarTab
 import com.abitusd.app.feature.train.ui.programs.ProgramsTab
 import com.abitusd.app.feature.train.ui.routines.RoutinesTab
+import com.abitusd.app.feature.workout.ui.hub.TodayWorkoutCard
 
 private val tabs = listOf(R.string.train_tab_routines, R.string.train_tab_programs, R.string.train_tab_calendar)
 
@@ -29,6 +30,7 @@ private val tabs = listOf(R.string.train_tab_routines, R.string.train_tab_progra
 fun TrainScreen(
     onOpenRoutine: (String?) -> Unit,
     onOpenProgram: (String?) -> Unit,
+    workout: WorkoutActions,
     modifier: Modifier = Modifier,
 ) {
     var selected by rememberSaveable { mutableIntStateOf(0) }
@@ -37,6 +39,7 @@ fun TrainScreen(
         verticalArrangement = Arrangement.spacedBy(AppSpacing.sm),
     ) {
         ScreenHeader(stringResource(R.string.nav_train))
+        TodayWorkoutCard(workout.onStart, workout.onContinue, workout.onHistory)
         SegmentedTabs(
             labels = tabs.map { stringResource(it) },
             selected = selected,
@@ -50,3 +53,10 @@ fun TrainScreen(
         }
     }
 }
+
+/** Navigation callbacks of the workout flow, passed down from the shell. */
+data class WorkoutActions(
+    val onStart: (routineId: String?, scheduledId: String?) -> Unit,
+    val onContinue: () -> Unit,
+    val onHistory: () -> Unit,
+)

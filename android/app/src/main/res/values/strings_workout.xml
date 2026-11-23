@@ -71,4 +71,15 @@
     <string name="plate_target">Peso total (kg)</string>
     <string name="plate_per_side">Por lado: %1$s</string>
     <string name="plate_not_exact">Con estos discos no se llega exacto; queda en %1$s kg.</string>
+    <string name="workout_exercise_sets">%1$s, %2$d series</string>
+    <string name="workout_set_value">%1$s kg x %2$d</string>
+    <string name="workout_set_reps">%1$d reps</string>
+    <string name="workout_set_time">%1$d s</string>
+    <string name="workout_elapsed">Tiempo de sesión</string>
+    <string name="workout_rest_left">Descanso: %1$s</string>
+    <string name="workout_tools">Herramientas</string>
+    <string name="summary_duration_value">Duración: %1$d min</string>
+    <string name="summary_volume_value">Volumen: %1$s kg</string>
+    <string name="summary_sets_value">Series: %1$d</string>
+    <string name="summary_template_saved">Plantilla guardada en Rutinas.</string>
 </resources>

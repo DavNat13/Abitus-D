@@ -71,4 +71,15 @@
     <string name="plate_target">Total weight (kg)</string>
     <string name="plate_per_side">Per side: %1$s</string>
     <string name="plate_not_exact">These plates cannot reach it exactly; closest is %1$s kg.</string>
+    <string name="workout_exercise_sets">%1$s, %2$d sets</string>
+    <string name="workout_set_value">%1$s kg x %2$d</string>
+    <string name="workout_set_reps">%1$d reps</string>
+    <string name="workout_set_time">%1$d s</string>
+    <string name="workout_elapsed">Session time</string>
+    <string name="workout_rest_left">Rest: %1$s</string>
+    <string name="workout_tools">Tools</string>
+    <string name="summary_duration_value">Duration: %1$d min</string>
+    <string name="summary_volume_value">Volume: %1$s kg</string>
+    <string name="summary_sets_value">Sets: %1$d</string>
+    <string name="summary_template_saved">Template saved in Routines.</string>
 </resources>
