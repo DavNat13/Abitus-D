@@ -78,4 +78,9 @@
     <string name="profile_terms">Terms of use</string>
     <string name="profile_sign_out">Sign out</string>
     <string name="profile_sign_out_note">Signing out removes your account data from this device.</string>
+    <string name="auth_credentials">Sign-in details</string>
+    <string name="auth_consent">Consent</string>
+    <string name="auth_verification">Verification code</string>
+    <string name="auth_account_email">Account email</string>
+    <string name="auth_password_reset">Code and new password</string>
 </resources>

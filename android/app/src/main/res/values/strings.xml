@@ -80,4 +80,9 @@
     <string name="profile_terms">Términos de uso</string>
     <string name="profile_sign_out">Cerrar sesión</string>
     <string name="profile_sign_out_note">Cerrar sesión borra los datos de tu cuenta de este dispositivo.</string>
+    <string name="auth_credentials">Datos de acceso</string>
+    <string name="auth_consent">Consentimientos</string>
+    <string name="auth_verification">Código de verificación</string>
+    <string name="auth_account_email">Correo de la cuenta</string>
+    <string name="auth_password_reset">Código y nueva contraseña</string>
 </resources>

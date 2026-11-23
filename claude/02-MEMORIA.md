@@ -114,6 +114,7 @@ Formato de cada entrada: `AAAA-MM-DD | área | qué se hizo | resultado de la ve
 - 2026-11-22 | android | Sistema de diseño, sesión cifrada, pantallas de acceso, barra inferior, política | 13 pruebas unitarias, Detekt y ktlint en verde; recorrido real en emulador API 29 (registro, código, verificación, reinicio con sesión, cierre, login, aviso de dispositivo nuevo) | Fase 2 tras aprobación
 - 2026-11-22 | planificación | Fase 3 completa (backend, Room v3, pestaña Entrenar, perfiles de equipo) | 56 pruebas de backend y pruebas unitarias Android en verde; Detekt, ktlint, longitudes y emojis OK; en emulador sin red: plantilla, programa activado, reprogramación; al volver la red el servidor tiene 3 rutinas, 12 ejercicios, 1 programa, 12 días y 12 programados | Fase 4
 - 2026-11-22 | diseño | tools/check-contrast sobre los tokens | 32 pares AA en ambos temas tras ajustar inputBorder oscuro a #777A8C | -
+- 2026-11-23 | acceso | Bienvenida, registro, verificación, login y recuperación en tarjetas con icono (iniciado con Codex, cerrado por Claude) | Detekt, ktlint, pruebas unitarias y APK en verde; scripts OK | Inicio y Perfil
 
 ## Cómo actualizar este archivo
 

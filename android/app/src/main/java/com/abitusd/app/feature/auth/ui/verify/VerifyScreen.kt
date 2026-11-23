@@ -11,8 +11,10 @@ import com.abitusd.app.core.designsystem.component.AppButton
 import com.abitusd.app.core.designsystem.component.AppButtonStyle
 import com.abitusd.app.core.designsystem.component.CodeInput
 import com.abitusd.app.core.designsystem.component.FormScreen
+import com.abitusd.app.core.designsystem.component.SectionCard
 import com.abitusd.app.core.designsystem.component.StatusBanner
 import com.abitusd.app.core.designsystem.component.StatusKind
+import com.abitusd.app.core.designsystem.icon.AppIcons
 import com.abitusd.app.core.designsystem.theme.AppTheme
 
 @Composable
@@ -31,19 +33,22 @@ fun VerifyScreen(
         subtitle = stringResource(R.string.verify_subtitle, state.email),
         onBack = onBack,
     ) {
-        CodeInput(
-            code = state.code,
-            onCodeChange = viewModel::onCode,
-            accessibilityLabel = stringResource(R.string.verify_code_label),
-            isError = state.error != null,
-            onDone = viewModel::submit,
-        )
+        SectionCard(stringResource(R.string.auth_verification), icon = AppIcons.Email) {
+            CodeInput(
+                code = state.code,
+                onCodeChange = viewModel::onCode,
+                accessibilityLabel = stringResource(R.string.verify_code_label),
+                isError = state.error != null,
+                onDone = viewModel::submit,
+            )
+        }
         state.error?.let { StatusBanner(stringResource(it), StatusKind.Error) }
         state.info?.let { StatusBanner(stringResource(it), StatusKind.Success) }
         AppButton(
             text = stringResource(R.string.verify_submit),
             onClick = viewModel::submit,
             enabled = state.canSubmit,
+            icon = AppIcons.Check,
             loading = state.submitting,
         )
         if (state.resendSeconds > 0) {

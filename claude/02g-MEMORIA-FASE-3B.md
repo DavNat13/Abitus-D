@@ -30,3 +30,5 @@ Complemento de `02-MEMORIA.md`. Dirección visual en `05d-UI-DIRECCION-VISUAL.md
 - Filtros de la biblioteca y formulario de ejercicio propio con desplegables (AppDropdown y AppMultiDropdown) en lugar de nubes de chips, a pedido del autor.
 - Detalle de ejercicio, formulario propio, rutinas, editor, programas y calendario en tarjetas por sección con icono (SectionCard), acciones secundarias en menú contextual y confirmación antes de eliminar.
 - Las rutinas creadas desde plantillas guardan el nombre en el idioma activo al crearlas; no se traducen después.
+- Acceso rediseñado (2026-11-23): Codex lo empezó en sandbox sin poder compilar; Claude corrigió detalles y verificó pruebas y APK. El sandbox de Codex en Windows no ve el SDK de AppData y deja un daemon de Gradle que falla también fuera; se resuelve con ./gradlew --stop.
+- Tema: MainActivity fija darkTheme en false. Para la auditoría queda pendiente probar una compilación debug temporal con true y documentar el resultado. El selector claro, oscuro o sistema de 05b queda pendiente para Ajustes.
