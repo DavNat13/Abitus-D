@@ -26,6 +26,7 @@ import com.abitusd.app.core.designsystem.component.ListItemCard
 import com.abitusd.app.core.designsystem.component.MenuAction
 import com.abitusd.app.core.designsystem.component.OverflowMenu
 import com.abitusd.app.core.designsystem.component.SectionCard
+import com.abitusd.app.core.designsystem.component.VolumeBars
 import com.abitusd.app.core.designsystem.icon.AppIcons
 import com.abitusd.app.core.designsystem.theme.AppSpacing
 import com.abitusd.app.core.designsystem.theme.AppTheme
@@ -71,12 +72,7 @@ fun CalendarDayDetail(
     }
     if (s.weekVolume.isNotEmpty()) {
         SectionCard(stringResource(R.string.calendar_week_volume), icon = AppIcons.Muscles) {
-            FlowRow(
-                horizontalArrangement = Arrangement.spacedBy(AppSpacing.xs),
-                verticalArrangement = Arrangement.spacedBy(AppSpacing.xs),
-            ) {
-                s.weekVolume.forEach { (muscle, sets) -> InfoPill("$muscle  ${"%.1f".format(sets)}") }
-            }
+            VolumeBars(s.weekVolume)
         }
     }
     if (choosing) {

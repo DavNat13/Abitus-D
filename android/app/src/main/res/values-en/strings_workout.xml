@@ -98,4 +98,5 @@
     <string name="missed_push">Push the whole plan</string>
     <string name="missed_skip">Skip it</string>
     <string name="history_repeat">Repeat this session</string>
+    <string name="home_done_today">You completed %1$s today. Good work.</string>
 </resources>

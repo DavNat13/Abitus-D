@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="volume_sets">
+        <item quantity="one">%1$s serie</item>
+        <item quantity="other">%1$s series</item>
+    </plurals>
+</resources>

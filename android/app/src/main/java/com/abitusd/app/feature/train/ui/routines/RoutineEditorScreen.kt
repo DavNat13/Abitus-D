@@ -28,6 +28,7 @@ import com.abitusd.app.core.designsystem.component.SectionCard
 import com.abitusd.app.core.designsystem.component.SectionHeader
 import com.abitusd.app.core.designsystem.component.StatusBanner
 import com.abitusd.app.core.designsystem.component.StatusKind
+import com.abitusd.app.core.designsystem.component.VolumeBars
 import com.abitusd.app.core.designsystem.icon.AppIcons
 import com.abitusd.app.core.designsystem.theme.AppSpacing
 import com.abitusd.app.core.designsystem.theme.AppTheme
@@ -89,12 +90,7 @@ fun RoutineEditorScreen(
         }, style = AppButtonStyle.Tonal, icon = AppIcons.Add)
         if (s.volume.isNotEmpty()) {
             SectionCard(stringResource(R.string.routine_volume), icon = AppIcons.Muscles) {
-                FlowRow(
-                    horizontalArrangement = Arrangement.spacedBy(AppSpacing.xs),
-                    verticalArrangement = Arrangement.spacedBy(AppSpacing.xs),
-                ) {
-                    s.volume.forEach { (muscle, sets) -> InfoPill("$muscle  ${"%.1f".format(sets)}") }
-                }
+                VolumeBars(s.volume)
             }
         }
         s.error?.let { StatusBanner(stringResource(it), StatusKind.Error) }

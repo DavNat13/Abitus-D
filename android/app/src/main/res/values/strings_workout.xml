@@ -98,4 +98,5 @@
     <string name="missed_push">Mover todo el plan</string>
     <string name="missed_skip">Saltarla</string>
     <string name="history_repeat">Repetir esta sesión</string>
+    <string name="home_done_today">Ya completaste %1$s hoy. Buen trabajo.</string>
 </resources>

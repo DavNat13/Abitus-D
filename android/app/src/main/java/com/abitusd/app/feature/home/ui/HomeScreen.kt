@@ -70,8 +70,11 @@ fun HomeScreen(
             verticalArrangement = Arrangement.spacedBy(AppSpacing.sm),
         ) {
             if (s.loading) return@Column
-            val training = s.today.filterNot { it.activeRest }
-            if (training.isNotEmpty()) {
+            val all = s.today.filterNot { it.activeRest }
+            val training = all.filter { it.status != STATUS_DONE }
+            if (training.isEmpty() && all.isNotEmpty()) {
+                EmptyState(AppIcons.Check, stringResource(R.string.home_done_today, all.first().routineName))
+            } else if (training.isNotEmpty()) {
                 HeroCard(
                     stringResource(R.string.home_today),
                     training.first().routineName,
@@ -117,3 +120,5 @@ fun HomeScreen(
         }
     }
 }
+
+private const val STATUS_DONE = "done"
