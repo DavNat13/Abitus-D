@@ -105,4 +105,17 @@ object AppIcons {
     @DrawableRes val Setup = R.drawable.ic_settings_accessibility
 
     @DrawableRes val Muscles = R.drawable.ic_accessibility_new
+    @DrawableRes val Timer = R.drawable.ic_timer
+
+    @DrawableRes val Start = R.drawable.ic_play_arrow
+
+    @DrawableRes val Finish = R.drawable.ic_stop_circle
+
+    @DrawableRes val History = R.drawable.ic_history
+
+    @DrawableRes val Undo = R.drawable.ic_undo
+
+    @DrawableRes val Redo = R.drawable.ic_redo
+
+    @DrawableRes val Calculator = R.drawable.ic_calculate
 }

@@ -5,6 +5,7 @@ import android.content.Context
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
 import com.abitusd.app.core.i18n.AppLanguage
+import com.abitusd.app.core.timer.RestNotifications
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 
@@ -18,6 +19,11 @@ class AbitusApp :
     }
 
     @Inject lateinit var workerFactory: HiltWorkerFactory
+
+    override fun onCreate() {
+        super.onCreate()
+        RestNotifications.createChannels(this)
+    }
 
     override val workManagerConfiguration: Configuration
         get() = Configuration.Builder().setWorkerFactory(workerFactory).build()
