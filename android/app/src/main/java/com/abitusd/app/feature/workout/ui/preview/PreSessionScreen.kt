@@ -50,8 +50,8 @@ fun PreSessionScreen(
     val scale = (1..SCALE_MAX).map { ChoiceOption(it, stringResource(R.string.workout_scale, it)) }
     FormScreen(
         title = s.title ?: freeTitle,
-        subtitle = stringResource(R.string.workout_preview_title),
         onBack = onBack,
+        info = { InfoButton(R.string.info_screen_preview, WorkoutInfo.preview) },
     ) {
         SectionCard(stringResource(R.string.routine_exercises), icon = AppIcons.Steps) {
             if (s.exercises.isEmpty()) Hint(stringResource(R.string.workout_no_exercises))

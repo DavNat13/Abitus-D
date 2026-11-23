@@ -54,6 +54,7 @@ fun SummaryScreen(
         title = if (finished) s.title else stringResource(R.string.summary_title),
         subtitle = if (finished) null else s.title,
         onBack = onBack,
+        info = { InfoButton(R.string.info_screen_summary, WorkoutInfo.summary) },
     ) {
         if (summary != null) {
             FlowRow(
