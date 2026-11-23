@@ -45,6 +45,8 @@ Criterios de aceptación:
 
 ## Fase 4 - Registro de entrenamiento
 
+Ampliada y dividida en Fase 4 y Fase 4b el 2026-11-23: el detalle vigente está en `10f-FASE-4-Y-4B.md`, que manda sobre esta sección.
+
 Objetivo: el corazón de la app, rápido y a prueba de fallos.
 
 Entregables:

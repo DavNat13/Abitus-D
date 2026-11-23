@@ -11,7 +11,7 @@ Este archivo es para cualquier agente distinto de Claude Code. Las reglas del pr
 
 ## Acuerdos con el autor (no están en otros archivos)
 
-- Al cerrar una fase con todo en verde se puede pasar a la siguiente sin pedir aprobación, salvo que la memoria diga que el autor pidió esperar (hoy: la Fase 4 espera su aprobación).
+- Al cerrar una fase con todo en verde se puede pasar a la siguiente sin pedir aprobación, salvo que la memoria diga que el autor pidió esperar (revisa en claude/02-MEMORIA.md qué fase está aprobada).
 - `.env`: se puede configurar libremente, excepto `SMTP_USER` y `SMTP_PASSWORD`, que pone el autor. Nunca imprimas el `.env` ni secretos en la salida; carga variables con `node --env-file`.
 - Despliegue (Vercel, Neon) y keystore de firma quedan para el final del proyecto.
 - Versionado: repositorio público https://github.com/DavNat13/Abitus-D. Un commit convencional (en inglés) por tarea verificada, push inmediato y etiqueta `fase-N` al cerrar cada fase. Revisa que no haya secretos antes de cada push.

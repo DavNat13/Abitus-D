@@ -31,6 +31,7 @@ Carpeta de contexto para Claude Code. Cada archivo cubre un área; léelo antes 
 | 10c-FASES-DE-TRABAJO-3.md | Fases 5 a 7 (reloj, analítica, cardio y salud) | Al planificar o cerrar una fase |
 | 10d-FASES-DE-TRABAJO-4.md | Fases 8 a 10 (3D, ajustes, distribución 1.0) | Al planificar o cerrar una fase |
 | 10e-FASES-DE-TRABAJO-5.md | Fases 11 a 13, mejoras posteriores a la 1.0 | Al promover ideas a fases |
+| `10f-FASE-4-Y-4B.md` | Fase 4 (registro en varias pantallas) y Fase 4b (planificación avanzada), acordadas el 2026-11-23 |
 | 11-IDEAS-Y-FUTURO.md | Ideas, mejoras futuras y lo que está fuera de alcance | Al proponer funciones nuevas |
 | 11b-IDEAS-REGISTRO-Y-PROGRAMACION.md | Ideas de registro, calentamiento, programación y hábitos | Al planificar funciones de entrenamiento |
 | 11c-IDEAS-DEPORTES-Y-SALUD.md | Ideas de cardio, natación, calistenia, fuerza, recuperación y medidas | Al planificar deportes y salud |
