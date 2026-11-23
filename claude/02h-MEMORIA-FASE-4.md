@@ -15,7 +15,7 @@ Complemento de `02-MEMORIA.md`. Plan acordado en `10f-FASE-4-Y-4B.md`.
 - Cierre forzado a mitad de sesión: la sesión y sus series confirmadas se recuperan al abrir la app.
 - Deshacer y rehacer: locales, funcionan sin conexión.
 - Descanso con pantalla apagada: alarma exacta programada y notificación visible; falta escucharlo en un teléfono real con la pantalla apagada.
-- Hallazgo: la base de desarrollo necesitaba  en database/ tras agregar la 013; sin eso el servidor respondía 500 al sincronizar.
+- Hallazgo: la base de desarrollo necesitaba `npm run migrate` en database/ tras agregar la 013; sin eso el servidor respondía 500 al sincronizar.
 
 ## Decisiones
 - Descanso sin servicio en primer plano: alarma exacta (`AlarmManagerCompat.setExactAndAllowWhileIdle`) más notificación con cuenta regresiva del sistema y acciones +15 s y Saltar. Permisos: `USE_EXACT_ALARM` (concedido a apps de temporizador) y `POST_NOTIFICATIONS` pedido en la Previa. Motivo, según developer.android.com (2026-11-23): `health` exige permisos de sensores, `shortService` se corta a los 3 minutos y `specialUse` pasa por revisión de Play.
@@ -28,7 +28,6 @@ Complemento de `02-MEMORIA.md`. Plan acordado en `10f-FASE-4-Y-4B.md`.
 - Al empezar una sesión con otra sin terminar, la anterior queda colgada: ofrecer terminarla o descartarla.
 - La tarjeta "Sesión en curso" de Entrenar repite "Continuar sesión" como título; mostrar el nombre de la sesión.
 - Encabezados con solo el nombre y el botón de información (pedido del autor): hecho en Inicio, Entrenar, Biblioteca, Previa, Sesión, Resumen e Historial; falta en el resto de pantallas.
-- Medir y documentar los criterios con evidencia: confirmación en menos de 100 ms, descanso con pantalla apagada, sesión sin conexión sin duplicados en el servidor.
+- Escuchar el fin del descanso con la pantalla apagada en un teléfono real.
 - Series de aproximación sugeridas, molestia por zona en la interfaz, alternativas del ejercicio.
-- Rótulo "Tiempo de sesión" se parte en dos líneas en pantallas estrechas.
 - `lintDebug` marca `local.properties` (PropertyEscape) aunque ya está escapado; revisar caché de lint. Lint encontró por esto que faltaba compatibilidad en `canScheduleExactAlarms` (ya corregido con AlarmManagerCompat).
