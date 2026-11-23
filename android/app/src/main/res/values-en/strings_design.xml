@@ -21,4 +21,20 @@
     <string name="form_section_type">Exercise type</string>
     <string name="program_delete_title">Delete program</string>
     <string name="program_delete_text">The program is removed from all your devices. Workouts already scheduled are not changed.</string>
+    <string name="home_today">Today\'s workout</string>
+    <string name="home_go_train">Go to Train</string>
+    <string name="home_more_today">and %1$d more today</string>
+    <string name="home_rest_day">Nothing scheduled today. Rest or plan your week.</string>
+    <string name="home_plan">Plan</string>
+    <string name="home_next">Next: %1$s</string>
+    <string name="home_week">This week</string>
+    <string name="home_week_planned">%1$d planned</string>
+    <string name="home_week_done">%1$d done</string>
+    <string name="profile_preferences">Preferences</string>
+    <string name="profile_legal">Legal</string>
+    <string name="profile_account">Account</string>
+    <string name="profile_theme">Theme</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="theme_system">System</string>
 </resources>

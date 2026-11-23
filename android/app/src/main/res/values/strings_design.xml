@@ -21,4 +21,20 @@
     <string name="form_section_type">Tipo de ejercicio</string>
     <string name="program_delete_title">Eliminar programa</string>
     <string name="program_delete_text">El programa se borra de todos tus dispositivos. Los entrenamientos ya programados no se modifican.</string>
+    <string name="home_today">Entrenamiento de hoy</string>
+    <string name="home_go_train">Ir a Entrenar</string>
+    <string name="home_more_today">y %1$d más hoy</string>
+    <string name="home_rest_day">No tienes nada programado hoy. Descansa o planifica tu semana.</string>
+    <string name="home_plan">Planificar</string>
+    <string name="home_next">Próximo: %1$s</string>
+    <string name="home_week">Esta semana</string>
+    <string name="home_week_planned">%1$d planificados</string>
+    <string name="home_week_done">%1$d hechos</string>
+    <string name="profile_preferences">Preferencias</string>
+    <string name="profile_legal">Información legal</string>
+    <string name="profile_account">Cuenta</string>
+    <string name="profile_theme">Tema</string>
+    <string name="theme_light">Claro</string>
+    <string name="theme_dark">Oscuro</string>
+    <string name="theme_system">Sistema</string>
 </resources>

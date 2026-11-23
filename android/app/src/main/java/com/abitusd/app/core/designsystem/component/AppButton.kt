@@ -6,7 +6,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
@@ -20,6 +20,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.abitusd.app.core.designsystem.motion.AppMotion
 import com.abitusd.app.core.designsystem.motion.pressScale
@@ -61,7 +62,7 @@ private fun look(
         }
 
         AppButtonStyle.Tonal -> {
-            ButtonLook(if (pressed) c.primaryContainer else c.surfaceSoft, c.navy, null)
+            ButtonLook(if (pressed) c.primaryContainer else c.surfaceSoft, c.onPrimaryContainer, null)
         }
 
         AppButtonStyle.Text -> {
@@ -99,9 +100,8 @@ fun AppButton(
         modifier =
             modifier
                 .fillMaxWidth()
-                .height(
-                    AppSizes.buttonHeight,
-                ).pressScale(interaction, AppMotion.PRESS_SCALE_BUTTON),
+                .heightIn(min = AppSizes.buttonHeight)
+                .pressScale(interaction, AppMotion.PRESS_SCALE_BUTTON),
         enabled = active,
         shape = AppShapes.button,
         interactionSource = interaction,
@@ -122,7 +122,7 @@ fun AppButton(
                 Icon(painterResource(it), contentDescription = null, modifier = Modifier.size(AppSizes.iconSmall))
                 Spacer(Modifier.width(AppSpacing.xs))
             }
-            Text(text = text, style = AppTheme.typography.label)
+            Text(text = text, style = AppTheme.typography.label, textAlign = TextAlign.Center)
         }
     }
 }

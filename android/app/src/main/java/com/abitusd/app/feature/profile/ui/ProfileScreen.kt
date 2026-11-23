@@ -1,8 +1,12 @@
 package com.abitusd.app.feature.profile.ui
 
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.ViewModel
@@ -11,7 +15,11 @@ import androidx.lifecycle.viewModelScope
 import com.abitusd.app.R
 import com.abitusd.app.core.designsystem.component.AppButton
 import com.abitusd.app.core.designsystem.component.AppButtonStyle
+import com.abitusd.app.core.designsystem.component.ConfirmDialog
 import com.abitusd.app.core.designsystem.component.FormScreen
+import com.abitusd.app.core.designsystem.component.NavRow
+import com.abitusd.app.core.designsystem.component.SectionCard
+import com.abitusd.app.core.designsystem.icon.AppIcons
 import com.abitusd.app.core.designsystem.theme.AppTheme
 import com.abitusd.app.feature.auth.data.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -38,7 +46,7 @@ class ProfileViewModel
         }
     }
 
-/** Phase 1 profile: legal documents and sign out. Settings arrive in Phase 9. */
+/** Profile in cards: preferences, legal documents and account. Full settings arrive in Phase 9. */
 @Composable
 fun ProfileScreen(
     onBack: () -> Unit,
@@ -48,22 +56,39 @@ fun ProfileScreen(
     viewModel: ProfileViewModel = hiltViewModel(),
 ) {
     val signingOut by viewModel.signingOut.collectAsStateWithLifecycle()
+    var confirmSignOut by rememberSaveable { mutableStateOf(false) }
     FormScreen(title = stringResource(R.string.profile_title), onBack = onBack) {
-        LanguagePicker()
-        EnglishNamesPicker()
-        AppButton(stringResource(R.string.profile_privacy), onOpenPrivacy, style = AppButtonStyle.Text)
-        AppButton(stringResource(R.string.profile_terms), onOpenTerms, style = AppButtonStyle.Text)
-        AppButton(stringResource(R.string.profile_credits), onOpenCredits, style = AppButtonStyle.Text)
-        Text(
-            text = stringResource(R.string.profile_sign_out_note),
-            style = AppTheme.typography.caption,
-            color = AppTheme.colors.textSecondary,
-        )
-        AppButton(
-            text = stringResource(R.string.profile_sign_out),
-            onClick = viewModel::signOut,
-            style = AppButtonStyle.Secondary,
-            loading = signingOut,
+        SectionCard(stringResource(R.string.profile_preferences), icon = AppIcons.Filter) {
+            LanguagePicker()
+            ThemePicker()
+            EnglishNamesPicker()
+        }
+        SectionCard(stringResource(R.string.profile_legal), icon = AppIcons.Info) {
+            NavRow(stringResource(R.string.profile_privacy), onOpenPrivacy)
+            HorizontalDivider(color = AppTheme.colors.outline)
+            NavRow(stringResource(R.string.profile_terms), onOpenTerms)
+            HorizontalDivider(color = AppTheme.colors.outline)
+            NavRow(stringResource(R.string.profile_credits), onOpenCredits)
+        }
+        SectionCard(stringResource(R.string.profile_account), icon = AppIcons.Profile) {
+            Text(
+                stringResource(R.string.profile_sign_out_note),
+                style = AppTheme.typography.body,
+                color = AppTheme.colors.textSecondary,
+            )
+            AppButton(stringResource(R.string.profile_sign_out), {
+                confirmSignOut = true
+            }, style = AppButtonStyle.Destructive, loading = signingOut, icon = AppIcons.Logout)
+        }
+    }
+    if (confirmSignOut) {
+        ConfirmDialog(
+            title = stringResource(R.string.profile_sign_out),
+            message = stringResource(R.string.profile_sign_out_note),
+            confirmLabel = stringResource(R.string.profile_sign_out),
+            dismissLabel = stringResource(R.string.detail_cancel),
+            onConfirm = viewModel::signOut,
+            onDismiss = { confirmSignOut = false },
         )
     }
 }

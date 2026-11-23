@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import com.abitusd.app.core.designsystem.motion.AppMotion
 import com.abitusd.app.core.designsystem.theme.AppShapes
 import com.abitusd.app.core.designsystem.theme.AppSizes
@@ -63,6 +64,9 @@ fun SegmentedTabs(
                     style = AppTheme.typography.label,
                     color = if (isSelected) colors.primary else colors.textSecondary,
                     textAlign = TextAlign.Center,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.padding(horizontal = AppSpacing.xxs),
                 )
             }
         }

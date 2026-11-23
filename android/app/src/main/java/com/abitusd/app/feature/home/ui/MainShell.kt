@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import com.abitusd.app.R
 import com.abitusd.app.core.designsystem.icon.AppIcons
 import com.abitusd.app.core.designsystem.theme.AppElevation
@@ -62,7 +63,14 @@ fun MainShell(
                         selected = tab == selected,
                         onClick = { selected = tab },
                         icon = { Icon(painterResource(tab.icon), contentDescription = null) },
-                        label = { Text(stringResource(tab.label), style = AppTheme.typography.caption) },
+                        label = {
+                            Text(
+                                stringResource(tab.label),
+                                style = AppTheme.typography.caption,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis,
+                            )
+                        },
                         colors =
                             NavigationBarItemDefaults.colors(
                                 selectedIconColor = colors.primary,
@@ -78,12 +86,14 @@ fun MainShell(
     ) { padding ->
         if (selected == MainTab.LIBRARY) {
             LibraryScreen(onOpenExercise, onCreateExercise, Modifier.padding(padding))
+        } else if (selected == MainTab.HOME) {
+            HomeScreen(onOpenProfile, { selected = MainTab.TRAIN }, Modifier.padding(padding))
         } else if (selected == MainTab.TRAIN) {
             TrainScreen(onOpenRoutine, onOpenProgram, Modifier.padding(padding))
         } else {
             SectionPlaceholder(
                 tab = selected,
-                onOpenProfile = if (selected == MainTab.HOME) onOpenProfile else null,
+                onOpenProfile = null,
                 modifier = Modifier.padding(padding),
             )
         }

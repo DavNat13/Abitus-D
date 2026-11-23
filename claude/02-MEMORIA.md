@@ -5,10 +5,10 @@ Archivo vivo. Claude Code lo lee al iniciar cada sesión y lo actualiza al termi
 ## Estado actual
 
 - Fecha de creación de la documentación: 2026-11-22.
-- Fase actual: Fase 3b (rediseño visual) en pausa por decisión del autor; estilo aprobado (ver `02g` y `05d`). Hecho: biblioteca, detalle, ejercicio propio, Entrenar, idioma. Falta: acceso, inicio, perfil y auditoría final (accesibilidad, rendimiento, tema oscuro); luego etiqueta `fase-3b-rediseno`. Fase 3 cerrada (fase-3); Fase 2 cerrada (fase-2) con la muestra aprobada por el autor.
+- Fase actual: Fase 3b cerrada (fase-3b-rediseno); la Fase 4 espera la aprobación del autor. Fase 3 cerrada (fase-3); Fase 2 cerrada (fase-2) con la muestra aprobada por el autor.
 - Repositorio remoto: https://github.com/DavNat13/Abitus-D (público). Versionado: un commit convencional por tarea verificada, push tras cada tarea y etiqueta `fase-N` al cerrar cada fase. Al ser público, revisar secretos antes de cada push.
 - Código: autenticación completa (backend, base de datos y app Android); detalle y decisiones de la Fase 1 en `02d-MEMORIA-FASE-1.md`. Verificaciones externas en `02c-MEMORIA-VERIFICACIONES.md`.
-- Siguiente paso: al retomar, terminar la Fase 3b con el mismo estilo. Fase 4 solo con aprobación del autor. Pendiente al final: Vercel, Neon, keystore.
+- Siguiente paso: Fase 4 (registro de entrenamiento) cuando el autor la apruebe. Pendiente al final: Vercel, Neon, keystore.
 
 Fase 0: tareas 1 a 7 hechas y verificadas (estructura, verificaciones, scripts, backend, database, Docker, Android en emulador API 29); tarea 8 (despliegue en Vercel) diferida al final. Detalle en el historial de Git.
 
@@ -115,6 +115,7 @@ Formato de cada entrada: `AAAA-MM-DD | área | qué se hizo | resultado de la ve
 - 2026-11-22 | planificación | Fase 3 completa (backend, Room v3, pestaña Entrenar, perfiles de equipo) | 56 pruebas de backend y pruebas unitarias Android en verde; Detekt, ktlint, longitudes y emojis OK; en emulador sin red: plantilla, programa activado, reprogramación; al volver la red el servidor tiene 3 rutinas, 12 ejercicios, 1 programa, 12 días y 12 programados | Fase 4
 - 2026-11-22 | diseño | tools/check-contrast sobre los tokens | 32 pares AA en ambos temas tras ajustar inputBorder oscuro a #777A8C | -
 - 2026-11-23 | acceso | Bienvenida, registro, verificación, login y recuperación en tarjetas con icono (iniciado con Codex, cerrado por Claude) | Detekt, ktlint, pruebas unitarias y APK en verde; scripts OK | Inicio y Perfil
+- 2026-11-23 | diseño | Inicio, Perfil, selector de tema y auditoría final de la Fase 3b | Detekt, ktlint, pruebas, APK, contraste, longitudes y emojis OK; texto al 200 % y tema oscuro revisados en emulador | Fase 4 con aprobación
 
 ## Cómo actualizar este archivo
 

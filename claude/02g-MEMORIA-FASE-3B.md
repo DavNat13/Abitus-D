@@ -31,4 +31,13 @@ Complemento de `02-MEMORIA.md`. Dirección visual en `05d-UI-DIRECCION-VISUAL.md
 - Detalle de ejercicio, formulario propio, rutinas, editor, programas y calendario en tarjetas por sección con icono (SectionCard), acciones secundarias en menú contextual y confirmación antes de eliminar.
 - Las rutinas creadas desde plantillas guardan el nombre en el idioma activo al crearlas; no se traducen después.
 - Acceso rediseñado (2026-11-23): Codex lo empezó en sandbox sin poder compilar; Claude corrigió detalles y verificó pruebas y APK. El sandbox de Codex en Windows no ve el SDK de AppData y deja un daemon de Gradle que falla también fuera; se resuelve con ./gradlew --stop.
-- Tema: MainActivity fija darkTheme en false. Para la auditoría queda pendiente probar una compilación debug temporal con true y documentar el resultado. El selector claro, oscuro o sistema de 05b queda pendiente para Ajustes.
+- Inicio: tarjeta principal con degradado (HeroCard) para el entrenamiento de hoy, siguiente entrenamiento y resumen de la semana, leyendo solo Room. Perfil en tarjetas: Preferencias (idioma, tema, nombres en inglés), Información legal y Cuenta (cerrar sesión con confirmación).
+- Tema: selector Claro, Oscuro o Sistema en Perfil (ThemePreference, claro por defecto según 05b); la barra de estado se adapta al tema.
+
+## Auditoría final (2026-11-23)
+- Contraste: tools/check-contrast OK en ambos temas. Corregido el botón tonal, que usaba navy como texto y en tema oscuro no se leía; ahora usa onPrimaryContainer.
+- Texto al 200 %: los botones tenían alto fijo y cortaban el texto (ahora alto mínimo de 52 dp y el texto puede ocupar dos líneas); las etiquetas de la barra inferior y del selector segmentado se partían (ahora una línea con puntos suspensivos).
+- Áreas táctiles: botones, chips, filas y botones de icono de 48 dp como mínimo. Excepción documentada: las celdas del calendario miden el ancho de pantalla dividido en 7 (unos 42 dp en pantallas de 360 dp), como el selector de fechas de Material.
+- Reducir animaciones: con la escala de animación del sistema en 0 la app funciona sin animaciones (rememberReduceMotion).
+- Lector de pantalla: revisado en código (iconos decorativos sin descripción, botones de icono con descripción, encabezados marcados). No se probó TalkBack de punta a punta: pendiente en un dispositivo real.
+- Fluidez: el emulador usa renderizado por software (SwiftShader) y la versión de depuración, así que la medición no es válida. Pendiente medir con la versión de lanzamiento en un teléfono de gama media.
