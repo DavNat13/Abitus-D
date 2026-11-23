@@ -56,6 +56,15 @@ class CalendarRepository
             write(listOf(row.copy(status = status)))
         }
 
+        /** Links the finished session and marks the planned workout as done. */
+        suspend fun markDone(
+            id: String,
+            sessionId: String,
+        ) {
+            val row = dao.scheduled(id) ?: return
+            write(listOf(row.copy(status = "done", sessionId = sessionId)))
+        }
+
         suspend fun delete(id: String) {
             val row = dao.scheduled(id) ?: return
             write(listOf(row.copy(deletedAt = System.currentTimeMillis())))
