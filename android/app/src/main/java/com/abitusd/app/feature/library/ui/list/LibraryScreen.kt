@@ -27,12 +27,14 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.abitusd.app.R
 import com.abitusd.app.core.designsystem.component.EmptyState
+import com.abitusd.app.core.designsystem.component.InfoButton
 import com.abitusd.app.core.designsystem.component.ScreenHeader
 import com.abitusd.app.core.designsystem.component.SkeletonListItem
 import com.abitusd.app.core.designsystem.icon.AppIcons
 import com.abitusd.app.core.designsystem.motion.staggeredEnter
 import com.abitusd.app.core.designsystem.theme.AppSpacing
 import com.abitusd.app.core.designsystem.theme.AppTheme
+import com.abitusd.app.feature.workout.ui.WorkoutInfo
 
 private const val SKELETON_ROWS = 6
 
@@ -50,8 +52,9 @@ fun LibraryScreen(
     val colors = AppTheme.colors
     Box(modifier.fillMaxSize().background(colors.background)) {
         Column(Modifier.fillMaxSize().statusBarsPadding(), verticalArrangement = Arrangement.spacedBy(AppSpacing.sm)) {
-            val subtitle = if (state.loading) null else stringResource(R.string.library_count, state.items.size)
-            ScreenHeader(stringResource(R.string.nav_library), subtitle = subtitle)
+            ScreenHeader(
+                stringResource(R.string.nav_library),
+            ) { InfoButton(R.string.info_screen_library, WorkoutInfo.library) }
             LibrarySearchField(state.query, viewModel::onQuery)
             LibraryFilterBar(state, profile, { showFilters = true }, viewModel::onFilters, viewModel::onProfile)
             LibraryContent(state, onOpenExercise, viewModel::retryDownload, showCreate)

@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
@@ -30,13 +31,14 @@ import com.abitusd.app.core.designsystem.theme.AppSizes
 import com.abitusd.app.core.designsystem.theme.AppSpacing
 import com.abitusd.app.core.designsystem.theme.AppTheme
 
-/** Scrollable form screen with screen margins, optional back button and a title. */
+/** Scrollable form screen: back button and info button on top, then the title (05d). */
 @Composable
 fun FormScreen(
     title: String,
     modifier: Modifier = Modifier,
     subtitle: String? = null,
     onBack: (() -> Unit)? = null,
+    info: (@Composable () -> Unit)? = null,
     content: @Composable ColumnScope.() -> Unit,
 ) {
     val colors = AppTheme.colors
@@ -58,15 +60,19 @@ fun FormScreen(
                     .padding(horizontal = AppSpacing.screenMargin, vertical = AppSpacing.md),
             verticalArrangement = Arrangement.spacedBy(AppSpacing.md),
         ) {
-            if (onBack != null) {
-                Row {
-                    IconButton(onClick = onBack) {
-                        Icon(
-                            painter = painterResource(AppIcons.Back),
-                            contentDescription = stringResource(R.string.common_back),
-                            tint = colors.textPrimary,
-                        )
+            if (onBack != null || info != null) {
+                Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                    if (onBack != null) {
+                        IconButton(onClick = onBack) {
+                            Icon(
+                                painter = painterResource(AppIcons.Back),
+                                contentDescription = stringResource(R.string.common_back),
+                                tint = colors.textPrimary,
+                            )
+                        }
                     }
+                    Spacer(Modifier.weight(1f))
+                    info?.invoke()
                 }
             }
             Text(

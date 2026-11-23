@@ -123,4 +123,6 @@ object AppIcons {
     @DrawableRes val Remove = R.drawable.ic_remove
 
     @DrawableRes val ActiveRest = R.drawable.ic_directions_walk
+
+    @DrawableRes val ScreenInfo = R.drawable.ic_error
 }

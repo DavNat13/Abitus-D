@@ -1,7 +1,9 @@
 package com.abitusd.app.feature.workout.ui.active
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.abitusd.app.BuildConfig
 import com.abitusd.app.core.database.session.SetEntity
 import com.abitusd.app.feature.library.domain.ExerciseNames
 import com.abitusd.app.feature.workout.data.SessionEditor
@@ -17,7 +19,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.flatMapLatest
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -71,15 +72,15 @@ class ActiveSessionViewModel
                     )
                 }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_MS), ActiveSessionState())
 
-        val hasActive = workouts.active().map { it != null }
-
         fun select(index: Int) = launch { workouts.setPosition(index) }
 
         /** Confirms the set as it is and starts its rest. */
         fun confirm(set: SetEntity) =
             launch {
                 val now = System.currentTimeMillis()
+                val started = System.nanoTime()
                 change(set, set.copy(completedAt = now, performedAt = now))
+                if (BuildConfig.DEBUG) Log.d(PERF_TAG, "confirm_ms=" + (System.nanoTime() - started) / NANOS_PER_MS)
                 rest.start(
                     set.restS ?: 0,
                     state.value.blocks
@@ -141,5 +142,7 @@ class ActiveSessionViewModel
 
         private companion object {
             const val STOP_MS = 5_000L
+            const val PERF_TAG = "AbitusPerf"
+            const val NANOS_PER_MS = 1_000_000L
         }
     }

@@ -20,6 +20,7 @@ import com.abitusd.app.core.designsystem.component.AppTextField
 import com.abitusd.app.core.designsystem.component.ChoiceOption
 import com.abitusd.app.core.designsystem.component.ConfirmDialog
 import com.abitusd.app.core.designsystem.component.FormScreen
+import com.abitusd.app.core.designsystem.component.InfoButton
 import com.abitusd.app.core.designsystem.component.InfoPill
 import com.abitusd.app.core.designsystem.component.SectionCard
 import com.abitusd.app.core.designsystem.component.StatusBanner
@@ -27,6 +28,7 @@ import com.abitusd.app.core.designsystem.component.StatusKind
 import com.abitusd.app.core.designsystem.icon.AppIcons
 import com.abitusd.app.core.designsystem.theme.AppSpacing
 import com.abitusd.app.core.designsystem.theme.AppTheme
+import com.abitusd.app.feature.workout.ui.WorkoutInfo
 import com.abitusd.app.feature.workout.ui.active.formatKg
 import com.abitusd.app.feature.workout.ui.active.setValue
 

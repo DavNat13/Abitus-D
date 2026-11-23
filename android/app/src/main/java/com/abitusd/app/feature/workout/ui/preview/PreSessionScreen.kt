@@ -20,11 +20,13 @@ import com.abitusd.app.core.designsystem.component.AppButton
 import com.abitusd.app.core.designsystem.component.AppDropdown
 import com.abitusd.app.core.designsystem.component.ChoiceOption
 import com.abitusd.app.core.designsystem.component.FormScreen
+import com.abitusd.app.core.designsystem.component.InfoButton
 import com.abitusd.app.core.designsystem.component.InfoPill
 import com.abitusd.app.core.designsystem.component.SectionCard
 import com.abitusd.app.core.designsystem.icon.AppIcons
 import com.abitusd.app.core.designsystem.theme.AppTheme
 import com.abitusd.app.feature.train.ui.routines.Hint
+import com.abitusd.app.feature.workout.ui.WorkoutInfo
 
 /** Before the session: what it holds, about how long, an optional check-in and Start (10f). */
 @Composable

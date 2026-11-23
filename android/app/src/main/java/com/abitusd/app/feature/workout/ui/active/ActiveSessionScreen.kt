@@ -3,6 +3,7 @@ package com.abitusd.app.feature.workout.ui.active
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -57,16 +58,7 @@ fun ActiveSessionScreen(
             .navigationBarsPadding(),
     ) {
         Column(Modifier.fillMaxSize()) {
-            SessionHeader(
-                startedAt = session?.startedAt,
-                canUndo = s.canUndo,
-                canRedo = s.canRedo,
-                onBack = onBack,
-                onUndo = { viewModel.history(redo = false) },
-                onRedo = { viewModel.history(redo = true) },
-                onMap = { showMap = true },
-                onFinish = { session?.let { onFinish(it.id) } },
-            )
+            SessionHeader(session?.title.orEmpty(), onBack)
             if (!s.loading && s.blocks.isEmpty()) {
                 EmptyState(
                     AppIcons.Train,
@@ -91,15 +83,21 @@ fun ActiveSessionScreen(
                     }
                 }
             }
-        }
-        s.restEndsAt?.let { endsAt ->
-            Box(
-                Modifier.align(Alignment.BottomCenter),
-            ) {
+            if (s.blocks.isEmpty()) Spacer(Modifier.weight(1f))
+            s.restEndsAt?.let { endsAt ->
                 RestBar(endsAt, s.restTotalS, {
                     scope.launch { viewModel.rest.addFifteen() }
                 }, { scope.launch { viewModel.rest.skip() } })
             }
+            SessionBottomBar(
+                startedAt = session?.startedAt,
+                canUndo = s.canUndo,
+                canRedo = s.canRedo,
+                onUndo = { viewModel.history(redo = false) },
+                onRedo = { viewModel.history(redo = true) },
+                onMap = { showMap = true },
+                onFinish = { session?.let { onFinish(it.id) } },
+            )
         }
     }
     if (showMap) {

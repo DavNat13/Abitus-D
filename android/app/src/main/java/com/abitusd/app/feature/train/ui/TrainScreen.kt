@@ -14,6 +14,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.abitusd.app.R
+import com.abitusd.app.core.designsystem.component.InfoButton
 import com.abitusd.app.core.designsystem.component.ScreenHeader
 import com.abitusd.app.core.designsystem.component.SegmentedTabs
 import com.abitusd.app.core.designsystem.theme.AppSpacing
@@ -21,6 +22,7 @@ import com.abitusd.app.core.designsystem.theme.AppTheme
 import com.abitusd.app.feature.train.ui.calendar.CalendarTab
 import com.abitusd.app.feature.train.ui.programs.ProgramsTab
 import com.abitusd.app.feature.train.ui.routines.RoutinesTab
+import com.abitusd.app.feature.workout.ui.WorkoutInfo
 import com.abitusd.app.feature.workout.ui.hub.TodayWorkoutCard
 
 private val tabs = listOf(R.string.train_tab_routines, R.string.train_tab_programs, R.string.train_tab_calendar)
@@ -38,7 +40,7 @@ fun TrainScreen(
         modifier.fillMaxSize().background(AppTheme.colors.background).statusBarsPadding(),
         verticalArrangement = Arrangement.spacedBy(AppSpacing.sm),
     ) {
-        ScreenHeader(stringResource(R.string.nav_train))
+        ScreenHeader(stringResource(R.string.nav_train)) { InfoButton(R.string.info_screen_train, WorkoutInfo.train) }
         TodayWorkoutCard(workout.onStart, workout.onContinue, workout.onHistory)
         SegmentedTabs(
             labels = tabs.map { stringResource(it) },

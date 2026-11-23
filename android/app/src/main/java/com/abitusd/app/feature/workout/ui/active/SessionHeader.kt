@@ -1,5 +1,6 @@
 package com.abitusd.app.feature.workout.ui.active
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -17,22 +18,52 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.style.TextOverflow
 import com.abitusd.app.R
+import com.abitusd.app.core.designsystem.component.InfoButton
 import com.abitusd.app.core.designsystem.icon.AppIcons
+import com.abitusd.app.core.designsystem.theme.AppElevation
 import com.abitusd.app.core.designsystem.theme.AppShapes
 import com.abitusd.app.core.designsystem.theme.AppSpacing
 import com.abitusd.app.core.designsystem.theme.AppTheme
+import com.abitusd.app.core.designsystem.theme.appShadow
+import com.abitusd.app.feature.workout.ui.WorkoutInfo
 import kotlinx.coroutines.delay
 
-/** Session header: back, elapsed time, undo, redo, exercise map and Finish. */
+/** Header with only the session name, back and the info button (author's request). */
 @Composable
 fun SessionHeader(
+    title: String,
+    onBack: () -> Unit,
+) {
+    val colors = AppTheme.colors
+    Row(Modifier.fillMaxWidth().padding(AppSpacing.xs), verticalAlignment = Alignment.CenterVertically) {
+        IconButton(onClick = onBack) {
+            Icon(painterResource(AppIcons.Back), stringResource(R.string.common_back), tint = colors.textPrimary)
+        }
+        Text(
+            title,
+            style = AppTheme.typography.titleLarge,
+            color = colors.textPrimary,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            modifier = Modifier.weight(1f).semantics { heading() },
+        )
+        InfoButton(R.string.info_screen_session, WorkoutInfo.session)
+    }
+}
+
+/** Bottom bar of the session: elapsed time, undo, redo, exercise list and Finish. */
+@Composable
+fun SessionBottomBar(
     startedAt: Long?,
     canUndo: Boolean,
     canRedo: Boolean,
-    onBack: () -> Unit,
     onUndo: () -> Unit,
     onRedo: () -> Unit,
     onMap: () -> Unit,
@@ -47,19 +78,15 @@ fun SessionHeader(
     }
     val colors = AppTheme.colors
     Row(
-        Modifier.fillMaxWidth().padding(horizontal = AppSpacing.xs, vertical = AppSpacing.xs),
+        Modifier
+            .fillMaxWidth()
+            .appShadow(AppElevation.Nav, RectangleShape)
+            .background(colors.surface)
+            .padding(horizontal = AppSpacing.sm, vertical = AppSpacing.xs),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        IconButton(onClick = onBack) {
-            Icon(painterResource(AppIcons.Back), stringResource(R.string.common_back), tint = colors.textPrimary)
-        }
-        Column(Modifier.weight(1f)) {
-            Text(
-                stringResource(R.string.workout_elapsed),
-                style = AppTheme.typography.caption,
-                color = colors.textSecondary,
-            )
-            Text(elapsed(startedAt, now), style = AppTheme.typography.titleLarge, color = colors.textPrimary)
+        Column(Modifier.weight(1f).padding(start = AppSpacing.xs)) {
+            Text(elapsed(startedAt, now), style = AppTheme.typography.titleMedium, color = colors.textPrimary)
         }
         IconButton(onClick = onUndo, enabled = canUndo) {
             Icon(painterResource(AppIcons.Undo), stringResource(R.string.workout_undo))
@@ -72,7 +99,6 @@ fun SessionHeader(
         }
         Button(
             onClick = onFinish,
-            modifier = Modifier.padding(end = AppSpacing.xs),
             shape = AppShapes.button,
             colors = ButtonDefaults.buttonColors(containerColor = colors.primary, contentColor = colors.onPrimary),
         ) { Text(stringResource(R.string.workout_finish), style = AppTheme.typography.label, maxLines = 1) }

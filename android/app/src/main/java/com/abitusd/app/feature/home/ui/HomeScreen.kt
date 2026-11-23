@@ -23,6 +23,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.abitusd.app.R
 import com.abitusd.app.core.designsystem.component.EmptyState
 import com.abitusd.app.core.designsystem.component.HeroCard
+import com.abitusd.app.core.designsystem.component.InfoButton
 import com.abitusd.app.core.designsystem.component.InfoPill
 import com.abitusd.app.core.designsystem.component.ListItemCard
 import com.abitusd.app.core.designsystem.component.ScreenHeader
@@ -31,6 +32,7 @@ import com.abitusd.app.core.designsystem.icon.AppIcons
 import com.abitusd.app.core.designsystem.theme.AppSpacing
 import com.abitusd.app.core.designsystem.theme.AppTheme
 import com.abitusd.app.core.designsystem.theme.LightAppColors
+import com.abitusd.app.feature.workout.ui.WorkoutInfo
 import java.time.format.DateTimeFormatter
 
 /** Home: today's workout first, then the next one and this week's progress (05-UI-UX.md). */
@@ -54,6 +56,7 @@ fun HomeScreen(
         verticalArrangement = Arrangement.spacedBy(AppSpacing.sm),
     ) {
         ScreenHeader(stringResource(R.string.nav_home)) {
+            InfoButton(R.string.info_screen_home, WorkoutInfo.home)
             IconButton(onClick = onOpenProfile) {
                 Icon(
                     painterResource(AppIcons.Profile),

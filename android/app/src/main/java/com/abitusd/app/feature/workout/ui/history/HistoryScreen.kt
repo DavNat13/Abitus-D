@@ -22,6 +22,7 @@ import androidx.lifecycle.viewModelScope
 import com.abitusd.app.R
 import com.abitusd.app.core.database.session.WorkoutHistoryDao
 import com.abitusd.app.core.designsystem.component.EmptyState
+import com.abitusd.app.core.designsystem.component.InfoButton
 import com.abitusd.app.core.designsystem.component.ListItemCard
 import com.abitusd.app.core.designsystem.component.ScreenHeader
 import com.abitusd.app.core.designsystem.icon.AppIcons
@@ -29,6 +30,7 @@ import com.abitusd.app.core.designsystem.motion.staggeredEnter
 import com.abitusd.app.core.designsystem.theme.AppSpacing
 import com.abitusd.app.core.designsystem.theme.AppTheme
 import com.abitusd.app.feature.workout.data.WorkoutRepository
+import com.abitusd.app.feature.workout.ui.WorkoutInfo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
@@ -68,6 +70,7 @@ fun HistoryScreen(
     val format = DateTimeFormatter.ofPattern("EEEE d MMMM yyyy", locale)
     Column(Modifier.fillMaxSize().statusBarsPadding()) {
         ScreenHeader(stringResource(R.string.workout_history)) {
+            InfoButton(R.string.info_screen_history, WorkoutInfo.history)
             IconButton(onClick = onBack) {
                 Icon(
                     painterResource(AppIcons.Close),
