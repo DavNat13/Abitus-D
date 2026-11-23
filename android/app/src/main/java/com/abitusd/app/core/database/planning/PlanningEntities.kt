@@ -1,5 +1,6 @@
 package com.abitusd.app.core.database.planning
 
+import androidx.room3.ColumnInfo
 import androidx.room3.Entity
 import androidx.room3.Index
 import androidx.room3.PrimaryKey
@@ -81,6 +82,7 @@ data class ProgramDayEntity(
     val dayIndex: Int,
     val routineId: String? = null,
     val isRest: Boolean = false,
+    @ColumnInfo(defaultValue = "0") val activeRest: Boolean = false,
     override val updatedAt: Long,
     override val deletedAt: Long? = null,
     override val dirty: Boolean = false,

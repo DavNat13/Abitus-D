@@ -39,4 +39,7 @@ object DatabaseModule {
 
     @Provides
     fun planningDao(database: AbitusDatabase): PlanningDao = database.planningDao()
+
+    @Provides
+    fun sessionDao(database: AbitusDatabase): com.abitusd.app.core.database.session.SessionDao = database.sessionDao()
 }

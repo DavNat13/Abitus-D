@@ -38,6 +38,7 @@ class AuthRepository
         private val ownExercises: OwnExerciseRepository,
         private val syncScheduler: SyncScheduler,
         private val planning: com.abitusd.app.core.database.planning.PlanningDao,
+        private val workouts: com.abitusd.app.core.database.session.SessionDao,
     ) {
         suspend fun register(
             email: String,
@@ -79,6 +80,10 @@ class AuthRepository
             syncScheduler.cancel()
             ownExercises.clear()
             planning.clearAll()
+            workouts.clearActive()
+            workouts.clearSets()
+            workouts.clearSessionExercises()
+            workouts.clearSessions()
             syncState.clear()
             sessions.clear()
         }

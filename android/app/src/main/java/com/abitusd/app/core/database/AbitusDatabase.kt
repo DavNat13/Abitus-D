@@ -29,6 +29,11 @@ import com.abitusd.app.core.database.planning.ProgramEntity
 import com.abitusd.app.core.database.planning.RoutineEntity
 import com.abitusd.app.core.database.planning.RoutineExerciseEntity
 import com.abitusd.app.core.database.planning.ScheduledWorkoutEntity
+import com.abitusd.app.core.database.session.ActiveSessionEntity
+import com.abitusd.app.core.database.session.SessionDao
+import com.abitusd.app.core.database.session.SessionExerciseEntity
+import com.abitusd.app.core.database.session.SetEntity
+import com.abitusd.app.core.database.session.WorkoutSessionEntity
 
 /**
  * Local source of truth (09b-FRONTEND-OFFLINE-SYNC.md). v2: catalog and own exercises;
@@ -53,10 +58,19 @@ import com.abitusd.app.core.database.planning.ScheduledWorkoutEntity
         ProgramEntity::class,
         ProgramDayEntity::class,
         ScheduledWorkoutEntity::class,
+        WorkoutSessionEntity::class,
+        SessionExerciseEntity::class,
+        SetEntity::class,
+        ActiveSessionEntity::class,
     ],
-    version = 3,
+    version = 4,
     exportSchema = true,
-    autoMigrations = [AutoMigration(from = 1, to = 2), AutoMigration(from = 2, to = 3)],
+    autoMigrations = [
+        AutoMigration(
+            from = 1,
+            to = 2,
+        ), AutoMigration(from = 2, to = 3), AutoMigration(from = 3, to = 4),
+    ],
 )
 @ColumnTypeConverters(StringListConverter::class)
 abstract class AbitusDatabase : RoomDatabase() {
@@ -67,6 +81,8 @@ abstract class AbitusDatabase : RoomDatabase() {
     abstract fun libraryDao(): LibraryDao
 
     abstract fun planningDao(): PlanningDao
+
+    abstract fun sessionDao(): SessionDao
 
     companion object {
         const val NAME = "abitusd.db"

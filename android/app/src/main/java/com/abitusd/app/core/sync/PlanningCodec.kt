@@ -14,6 +14,9 @@ import java.time.Instant
  */
 object PlanningCodec {
     private val LOCAL_FIELDS = setOf("deletedAt", "dirty", "serverSeq")
+
+    /** Instants stored as epoch milliseconds in Room and sent as ISO 8601. */
+    private val INSTANT_FIELDS = setOf("updatedAt", "startedAt", "endedAt", "performedAt", "completedAt")
     private val json =
         Json {
             ignoreUnknownKeys = true
@@ -26,14 +29,14 @@ object PlanningCodec {
         entity: T,
     ): JsonObject {
         val obj = json.encodeToJsonElement(serializer, entity).jsonObject
-        val updatedAt =
-            obj
-                .getValue("updatedAt")
-                .jsonPrimitive.content
-                .toLong()
         return JsonObject(
-            obj.filterKeys { it !in LOCAL_FIELDS } +
-                ("updatedAt" to JsonPrimitive(Instant.ofEpochMilli(updatedAt).toString())),
+            obj.filterKeys { it !in LOCAL_FIELDS }.mapValues { (key, value) ->
+                if (key in INSTANT_FIELDS && value is JsonPrimitive && value.content != "null") {
+                    JsonPrimitive(Instant.ofEpochMilli(value.content.toLong()).toString())
+                } else {
+                    value
+                }
+            },
         )
     }
 
@@ -45,8 +48,16 @@ object PlanningCodec {
         deleted: Boolean,
     ): T {
         val updatedAt = Instant.parse(row.getValue("updatedAt").jsonPrimitive.content).toEpochMilli()
+        val converted =
+            row.mapValues { (key, value) ->
+                if (key in INSTANT_FIELDS && value is JsonPrimitive && value.isString) {
+                    JsonPrimitive(Instant.parse(value.content).toEpochMilli())
+                } else {
+                    value
+                }
+            }
         val local =
-            row +
+            converted +
                 mapOf(
                     "updatedAt" to JsonPrimitive(updatedAt),
                     "serverSeq" to JsonPrimitive(serverSeq),
