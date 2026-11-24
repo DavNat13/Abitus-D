@@ -14,7 +14,7 @@ Complemento de `02-MEMORIA.md`. Plan acordado en `10f-FASE-4-Y-4B.md`.
 - Sesión registrada sin conexión: al volver la red llegó completa al servidor (4 ejercicios, 3 series confirmadas), sin duplicados (claves UUID del cliente y upsert).
 - Cierre forzado a mitad de sesión: la sesión y sus series confirmadas se recuperan al abrir la app.
 - Deshacer y rehacer: locales, funcionan sin conexión.
-- Descanso con pantalla apagada: alarma exacta programada y notificación visible; falta escucharlo en un teléfono real con la pantalla apagada.
+- Descanso con pantalla apagada: alarma exacta RTC_WAKEUP programada; con la pantalla apagada (mWakefulness=Asleep) la notificación "Descanso terminado" se publicó a los 140 s en el canal de prioridad alta con sonido y vibración (2026-11-24). En un teléfono real se comprobará cuando haya servidor desplegado (la versión de depuración apunta al emulador).
 - Hallazgo: la base de desarrollo necesitaba `npm run migrate` en database/ tras agregar la 013; sin eso el servidor respondía 500 al sincronizar.
 
 ## Decisiones
@@ -24,10 +24,15 @@ Complemento de `02-MEMORIA.md`. Plan acordado en `10f-FASE-4-Y-4B.md`.
 - Hecho además: descanso activo en programas, calendario e Inicio; sesión perdida (hacerla hoy, mover el plan o saltarla); repetir una sesión del historial.
 - Diseño de series rehecho a pedido del autor: nada de campos pequeños en la lista; franjas grandes y edición en hoja inferior con botones de 56 dp.
 
-## Pendiente de la Fase 4
-- Al empezar una sesión con otra sin terminar, la anterior queda colgada: ofrecer terminarla o descartarla.
-- La tarjeta "Sesión en curso" de Entrenar repite "Continuar sesión" como título; mostrar el nombre de la sesión.
-- Encabezados con solo el nombre y el botón de información (pedido del autor): hecho en Inicio, Entrenar, Biblioteca, Previa, Sesión, Resumen e Historial; falta en el resto de pantallas.
-- Escuchar el fin del descanso con la pantalla apagada en un teléfono real.
-- Series de aproximación sugeridas, molestia por zona en la interfaz, alternativas del ejercicio.
-- `lintDebug` marca `local.properties` (PropertyEscape) aunque ya está escapado; revisar caché de lint. Lint encontró por esto que faltaba compatibilidad en `canScheduleExactAlarms` (ya corregido con AlarmManagerCompat).
+## Cerrado el 2026-11-24 (etiqueta fase-4)
+- Sesión sin terminar: antes de empezar otra se ofrece continuarla, guardarla o descartarla (PreviousSession); repetir una sesión guarda la anterior.
+- Botón de información en todas las pantallas principales y editores (WorkoutInfo, EditorInfo).
+- Tarjeta "Sesión en curso" con el nombre de la sesión; Inicio marca como hecha la sesión de hoy.
+- Volumen planificado por músculo en barras (VolumeBars) en el editor de rutina y el calendario.
+- Herramientas por ejercicio: series de calentamiento al 50 y 70 por ciento (WarmupPlan, con prueba), cambiar por un ejercicio relacionado del catálogo y molestia por zona.
+- Verificado en emulador: aviso de sesión sin terminar, cambio de ejercicio persistido y fin del descanso con pantalla apagada.
+
+## Para más adelante
+- Probar en un teléfono real (después del despliegue).
+- lintDebug sigue marcando local.properties (PropertyEscape) aunque está escapado; revisar en la Fase 10.
+- Volumen en kg de series con peso corporal (hoy cuenta 0 kg); decidir en la Fase 6 (analítica).
