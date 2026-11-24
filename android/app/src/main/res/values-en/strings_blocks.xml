@@ -23,6 +23,15 @@
     <string name="blocks_save_first">Save the program to split it into blocks.</string>
     <string name="blocks_week_of">Week %1$d of %2$d, %3$s</string>
     <string name="blocks_deload_suggested">Your last sessions were very hard. Consider a deload week.</string>
+    <string name="plan_title">Today\'s plan</string>
+    <string name="plan_progression_applied">Sets and loads already include the block progression.</string>
+    <string name="plan_travel">Travel or place mode</string>
+    <string name="plan_travel_hint">Swaps exercises that need equipment outside your profile.</string>
+    <string name="plan_swap">%1$s becomes %2$s</string>
+    <string name="plan_no_swaps">Every exercise fits your equipment profile.</string>
+    <string name="plan_unfit">No option with your equipment: %1$s. You can swap them during the session.</string>
+    <string name="workout_exercise_load">%1$s, %2$d sets at %3$s kg</string>
+    <string name="info_travel_d">Uses the library equipment profile (home, park or gym) and swaps each exercise that does not fit for a related alternative or regression.</string>
     <string name="phase_accumulation">Accumulation</string>
     <string name="phase_intensification">Intensification</string>
     <string name="phase_deload">Deload</string>

@@ -2,10 +2,10 @@ package com.abitusd.app.feature.workout.ui.preview
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.abitusd.app.core.database.planning.RoutineExerciseEntity
 import com.abitusd.app.feature.library.domain.ExerciseNames
 import com.abitusd.app.feature.train.data.RoutineRepository
 import com.abitusd.app.feature.workout.data.PreviousSession
+import com.abitusd.app.feature.workout.data.SessionPlanner
 import com.abitusd.app.feature.workout.data.WorkoutRepository
 import com.abitusd.app.feature.workout.domain.Readiness
 import dagger.assisted.Assisted
@@ -22,7 +22,9 @@ import kotlinx.coroutines.launch
 
 data class PreSessionState(
     val title: String? = null,
-    val exercises: List<Pair<String, Int>> = emptyList(),
+    val exercises: List<PreviewLine> = emptyList(),
+    val block: PreviewBlock = PreviewBlock(),
+    val travel: Boolean = false,
     val minutes: Int = 0,
     val readiness: Readiness = Readiness(),
     val starting: Boolean = false,
@@ -40,6 +42,7 @@ class PreSessionViewModel
         private val workouts: WorkoutRepository,
         private val names: ExerciseNames,
         private val previous: PreviousSession,
+        private val planner: SessionPlanner,
     ) : ViewModel() {
         private val mutable = MutableStateFlow(PreSessionState())
         val state: StateFlow<PreSessionState> = mutable.asStateFlow()
@@ -49,15 +52,26 @@ class PreSessionViewModel
         init {
             viewModelScope.launch {
                 val routine = routineId?.let { routines.routine(it) }
-                val planned = routineId?.let { routines.exercisesOnce(it) }.orEmpty()
-                val all = names.all()
-                mutable.update {
-                    it.copy(
-                        title = routine?.name,
-                        exercises = planned.map { p -> all[p.exerciseId].orEmpty() to (p.targetSets ?: DEFAULT_SETS) },
-                        minutes = estimateMinutes(planned),
-                    )
-                }
+                mutable.update { it.copy(title = routine?.name) }
+                refresh()
+            }
+        }
+
+        fun setTravel(on: Boolean) {
+            mutable.update { it.copy(travel = on) }
+            viewModelScope.launch { refresh() }
+        }
+
+        private suspend fun refresh() {
+            val planned = routineId?.let { routines.exercisesOnce(it) }.orEmpty()
+            val plan = planner.plan(planned, state.value.travel)
+            val all = names.all()
+            mutable.update {
+                it.copy(
+                    exercises = PreviewPlan.lines(plan, all),
+                    block = PreviewPlan.block(plan, all),
+                    minutes = PreviewPlan.minutes(plan.exercises),
+                )
             }
         }
 
@@ -75,7 +89,8 @@ class PreSessionViewModel
                     mutable.update { it.copy(starting = false, previousTitle = pending.title) }
                     return@launch
                 }
-                workouts.start(state.value.title ?: freeTitle, routineId, scheduledWorkoutId, state.value.readiness)
+                val s = state.value
+                workouts.start(s.title ?: freeTitle, routineId, scheduledWorkoutId, s.readiness, s.travel)
                 startedChannel.send(Unit)
             }
         }
@@ -98,25 +113,11 @@ class PreSessionViewModel
             }
         }
 
-        /** About 45 s per set plus its planned rest. */
-        private fun estimateMinutes(planned: List<RoutineExerciseEntity>): Int =
-            (
-                planned.sumOf { (it.targetSets ?: DEFAULT_SETS) * (SET_SECONDS + (it.restSeconds ?: DEFAULT_REST)) } /
-                    SECONDS_PER_MIN
-            )
-
         @AssistedFactory
         interface Factory {
             fun create(
                 @Assisted("routine") routineId: String?,
                 @Assisted("scheduled") scheduledWorkoutId: String?,
             ): PreSessionViewModel
-        }
-
-        private companion object {
-            const val DEFAULT_SETS = 3
-            const val SET_SECONDS = 45
-            const val DEFAULT_REST = 90
-            const val SECONDS_PER_MIN = 60
         }
     }

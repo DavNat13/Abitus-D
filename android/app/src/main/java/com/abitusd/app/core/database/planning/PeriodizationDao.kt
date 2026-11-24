@@ -5,6 +5,12 @@ import androidx.room3.Query
 import androidx.room3.Upsert
 import kotlinx.coroutines.flow.Flow
 
+/** Equipment slug of one exercise, for travel or place mode. */
+data class ExerciseSlug(
+    val exerciseId: String,
+    val slug: String,
+)
+
 /** Blocks, substitutions and muscle targets; soft-deleted rows are hidden from the screens. */
 @Dao
 interface PeriodizationDao {
@@ -31,6 +37,15 @@ interface PeriodizationDao {
             "AND sessionRpe IS NOT NULL ORDER BY endedAt DESC LIMIT :limit",
     )
     fun recentSessionRpe(limit: Int): Flow<List<Double>>
+
+    @Query(
+        "SELECT ee.exerciseId AS exerciseId, q.slug AS slug FROM exercise_equipment ee " +
+            "JOIN equipment q ON q.id = ee.equipmentId WHERE ee.exerciseId IN (:ids)",
+    )
+    suspend fun equipmentSlugs(ids: List<String>): List<ExerciseSlug>
+
+    @Query("SELECT * FROM exercise_relations WHERE exerciseId IN (:ids) AND type IN ('alternative', 'regression')")
+    suspend fun swapRelations(ids: List<String>): List<com.abitusd.app.core.database.catalog.ExerciseRelationEntity>
 
     @Query("SELECT * FROM program_blocks WHERE id = :id")
     suspend fun block(id: String): ProgramBlockEntity?

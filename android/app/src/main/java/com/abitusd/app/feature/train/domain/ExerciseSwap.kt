@@ -9,7 +9,8 @@ data class SwapCandidate(
 /**
  * Block substitutions and travel or place mode (10f Fase 4b). A block substitution always wins;
  * then, with a place profile, an exercise whose equipment is missing becomes its first related
- * exercise (alternative or regression, in the given order) that fits the profile.
+ * exercise (alternative or regression, in the given order) that fits the profile. With
+ * [excludes] the profile lists missing equipment instead of available equipment.
  */
 object ExerciseSwap {
     fun resolve(
@@ -18,23 +19,27 @@ object ExerciseSwap {
         catalog: Map<String, SwapCandidate>,
         related: Map<String, List<String>>,
         available: Set<String>?,
+        excludes: Boolean = false,
     ): Map<String, String> {
         val out = mutableMapOf<String, String>()
         for (id in planned) {
             val chosen = blockSubstitutions[id] ?: id
             val swapped =
-                if (available == null || fits(catalog[chosen], available)) {
+                if (available == null || fits(catalog[chosen], available, excludes)) {
                     chosen
                 } else {
-                    related[chosen].orEmpty().firstOrNull { fits(catalog[it], available) } ?: chosen
+                    related[chosen].orEmpty().firstOrNull { fits(catalog[it], available, excludes) } ?: chosen
                 }
             if (swapped != id) out[id] = swapped
         }
         return out
     }
 
-    private fun fits(
+    fun fits(
         candidate: SwapCandidate?,
         available: Set<String>,
-    ): Boolean = candidate != null && available.containsAll(candidate.equipment)
+        excludes: Boolean,
+    ): Boolean =
+        candidate != null &&
+            if (excludes) candidate.equipment.none { it in available } else available.containsAll(candidate.equipment)
 }

@@ -21,6 +21,7 @@ class WorkoutRepository
         private val routines: RoutineRepository,
         private val calendar: CalendarRepository,
         private val syncScheduler: SyncScheduler,
+        private val planner: SessionPlanner,
     ) {
         private val dao get() = database.sessionDao()
 
@@ -45,8 +46,9 @@ class WorkoutRepository
             routineId: String?,
             scheduledWorkoutId: String?,
             readiness: Readiness,
+            travel: Boolean = false,
         ): String {
-            val planned = routineId?.let { routines.exercisesOnce(it) }.orEmpty()
+            val planned = routineId?.let { planner.plan(routines.exercisesOnce(it), travel).exercises }.orEmpty()
             val now = System.currentTimeMillis()
             val built = SessionFactory().fromRoutine(title, routineId, scheduledWorkoutId, planned, now, readiness)
             database.withWriteTransaction {

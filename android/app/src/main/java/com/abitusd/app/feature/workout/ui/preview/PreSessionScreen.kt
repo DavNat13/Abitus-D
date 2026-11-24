@@ -55,10 +55,18 @@ fun PreSessionScreen(
     ) {
         SectionCard(stringResource(R.string.routine_exercises), icon = AppIcons.Steps) {
             if (s.exercises.isEmpty()) Hint(stringResource(R.string.workout_no_exercises))
-            s.exercises.forEachIndexed { index, (name, sets) ->
+            s.exercises.forEachIndexed { index, (name, sets, load) ->
                 if (index > 0) HorizontalDivider(color = AppTheme.colors.outline)
                 Text(
-                    stringResource(R.string.workout_exercise_sets, name, sets),
+                    load?.let {
+                        stringResource(
+                            R.string.workout_exercise_load,
+                            name,
+                            sets,
+                            com.abitusd.app.feature.workout.ui.active
+                                .formatKg(it),
+                        )
+                    } ?: stringResource(R.string.workout_exercise_sets, name, sets),
                     style = AppTheme.typography.body,
                     color = AppTheme.colors.textPrimary,
                 )
@@ -70,6 +78,7 @@ fun PreSessionScreen(
                 )
             }
         }
+        if (routineId != null) PlanSection(s.block, s.travel, viewModel::setTravel)
         SectionCard(stringResource(R.string.workout_readiness), icon = AppIcons.Rest) {
             val none = stringResource(R.string.workout_not_set)
             AppDropdown(

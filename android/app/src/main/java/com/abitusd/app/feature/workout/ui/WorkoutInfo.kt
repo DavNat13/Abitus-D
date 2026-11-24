@@ -23,6 +23,8 @@ object WorkoutInfo {
     val preview =
         listOf(
             InfoEntry(AppIcons.Steps, R.string.routine_exercises, R.string.info_preview_list_d),
+            InfoEntry(AppIcons.Progression, R.string.plan_title, R.string.plan_progression_applied),
+            InfoEntry(AppIcons.Alternative, R.string.plan_travel, R.string.info_travel_d),
             InfoEntry(AppIcons.Rest, R.string.info_readiness_t, R.string.info_readiness_d),
             InfoEntry(AppIcons.Start, R.string.info_start_t, R.string.info_start_d),
         )

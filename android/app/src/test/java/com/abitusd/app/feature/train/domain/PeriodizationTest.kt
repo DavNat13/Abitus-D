@@ -90,5 +90,7 @@ class PeriodizationTest {
         assertEquals(mapOf("bench" to "pushup"), travel)
         val block = ExerciseSwap.resolve(listOf("bench"), mapOf("bench" to "db"), catalog, related, null)
         assertEquals(mapOf("bench" to "db"), block)
+        val gym = ExerciseSwap.resolve(listOf("bench"), emptyMap(), catalog, related, setOf("barbell"), excludes = true)
+        assertEquals(mapOf("bench" to "db"), gym)
     }
 }

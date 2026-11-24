@@ -23,6 +23,15 @@
     <string name="blocks_save_first">Guarda el programa para dividirlo en bloques.</string>
     <string name="blocks_week_of">Semana %1$d de %2$d, %3$s</string>
     <string name="blocks_deload_suggested">Tus últimas sesiones fueron muy exigentes. Considera una semana de descarga.</string>
+    <string name="plan_title">Plan de hoy</string>
+    <string name="plan_progression_applied">Las series y cargas ya incluyen la progresión del bloque.</string>
+    <string name="plan_travel">Modo viaje o lugar</string>
+    <string name="plan_travel_hint">Cambia los ejercicios que necesitan equipo fuera de tu perfil.</string>
+    <string name="plan_swap">%1$s se cambia por %2$s</string>
+    <string name="plan_no_swaps">Todos los ejercicios encajan con tu perfil de equipo.</string>
+    <string name="plan_unfit">Sin alternativa con tu equipo: %1$s. Puedes cambiarlos durante la sesión.</string>
+    <string name="workout_exercise_load">%1$s, %2$d series con %3$s kg</string>
+    <string name="info_travel_d">Usa el perfil de equipo de la biblioteca (casa, parque o gimnasio) y cambia cada ejercicio que no encaja por una alternativa o regresión relacionada.</string>
     <string name="phase_accumulation">Acumulación</string>
     <string name="phase_intensification">Intensificación</string>
     <string name="phase_deload">Descarga</string>
