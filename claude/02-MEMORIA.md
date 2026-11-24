@@ -36,6 +36,7 @@ Nota: la ronda 2 de decisiones (nombre Abitus-D, hosting sin tarjeta, correo, ed
 
 | Fecha | Decisión | Motivo |
 |---|---|---|
+| 2026-11-24 | Uso personal: sin modo entrenador con alumnos; onboarding y perfil del atleta al inicio de la Fase 5 | Pedido del autor; las ideas de preparador se aplican al propio atleta (banco 11f) |
 | 2026-11-22 | Android nativo (Kotlin, Jetpack Compose) como producto principal | Timers en segundo plano, GPS, Health Connect y calidad de interfaz |
 | 2026-11-22 | Versión mínima de Android 10 (API 29) | Decisión del autor |
 | 2026-11-22 | Offline-first con Room y sincronización incremental | Uso en gimnasio con mala señal; varios dispositivos |
@@ -120,6 +121,7 @@ Formato de cada entrada: `AAAA-MM-DD | área | qué se hizo | resultado de la ve
 - 2026-11-24 | registro | Fase 4 completa: sesiones con sincronización, sesión activa, descanso por alarma exacta, resumen, historial, descanso activo, sesión perdida, herramientas | 59 pruebas de servidor y pruebas Android en verde; confirmar serie 3 a 15 ms; sesión sin conexión llega sin duplicados; descanso suena con pantalla apagada | Fase 4b
 - 2026-11-24 | planificación | Fase 4b completa: bloques y fases, progresión automática, descarga sugerida, semana de prueba, modo viaje, sustituciones por bloque, disponibilidad semanal, hora con recordatorio, plantillas de semana y objetivos por músculo | 61 pruebas de servidor y pruebas Android en verde; criterios medidos en emulador | Fase 5
 - 2026-11-24 | documentación | Fases 5 a 13 alineadas con los bancos de ideas: columna Fase en 11b a 11e, subfases 5b, 6b, 7b y 11b, reglas comunes de diseño en 10, ideas nuevas y ejercicios favoritos (pedido del autor) en la Fase 5 | check-file-length y check-no-emoji en verde | Fase 5
+- 2026-11-24 | documentación | Banco 11f (onboarding, perfil, acceso, ajustes, diseño y criterio deportivo) repartido en las fases 5 a 12 | check-file-length y check-no-emoji en verde | Fase 5
 
 ## Cómo actualizar este archivo
 

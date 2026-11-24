@@ -8,7 +8,8 @@ Entregables:
 - Running con GPS (`09c`): métricas en vivo, parciales automáticos, pausa automática, resumen, ruta simplificada y trazado sin mapa base; modo ahorro de GPS.
 - Avisos por voz de ritmo, récords (1, 5 y 10 km, media maratón), calzado con kilómetros.
 - Intervalos, fartlek, plan de 5 o 10 km, pruebas de Cooper y de 5 km, predictor de tiempos, desnivel, consistencia de ritmo, podómetro y cadencia.
-- Ciclismo, remo en ergómetro, brick, caminata y senderismo, actividad libre.
+- Ciclismo, remo en ergómetro, brick, caminata y senderismo, actividad libre, partidos y competencias (resultado, minutos y sensación).
+- Zonas de ritmo calculadas con una marca reciente.
 - Exportar y compartir rutas en GPX.
 
 Criterios de aceptación:
@@ -20,7 +21,7 @@ Criterios de aceptación:
 
 Entregables:
 - Natación en piscina (largos, tiempos, estilos, ritmo por 100 m o 100 yardas, series guardadas, material) y aguas abiertas; swolf solo si viene de un reloj.
-- Health Connect: sesiones, pasos, zonas de frecuencia cardíaca, sueño y frecuencia en reposo, con permisos y justificación.
+- Health Connect: sesiones, pasos, zonas de frecuencia cardíaca, sueño y frecuencia en reposo, con permisos y justificación; frecuencia máxima y en reposo medidas o estimadas con su margen en el perfil.
 - Dashboards de cardio: ritmo, distancia y mejores marcas.
 
 Criterios de aceptación:
@@ -44,8 +45,9 @@ Criterios de aceptación:
 ## Fase 9 - Ajustes, cuenta y datos
 
 Entregables:
-- Ajustes: idioma, tema y acento de color, unidades completas, timer, notificaciones, fórmula de 1RM, umbrales y contribución muscular; fuentes grandes y alto contraste; conversor de unidades rápido; ayudas contextuales la primera vez.
-- Cuenta: perfil, contraseña, dispositivos activos y cierre remoto, exportación y eliminación de cuenta; bloqueo opcional con huella o PIN.
+- Ajustes: idioma, tema (incluido negro puro) y acento de color, unidades completas, timer, notificaciones, fórmula de 1RM, umbrales y contribución muscular; fuentes grandes y alto contraste; conversor de unidades rápido; ayudas contextuales la primera vez.
+- Ajustes de entrenamiento: descanso por tipo de ejercicio, incremento por equipo, barra por defecto, redondeo, RPE o RIR, calentamientos, primer día de la semana, pantalla encendida; notificaciones por tipo con horario de silencio; privacidad y almacenamiento.
+- Cuenta: perfil, contraseña, dispositivos activos y cierre remoto, exportación y eliminación de cuenta; bloqueo opcional con huella o PIN; recordar correo; medidor de fortaleza de contraseña; foto de perfil local; usar la app sin cuenta y crearla después para sincronizar.
 - Datos: exportar a CSV, JSON y GPX; importar desde CSV y desde otras apps comunes; respaldo local cifrado y respaldo automático semanal; papelera de 30 días; historial de versiones de una rutina; detección de duplicados; compartir rutinas e importar las de amigos por archivo.
 - Correos del catálogo (`15-CORREOS.md`) con diseño final en es y en; pantalla "Acerca de" con créditos.
 - Política y términos finales en la app y en `legal/`.
@@ -65,6 +67,7 @@ Entregables:
 - Revisión de seguridad (`13`), auditoría de dependencias y búsqueda de secretos; resolver el aviso `lintDebug` PropertyEscape.
 - Accesibilidad, arranque y consumo de batería.
 - `tools/export-db` y restauración probada; tarea programada de GitHub Actions.
+- Llaves de acceso (passkeys) si son gratuitas y estables (VERIFICAR).
 - Aviso de nueva versión del APK (consulta la última versión en GitHub) e informe de errores sin datos personales.
 - APK firmado, suma de verificación, README de instalación, seguridad, política, términos y créditos en `distribution/`.
 - Verificación de desarrolladores según `12`.

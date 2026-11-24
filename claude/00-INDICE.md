@@ -37,6 +37,7 @@ Carpeta de contexto para Claude Code. Cada archivo cubre un área; léelo antes 
 | 11c-IDEAS-DEPORTES-Y-SALUD.md | Ideas de cardio, natación, calistenia, fuerza, recuperación y medidas | Al planificar deportes y salud |
 | 11d-IDEAS-ANALISIS-Y-EXPERIENCIA.md | Ideas de análisis, datos, experiencia y accesibilidad | Al planificar analítica o mejoras de uso |
 | 11e-RELOJ-Y-TIMERS.md | Apartado Reloj: cronómetro, intervalos, timers y reglas técnicas | Al trabajar en el reloj o timers |
+| 11f-IDEAS-ATLETA-Y-AJUSTES.md | Onboarding, perfil del atleta, acceso, ajustes, diseño y criterio deportivo | Al trabajar en perfil, ajustes o acceso |
 | 12-DECISIONES-PENDIENTES.md | Decisiones abiertas que no se deben asumir | Antes de tocar algo que dependa de ellas |
 | 13-SEGURIDAD-Y-LEGAL.md | Amenazas, lista de control, datos tratados, política de privacidad, marco legal | Al trabajar en seguridad o legal |
 | 13b-DISTRIBUCION-APK.md | Paquete de distribución, README de instalación, firma y versiones | Al preparar el APK |

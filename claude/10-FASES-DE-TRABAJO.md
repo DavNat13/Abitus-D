@@ -1,6 +1,6 @@
 # 10 - Fases de trabajo: hoja de ruta, Fase 0 y Fase 1
 
-Una fase a la vez. No se avanza sin cumplir los criterios de aceptación y sin actualizar `02-MEMORIA.md`. Detalle de las demás fases en `10b` (2 a 4), `10f` (4 y 4b), `10c` (5 a 6b), `10d` (7 a 10) y `10e` (mejoras posteriores). Calidad en `17-CALIDAD-Y-PRUEBAS.md`. Las ideas citadas están en `11b` a `11e`.
+Una fase a la vez. No se avanza sin cumplir los criterios de aceptación y sin actualizar `02-MEMORIA.md`. Detalle de las demás fases en `10b` (2 a 4), `10f` (4 y 4b), `10c` (5 a 6b), `10d` (7 a 10) y `10e` (mejoras posteriores). Calidad en `17-CALIDAD-Y-PRUEBAS.md`. Las ideas citadas están en `11b` a `11f`.
 
 ## Hoja de ruta
 
@@ -11,7 +11,7 @@ Una fase a la vez. No se avanza sin cumplir los criterios de aceptación y sin a
 | 2 | Biblioteca de ejercicios | Buscar ejercicios reales y crear propios |
 | 3 | Planificación | Armar rutinas, programas y calendario |
 | 4 y 4b | Registro y planificación avanzada | Entrenar, registrar series y periodizar por bloques (hechas) |
-| 5 y 5b | Reloj y timers | Cronómetro, intervalos y perfiles para todo; extras del reloj; ejercicios favoritos |
+| 5 y 5b | Atleta y reloj | Onboarding y perfil del atleta; cronómetro, intervalos y perfiles para todo; extras del reloj; favoritos |
 | 6 y 6b | Analítica | Saber si progresa, con mapa corporal 2D; comparar y sostener hábitos |
 | 7 y 7b | Cardio, natación y Health Connect | Running y cardio con GPS; natación y datos de salud |
 | 8 | Cuerpo 3D | Ver el mapa de calor sobre un modelo 3D |
@@ -26,7 +26,7 @@ La versión 1.0 es el final de la Fase 10. Cada fase y subfase termina con su et
 - Estilo aprobado: tarjetas por sección con icono, desplegables en vez de nubes de chips, hojas inferiores, menú de tres puntos y confirmación antes de borrar.
 - Encabezado con solo el nombre de la pantalla y el botón de información que abre "Cómo usar"; ninguna pantalla sin sus entradas.
 - Español por defecto e inglés incluido; nombres de ejercicios en inglés opcionales por disciplina; tema claro, oscuro o del sistema; texto legible al 200 %.
-- Fase grande dividida en N y Nb, cada una con sus criterios. Las ideas de cada fase son las filas de `11b` a `11e` con su número en la columna "Fase"; al cerrar, se marcan "Hecha".
+- Fase grande dividida en N y Nb, cada una con sus criterios. Las ideas de cada fase son las filas de `11b` a `11f` con su número en la columna "Fase"; al cerrar, se marcan "Hecha".
 
 ## Cómo se ejecuta cada fase (para Claude Code)
 

@@ -1,6 +1,6 @@
 # 10e - Fases de trabajo: mejoras posteriores (11, 11b, 12 y 13)
 
-Solo después de la versión 1.0. Se eligen y reordenan con el uso real. Una fase incluye todas las filas de `11b` a `11e` con su número en la columna "Fase"; lo marcado "Hecha" no se repite. Costo cero, sin pagos ni publicidad.
+Solo después de la versión 1.0. Se eligen y reordenan con el uso real. Una fase incluye todas las filas de `11b` a `11f` con su número en la columna "Fase"; lo marcado "Hecha" no se repite. Costo cero, sin pagos ni publicidad.
 
 ## Fase 11 - Registro y programación avanzados
 
@@ -11,6 +11,7 @@ Objetivo: registrar más rápido y que la app ayude a decidir cuánto cargar.
 - Calentamiento: por rutina, movilidad según molestias, rutinas de movilidad por zona, aviso de calentamiento omitido, circuito de activación.
 - Organización: rotación de ejercicios, superseries inteligentes, rutina express, generador de rutinas por reglas, arrastrar para reorganizar la semana, retos personales.
 - Pausas: modo vacaciones o lesión, plan de regreso, recordatorios inteligentes, descarga insertada en el calendario, descanso adaptativo.
+- Deporte: fecha de competencia con puesta a punto; fuerza complementaria por deporte y programas de prevención reconocidos si su uso es libre (VERIFICAR).
 
 Criterios: cada sugerencia muestra su motivo, se puede ignorar y nunca cambia datos guardados sin confirmación.
 
@@ -36,6 +37,7 @@ Objetivo: entender la recuperación sin inventar cifras.
 - Estándares de fuerza, puntajes relativos (Wilks, DOTS, IPF GL), altura de salto orientativa.
 - Natación avanzada (velocidad crítica), rutas repetidas con comparación, bandas de frecuencia cardíaca por Bluetooth y VO2 máx orientativo.
 - Correlaciones sencillas y ciclo menstrual opcional y privado.
+- Bienestar diario (índice de Hooper) y dolor muscular por zona tras entrenar.
 
 Criterios: sin datos suficientes se dice; toda cifra orientativa indica su margen; avisos de consultar a un profesional cuando corresponda.
 
