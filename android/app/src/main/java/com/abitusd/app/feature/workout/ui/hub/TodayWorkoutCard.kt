@@ -81,6 +81,7 @@ fun TodayWorkoutCard(
         verticalArrangement = Arrangement.spacedBy(AppSpacing.xs),
     ) {
         MissedSessionCard()
+        BlockProgressCard()
         when {
             s.activeTitle != null -> {
                 HeroCard(

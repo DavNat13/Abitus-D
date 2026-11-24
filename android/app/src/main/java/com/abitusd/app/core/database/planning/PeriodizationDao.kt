@@ -26,6 +26,12 @@ interface PeriodizationDao {
     @Query("SELECT * FROM muscle_targets WHERE deletedAt IS NULL")
     fun targets(): Flow<List<MuscleTargetEntity>>
 
+    @Query(
+        "SELECT sessionRpe FROM workout_sessions WHERE endedAt IS NOT NULL AND deletedAt IS NULL " +
+            "AND sessionRpe IS NOT NULL ORDER BY endedAt DESC LIMIT :limit",
+    )
+    fun recentSessionRpe(limit: Int): Flow<List<Double>>
+
     @Query("SELECT * FROM program_blocks WHERE id = :id")
     suspend fun block(id: String): ProgramBlockEntity?
 
