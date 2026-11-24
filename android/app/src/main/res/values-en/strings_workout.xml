@@ -103,4 +103,18 @@
     <string name="previous_continue">Continue that session</string>
     <string name="previous_save">Save it and start a new one</string>
     <string name="previous_discard">Discard it and start a new one</string>
+    <string name="tools_warmup">Warm-up</string>
+    <string name="tools_swap">Swap exercise</string>
+    <string name="tools_discomfort">Discomfort</string>
+    <string name="tools_no_discomfort">No discomfort</string>
+    <string name="tools_no_alternatives">This exercise has no alternatives in the library.</string>
+    <string name="zone_neck">Neck</string>
+    <string name="zone_shoulder_left">Left shoulder</string>
+    <string name="zone_shoulder_right">Right shoulder</string>
+    <string name="zone_elbow">Elbow</string>
+    <string name="zone_wrist">Wrist</string>
+    <string name="zone_lower_back">Lower back</string>
+    <string name="zone_hip">Hip</string>
+    <string name="zone_knee">Knee</string>
+    <string name="zone_ankle">Ankle</string>
 </resources>

@@ -31,7 +31,7 @@ class ActiveSessionViewModel
     @Inject
     constructor(
         private val workouts: WorkoutRepository,
-        private val editor: SessionEditor,
+        val editor: SessionEditor,
         private val names: ExerciseNames,
         val rest: SessionRest,
     ) : ViewModel() {

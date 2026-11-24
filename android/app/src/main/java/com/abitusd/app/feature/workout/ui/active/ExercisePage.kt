@@ -73,12 +73,7 @@ fun ExercisePage(
         AppButton(stringResource(R.string.workout_add_set), {
             viewModel.addSet(block)
         }, style = AppButtonStyle.Tonal, icon = AppIcons.Add)
-        AppButton(
-            stringResource(R.string.plate_calculator),
-            onPlates,
-            style = AppButtonStyle.Text,
-            icon = AppIcons.Calculator,
-        )
+        ExerciseTools(block, viewModel.editor, onPlates)
     }
     val index = block.sets.indexOfFirst { it.id == editing }
     if (index >= 0) {

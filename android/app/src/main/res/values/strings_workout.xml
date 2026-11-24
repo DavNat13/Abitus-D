@@ -103,4 +103,18 @@
     <string name="previous_continue">Continuar esa sesión</string>
     <string name="previous_save">Guardarla y empezar nueva</string>
     <string name="previous_discard">Descartarla y empezar nueva</string>
+    <string name="tools_warmup">Calentamiento</string>
+    <string name="tools_swap">Cambiar ejercicio</string>
+    <string name="tools_discomfort">Molestia</string>
+    <string name="tools_no_discomfort">Sin molestias</string>
+    <string name="tools_no_alternatives">Este ejercicio no tiene alternativas en la biblioteca.</string>
+    <string name="zone_neck">Cuello</string>
+    <string name="zone_shoulder_left">Hombro izquierdo</string>
+    <string name="zone_shoulder_right">Hombro derecho</string>
+    <string name="zone_elbow">Codo</string>
+    <string name="zone_wrist">Muñeca</string>
+    <string name="zone_lower_back">Zona lumbar</string>
+    <string name="zone_hip">Cadera</string>
+    <string name="zone_knee">Rodilla</string>
+    <string name="zone_ankle">Tobillo</string>
 </resources>

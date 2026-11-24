@@ -26,6 +26,8 @@ import com.abitusd.app.feature.workout.data.WorkoutRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.stateIn
 import java.time.LocalDate
 import javax.inject.Inject
@@ -46,10 +48,14 @@ class TrainHubViewModel
     ) : ViewModel() {
         private val today = LocalDate.now()
         val state =
-            combine(workouts.active(), calendar.between(today, today), routines.routines()) { active, rows, list ->
+            combine(
+                activeSession(workouts),
+                calendar.between(today, today),
+                routines.routines(),
+            ) { active, rows, list ->
                 val planned = rows.firstOrNull { it.status == "planned" && it.routineId != null }
                 TrainHubState(
-                    activeTitle = active?.let { "" },
+                    activeTitle = active?.title,
                     today = planned,
                     todayName = list.firstOrNull { it.id == planned?.routineId }?.name.orEmpty(),
                 )
@@ -79,7 +85,7 @@ fun TodayWorkoutCard(
             s.activeTitle != null -> {
                 HeroCard(
                     stringResource(R.string.workout_in_progress),
-                    stringResource(R.string.workout_continue),
+                    s.activeTitle.orEmpty(),
                     stringResource(R.string.workout_continue),
                     onContinue,
                 )
@@ -105,3 +111,7 @@ fun TodayWorkoutCard(
         }
     }
 }
+
+@OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
+private fun activeSession(workouts: WorkoutRepository) =
+    workouts.active().flatMapLatest { active -> active?.let { workouts.session(it.sessionId) } ?: flowOf(null) }

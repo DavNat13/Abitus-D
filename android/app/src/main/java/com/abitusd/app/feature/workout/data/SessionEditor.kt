@@ -3,8 +3,10 @@ package com.abitusd.app.feature.workout.data
 import androidx.room3.withWriteTransaction
 import com.abitusd.app.core.database.AbitusDatabase
 import com.abitusd.app.core.database.session.SetEntity
+import com.abitusd.app.core.database.session.SetType
 import com.abitusd.app.core.sync.SyncScheduler
 import com.abitusd.app.feature.workout.domain.SessionFactory
+import com.abitusd.app.feature.workout.domain.WarmupPlan
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -92,7 +94,47 @@ class SessionEditor
             syncScheduler.requestSync()
         }
 
+        /** Adds warm-up sets at 50 and 70 percent of the first work load (10f: approach sets). */
+        suspend fun addWarmups(sessionExerciseId: String) {
+            val exercise = dao.sessionExercise(sessionExerciseId) ?: return
+            val sets = dao.setsOfSessionOnce(exercise.sessionId).filter { it.sessionExerciseId == sessionExerciseId }
+            val work = sets.firstOrNull { (it.loadKg ?: 0.0) > 0.0 }?.loadKg ?: return
+            val now = System.currentTimeMillis()
+            val warmups =
+                WarmupPlan.sets(work).mapIndexed { i, (load, reps) ->
+                    factory
+                        .plannedSet(
+                            exercise,
+                            i,
+                            now,
+                        ).copy(setType = SetType.WARMUP, loadKg = load, reps = reps, restS = WARMUP_REST)
+                }
+            val shifted = sets.map { it.copy(setIndex = it.setIndex + warmups.size, updatedAt = now, dirty = true) }
+            dao.upsertSets(warmups + shifted)
+            syncScheduler.requestSync()
+        }
+
+        /** Swaps the exercise for a related one; sets already done keep their original exercise. */
+        suspend fun replaceExercise(
+            sessionExerciseId: String,
+            exerciseId: String,
+        ) {
+            val row = dao.sessionExercise(sessionExerciseId) ?: return
+            val now = System.currentTimeMillis()
+            val pending =
+                dao.setsOfSessionOnce(row.sessionId).filter {
+                    it.sessionExerciseId == sessionExerciseId &&
+                        it.completedAt == null
+                }
+            database.withWriteTransaction {
+                dao.upsertSessionExercises(listOf(row.copy(exerciseId = exerciseId, updatedAt = now, dirty = true)))
+                dao.upsertSets(pending.map { it.copy(exerciseId = exerciseId, updatedAt = now, dirty = true) })
+            }
+            syncScheduler.requestSync()
+        }
+
         private companion object {
+            const val WARMUP_REST = 60
             const val NEW_EXERCISE_SETS = 3
         }
     }

@@ -66,3 +66,11 @@ class WorkoutDomainTest {
         assertFalse(stack.canRedo)
     }
 }
+
+class WarmupPlanTest {
+    @org.junit.Test
+    fun approachSetsAreRoundedAndBelowTheWorkLoad() {
+        org.junit.Assert.assertEquals(listOf(50.0 to 8, 70.0 to 5), WarmupPlan.sets(100.0))
+        org.junit.Assert.assertEquals(listOf(10.0 to 8, 15.0 to 5), WarmupPlan.sets(21.0))
+    }
+}
