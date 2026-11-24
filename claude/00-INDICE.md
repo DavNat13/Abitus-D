@@ -28,9 +28,9 @@ Carpeta de contexto para Claude Code. Cada archivo cubre un área; léelo antes 
 | 09d-FRONTEND-ANALITICA-3D.md | Fórmulas, veredicto de progreso, dashboards, cuerpo 2D y 3D | Al trabajar en analítica o mapa corporal |
 | 10-FASES-DE-TRABAJO.md | Hoja de ruta, método de trabajo, Fases 0 y 1 | Al planificar o cerrar una fase |
 | 10b-FASES-DE-TRABAJO-2.md | Fases 2 a 4 (biblioteca, planificación, registro) | Al planificar o cerrar una fase |
-| 10c-FASES-DE-TRABAJO-3.md | Fases 5 a 7 (reloj, analítica, cardio y salud) | Al planificar o cerrar una fase |
-| 10d-FASES-DE-TRABAJO-4.md | Fases 8 a 10 (3D, ajustes, distribución 1.0) | Al planificar o cerrar una fase |
-| 10e-FASES-DE-TRABAJO-5.md | Fases 11 a 13, mejoras posteriores a la 1.0 | Al promover ideas a fases |
+| 10c-FASES-DE-TRABAJO-3.md | Fases 5, 5b, 6 y 6b (reloj y analítica) | Al planificar o cerrar una fase |
+| 10d-FASES-DE-TRABAJO-4.md | Fases 7, 7b, 8, 9 y 10 (cardio, 3D, ajustes, distribución 1.0) | Al planificar o cerrar una fase |
+| 10e-FASES-DE-TRABAJO-5.md | Fases 11, 11b, 12 y 13, mejoras posteriores a la 1.0 | Al promover ideas a fases |
 | `10f-FASE-4-Y-4B.md` | Fase 4 (registro en varias pantallas) y Fase 4b (planificación avanzada), acordadas el 2026-11-23 |
 | 11-IDEAS-Y-FUTURO.md | Ideas, mejoras futuras y lo que está fuera de alcance | Al proponer funciones nuevas |
 | 11b-IDEAS-REGISTRO-Y-PROGRAMACION.md | Ideas de registro, calentamiento, programación y hábitos | Al planificar funciones de entrenamiento |

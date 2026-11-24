@@ -1,6 +1,6 @@
 # 10 - Fases de trabajo: hoja de ruta, Fase 0 y Fase 1
 
-Una fase a la vez. No se avanza sin cumplir los criterios de aceptación y sin actualizar `02-MEMORIA.md`. Detalle de las demás fases en `10b` (2 a 4), `10c` (5 a 7), `10d` (8 a 10) y `10e` (mejoras posteriores). Calidad en `17-CALIDAD-Y-PRUEBAS.md`. Las ideas citadas están en `11b` a `11e`.
+Una fase a la vez. No se avanza sin cumplir los criterios de aceptación y sin actualizar `02-MEMORIA.md`. Detalle de las demás fases en `10b` (2 a 4), `10f` (4 y 4b), `10c` (5 a 6b), `10d` (7 a 10) y `10e` (mejoras posteriores). Calidad en `17-CALIDAD-Y-PRUEBAS.md`. Las ideas citadas están en `11b` a `11e`.
 
 ## Hoja de ruta
 
@@ -10,16 +10,23 @@ Una fase a la vez. No se avanza sin cumplir los criterios de aceptación y sin a
 | 1 | Fundaciones y acceso | Crear cuenta, verificar, entrar y mantener la sesión |
 | 2 | Biblioteca de ejercicios | Buscar ejercicios reales y crear propios |
 | 3 | Planificación | Armar rutinas, programas y calendario |
-| 4 | Registro de entrenamiento | Entrenar y registrar series con descanso automático |
-| 5 | Reloj y timers | Usar cronómetro, intervalos y perfiles para todo |
-| 6 | Analítica | Saber si progresa, con mapa corporal 2D |
-| 7 | Running, natación y salud | Registrar cardio con GPS y datos de salud |
+| 4 y 4b | Registro y planificación avanzada | Entrenar, registrar series y periodizar por bloques (hechas) |
+| 5 y 5b | Reloj y timers | Cronómetro, intervalos y perfiles para todo; extras del reloj; ejercicios favoritos |
+| 6 y 6b | Analítica | Saber si progresa, con mapa corporal 2D; comparar y sostener hábitos |
+| 7 y 7b | Cardio, natación y Health Connect | Running y cardio con GPS; natación y datos de salud |
 | 8 | Cuerpo 3D | Ver el mapa de calor sobre un modelo 3D |
-| 9 | Ajustes, cuenta y correos | Configurar todo, exportar e importar datos |
+| 9 | Ajustes, cuenta y datos | Configurar todo, exportar, importar y respaldar |
 | 10 | Endurecimiento y distribución | Instalar la versión 1.0 desde el APK |
-| 11 a 13 | Mejoras posteriores | Entrenamiento inteligente, salud y experiencia |
+| 11 y 11b | Registro, programación y calistenia | Registro más rápido, programación inteligente y habilidades |
+| 12 y 13 | Salud y experiencia | Recuperación sin cifras inventadas; voz, Wear OS y compartir |
 
-La versión 1.0 es el final de la Fase 10. Cada fase termina con una etiqueta Git `fase-N`.
+La versión 1.0 es el final de la Fase 10. Cada fase y subfase termina con su etiqueta Git (`fase-N` o `fase-Nb`).
+
+## Reglas comunes de las fases restantes (2026-11-24)
+- Estilo aprobado: tarjetas por sección con icono, desplegables en vez de nubes de chips, hojas inferiores, menú de tres puntos y confirmación antes de borrar.
+- Encabezado con solo el nombre de la pantalla y el botón de información que abre "Cómo usar"; ninguna pantalla sin sus entradas.
+- Español por defecto e inglés incluido; nombres de ejercicios en inglés opcionales por disciplina; tema claro, oscuro o del sistema; texto legible al 200 %.
+- Fase grande dividida en N y Nb, cada una con sus criterios. Las ideas de cada fase son las filas de `11b` a `11e` con su número en la columna "Fase"; al cerrar, se marcan "Hecha".
 
 ## Cómo se ejecuta cada fase (para Claude Code)
 

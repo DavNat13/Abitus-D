@@ -49,7 +49,7 @@ Objetivo: responder "estoy progresando o no".
 - Leyenda siempre visible; valores exactos al tocar (no depender solo del color).
 
 ### Implementación en dos etapas
-1. Mapa 2D (frente y espalda) en SVG con una zona por grupo muscular (`svg_key`). Es la versión base y el respaldo para dispositivos modestos o si el 3D falla. Se entrega en la Fase 5.
+1. Mapa 2D (frente y espalda) en SVG con una zona por grupo muscular (`svg_key`). Es la versión base y el respaldo para dispositivos modestos o si el 3D falla. Se entrega en la Fase 6.
 2. Cuerpo 3D (Fase 8): modelo glTF con una pieza por grupo muscular (`mesh_key`), mostrado con Three.js dentro de un WebView que carga solo assets locales con `WebViewAssetLoader`, sin CDN ni red. Rotación con un dedo, zoom con dos, tocar para seleccionar.
 - Comunicación con la interfaz Compose mediante una interfaz mínima (periodo y colores hacia el visor; músculo seleccionado hacia la app). Ningún dato personal entra al WebView.
 - Rendimiento: modelo ligero (decenas de miles de triángulos como máximo, VERIFICAR en dispositivos de gama media), texturas pequeñas, carga diferida.
