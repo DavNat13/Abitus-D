@@ -53,6 +53,9 @@
     <string name="targets_max">Maximum sets</string>
     <string name="targets_save">Save target</string>
     <string name="targets_remove">Remove target</string>
+    <string name="template_week_save">Save the week as a template</string>
+    <string name="template_week_name">Week of %1$s</string>
+    <string name="template_week_saved">Saved in Programs. Activate it there to repeat this week.</string>
     <string name="workout_exercise_load">%1$s, %2$d sets at %3$s kg</string>
     <string name="info_travel_d">Uses the library equipment profile (home, park or gym) and swaps each exercise that does not fit for a related alternative or regression.</string>
     <string name="phase_accumulation">Accumulation</string>

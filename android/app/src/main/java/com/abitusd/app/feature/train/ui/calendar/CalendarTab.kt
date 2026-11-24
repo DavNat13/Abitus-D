@@ -64,6 +64,7 @@ fun CalendarTab(viewModel: CalendarViewModel = hiltViewModel()) {
         }
         CalendarDayDetail(s, viewModel)
         WeekAvailability(viewModel::fitWeek)
+        WeekTemplate(s.selected)
         AppButton(
             stringResource(R.string.calendar_export),
             {

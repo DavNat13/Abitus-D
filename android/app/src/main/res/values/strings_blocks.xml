@@ -53,6 +53,9 @@
     <string name="targets_max">Máximo de series</string>
     <string name="targets_save">Guardar objetivo</string>
     <string name="targets_remove">Quitar objetivo</string>
+    <string name="template_week_save">Guardar la semana como plantilla</string>
+    <string name="template_week_name">Semana del %1$s</string>
+    <string name="template_week_saved">Guardada en Programas. Actívala desde ahí para repetir esta semana.</string>
     <string name="workout_exercise_load">%1$s, %2$d series con %3$s kg</string>
     <string name="info_travel_d">Usa el perfil de equipo de la biblioteca (casa, parque o gimnasio) y cambia cada ejercicio que no encaja por una alternativa o regresión relacionada.</string>
     <string name="phase_accumulation">Acumulación</string>
