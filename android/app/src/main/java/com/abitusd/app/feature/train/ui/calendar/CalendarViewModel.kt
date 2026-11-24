@@ -31,7 +31,7 @@ data class CalendarState(
     val scheduled: List<ScheduledWorkoutEntity> = emptyList(),
     val routineNames: Map<String, String> = emptyMap(),
     val dayLoad: Int = 0,
-    val weekVolume: List<Pair<String, Double>> = emptyList(),
+    val weekVolume: List<com.abitusd.app.feature.train.data.MuscleVolume> = emptyList(),
 )
 
 /** Monthly planning calendar; every change is written to Room and synced later. */
@@ -111,7 +111,7 @@ class CalendarViewModel
                 scheduled = input.rows,
                 routineNames = input.names,
                 dayLoad = PlannedVolume.totalSets(dayRows.flatMap { setsOf(it.routineId) }),
-                weekVolume = volumes.perMuscle(weekSets, locale),
+                weekVolume = volumes.byMuscle(weekSets, locale),
             )
         }
 

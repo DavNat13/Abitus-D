@@ -16,12 +16,24 @@ class VolumeCalculator
         suspend fun perMuscle(
             sets: List<PlannedSets>,
             locale: String,
-        ): List<Pair<String, Double>> {
+        ): List<Pair<String, Double>> = byMuscle(sets, locale).map { it.name to it.sets }
+
+        /** Planned sets per muscle group with its id, largest first. */
+        suspend fun byMuscle(
+            sets: List<PlannedSets>,
+            locale: String,
+        ): List<MuscleVolume> {
             if (sets.isEmpty()) return emptyList()
             val ids = sets.map { it.exerciseId }.distinct()
             val shares = library.musclesOf(ids).map { MuscleShare(it.exerciseId, it.muscleGroupId, it.contribution) }
             val names = library.muscleGroups(locale).first().associate { it.id to it.name }
             val volume = PlannedVolume.perMuscle(sets, shares).entries.sortedByDescending { it.value }
-            return volume.map { names[it.key].orEmpty() to it.value }
+            return volume.map { MuscleVolume(it.key, names[it.key].orEmpty(), it.value) }
         }
     }
+
+data class MuscleVolume(
+    val id: Int,
+    val name: String,
+    val sets: Double,
+)

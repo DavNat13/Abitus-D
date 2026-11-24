@@ -43,6 +43,16 @@
     <string name="availability_text">Elige los días que puedes entrenar. Los entrenamientos de la semana se mueven a esos días sin perder su orden; si sobran, se juntan en el último día como doble sesión.</string>
     <string name="availability_days">Días disponibles</string>
     <string name="availability_apply">Mover entrenamientos</string>
+    <string name="volume_target">%1$s de %2$d-%3$d series</string>
+    <string name="targets_open">Objetivos por músculo</string>
+    <string name="targets_title">Objetivos semanales</string>
+    <string name="targets_range">%1$d a %2$d series por semana</string>
+    <string name="targets_none">Sin objetivo</string>
+    <string name="targets_hint">La franja verde de la barra marca este rango. Un punto de partida común es de 10 a 20 series por semana.</string>
+    <string name="targets_min">Mínimo de series</string>
+    <string name="targets_max">Máximo de series</string>
+    <string name="targets_save">Guardar objetivo</string>
+    <string name="targets_remove">Quitar objetivo</string>
     <string name="workout_exercise_load">%1$s, %2$d series con %3$s kg</string>
     <string name="info_travel_d">Usa el perfil de equipo de la biblioteca (casa, parque o gimnasio) y cambia cada ejercicio que no encaja por una alternativa o regresión relacionada.</string>
     <string name="phase_accumulation">Acumulación</string>

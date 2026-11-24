@@ -43,6 +43,16 @@
     <string name="availability_text">Pick the days you can train. Workouts of the week move onto those days in order; any extra share the last day as a double session.</string>
     <string name="availability_days">Available days</string>
     <string name="availability_apply">Move workouts</string>
+    <string name="volume_target">%1$s of %2$d-%3$d sets</string>
+    <string name="targets_open">Targets per muscle</string>
+    <string name="targets_title">Weekly targets</string>
+    <string name="targets_range">%1$d to %2$d sets per week</string>
+    <string name="targets_none">No target</string>
+    <string name="targets_hint">The green band on the bar marks this range. A common starting point is 10 to 20 sets per week.</string>
+    <string name="targets_min">Minimum sets</string>
+    <string name="targets_max">Maximum sets</string>
+    <string name="targets_save">Save target</string>
+    <string name="targets_remove">Remove target</string>
     <string name="workout_exercise_load">%1$s, %2$d sets at %3$s kg</string>
     <string name="info_travel_d">Uses the library equipment profile (home, park or gym) and swaps each exercise that does not fit for a related alternative or regression.</string>
     <string name="phase_accumulation">Accumulation</string>
