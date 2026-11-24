@@ -102,6 +102,11 @@ fun PreSessionScreen(
             }
         }, loading = s.starting, icon = AppIcons.Start)
     }
+    s.previousTitle?.let { title ->
+        PreviousSessionSheet(title, {
+            viewModel.resolvePrevious(it, freeTitle)
+        }, { viewModel.resolvePrevious(null, freeTitle) })
+    }
 }
 
 private fun granted(context: android.content.Context) =

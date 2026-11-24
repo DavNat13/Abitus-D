@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.abitusd.app.core.database.planning.RoutineExerciseEntity
 import com.abitusd.app.feature.library.domain.ExerciseNames
 import com.abitusd.app.feature.train.data.RoutineRepository
+import com.abitusd.app.feature.workout.data.PreviousSession
 import com.abitusd.app.feature.workout.data.WorkoutRepository
 import com.abitusd.app.feature.workout.domain.Readiness
 import dagger.assisted.Assisted
@@ -25,6 +26,7 @@ data class PreSessionState(
     val minutes: Int = 0,
     val readiness: Readiness = Readiness(),
     val starting: Boolean = false,
+    val previousTitle: String? = null,
 )
 
 /** What the session holds before it starts; starting writes it to Room as the active session. */
@@ -37,6 +39,7 @@ class PreSessionViewModel
         private val routines: RoutineRepository,
         private val workouts: WorkoutRepository,
         private val names: ExerciseNames,
+        private val previous: PreviousSession,
     ) : ViewModel() {
         private val mutable = MutableStateFlow(PreSessionState())
         val state: StateFlow<PreSessionState> = mutable.asStateFlow()
@@ -62,12 +65,36 @@ class PreSessionViewModel
 
         fun setEnergy(value: Int?) = mutable.update { it.copy(readiness = it.readiness.copy(energy = value)) }
 
+        /** Starts, or first asks what to do with an unfinished session. */
         fun start(freeTitle: String) {
             if (state.value.starting) return
             mutable.update { it.copy(starting = true) }
             viewModelScope.launch {
+                val pending = previous.pending()
+                if (pending != null) {
+                    mutable.update { it.copy(starting = false, previousTitle = pending.title) }
+                    return@launch
+                }
                 workouts.start(state.value.title ?: freeTitle, routineId, scheduledWorkoutId, state.value.readiness)
                 startedChannel.send(Unit)
+            }
+        }
+
+        fun closePreviousSheet() = mutable.update { it.copy(previousTitle = null) }
+
+        /** null keeps the previous session (it reopens); true saves it, false discards it. */
+        fun resolvePrevious(
+            save: Boolean?,
+            freeTitle: String,
+        ) {
+            mutable.update { it.copy(previousTitle = null) }
+            viewModelScope.launch {
+                if (save == null) {
+                    startedChannel.send(Unit)
+                } else {
+                    previous.close(save)
+                    start(freeTitle)
+                }
             }
         }
 

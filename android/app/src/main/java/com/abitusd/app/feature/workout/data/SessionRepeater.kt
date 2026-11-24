@@ -13,12 +13,14 @@ class SessionRepeater
     constructor(
         private val database: AbitusDatabase,
         private val syncScheduler: SyncScheduler,
+        private val previous: PreviousSession,
     ) {
         private val dao get() = database.sessionDao()
 
         /** Copies a past session (exercises and the values of its done sets) as the new active one. */
         suspend fun repeat(sessionId: String): String? {
             val source = dao.session(sessionId) ?: return null
+            previous.close(save = true)
             val done = dao.setsOfSessionOnce(sessionId).filter { it.completedAt != null }
             val now = System.currentTimeMillis()
             val factory = SessionFactory()

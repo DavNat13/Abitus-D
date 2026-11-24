@@ -99,4 +99,8 @@
     <string name="missed_skip">Skip it</string>
     <string name="history_repeat">Repeat this session</string>
     <string name="home_done_today">You completed %1$s today. Good work.</string>
+    <string name="previous_text">%1$s is still open. Decide what to do with it before starting another.</string>
+    <string name="previous_continue">Continue that session</string>
+    <string name="previous_save">Save it and start a new one</string>
+    <string name="previous_discard">Discard it and start a new one</string>
 </resources>

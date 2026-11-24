@@ -99,4 +99,8 @@
     <string name="missed_skip">Saltarla</string>
     <string name="history_repeat">Repetir esta sesión</string>
     <string name="home_done_today">Ya completaste %1$s hoy. Buen trabajo.</string>
+    <string name="previous_text">%1$s quedó abierta. Decide qué hacer con ella antes de empezar otra.</string>
+    <string name="previous_continue">Continuar esa sesión</string>
+    <string name="previous_save">Guardarla y empezar nueva</string>
+    <string name="previous_discard">Descartarla y empezar nueva</string>
 </resources>
