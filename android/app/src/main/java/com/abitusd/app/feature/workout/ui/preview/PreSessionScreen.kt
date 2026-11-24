@@ -105,7 +105,7 @@ fun PreSessionScreen(
     s.previousTitle?.let { title ->
         PreviousSessionSheet(title, {
             viewModel.resolvePrevious(it, freeTitle)
-        }, { viewModel.resolvePrevious(null, freeTitle) })
+        }, viewModel::closePreviousSheet)
     }
 }
 

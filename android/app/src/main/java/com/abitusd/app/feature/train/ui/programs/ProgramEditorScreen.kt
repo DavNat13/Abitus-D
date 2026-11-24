@@ -17,12 +17,14 @@ import com.abitusd.app.core.designsystem.component.AppButtonStyle
 import com.abitusd.app.core.designsystem.component.AppTextField
 import com.abitusd.app.core.designsystem.component.ConfirmDialog
 import com.abitusd.app.core.designsystem.component.FormScreen
+import com.abitusd.app.core.designsystem.component.InfoButton
 import com.abitusd.app.core.designsystem.component.ListItemCard
 import com.abitusd.app.core.designsystem.component.NumberField
 import com.abitusd.app.core.designsystem.component.SectionCard
 import com.abitusd.app.core.designsystem.component.StatusBanner
 import com.abitusd.app.core.designsystem.component.StatusKind
 import com.abitusd.app.core.designsystem.icon.AppIcons
+import com.abitusd.app.feature.train.ui.EditorInfo
 
 @Composable
 fun ProgramEditorScreen(
@@ -39,7 +41,9 @@ fun ProgramEditorScreen(
     var editing by remember { mutableStateOf<Pair<Int, Int>?>(null) }
     var confirmDelete by rememberSaveable { mutableStateOf(false) }
     val names = s.routines.associate { it.id to it.name }
-    FormScreen(title = stringResource(R.string.program_title), onBack = onBack) {
+    FormScreen(title = stringResource(R.string.program_title), onBack = onBack, info = {
+        InfoButton(R.string.info_screen_program, EditorInfo.program)
+    }) {
         SectionCard(stringResource(R.string.routine_details), icon = AppIcons.Notes) {
             AppTextField(s.program.name, viewModel::setName, stringResource(R.string.program_name))
             NumberField(

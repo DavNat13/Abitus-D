@@ -23,6 +23,7 @@ import com.abitusd.app.core.designsystem.component.AppButtonStyle
 import com.abitusd.app.core.designsystem.component.AppTextField
 import com.abitusd.app.core.designsystem.component.ConfirmDialog
 import com.abitusd.app.core.designsystem.component.FormScreen
+import com.abitusd.app.core.designsystem.component.InfoButton
 import com.abitusd.app.core.designsystem.component.InfoPill
 import com.abitusd.app.core.designsystem.component.SectionCard
 import com.abitusd.app.core.designsystem.component.SectionHeader
@@ -33,6 +34,7 @@ import com.abitusd.app.core.designsystem.icon.AppIcons
 import com.abitusd.app.core.designsystem.theme.AppSpacing
 import com.abitusd.app.core.designsystem.theme.AppTheme
 import com.abitusd.app.feature.library.ui.list.LibraryScreen
+import com.abitusd.app.feature.train.ui.EditorInfo
 
 @Composable
 fun RoutineEditorScreen(
@@ -54,7 +56,9 @@ fun RoutineEditorScreen(
         return
     }
     val title = if (s.isNew) R.string.routine_title_new else R.string.routine_title_edit
-    FormScreen(title = stringResource(title), onBack = onBack) {
+    FormScreen(title = stringResource(title), onBack = onBack, info = {
+        InfoButton(R.string.info_screen_routine, EditorInfo.routine)
+    }) {
         SectionCard(stringResource(R.string.routine_details), icon = AppIcons.Notes) {
             AppTextField(s.routine.name, { v ->
                 viewModel.editRoutine {

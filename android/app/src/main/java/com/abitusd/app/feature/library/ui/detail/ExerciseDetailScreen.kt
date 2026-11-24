@@ -20,11 +20,13 @@ import com.abitusd.app.core.designsystem.component.AppButton
 import com.abitusd.app.core.designsystem.component.AppButtonStyle
 import com.abitusd.app.core.designsystem.component.ConfirmDialog
 import com.abitusd.app.core.designsystem.component.FormScreen
+import com.abitusd.app.core.designsystem.component.InfoButton
 import com.abitusd.app.core.designsystem.component.InfoPill
 import com.abitusd.app.core.designsystem.icon.AppIcons
 import com.abitusd.app.core.designsystem.theme.AppSpacing
 import com.abitusd.app.core.designsystem.theme.AppTheme
 import com.abitusd.app.feature.library.ui.LibraryLabels
+import com.abitusd.app.feature.train.ui.EditorInfo
 
 @Composable
 fun ExerciseDetailScreen(
@@ -48,7 +50,9 @@ fun ExerciseDetailScreen(
         FormScreen(title = stringResource(R.string.detail_not_found), onBack = onBack) {}
         return
     }
-    FormScreen(title = texts.name, subtitle = state.discipline, onBack = onBack) {
+    FormScreen(title = texts.name, subtitle = state.discipline, onBack = onBack, info = {
+        InfoButton(R.string.info_screen_detail, EditorInfo.detail)
+    }) {
         FlowRow(
             horizontalArrangement = Arrangement.spacedBy(AppSpacing.xs),
             verticalArrangement = Arrangement.spacedBy(AppSpacing.xs),

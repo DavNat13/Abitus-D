@@ -15,12 +15,14 @@ import com.abitusd.app.core.designsystem.component.AppMultiDropdown
 import com.abitusd.app.core.designsystem.component.AppTextField
 import com.abitusd.app.core.designsystem.component.ChoiceOption
 import com.abitusd.app.core.designsystem.component.FormScreen
+import com.abitusd.app.core.designsystem.component.InfoButton
 import com.abitusd.app.core.designsystem.component.SectionCard
 import com.abitusd.app.core.designsystem.component.StatusBanner
 import com.abitusd.app.core.designsystem.component.StatusKind
 import com.abitusd.app.core.designsystem.icon.AppIcons
 import com.abitusd.app.core.designsystem.theme.AppTheme
 import com.abitusd.app.feature.library.ui.LibraryLabels
+import com.abitusd.app.feature.train.ui.EditorInfo
 
 @Composable
 fun OwnExerciseFormScreen(
@@ -38,7 +40,9 @@ fun OwnExerciseFormScreen(
     LaunchedEffect(viewModel) { viewModel.saved.collect(onSaved) }
     val title = if (s.isEdit) R.string.form_edit_title else R.string.form_new_title
     val update = viewModel::update
-    FormScreen(title = stringResource(title), onBack = onBack) {
+    FormScreen(title = stringResource(title), onBack = onBack, info = {
+        InfoButton(R.string.info_screen_own, EditorInfo.ownExercise)
+    }) {
         SectionCard(stringResource(R.string.form_section_basics), icon = AppIcons.Notes) {
             AppTextField(s.name, { v -> update { it.copy(name = v) } }, stringResource(R.string.form_name))
             if (s.duplicates.isNotEmpty()) {

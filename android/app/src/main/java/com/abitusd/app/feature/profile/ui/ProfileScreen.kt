@@ -17,11 +17,13 @@ import com.abitusd.app.core.designsystem.component.AppButton
 import com.abitusd.app.core.designsystem.component.AppButtonStyle
 import com.abitusd.app.core.designsystem.component.ConfirmDialog
 import com.abitusd.app.core.designsystem.component.FormScreen
+import com.abitusd.app.core.designsystem.component.InfoButton
 import com.abitusd.app.core.designsystem.component.NavRow
 import com.abitusd.app.core.designsystem.component.SectionCard
 import com.abitusd.app.core.designsystem.icon.AppIcons
 import com.abitusd.app.core.designsystem.theme.AppTheme
 import com.abitusd.app.feature.auth.data.AuthRepository
+import com.abitusd.app.feature.train.ui.EditorInfo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -57,7 +59,9 @@ fun ProfileScreen(
 ) {
     val signingOut by viewModel.signingOut.collectAsStateWithLifecycle()
     var confirmSignOut by rememberSaveable { mutableStateOf(false) }
-    FormScreen(title = stringResource(R.string.profile_title), onBack = onBack) {
+    FormScreen(title = stringResource(R.string.profile_title), onBack = onBack, info = {
+        InfoButton(R.string.info_screen_profile, EditorInfo.profile)
+    }) {
         SectionCard(stringResource(R.string.profile_preferences), icon = AppIcons.Filter) {
             LanguagePicker()
             ThemePicker()
