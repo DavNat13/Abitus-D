@@ -99,6 +99,7 @@ data class ScheduledWorkoutEntity(
     val status: String = "planned",
     val sessionId: String? = null,
     val rescheduledFrom: String? = null,
+    val plannedTime: String? = null,
     override val updatedAt: Long,
     override val deletedAt: Long? = null,
     override val dirty: Boolean = false,

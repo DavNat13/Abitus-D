@@ -62,8 +62,11 @@ import com.abitusd.app.core.database.session.WorkoutSessionEntity
         SessionExerciseEntity::class,
         SetEntity::class,
         ActiveSessionEntity::class,
+        com.abitusd.app.core.database.planning.ProgramBlockEntity::class,
+        com.abitusd.app.core.database.planning.BlockSubstitutionEntity::class,
+        com.abitusd.app.core.database.planning.MuscleTargetEntity::class,
     ],
-    version = 4,
+    version = 5,
     exportSchema = true,
     autoMigrations = [
         AutoMigration(
@@ -83,6 +86,8 @@ abstract class AbitusDatabase : RoomDatabase() {
     abstract fun planningDao(): PlanningDao
 
     abstract fun sessionDao(): SessionDao
+
+    abstract fun periodizationDao(): com.abitusd.app.core.database.planning.PeriodizationDao
 
     abstract fun workoutHistoryDao(): com.abitusd.app.core.database.session.WorkoutHistoryDao
 
