@@ -5,10 +5,10 @@ Archivo vivo. Claude Code lo lee al iniciar cada sesión y lo actualiza al termi
 ## Estado actual
 
 - Fecha de creación de la documentación: 2026-11-22.
-- Fase actual: Fase 4 cerrada (fase-4, 2026-11-24; detalle en `02h-MEMORIA-FASE-4.md`). Siguiente: Fase 4b (planificación avanzada, `10f`). Fase 3b cerrada (fase-3b-rediseno).
+- Fase actual: Fase 4b cerrada (fase-4b, 2026-11-24; detalle en `02i-MEMORIA-FASE-4B.md`). Fase 4 cerrada (fase-4, `02h`). Siguiente: Fase 5 según `10-FASES-DE-TRABAJO.md`.
 - Repositorio remoto: https://github.com/DavNat13/Abitus-D (público). Versionado: un commit convencional por tarea verificada, push tras cada tarea y etiqueta `fase-N` al cerrar cada fase. Al ser público, revisar secretos antes de cada push.
 - Código: autenticación completa (backend, base de datos y app Android); detalle y decisiones de la Fase 1 en `02d-MEMORIA-FASE-1.md`. Verificaciones externas en `02c-MEMORIA-VERIFICACIONES.md`.
-- Siguiente paso: Fase 4b según `10f` (ciclos y bloques, progresión, descargas, disponibilidad semanal, modo viaje, objetivos de volumen).
+- Siguiente paso: Fase 5 según `10-FASES-DE-TRABAJO.md`.
 - Pedido del autor para la Fase 4 (2026-11-23): en programas y calendario, cada día se elige como entrenamiento, descanso o descanso activo (hoy solo existe descanso con un aviso). Requiere un tipo de día en program_days (migración en servidor y Room, sincronización), el selector en el editor de programas y que Inicio y Calendario muestren el descanso activo con su sugerencia. Pendiente al final: Vercel, Neon, keystore.
 
 Fase 0: tareas 1 a 7 hechas y verificadas (estructura, verificaciones, scripts, backend, database, Docker, Android en emulador API 29); tarea 8 (despliegue en Vercel) diferida al final. Detalle en el historial de Git.
@@ -118,6 +118,7 @@ Formato de cada entrada: `AAAA-MM-DD | área | qué se hizo | resultado de la ve
 - 2026-11-23 | acceso | Bienvenida, registro, verificación, login y recuperación en tarjetas con icono (iniciado con Codex, cerrado por Claude) | Detekt, ktlint, pruebas unitarias y APK en verde; scripts OK | Inicio y Perfil
 - 2026-11-23 | diseño | Inicio, Perfil, selector de tema y auditoría final de la Fase 3b | Detekt, ktlint, pruebas, APK, contraste, longitudes y emojis OK; texto al 200 % y tema oscuro revisados en emulador | Fase 4 con aprobación
 - 2026-11-24 | registro | Fase 4 completa: sesiones con sincronización, sesión activa, descanso por alarma exacta, resumen, historial, descanso activo, sesión perdida, herramientas | 59 pruebas de servidor y pruebas Android en verde; confirmar serie 3 a 15 ms; sesión sin conexión llega sin duplicados; descanso suena con pantalla apagada | Fase 4b
+- 2026-11-24 | planificación | Fase 4b completa: bloques y fases, progresión automática, descarga sugerida, semana de prueba, modo viaje, sustituciones por bloque, disponibilidad semanal, hora con recordatorio, plantillas de semana y objetivos por músculo | 61 pruebas de servidor y pruebas Android en verde; criterios medidos en emulador | Fase 5
 
 ## Cómo actualizar este archivo
 
