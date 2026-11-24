@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="blocks_weeks">
+        <item quantity="one">%1$d week</item>
+        <item quantity="other">%1$d weeks</item>
+    </plurals>
+    <plurals name="blocks_total_weeks">
+        <item quantity="one">%1$d-week program</item>
+        <item quantity="other">%1$d-week program</item>
+    </plurals>
+</resources>

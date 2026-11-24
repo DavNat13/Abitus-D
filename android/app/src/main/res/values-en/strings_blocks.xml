@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="blocks_title">Blocks and phases</string>
+    <string name="blocks_empty">Split the program into blocks so loads progress week by week with planned deloads.</string>
+    <string name="blocks_mesocycle">Create a 4-week mesocycle</string>
+    <string name="blocks_add">Add block</string>
+    <string name="blocks_edit">Edit block</string>
+    <string name="blocks_name">Name (optional)</string>
+    <string name="blocks_name_hint">Left empty, the phase is used.</string>
+    <string name="blocks_phase">Phase</string>
+    <string name="blocks_goal">Goal</string>
+    <string name="blocks_length">Length</string>
+    <string name="blocks_progression">Progression</string>
+    <string name="blocks_step_double">Increment once the range is done</string>
+    <string name="blocks_step_weekly">Increment per week</string>
+    <string name="blocks_step_kg">%1$s kg</string>
+    <string name="blocks_step_percent">%1$s %%</string>
+    <string name="blocks_save">Save block</string>
+    <string name="blocks_move_up">Move up</string>
+    <string name="blocks_move_down">Move down</string>
+    <string name="blocks_remove">Remove block</string>
+    <string name="blocks_options">%1$s options</string>
+    <string name="blocks_save_first">Save the program to split it into blocks.</string>
+    <string name="blocks_week_of">Week %1$d of %2$d, %3$s</string>
+    <string name="blocks_deload_suggested">Your last sessions were very hard. Consider a deload week.</string>
+    <string name="phase_accumulation">Accumulation</string>
+    <string name="phase_intensification">Intensification</string>
+    <string name="phase_deload">Deload</string>
+    <string name="phase_test">Test</string>
+    <string name="goal_general">General</string>
+    <string name="goal_strength">Strength</string>
+    <string name="goal_hypertrophy">Hypertrophy</string>
+    <string name="goal_endurance">Endurance</string>
+    <string name="goal_skill">Skill</string>
+    <string name="progression_none">No automatic progression</string>
+    <string name="progression_double">Double progression</string>
+    <string name="progression_percent">Load percentage</string>
+    <string name="progression_rpe">Rising RPE</string>
+    <string name="info_blocks_d">Each block groups weeks under one phase. The line shows one cell per week in its phase colour.</string>
+    <string name="info_phase_d">Accumulation adds volume, intensification raises load, deload cuts sets to 60 %% and load to 85 %%, and test measures your max to recalculate loads.</string>
+    <string name="info_progression_d">Double progression raises load once every set reaches the top of the range. Percentage and RPE rise each week of the block.</string>
+</resources>

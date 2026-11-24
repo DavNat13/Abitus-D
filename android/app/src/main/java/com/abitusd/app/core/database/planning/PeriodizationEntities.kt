@@ -57,7 +57,11 @@ data class MuscleTargetEntity(
 
 object BlockGoal {
     const val GENERAL = "general"
-    val ALL = listOf(GENERAL, "strength", "hypertrophy", "endurance", "skill")
+    const val STRENGTH = "strength"
+    const val HYPERTROPHY = "hypertrophy"
+    const val ENDURANCE = "endurance"
+    const val SKILL = "skill"
+    val ALL = listOf(GENERAL, STRENGTH, HYPERTROPHY, ENDURANCE, SKILL)
 }
 
 object BlockPhase {

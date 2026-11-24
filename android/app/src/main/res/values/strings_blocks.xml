@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="blocks_title">Bloques y fases</string>
+    <string name="blocks_empty">Divide el programa en bloques para que las cargas progresen semana a semana y tengas descargas planificadas.</string>
+    <string name="blocks_mesocycle">Crear mesociclo de 4 semanas</string>
+    <string name="blocks_add">Agregar bloque</string>
+    <string name="blocks_edit">Editar bloque</string>
+    <string name="blocks_name">Nombre (opcional)</string>
+    <string name="blocks_name_hint">Si lo dejas vacío se usa la fase.</string>
+    <string name="blocks_phase">Fase</string>
+    <string name="blocks_goal">Objetivo</string>
+    <string name="blocks_length">Duración</string>
+    <string name="blocks_progression">Progresión</string>
+    <string name="blocks_step_double">Incremento al completar el rango</string>
+    <string name="blocks_step_weekly">Incremento por semana</string>
+    <string name="blocks_step_kg">%1$s kg</string>
+    <string name="blocks_step_percent">%1$s %%</string>
+    <string name="blocks_save">Guardar bloque</string>
+    <string name="blocks_move_up">Subir</string>
+    <string name="blocks_move_down">Bajar</string>
+    <string name="blocks_remove">Quitar bloque</string>
+    <string name="blocks_options">Opciones de %1$s</string>
+    <string name="blocks_save_first">Guarda el programa para dividirlo en bloques.</string>
+    <string name="blocks_week_of">Semana %1$d de %2$d, %3$s</string>
+    <string name="blocks_deload_suggested">Tus últimas sesiones fueron muy exigentes. Considera una semana de descarga.</string>
+    <string name="phase_accumulation">Acumulación</string>
+    <string name="phase_intensification">Intensificación</string>
+    <string name="phase_deload">Descarga</string>
+    <string name="phase_test">Prueba</string>
+    <string name="goal_general">General</string>
+    <string name="goal_strength">Fuerza</string>
+    <string name="goal_hypertrophy">Hipertrofia</string>
+    <string name="goal_endurance">Resistencia</string>
+    <string name="goal_skill">Habilidad</string>
+    <string name="progression_none">Sin progresión automática</string>
+    <string name="progression_double">Doble progresión</string>
+    <string name="progression_percent">Porcentaje de carga</string>
+    <string name="progression_rpe">RPE creciente</string>
+    <string name="info_blocks_d">Cada bloque agrupa semanas con una fase. La línea muestra una celda por semana con el color de su fase.</string>
+    <string name="info_phase_d">Acumulación suma volumen, intensificación sube la carga, descarga reduce series al 60 %% y carga al 85 %%, y prueba mide tu máximo para recalcular cargas.</string>
+    <string name="info_progression_d">Doble progresión sube la carga cuando completas el rango alto en todas las series. Porcentaje y RPE suben cada semana del bloque.</string>
+</resources>

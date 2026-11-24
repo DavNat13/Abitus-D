@@ -52,6 +52,11 @@ fun ProgramEditorScreen(
                 { v -> v.toIntOrNull()?.let(viewModel::setWeeks) },
             )
         }
+        if (s.isNew) {
+            StatusBanner(stringResource(R.string.blocks_save_first), StatusKind.Warning)
+        } else {
+            BlocksSection(s.program.id, viewModel::setWeeks)
+        }
         if (s.days.any { it.activeRest }) StatusBanner(stringResource(R.string.program_active_rest), StatusKind.Success)
         repeat(s.program.weeksCount) { week -> WeekCard(week, s.days, names) { day -> editing = week to day } }
         s.error?.let { StatusBanner(stringResource(it), StatusKind.Error) }

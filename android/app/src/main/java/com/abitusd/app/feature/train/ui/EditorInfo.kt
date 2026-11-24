@@ -18,6 +18,9 @@ object EditorInfo {
     val program =
         listOf(
             InfoEntry(AppIcons.Notes, R.string.program_name, R.string.info_program_data_d),
+            InfoEntry(AppIcons.Progression, R.string.blocks_title, R.string.info_blocks_d),
+            InfoEntry(AppIcons.Train, R.string.blocks_phase, R.string.info_phase_d),
+            InfoEntry(AppIcons.Progression, R.string.blocks_progression, R.string.info_progression_d),
             InfoEntry(AppIcons.Calendar, R.string.info_program_week_t, R.string.info_program_week_d),
             InfoEntry(AppIcons.ActiveRest, R.string.program_active_rest_day, R.string.info_program_rest_d),
             InfoEntry(AppIcons.Today, R.string.program_activate, R.string.info_program_activate_d),
