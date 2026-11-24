@@ -47,6 +47,7 @@
                 android:resource="@xml/file_paths" />
         </provider>
         <receiver android:name=".core.timer.RestAlarmReceiver" android:exported="false" />
+        <receiver android:name=".core.timer.WorkoutReminderReceiver" android:exported="false" />
     </application>
 
 </manifest>

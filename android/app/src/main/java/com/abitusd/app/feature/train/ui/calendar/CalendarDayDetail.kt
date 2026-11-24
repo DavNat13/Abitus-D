@@ -42,6 +42,7 @@ fun CalendarDayDetail(
 ) {
     var choosing by remember { mutableStateOf(false) }
     var moving by remember { mutableStateOf<ScheduledWorkoutEntity?>(null) }
+    var timing by remember { mutableStateOf<Pair<ScheduledWorkoutEntity, String>?>(null) }
     val locale = LocalConfiguration.current.locales[0]
     val rows = s.scheduled.filter { it.date == s.selected.toString() }
     val title =
@@ -60,7 +61,7 @@ fun CalendarDayDetail(
                 } else {
                     s.routineNames[row.routineId].orEmpty()
                 }
-            WorkoutRow(row, name, viewModel) { moving = row }
+            WorkoutRow(row, name, viewModel, { moving = row }) { timing = row to name }
         }
         if (s.dayLoad > 0) InfoPill(stringResource(R.string.calendar_day_load, s.dayLoad), emphasized = true)
         AppButton(
@@ -86,51 +87,10 @@ fun CalendarDayDetail(
             }
         }
     }
+    timing?.let { (row, name) ->
+        TimeSheet(row.plannedTime, { timing = null }) { viewModel.setTime(row.id, it, name) }
+    }
     moving?.let { row ->
         RescheduleDialog(LocalDate.parse(row.date), { moving = null }) { viewModel.reschedule(row.id, it) }
-    }
-}
-
-@Composable
-private fun WorkoutRow(
-    row: ScheduledWorkoutEntity,
-    name: String,
-    viewModel: CalendarViewModel,
-    onReschedule: () -> Unit,
-) {
-    val skip = stringResource(R.string.calendar_skip)
-    val tomorrow = stringResource(R.string.calendar_move_tomorrow)
-    val reschedule = stringResource(R.string.calendar_reschedule)
-    val remove = stringResource(R.string.calendar_remove)
-    val actions =
-        buildList {
-            if (row.status == "planned") add(MenuAction(skip, AppIcons.Skip) { viewModel.skip(row.id) })
-            add(MenuAction(tomorrow, AppIcons.Today) { viewModel.moveTomorrow(row) })
-            add(MenuAction(reschedule, AppIcons.Reschedule, onClick = onReschedule))
-            add(MenuAction(remove, AppIcons.Delete, destructive = true) { viewModel.remove(row.id) })
-        }
-    val done = row.status == CalendarViewModel.STATUS_DONE
-    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(AppSpacing.sm)) {
-        IconBadge(
-            if (done) AppIcons.Check else AppIcons.Train,
-            container = if (done) AppTheme.colors.successContainer else AppTheme.colors.primaryContainer,
-            tint = if (done) AppTheme.colors.successText else AppTheme.colors.primary,
-        )
-        Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(AppSpacing.xxxs)) {
-            Text(name, style = AppTheme.typography.titleMedium, color = AppTheme.colors.textPrimary)
-            Text(
-                stringResource(statusLabel(row.status)),
-                style = AppTheme.typography.caption,
-                color = AppTheme.colors.textSecondary,
-            )
-            row.rescheduledFrom?.let {
-                Text(
-                    stringResource(R.string.calendar_rescheduled_from, it),
-                    style = AppTheme.typography.caption,
-                    color = AppTheme.colors.textSecondary,
-                )
-            }
-        }
-        OverflowMenu(stringResource(R.string.common_more_actions), actions)
     }
 }

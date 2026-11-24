@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.abitusd.app.core.database.planning.ScheduledWorkoutEntity
 import com.abitusd.app.core.i18n.AppLocale
+import com.abitusd.app.feature.train.data.CalendarPlanning
 import com.abitusd.app.feature.train.data.CalendarRepository
 import com.abitusd.app.feature.train.data.RoutineRepository
 import com.abitusd.app.feature.train.data.VolumeCalculator
@@ -40,6 +41,7 @@ class CalendarViewModel
     @Inject
     constructor(
         private val calendar: CalendarRepository,
+        private val planning: CalendarPlanning,
         private val routines: RoutineRepository,
         private val volumes: VolumeCalculator,
     ) : ViewModel() {
@@ -77,17 +79,21 @@ class CalendarViewModel
 
         fun skip(id: String) = launch { calendar.setStatus(id, STATUS_SKIPPED) }
 
-        fun moveTomorrow(row: ScheduledWorkoutEntity) =
-            launch {
-                calendar.reschedule(row.id, LocalDate.parse(row.date).plusDays(1))
-            }
-
         fun reschedule(
             id: String,
             date: LocalDate,
         ) = launch { calendar.reschedule(id, date) }
 
         fun remove(id: String) = launch { calendar.delete(id) }
+
+        fun setTime(
+            id: String,
+            time: String?,
+            title: String,
+        ) = launch { planning.setTime(id, time, title) }
+
+        fun fitWeek(days: Set<Int>) =
+            launch { planning.fitWeek(selected.value.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY)), days) }
 
         private fun launch(block: suspend () -> Unit) {
             viewModelScope.launch { block() }
