@@ -59,6 +59,7 @@ fun BlockSheet(
             onPlus = { draft = draft.copy(weeks = (draft.weeks + 1).coerceAtMost(MAX_WEEKS)) },
         )
         if (draft.phase != BlockPhase.DELOAD) ProgressionFields(draft, minus, plus) { draft = it }
+        BlockSubstitutions(block.programId, block.id)
         AppButton(stringResource(R.string.blocks_save), {
             onChange(draft)
             onDismiss()
