@@ -70,6 +70,20 @@ object ProgressionRule {
         percent: Double = PERCENT,
     ): Double = round(estimatedMaxKg / (1 + reps / EPLEY) * percent / PERCENT)
 
+    /**
+     * Load after a test block: the best Epley estimate of the last session ([reps] to [loadKg]
+     * pairs) turned into the load for [targetReps]. Null when nothing was lifted with load.
+     */
+    fun afterTest(
+        last: List<Pair<Int, Double>>,
+        targetReps: Int,
+    ): Double? =
+        last
+            .maxOfOrNull { (reps, kg) ->
+                kg * (1 + reps / EPLEY)
+            }?.takeIf { it > 0.0 }
+            ?.let { fromTest(it, targetReps) }
+
     /** Rounds down to the nearest plate step so suggestions are loadable. */
     fun round(kg: Double): Double = floor(kg / PLATE_STEP) * PLATE_STEP
 

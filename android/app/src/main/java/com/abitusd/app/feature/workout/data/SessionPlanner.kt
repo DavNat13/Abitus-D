@@ -45,34 +45,42 @@ class SessionPlanner
             travel: Boolean,
             today: LocalDate = LocalDate.now(),
         ): SessionPlan {
-            val (week, total) = currentWeek(today)
+            val (week, total, afterTest) = currentWeek(today)
             val ids = planned.map { it.exerciseId }
             val substitutions = week?.let { blocks.substitutions(it.block.id) }.orEmpty()
             val (swaps, unfit) = swaps(ids, substitutions, travel)
-            val last = lastReps(ids)
+            val last = lastSets(ids)
             val exercises =
                 planned.map { e ->
-                    val adjusted = adjust(e, week, last[e.exerciseId].orEmpty())
+                    val adjusted = adjust(e, week, last[e.exerciseId].orEmpty(), afterTest)
                     swaps[e.exerciseId]?.let { adjusted.copy(exerciseId = it, targetLoadKg = null) } ?: adjusted
                 }
             return SessionPlan(exercises, week, swaps, total, unfit)
         }
 
-        private suspend fun currentWeek(today: LocalDate): Pair<BlockWeek?, Int> {
+        private suspend fun currentWeek(today: LocalDate): Triple<BlockWeek?, Int, Boolean> {
             val program =
-                programs.programs().first().firstOrNull { it.isActive && it.startDate != null } ?: return null to 0
+                programs.programs().first().firstOrNull { it.isActive && it.startDate != null }
+                    ?: return Triple(null, 0, false)
             val specs = blocks.blocksOnce(program.id).map(BlockRepository::spec)
             val start = LocalDate.parse(program.startDate).toEpochDay()
-            return BlockPlan.at(specs, BlockPlan.programWeek(start, today.toEpochDay())) to BlockPlan.totalWeeks(specs)
+            val week = BlockPlan.at(specs, BlockPlan.programWeek(start, today.toEpochDay()))
+            val afterTest =
+                week != null && specs.any { it.phase == BlockPhase.TEST && it.position < week.block.position }
+            return Triple(week, BlockPlan.totalWeeks(specs), afterTest)
         }
 
         private fun adjust(
             e: RoutineExerciseEntity,
             week: BlockWeek?,
-            lastReps: List<Int>,
+            last: List<Pair<Int, Double>>,
+            afterTest: Boolean,
         ): RoutineExerciseEntity {
             if (week == null) return e
-            val base = Target(e.targetSets, e.targetRepsMin, e.targetRepsMax, e.targetLoadKg, e.targetRpe)
+            val reps = e.targetRepsMax ?: e.targetRepsMin
+            val tested = if (afterTest && reps != null) ProgressionRule.afterTest(last, reps) else null
+            val base = Target(e.targetSets, e.targetRepsMin, e.targetRepsMax, tested ?: e.targetLoadKg, e.targetRpe)
+            val lastReps = last.map { it.first }
             val t = ProgressionRule.apply(base, week)
             val double = week.block.progression == Progression.DOUBLE && week.block.phase != BlockPhase.DELOAD
             val load =
@@ -111,14 +119,19 @@ class SessionPlanner
             return swaps to unfit
         }
 
-        /** Reps of the normal sets of each exercise's most recent session. */
-        private suspend fun lastReps(ids: List<String>): Map<String, List<Int>> =
+        /** Reps and load of the normal sets of each exercise's most recent session. */
+        private suspend fun lastSets(ids: List<String>): Map<String, List<Pair<Int, Double>>> =
             history
                 .completedSetsOf(ids, "")
                 .filter { it.setType == SetType.NORMAL }
                 .groupBy { it.exerciseId }
                 .mapValues { (_, sets) ->
                     val latest = sets.maxBy { it.completedAt ?: 0 }.sessionExerciseId
-                    sets.filter { it.sessionExerciseId == latest }.mapNotNull { it.reps }
+                    sets.filter { it.sessionExerciseId == latest }.mapNotNull { s ->
+                        s.reps?.let {
+                            it to
+                                (s.loadKg ?: 0.0)
+                        }
+                    }
                 }
     }

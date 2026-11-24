@@ -58,6 +58,8 @@ class PeriodizationTest {
     fun testWeekRecalculatesLoad() {
         assertEquals(102.5, ProgressionRule.fromTest(120.0, 5), 0.0)
         assertEquals(85.0, ProgressionRule.fromTest(120.0, 5, 85.0), 0.0)
+        assertEquals(102.5, ProgressionRule.afterTest(listOf(5 to 100.0, 3 to 110.0), 5)!!, 0.0)
+        assertNull(ProgressionRule.afterTest(listOf(8 to 0.0), 5))
     }
 
     @Test
