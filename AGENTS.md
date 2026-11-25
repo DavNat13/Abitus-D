@@ -34,3 +34,13 @@ Este archivo es para cualquier agente distinto de Claude Code. Las reglas del pr
 ## Al terminar cada tarea
 
 Actualiza `claude/02-MEMORIA.md` (estado, decisiones, hechos verificados) y la memoria de la fase, como indica `CLAUDE.md`. Así el siguiente agente, sea Codex o Claude, retoma sin perder contexto.
+
+## Límites de alcance (pedido del autor, 2026-11-25)
+
+- Haz solo lo que pide la fase en curso según `claude/10c` a `10e` y sus filas de los bancos. Nada de funciones, pantallas, refactorizaciones ni limpiezas que no estén en la fase; si ves algo útil, anótalo en `claude/02-MEMORIA.md` como pendiente.
+- No agregues dependencias nuevas sin verificar su versión y licencia en la fuente oficial y registrarlo en la memoria; no actualices las existentes salvo que la fase lo exija.
+- No cambies la configuración de herramientas (Gradle, Detekt, ktlint, ESLint, tsconfig, Docker) ni los scripts de `tools/` salvo que la fase lo exija; nunca relajes una regla de lint o una prueba para que pase.
+- No borres ni reescribas pruebas existentes para que pasen; corrige el código.
+- No toques `AGENTS.md`, `CLAUDE.md`, `opencode.json`, `legal/`, `distribution/` ni `claude/03-REGLAS-DE-ORO.md`.
+- Git: solo `add`, `commit`, `push` normal y `tag` nuevo. Nunca reescribas historial, fuerces un push, borres ramas o etiquetas, ni toques el `.env`.
+- Fuera de `C:\Abitus-D` solo usa el SDK de Android, el JDK y las cachés de Gradle y del emulador.
