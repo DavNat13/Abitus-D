@@ -52,7 +52,8 @@ fun AppNavigation(viewModel: RootViewModel = hiltViewModel()) {
         }
 
         is SessionState.SignedIn -> {
-            MainNavigation()
+            com.abitusd.app.feature.onboarding.ui
+                .AthleteGate((session as SessionState.SignedIn).userId) { MainNavigation() }
         }
     }
 }

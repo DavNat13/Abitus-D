@@ -40,6 +40,7 @@ class AuthRepository
         private val planning: com.abitusd.app.core.database.planning.PlanningDao,
         private val workouts: com.abitusd.app.core.database.session.SessionDao,
         private val periodization: com.abitusd.app.core.database.planning.PeriodizationDao,
+        private val database: com.abitusd.app.core.database.AbitusDatabase,
     ) {
         suspend fun register(
             email: String,
@@ -88,6 +89,7 @@ class AuthRepository
             periodization.clearBlocks()
             periodization.clearSubstitutions()
             periodization.clearTargets()
+            database.athleteDao().clear()
             syncState.clear()
             sessions.clear()
         }

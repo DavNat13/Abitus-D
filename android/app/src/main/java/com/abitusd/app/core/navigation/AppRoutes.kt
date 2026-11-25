@@ -32,6 +32,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable data object ProfileRoute : NavKey
 
+@Serializable data object AthleteRoute : NavKey
+
 @Serializable data class ExerciseDetailRoute(
     val id: String,
 ) : NavKey

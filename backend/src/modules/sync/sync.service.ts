@@ -107,6 +107,7 @@ export class SyncService {
   ): Promise<Outcome> {
     const id = change.row.id;
     const stored = await this.planning.stored(table, id);
+    if (table === 'athlete_profiles' && id !== userId) return 'forbidden';
     if (stored && stored.userId !== userId) return 'forbidden';
     if (stored && stored.updatedAt.getTime() >= updatedAt.getTime()) return 'accepted';
     if (change.op === 'delete') {

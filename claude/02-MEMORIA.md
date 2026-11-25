@@ -132,6 +132,7 @@ Formato de cada entrada: `AAAA-MM-DD | área | qué se hizo | resultado de la ve
 - 2026-11-25 | herramientas | AGENTS.md al día (fases 10 a 10f, bancos 11b a 11f, acuerdos del autor) y opencode.json que carga CLAUDE.md, 02, 02b, 03 y 12 para trabajar con opencode | check-file-length y check-no-emoji en verde | Fase 5
 - 2026-11-24 | documentación | Banco 11f (onboarding, perfil, acceso, ajustes, diseño y criterio deportivo) repartido en las fases 5 a 12 | check-file-length y check-no-emoji en verde | Fase 5
 - 2026-11-25 | planificación | Orden de 5 y 5b registrado; sin implementación ni criterios medidos | Backend 61 pruebas, Android y scripts OK; SDK reparado | Comenzar onboarding
+- 2026-11-25 | onboarding | Onboarding de cinco pasos, perfil del atleta editable, Room 6 y migración 015 con sincronización, paso de salud con enlace oficial y sugerencia de plantilla (trabajo de opencode, estilo corregido por Claude) | Backend 65 pruebas; Android detekt, ktlint, pruebas y APK en verde; recorrido completo en emulador pendiente | Probar onboarding en emulador y seguir con glosario
 - 2026-11-25 | bienvenida | Tres tarjetas en español e inglés; onboarding aún pendiente | Backend 61 pruebas, Android y scripts OK; tarjetas y botones revisados en captura del emulador API 29 | Completar onboarding
 - 2026-11-25 | onboarding | PAR-Q+ no se integra ni adapta; el autor decidió pregunta propia, aviso y enlace oficial | Restricción verificada en fuente oficial | Implementar paso de salud omitible
 

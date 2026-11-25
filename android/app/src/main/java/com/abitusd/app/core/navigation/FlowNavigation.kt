@@ -122,10 +122,15 @@ fun MainNavigation() {
         entry<ProfileRoute> {
             ProfileScreen(
                 onBack = back,
+                onOpenAthlete = { stack.add(AthleteRoute) },
                 onOpenPrivacy = { stack.add(LegalRoute(LegalDocument.PRIVACY)) },
                 onOpenTerms = { stack.add(LegalRoute(LegalDocument.TERMS)) },
                 onOpenCredits = { stack.add(LegalRoute(LegalDocument.CREDITS)) },
             )
+        }
+        entry<AthleteRoute> {
+            com.abitusd.app.feature.onboarding.ui
+                .AthleteScreen(onDone = back)
         }
         entry<LegalRoute> { key -> LegalDocumentScreen(document = key.document, onBack = back) }
     }

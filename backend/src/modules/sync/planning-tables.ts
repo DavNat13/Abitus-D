@@ -2,6 +2,7 @@
 // Wire rows use camelCase; database columns use snake_case. Only these tables and
 // columns can ever be written by the generic sync (identifiers are never user input).
 import { z } from 'zod';
+import { ATHLETE_NUMERIC_COLUMNS, athleteSchemas } from './athlete-tables.js';
 
 import { PERIODIZATION_NUMERIC_COLUMNS, periodizationSchemas } from './periodization-tables.js';
 import {
@@ -79,6 +80,7 @@ export const planningSchemas = {
   }),
   ...sessionSchemas,
   ...periodizationSchemas,
+  ...athleteSchemas,
 } as const;
 
 export type PlanningTable = keyof typeof planningSchemas;
@@ -91,6 +93,7 @@ const NUMERIC_COLUMNS = new Set([
   'target_distance_m',
   ...SESSION_NUMERIC_COLUMNS,
   ...PERIODIZATION_NUMERIC_COLUMNS,
+  ...ATHLETE_NUMERIC_COLUMNS,
 ]);
 
 export const toSnake = (key: string): string => key.replace(/[A-Z]/g, (c) => `_${c.toLowerCase()}`);

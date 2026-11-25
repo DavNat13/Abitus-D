@@ -55,6 +55,7 @@ fun ProfileScreen(
     onOpenPrivacy: () -> Unit,
     onOpenTerms: () -> Unit,
     onOpenCredits: () -> Unit,
+    onOpenAthlete: () -> Unit,
     viewModel: ProfileViewModel = hiltViewModel(),
 ) {
     val signingOut by viewModel.signingOut.collectAsStateWithLifecycle()
@@ -62,6 +63,9 @@ fun ProfileScreen(
     FormScreen(title = stringResource(R.string.profile_title), onBack = onBack, info = {
         InfoButton(R.string.info_screen_profile, EditorInfo.profile)
     }) {
+        SectionCard(stringResource(R.string.athlete_title), icon = AppIcons.Profile) {
+            NavRow(stringResource(R.string.athlete_title), onOpenAthlete)
+        }
         SectionCard(stringResource(R.string.profile_preferences), icon = AppIcons.Filter) {
             LanguagePicker()
             ThemePicker()

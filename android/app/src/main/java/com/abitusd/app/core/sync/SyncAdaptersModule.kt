@@ -97,6 +97,6 @@ object SyncAdaptersModule {
                     dao::cleanScheduled,
                 ),
             ),
-        ) + sessionAdapters(database) + periodizationAdapters(database)
+        ) + sessionAdapters(database) + periodizationAdapters(database) + athleteAdapter(database)
     }
 }
