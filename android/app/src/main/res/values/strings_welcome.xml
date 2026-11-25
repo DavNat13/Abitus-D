@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_record_title">Registra</string>
+    <string name="welcome_record_description">Guarda tus entrenamientos incluso sin conexión.</string>
+    <string name="welcome_plan_title">Planifica</string>
+    <string name="welcome_plan_description">Organiza tus rutinas y entrenamientos.</string>
+    <string name="welcome_progress_title">Progresa</string>
+    <string name="welcome_progress_description">Consulta tu historial y sigue tu evolución.</string>
+</resources>

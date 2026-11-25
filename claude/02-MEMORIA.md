@@ -130,6 +130,7 @@ Formato de cada entrada: `AAAA-MM-DD | área | qué se hizo | resultado de la ve
 - 2026-11-25 | herramientas | AGENTS.md al día (fases 10 a 10f, bancos 11b a 11f, acuerdos del autor) y opencode.json que carga CLAUDE.md, 02, 02b, 03 y 12 para trabajar con opencode | check-file-length y check-no-emoji en verde | Fase 5
 - 2026-11-24 | documentación | Banco 11f (onboarding, perfil, acceso, ajustes, diseño y criterio deportivo) repartido en las fases 5 a 12 | check-file-length y check-no-emoji en verde | Fase 5
 - 2026-11-25 | planificación | Orden de 5 y 5b registrado; sin implementación ni criterios medidos | Backend 61 pruebas, Android y scripts OK; SDK reparado | Comenzar onboarding
+- 2026-11-25 | bienvenida | Tres tarjetas en español e inglés; onboarding aún pendiente | Backend 61 pruebas, Android y scripts OK; tarjetas y botones revisados en captura del emulador API 29 | Completar onboarding
 
 ## Cómo actualizar este archivo
 

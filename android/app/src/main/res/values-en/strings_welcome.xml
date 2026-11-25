@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_record_title">Record</string>
+    <string name="welcome_record_description">Save your workouts even when offline.</string>
+    <string name="welcome_plan_title">Plan</string>
+    <string name="welcome_plan_description">Organize your routines and workouts.</string>
+    <string name="welcome_progress_title">Progress</string>
+    <string name="welcome_progress_description">Review your history and track your progress.</string>
+</resources>

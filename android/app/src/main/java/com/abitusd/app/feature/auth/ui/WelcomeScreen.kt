@@ -23,6 +23,7 @@ import androidx.compose.ui.semantics.semantics
 import com.abitusd.app.R
 import com.abitusd.app.core.designsystem.component.AppButton
 import com.abitusd.app.core.designsystem.component.AppButtonStyle
+import com.abitusd.app.core.designsystem.component.SectionCard
 import com.abitusd.app.core.designsystem.icon.AppIcons
 import com.abitusd.app.core.designsystem.theme.AppShapes
 import com.abitusd.app.core.designsystem.theme.AppSizes
@@ -78,6 +79,15 @@ fun WelcomeScreen(
                     style = AppTheme.typography.body,
                     color = brand.onPrimary,
                 )
+            }
+            SectionCard(stringResource(R.string.welcome_record_title), icon = AppIcons.Train) {
+                Text(stringResource(R.string.welcome_record_description), style = AppTheme.typography.body)
+            }
+            SectionCard(stringResource(R.string.welcome_plan_title), icon = AppIcons.Calendar) {
+                Text(stringResource(R.string.welcome_plan_description), style = AppTheme.typography.body)
+            }
+            SectionCard(stringResource(R.string.welcome_progress_title), icon = AppIcons.Progress) {
+                Text(stringResource(R.string.welcome_progress_description), style = AppTheme.typography.body)
             }
             Spacer(Modifier.padding(AppSpacing.xs))
             AppButton(stringResource(R.string.welcome_create_account), onCreateAccount, icon = AppIcons.Add)
