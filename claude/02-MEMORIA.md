@@ -39,6 +39,7 @@ Nota: la ronda 2 de decisiones (nombre Abitus-D, hosting sin tarjeta, correo, ed
 
 | Fecha | Decisión | Motivo |
 |---|---|---|
+| 2026-11-25 | Salud: pregunta propia sí/no, aviso profesional y enlace al PAR-Q+ oficial si responde sí; paso omitible y lista de molestias o lesiones | Decisión del autor; no integrar ni adaptar PAR-Q+ |
 | 2026-11-24 | Uso personal: sin modo entrenador con alumnos; onboarding y perfil del atleta al inicio de la Fase 5 | Pedido del autor; las ideas de preparador se aplican al propio atleta (banco 11f) |
 | 2026-11-22 | Android nativo (Kotlin, Jetpack Compose) como producto principal | Timers en segundo plano, GPS, Health Connect y calidad de interfaz |
 | 2026-11-22 | Versión mínima de Android 10 (API 29) | Decisión del autor |
@@ -85,6 +86,7 @@ Nota: la ronda 2 de decisiones (nombre Abitus-D, hosting sin tarjeta, correo, ed
 
 Estos datos cambian. Antes de depender de ellos, VERIFICAR otra vez en la fuente.
 
+- 2026-11-25: PAR-Q+ exige autorización escrita para integrarlo o adaptarlo; https://eparmedx.com/about/terms-and-conditions. Página oficial de formularios: https://eparmedx.com/print-versions-of-par-q/.
 - Oracle redujo los límites de las instancias Ampere A1 en cuentas gratuitas a 2 OCPU y 12 GB (InfoQ, julio 2026).
 - Render gratuito: se apaga a los 15 minutos sin tráfico; reactivación de hasta un minuto; sistema de archivos efímero (docs de Render).
 - Supabase gratuito: 500 MB por proyecto, proyectos se pausan tras una semana de inactividad, 50.000 usuarios activos mensuales (supabase.com/pricing).
@@ -131,6 +133,7 @@ Formato de cada entrada: `AAAA-MM-DD | área | qué se hizo | resultado de la ve
 - 2026-11-24 | documentación | Banco 11f (onboarding, perfil, acceso, ajustes, diseño y criterio deportivo) repartido en las fases 5 a 12 | check-file-length y check-no-emoji en verde | Fase 5
 - 2026-11-25 | planificación | Orden de 5 y 5b registrado; sin implementación ni criterios medidos | Backend 61 pruebas, Android y scripts OK; SDK reparado | Comenzar onboarding
 - 2026-11-25 | bienvenida | Tres tarjetas en español e inglés; onboarding aún pendiente | Backend 61 pruebas, Android y scripts OK; tarjetas y botones revisados en captura del emulador API 29 | Completar onboarding
+- 2026-11-25 | onboarding | PAR-Q+ no se integra ni adapta; el autor decidió pregunta propia, aviso y enlace oficial | Restricción verificada en fuente oficial | Implementar paso de salud omitible
 
 ## Cómo actualizar este archivo
 
