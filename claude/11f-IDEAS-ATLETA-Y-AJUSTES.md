@@ -7,7 +7,7 @@ Banco de ideas del 2026-11-24, pensado desde un experto en deportes para una app
 | Idea | Detalle | E | V | Fase |
 |---|---|---|---|---|
 | Bienvenida en tres tarjetas | Registrar, planificar y progresar; sin tutorial largo | B | M | 5 |
-| Usar sin cuenta | Datos solo en el teléfono; la cuenta se crea al querer sincronizar | A | A | 9 |
+| Usar sin cuenta | Datos solo en el teléfono; la cuenta se crea al querer sincronizar | A | A | Fuera (descartada por el autor, 2026-11-24) |
 | Fortaleza de contraseña | Medidor local y botón para mostrar u ocultar | B | M | 9 |
 | Recordar correo y abrir con huella | Reabrir la app sin escribir de nuevo | B | M | 9 |
 | Llaves de acceso | Passkeys con el administrador de credenciales de Android (VERIFICAR) | M | M | 10 |

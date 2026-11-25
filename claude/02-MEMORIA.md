@@ -68,6 +68,7 @@ Nota: la ronda 2 de decisiones (nombre Abitus-D, hosting sin tarjeta, correo, ed
 
 | Opción | Motivo del descarte |
 |---|---|
+| Usar la app sin cuenta y crearla después | No le gusta al autor (2026-11-24); la cuenta sigue siendo obligatoria desde el registro |
 | Render (plan gratuito) | Se apaga tras 15 minutos sin tráfico y tarda hasta un minuto en reactivarse |
 | Oracle Cloud Always Free | El autor lo rechazó; además redujo sus límites sin aviso en 2026 |
 | Supabase (plan gratuito) | Se pausa tras una semana de inactividad; 500 MB; sin respaldos automáticos |

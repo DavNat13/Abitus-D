@@ -47,7 +47,7 @@ Criterios de aceptación:
 Entregables:
 - Ajustes: idioma, tema (incluido negro puro) y acento de color, unidades completas, timer, notificaciones, fórmula de 1RM, umbrales y contribución muscular; fuentes grandes y alto contraste; conversor de unidades rápido; ayudas contextuales la primera vez.
 - Ajustes de entrenamiento: descanso por tipo de ejercicio, incremento por equipo, barra por defecto, redondeo, RPE o RIR, calentamientos, primer día de la semana, pantalla encendida; notificaciones por tipo con horario de silencio; privacidad y almacenamiento.
-- Cuenta: perfil, contraseña, dispositivos activos y cierre remoto, exportación y eliminación de cuenta; bloqueo opcional con huella o PIN; recordar correo; medidor de fortaleza de contraseña; foto de perfil local; usar la app sin cuenta y crearla después para sincronizar.
+- Cuenta: perfil, contraseña, dispositivos activos y cierre remoto, exportación y eliminación de cuenta; bloqueo opcional con huella o PIN; recordar correo; medidor de fortaleza de contraseña; foto de perfil local.
 - Datos: exportar a CSV, JSON y GPX; importar desde CSV y desde otras apps comunes; respaldo local cifrado y respaldo automático semanal; papelera de 30 días; historial de versiones de una rutina; detección de duplicados; compartir rutinas e importar las de amigos por archivo.
 - Correos del catálogo (`15-CORREOS.md`) con diseño final en es y en; pantalla "Acerca de" con créditos.
 - Política y términos finales en la app y en `legal/`.
