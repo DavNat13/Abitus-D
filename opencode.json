@@ -1,0 +1,10 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": [
+    "CLAUDE.md",
+    "claude/02-MEMORIA.md",
+    "claude/02b-MEMORIA-DECISIONES-2.md",
+    "claude/03-REGLAS-DE-ORO.md",
+    "claude/12-DECISIONES-PENDIENTES.md"
+  ]
+}

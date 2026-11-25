@@ -1,4 +1,4 @@
-# Abitus-D - Instrucciones para agentes (Codex y otros)
+# Abitus-D - Instrucciones para agentes (opencode, Codex y otros)
 
 Este archivo es para cualquier agente distinto de Claude Code. Las reglas del proyecto son las mismas: `CLAUDE.md` y la carpeta `claude/` mandan. No dupliques aquí lo que ya dicen; léelos.
 
@@ -6,8 +6,8 @@ Este archivo es para cualquier agente distinto de Claude Code. Las reglas del pr
 
 1. Lee `CLAUDE.md` completo (reglas innegociables, idioma, estructura).
 2. Lee `claude/02-MEMORIA.md` (estado actual y siguiente paso), `claude/02b-MEMORIA-DECISIONES-2.md`, `claude/03-REGLAS-DE-ORO.md` y `claude/12-DECISIONES-PENDIENTES.md`.
-3. Lee la memoria de la fase en curso (`claude/02c` a `claude/02g`) y el documento del área (`claude/00-INDICE.md`).
-4. Las fases están en `claude/10-FASES-DE-TRABAJO.md` y `claude/10b-FASES-DE-TRABAJO-2.md`.
+3. Lee la memoria de la fase en curso (`claude/02c` a `claude/02i`) y el documento del área (`claude/00-INDICE.md`).
+4. Las fases están en `claude/10-FASES-DE-TRABAJO.md` (hoja de ruta y reglas comunes) y `10b` a `10f`. Las ideas de cada fase son las filas de `claude/11b` a `claude/11f` con su número en la columna "Fase"; al cerrar una fase se marcan "Hecha".
 
 ## Acuerdos con el autor (no están en otros archivos)
 
@@ -17,7 +17,11 @@ Este archivo es para cualquier agente distinto de Claude Code. Las reglas del pr
 - Versionado: repositorio público https://github.com/DavNat13/Abitus-D. Un commit convencional (en inglés) por tarea verificada, push inmediato y etiqueta `fase-N` al cerrar cada fase. Revisa que no haya secretos antes de cada push.
 - Diseño aprobado por el autor (2026-11-22): seguir el estilo de `claude/05d-UI-DIRECCION-VISUAL.md` en toda pantalla nueva. Tarjetas por sección con icono (`SectionCard`, `ListItemCard`, `IconBadge`), etiquetas `InfoPill`, desplegables (`AppDropdown`, `AppMultiDropdown`) en filtros y formularios en lugar de nubes de chips, hojas inferiores para elegir, menú de tres puntos (`OverflowMenu`) para acciones secundarias y `ConfirmDialog` antes de eliminar. Componentes en `android/app/src/main/java/com/abitusd/app/core/designsystem/`.
 - Idioma de la app: español por defecto; inglés solo si el usuario lo elige en Perfil. Los nombres de ejercicios pueden mostrarse en inglés por disciplina (preferencia del autor para calistenia).
-- Mensajes al autor breves y en español.
+- Todo texto para el autor va en español y breve: avances, cierres y preguntas. Solo código, identificadores y commits en inglés.
+- Nunca pidas al autor pegar secretos en el chat: indícale dónde configurarlos.
+- La app es de uso personal: sin modo entrenador con alumnos. Descartadas por el autor: usar la app sin cuenta y la ficha de emergencia (ver `claude/02-MEMORIA.md`).
+- Encabezado de cada pantalla: solo el nombre y el botón de información que abre "Cómo usar".
+- Ahorro: salidas de comandos filtradas, sin releer archivos ni narrar de más.
 
 ## Comandos (Windows, Git Bash o PowerShell)
 

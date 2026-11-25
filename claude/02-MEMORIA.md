@@ -124,6 +124,7 @@ Formato de cada entrada: `AAAA-MM-DD | área | qué se hizo | resultado de la ve
 - 2026-11-24 | planificación | Fase 4b completa: bloques y fases, progresión automática, descarga sugerida, semana de prueba, modo viaje, sustituciones por bloque, disponibilidad semanal, hora con recordatorio, plantillas de semana y objetivos por músculo | 61 pruebas de servidor y pruebas Android en verde; criterios medidos en emulador | Fase 5
 - 2026-11-24 | documentación | Fases 5 a 13 alineadas con los bancos de ideas: columna Fase en 11b a 11e, subfases 5b, 6b, 7b y 11b, reglas comunes de diseño en 10, ideas nuevas y ejercicios favoritos (pedido del autor) en la Fase 5 | check-file-length y check-no-emoji en verde | Fase 5
 - 2026-11-24 | documentación | Ronda 2 de ideas en 11f: glosario, estado de sincronización y calculadora de discos gráfica (5 y 5b), cumplimiento del plan (6b), condiciones de sesión (7), búsqueda global (9), pausas activas y cafeína (12); ficha de emergencia descartada | check-file-length y check-no-emoji en verde | Fase 5
+- 2026-11-25 | herramientas | AGENTS.md al día (fases 10 a 10f, bancos 11b a 11f, acuerdos del autor) y opencode.json que carga CLAUDE.md, 02, 02b, 03 y 12 para trabajar con opencode | check-file-length y check-no-emoji en verde | Fase 5
 - 2026-11-24 | documentación | Banco 11f (onboarding, perfil, acceso, ajustes, diseño y criterio deportivo) repartido en las fases 5 a 12 | check-file-length y check-no-emoji en verde | Fase 5
 
 ## Cómo actualizar este archivo
