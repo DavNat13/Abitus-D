@@ -64,3 +64,18 @@ Unos 5 pasos con tarjetas; cada paso se puede omitir y todo se edita después en
 | Competencia con puesta a punto | Fecha objetivo y reducción de volumen en las semanas previas | M | A | 11 |
 | Fuerza complementaria por deporte | Para corredores, nadadores o fútbol; programas de prevención reconocidos si su uso es libre (VERIFICAR) | M | A | 11 |
 | Bienestar diario | Sueño, fatiga, dolor muscular, estrés y ánimo (índice de Hooper) y dolor por zona tras entrenar | B | A | 12 |
+
+## Propuestas del 2026-11-24 (ronda 2)
+
+| Idea | Detalle | E | V | Fase |
+|---|---|---|---|---|
+| Glosario "Aprende" | RPE, RIR, 1RM, descarga, sRPE y más; se abre al tocar un término y desde "Cómo usar" | B | A | 5 |
+| Estado de sincronización visible | Cambios pendientes, última sincronización y botón para reintentar | B | A | 5 |
+| Calculadora de discos gráfica | Barra dibujada con los discos recomendados por lado, en colores y tamaños según el peso, con el total y lo que falta si no se llega exacto; usa el juego de discos configurado | B | A | 5b |
+| Cumplimiento del plan | Sesiones y series planificadas contra hechas, por semana y por bloque | B | A | 6b |
+| Condiciones de la sesión | Temperatura, humedad o altitud anotadas a mano, sin servicio de clima externo | B | M | 7 |
+| Búsqueda global | Ejercicios, rutinas, sesiones y notas en un solo buscador | M | A | 9 |
+| Varias sesiones en un día | Mañana y tarde en el calendario | B | M | Hecha |
+| Pausas activas | Aviso opcional tras horas sin moverse, con horario de silencio | B | M | 12 |
+| Cafeína y suplementos | Solo registro previo a la sesión para cruzarlo con el rendimiento; sin dosis ni recomendaciones | B | B | 12 |
+| Ficha de emergencia | Contacto y datos médicos en el cardio | B | M | Fuera (riesgo de bromas o mal uso, decisión del autor, 2026-11-24) |

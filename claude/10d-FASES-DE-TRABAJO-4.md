@@ -9,7 +9,7 @@ Entregables:
 - Avisos por voz de ritmo, récords (1, 5 y 10 km, media maratón), calzado con kilómetros.
 - Intervalos, fartlek, plan de 5 o 10 km, pruebas de Cooper y de 5 km, predictor de tiempos, desnivel, consistencia de ritmo, podómetro y cadencia.
 - Ciclismo, remo en ergómetro, brick, caminata y senderismo, actividad libre, partidos y competencias (resultado, minutos y sensación).
-- Zonas de ritmo calculadas con una marca reciente.
+- Zonas de ritmo calculadas con una marca reciente; condiciones de la sesión (temperatura, humedad, altitud) anotadas a mano.
 - Exportar y compartir rutas en GPX.
 
 Criterios de aceptación:
@@ -49,6 +49,7 @@ Entregables:
 - Ajustes de entrenamiento: descanso por tipo de ejercicio, incremento por equipo, barra por defecto, redondeo, RPE o RIR, calentamientos, primer día de la semana, pantalla encendida; notificaciones por tipo con horario de silencio; privacidad y almacenamiento.
 - Cuenta: perfil, contraseña, dispositivos activos y cierre remoto, exportación y eliminación de cuenta; bloqueo opcional con huella o PIN; recordar correo; medidor de fortaleza de contraseña; foto de perfil local.
 - Datos: exportar a CSV, JSON y GPX; importar desde CSV y desde otras apps comunes; respaldo local cifrado y respaldo automático semanal; papelera de 30 días; historial de versiones de una rutina; detección de duplicados; compartir rutinas e importar las de amigos por archivo.
+- Búsqueda global de ejercicios, rutinas, sesiones y notas.
 - Correos del catálogo (`15-CORREOS.md`) con diseño final en es y en; pantalla "Acerca de" con créditos.
 - Política y términos finales en la app y en `legal/`.
 

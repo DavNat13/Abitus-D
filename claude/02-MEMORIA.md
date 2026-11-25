@@ -69,6 +69,7 @@ Nota: la ronda 2 de decisiones (nombre Abitus-D, hosting sin tarjeta, correo, ed
 | Opción | Motivo del descarte |
 |---|---|
 | Usar la app sin cuenta y crearla después | No le gusta al autor (2026-11-24); la cuenta sigue siendo obligatoria desde el registro |
+| Ficha de emergencia en el cardio | Riesgo de bromas o mal uso que perjudique al proyecto (decisión del autor, 2026-11-24) |
 | Render (plan gratuito) | Se apaga tras 15 minutos sin tráfico y tarda hasta un minuto en reactivarse |
 | Oracle Cloud Always Free | El autor lo rechazó; además redujo sus límites sin aviso en 2026 |
 | Supabase (plan gratuito) | Se pausa tras una semana de inactividad; 500 MB; sin respaldos automáticos |
@@ -122,6 +123,7 @@ Formato de cada entrada: `AAAA-MM-DD | área | qué se hizo | resultado de la ve
 - 2026-11-24 | registro | Fase 4 completa: sesiones con sincronización, sesión activa, descanso por alarma exacta, resumen, historial, descanso activo, sesión perdida, herramientas | 59 pruebas de servidor y pruebas Android en verde; confirmar serie 3 a 15 ms; sesión sin conexión llega sin duplicados; descanso suena con pantalla apagada | Fase 4b
 - 2026-11-24 | planificación | Fase 4b completa: bloques y fases, progresión automática, descarga sugerida, semana de prueba, modo viaje, sustituciones por bloque, disponibilidad semanal, hora con recordatorio, plantillas de semana y objetivos por músculo | 61 pruebas de servidor y pruebas Android en verde; criterios medidos en emulador | Fase 5
 - 2026-11-24 | documentación | Fases 5 a 13 alineadas con los bancos de ideas: columna Fase en 11b a 11e, subfases 5b, 6b, 7b y 11b, reglas comunes de diseño en 10, ideas nuevas y ejercicios favoritos (pedido del autor) en la Fase 5 | check-file-length y check-no-emoji en verde | Fase 5
+- 2026-11-24 | documentación | Ronda 2 de ideas en 11f: glosario, estado de sincronización y calculadora de discos gráfica (5 y 5b), cumplimiento del plan (6b), condiciones de sesión (7), búsqueda global (9), pausas activas y cafeína (12); ficha de emergencia descartada | check-file-length y check-no-emoji en verde | Fase 5
 - 2026-11-24 | documentación | Banco 11f (onboarding, perfil, acceso, ajustes, diseño y criterio deportivo) repartido en las fases 5 a 12 | check-file-length y check-no-emoji en verde | Fase 5
 
 ## Cómo actualizar este archivo

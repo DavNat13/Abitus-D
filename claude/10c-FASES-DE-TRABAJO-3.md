@@ -10,6 +10,7 @@ Entregables (primero el atleta):
 - Bienvenida en tres tarjetas y onboarding de unos 5 pasos omitibles (`11f`): datos corporales, experiencia y disciplinas, objetivo y disponibilidad, salud previa con cuestionario de aptitud, programa sugerido por reglas y test iniciales opcionales.
 - Ficha del atleta editable en Perfil; datos sincronizados (columnas o tabla nueva en servidor y Room).
 - Regla común desde esta fase: toda pantalla vacía explica el siguiente paso.
+- Glosario "Aprende" enlazado desde cada término y desde "Cómo usar"; estado de sincronización visible con reintento.
 
 Entregables del reloj:
 - Motor único por marcas de reloj (nunca contando ticks), servicio en primer plano mientras haya un timer y alarmas exactas en cada cambio de fase (tipo de servicio y permisos a VERIFICAR).
@@ -41,6 +42,7 @@ Entregables:
 - Control sin mirar: botones de volumen y control por voz (reconocimiento sin conexión a VERIFICAR; si no es gratuito y local, se descarta y se registra); pausa por llamada.
 - Unir un timer a un ejercicio o rutina, guardar vueltas como parciales, etiquetas de vuelta, historial con mejor, peor y promedio, exportar vueltas a CSV.
 - Compartir perfiles por archivo y por código QR (librería a VERIFICAR: licencia libre y sin servicios).
+- Calculadora de discos gráfica: barra dibujada con los discos por lado, colores y tamaños según el peso.
 - Del motor: cuenta regresiva antes de una serie cronometrada, registro de isométricos con récord, práctica de habilidad, calentamiento y movilidad guiados, rutina convertida en secuencia de timer; test de campo (course navette, sprint de 30 m y Yo-Yo) con pitidos generados por la app.
 
 Criterios de aceptación:
@@ -74,6 +76,7 @@ Entregables:
 - Equilibrio empuje-tracción y superior-inferior con alertas; volumen por patrón, tonelaje, distribución de intensidad, curva fuerza-repeticiones, eficiencia, densidad, mapa por hora y mejor día y hora.
 - Búsqueda en el historial; etiquetas y notas rápidas filtrables.
 - Carga interna de la sesión (sRPE por minutos) con carga semanal, monotonía y tensión; evaluaciones periódicas cada 4 a 8 semanas comparadas con la anterior.
+- Cumplimiento del plan: sesiones y series planificadas contra hechas, por semana y por bloque.
 
 Criterios de aceptación:
 - Cada comparación y alerta muestra las cifras de ambos lados.

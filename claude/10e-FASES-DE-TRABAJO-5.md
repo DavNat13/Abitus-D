@@ -38,6 +38,7 @@ Objetivo: entender la recuperación sin inventar cifras.
 - Natación avanzada (velocidad crítica), rutas repetidas con comparación, bandas de frecuencia cardíaca por Bluetooth y VO2 máx orientativo.
 - Correlaciones sencillas y ciclo menstrual opcional y privado.
 - Bienestar diario (índice de Hooper) y dolor muscular por zona tras entrenar.
+- Pausas activas opcionales y registro de cafeína y suplementos previo a la sesión, sin dosis ni recomendaciones.
 
 Criterios: sin datos suficientes se dice; toda cifra orientativa indica su margen; avisos de consultar a un profesional cuando corresponda.
 
