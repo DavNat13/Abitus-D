@@ -9,6 +9,9 @@ Archivo vivo. Claude Code lo lee al iniciar cada sesión y lo actualiza al termi
 - Repositorio remoto: https://github.com/DavNat13/Abitus-D (público). Versionado: un commit convencional por tarea verificada, push tras cada tarea y etiqueta `fase-N` al cerrar cada fase. Al ser público, revisar secretos antes de cada push.
 - Código: autenticación completa (backend, base de datos y app Android); detalle y decisiones de la Fase 1 en `02d-MEMORIA-FASE-1.md`. Verificaciones externas en `02c-MEMORIA-VERIFICACIONES.md`.
 - Siguiente paso: Fase 5 según `10c` (reloj núcleo y ejercicios favoritos). Fases 5 a 13 alineadas con los bancos de ideas el 2026-11-24: cada fila de `11b` a `11e` tiene su columna "Fase".
+- Plan 5 (pendiente, en orden): bienvenida y onboarding; perfil del atleta; glosario Aprende; estado de sincronización; motor del reloj y modos; perfiles; notificación y señales; recordatorios tras reinicio; favoritos.
+- Plan 5b (pendiente, en orden): relojes especiales; widget, accesos, mosaico y horizontal; control sin mirar; unión a ejercicio o rutina, historial y CSV; compartir por archivo y QR; extras y test de campo; calculadora gráfica.
+- Cada tarea: base de datos, backend, Room y sincronización cuando corresponda, pantallas y pruebas; verificar criterios reales antes de cerrar y etiquetar cada subfase.
 - Pedido del autor para la Fase 4 (2026-11-23): en programas y calendario, cada día se elige como entrenamiento, descanso o descanso activo (hoy solo existe descanso con un aviso). Requiere un tipo de día en program_days (migración en servidor y Room, sincronización), el selector en el editor de programas y que Inicio y Calendario muestren el descanso activo con su sugerencia. Pendiente al final: Vercel, Neon, keystore.
 
 Fase 0: tareas 1 a 7 hechas y verificadas (estructura, verificaciones, scripts, backend, database, Docker, Android en emulador API 29); tarea 8 (despliegue en Vercel) diferida al final. Detalle en el historial de Git.
@@ -126,6 +129,7 @@ Formato de cada entrada: `AAAA-MM-DD | área | qué se hizo | resultado de la ve
 - 2026-11-24 | documentación | Ronda 2 de ideas en 11f: glosario, estado de sincronización y calculadora de discos gráfica (5 y 5b), cumplimiento del plan (6b), condiciones de sesión (7), búsqueda global (9), pausas activas y cafeína (12); ficha de emergencia descartada | check-file-length y check-no-emoji en verde | Fase 5
 - 2026-11-25 | herramientas | AGENTS.md al día (fases 10 a 10f, bancos 11b a 11f, acuerdos del autor) y opencode.json que carga CLAUDE.md, 02, 02b, 03 y 12 para trabajar con opencode | check-file-length y check-no-emoji en verde | Fase 5
 - 2026-11-24 | documentación | Banco 11f (onboarding, perfil, acceso, ajustes, diseño y criterio deportivo) repartido en las fases 5 a 12 | check-file-length y check-no-emoji en verde | Fase 5
+- 2026-11-25 | planificación | Orden de 5 y 5b registrado; sin implementación ni criterios medidos | Backend 61 pruebas, Android y scripts OK; SDK reparado | Comenzar onboarding
 
 ## Cómo actualizar este archivo
 
