@@ -82,7 +82,7 @@ Banco de ideas, no compromisos. Mismas reglas y columnas que `11b` (E esfuerzo, 
 
 | Idea | Detalle | E | V | Fase |
 |---|---|---|---|---|
-| Ejercicios favoritos | Pedido del autor: marcar con estrella, filtro "Favoritos" en la biblioteca y primeros al elegir | B | A | 5 |
+| Ejercicios favoritos | Pedido del autor: marcar con estrella, filtro "Favoritos" en la biblioteca y primeros al elegir | B | A | Hecha |
 | Qué entrenar hoy | Sugiere músculos descuidados de la semana con el dato que lo sustenta | M | A | 6b |
 | Bloqueo con huella o PIN | Proteger la app con la biometría del teléfono | B | M | 9 |
 | Respaldo automático semanal | Archivo local programado, sin servidor | M | A | 9 |

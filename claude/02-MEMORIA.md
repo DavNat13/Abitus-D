@@ -5,13 +5,10 @@ Archivo vivo. Claude Code lo lee al iniciar cada sesión y lo actualiza al termi
 ## Estado actual
 
 - Fecha de creación de la documentación: 2026-11-22.
-- Fase actual: Fase 4b cerrada (fase-4b, 2026-11-24; detalle en `02i-MEMORIA-FASE-4B.md`). Fase 4 cerrada (fase-4, `02h`). Siguiente: Fase 5 según `10c`.
+- Fase actual: Fase 5 cerrada (fase-5, 2026-11-26; detalle en `02j-MEMORIA-FASE-5.md`). Fase 4b cerrada (`02i`). Siguiente: Fase 5b según `10c`.
 - Repositorio remoto: https://github.com/DavNat13/Abitus-D (público). Versionado: un commit convencional por tarea verificada, push tras cada tarea y etiqueta `fase-N` al cerrar cada fase. Al ser público, revisar secretos antes de cada push.
 - Código: autenticación completa (backend, base de datos y app Android); detalle y decisiones de la Fase 1 en `02d-MEMORIA-FASE-1.md`. Verificaciones externas en `02c-MEMORIA-VERIFICACIONES.md`.
-- Siguiente paso: Fase 5 según `10c` (reloj núcleo y ejercicios favoritos). Fases 5 a 13 alineadas con los bancos de ideas el 2026-11-24: cada fila de `11b` a `11e` tiene su columna "Fase".
-- Plan 5 (pendiente, en orden): bienvenida y onboarding; perfil del atleta; glosario Aprende; estado de sincronización; motor del reloj y modos; perfiles; notificación y señales; recordatorios tras reinicio; favoritos.
-- Plan 5b (pendiente, en orden): relojes especiales; widget, accesos, mosaico y horizontal; control sin mirar; unión a ejercicio o rutina, historial y CSV; compartir por archivo y QR; extras y test de campo; calculadora gráfica.
-- Cada tarea: base de datos, backend, Room y sincronización cuando corresponda, pantallas y pruebas; verificar criterios reales antes de cerrar y etiquetar cada subfase.
+- Siguiente paso: Fase 5b según `10c` (relojes especiales, accesos, control sin mirar, unión a ejercicio, compartir por QR, test de campo, calculadora de discos gráfica y lo pasado desde la 5). Cada tarea: base de datos, backend, Room y sincronización, pantallas y pruebas; criterios medidos antes de etiquetar.
 - Pedido del autor para la Fase 4 (2026-11-23): en programas y calendario, cada día se elige como entrenamiento, descanso o descanso activo (hoy solo existe descanso con un aviso). Requiere un tipo de día en program_days (migración en servidor y Room, sincronización), el selector en el editor de programas y que Inicio y Calendario muestren el descanso activo con su sugerencia. Pendiente al final: Vercel, Neon, keystore.
 
 Fase 0: tareas 1 a 7 hechas y verificadas (estructura, verificaciones, scripts, backend, database, Docker, Android en emulador API 29); tarea 8 (despliegue en Vercel) diferida al final. Detalle en el historial de Git.
@@ -133,6 +130,7 @@ Formato de cada entrada: `AAAA-MM-DD | área | qué se hizo | resultado de la ve
 - 2026-11-24 | documentación | Banco 11f (onboarding, perfil, acceso, ajustes, diseño y criterio deportivo) repartido en las fases 5 a 12 | check-file-length y check-no-emoji en verde | Fase 5
 - 2026-11-25 | planificación | Orden de 5 y 5b registrado; sin implementación ni criterios medidos | Backend 61 pruebas, Android y scripts OK; SDK reparado | Comenzar onboarding
 - 2026-11-25 | onboarding | Onboarding de cinco pasos, perfil del atleta editable, Room 6 y migración 015 con sincronización, paso de salud con enlace oficial y sugerencia de plantilla (trabajo de opencode, estilo corregido por Claude) | Backend 65 pruebas; Android detekt, ktlint, pruebas y APK en verde; recorrido completo en emulador pendiente | Probar onboarding en emulador y seguir con glosario
+- 2026-11-26 | reloj | Fase 5 completa: favoritos, glosario, estado de sincronización, reloj con 14 modos, perfiles sincronizados, voz y señales, recuperación tras reinicio y corrección de notificaciones en Android 10 a 12 | Backend 67 pruebas, Android en verde; criterios medidos en emulador (`02j`) | Fase 5b
 - 2026-11-25 | bienvenida | Tres tarjetas en español e inglés; onboarding aún pendiente | Backend 61 pruebas, Android y scripts OK; tarjetas y botones revisados en captura del emulador API 29 | Completar onboarding
 - 2026-11-25 | onboarding | PAR-Q+ no se integra ni adapta; el autor decidió pregunta propia, aviso y enlace oficial | Restricción verificada en fuente oficial | Implementar paso de salud omitible
 

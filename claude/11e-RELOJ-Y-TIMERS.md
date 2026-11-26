@@ -6,16 +6,16 @@ Se propone una sección "Reloj" accesible desde Inicio, desde la barra persisten
 
 | Modo | Qué hace | E | V | Fase |
 |---|---|---|---|---|
-| Cronómetro | Tiempo total con vueltas, mejor y peor vuelta, diferencias | M | A | 5 |
-| Temporizador | Cuenta regresiva con presets y nombre | B | A | 5 |
-| Multitemporizador | Varios temporizadores a la vez, cada uno con su nombre | M | A | 5 |
-| Intervalos | Trabajo y descanso, rondas, calentamiento y enfriamiento | M | A | 5 |
-| Tabata | Preconfigurado: 20 s trabajo, 10 s descanso, 8 rondas | B | A | 5 |
-| EMOM y E2MOM | Cada minuto (o cada N) con tarea por minuto | M | A | 5 |
-| AMRAP | Máximas rondas en un tiempo, con contador de rondas | B | A | 5 |
-| For time | Cronómetro hasta terminar un trabajo con límite de tiempo | B | M | 5 |
-| Pirámides y escaleras | Tiempos que suben y bajan automáticamente | M | M | 5 |
-| Secuencias personalizadas | Cadena libre de bloques con nombre, tiempo y sonido propio | A | A | 5 |
+| Cronómetro | Tiempo total con vueltas, mejor y peor vuelta, diferencias | M | A | Hecha |
+| Temporizador | Cuenta regresiva con presets y nombre | B | A | Hecha |
+| Multitemporizador | Varios temporizadores a la vez, cada uno con su nombre | M | A | 5b |
+| Intervalos | Trabajo y descanso, rondas, calentamiento y enfriamiento | M | A | Hecha |
+| Tabata | Preconfigurado: 20 s trabajo, 10 s descanso, 8 rondas | B | A | Hecha |
+| EMOM y E2MOM | Cada minuto (o cada N) con tarea por minuto | M | A | Hecha |
+| AMRAP | Máximas rondas en un tiempo, con contador de rondas | B | A | 5b |
+| For time | Cronómetro hasta terminar un trabajo con límite de tiempo | B | M | Hecha |
+| Pirámides y escaleras | Tiempos que suben y bajan automáticamente | M | M | Hecha |
+| Secuencias personalizadas | Cadena libre de bloques con nombre, tiempo y sonido propio | A | A | 5b |
 | Reloj de piscina | Aguja de segundos grande, salida cada X segundos | M | A | 5b |
 | Cuenta regresiva a una fecha | Competencia, prueba de máximos o un evento | B | M | 5b |
 | Modo reloj de pared | Hora grande para el gimnasio, con la hora de la sesión | B | M | 5b |
@@ -29,28 +29,28 @@ Se propone una sección "Reloj" accesible desde Inicio, desde la barra persisten
 
 | Idea | Detalle | E | V | Fase |
 |---|---|---|---|---|
-| Pantalla completa de lectura lejana | Cifras enormes, contraste alto, legible a 3 metros | B | A | 5 |
-| Colores por fase | Trabajo, descanso y calentamiento con colores y formas distintas | B | A | 5 |
-| Anillo de progreso animado | Con movimiento suave y opción de reducirlo | M | A | 5 |
-| Notificación viva | Cronómetro visible en pantalla de bloqueo y barra de estado | M | A | 5 |
-| Controles desde la notificación | Pausar, vuelta, sumar tiempo, saltar | M | A | 5 |
+| Pantalla completa de lectura lejana | Cifras enormes, contraste alto, legible a 3 metros | B | A | Hecha |
+| Colores por fase | Trabajo, descanso y calentamiento con colores y formas distintas | B | A | Hecha |
+| Anillo de progreso animado | Con movimiento suave y opción de reducirlo | M | A | Hecha |
+| Notificación viva | Cronómetro visible en pantalla de bloqueo y barra de estado | M | A | Hecha |
+| Controles desde la notificación | Pausar, vuelta, sumar tiempo, saltar | M | A | Hecha |
 | Widget de reloj | Iniciar el último temporizador con un toque | M | A | 5b |
 | Accesos directos | Mantener pulsado el icono: cronómetro, Tabata, descanso | B | A | 5b |
-| Háptica distintiva | Patrones de vibración distintos por fase y cuenta final | B | A | 5 |
-| Sonidos y voz | Pitidos, cuenta de 3 segundos, voz que dice la fase y el ejercicio | M | A | 5 |
-| Se mezcla con la música | Sonidos cortos sin cortar la reproducción | M | A | 5 |
-| Modo silencioso | Solo vibración o solo visual | B | A | 5 |
+| Háptica distintiva | Patrones de vibración distintos por fase y cuenta final | B | A | Hecha |
+| Sonidos y voz | Pitidos, cuenta de 3 segundos, voz que dice la fase y el ejercicio | M | A | Hecha |
+| Se mezcla con la música | Sonidos cortos sin cortar la reproducción | M | A | Hecha |
+| Modo silencioso | Solo vibración o solo visual | B | A | Hecha |
 | Control por voz | "Iniciar cronómetro", "pausa", "vuelta" | A | M | 5b |
 | Control con botones de volumen | Vuelta o pausa sin mirar la pantalla | M | M | 5b |
-| Pantalla encendida | Opcional, con aviso de consumo | B | A | 5 |
+| Pantalla encendida | Opcional, con aviso de consumo | B | A | Hecha |
 | Unir al entrenamiento | Cada timer puede ligarse a un ejercicio o a una rutina | M | A | 5b |
 | Guardar vueltas en la sesión | Las vueltas se guardan como parciales y se pueden exportar | M | A | 5b |
-| Perfiles guardados | Ya aprobada; nombre, bloques, sonidos y color | M | A | 5 |
-| Biblioteca de perfiles | Tabata, EMOM, boxeo, movilidad, piscina, pomodoro, cocina | B | A | 5 |
+| Perfiles guardados | Ya aprobada; nombre, bloques, sonidos y color | M | A | Hecha |
+| Biblioteca de perfiles | Tabata, EMOM, boxeo, movilidad, piscina, pomodoro, cocina | B | A | Hecha |
 | Exportar o compartir un perfil | Archivo o código QR | M | M | 5b |
 | Historial de vueltas | Con mejor, peor, promedio y gráfico | B | M | 5b |
-| Texto a voz del próximo ejercicio | "Siguiente: sentadilla, 8 repeticiones" | M | M | 5 |
-| Ajuste de tiempo en marcha | Sumar o restar 15 segundos sin detenerlo | B | A | 5 |
+| Texto a voz del próximo ejercicio | "Siguiente: sentadilla, 8 repeticiones" | M | M | 5b |
+| Ajuste de tiempo en marcha | Sumar o restar 15 segundos sin detenerlo | B | A | Hecha |
 | Pausa por llamada | Se detiene al contestar y reanuda al terminar | M | M | 5b |
 | Temas del reloj | Digital, analógico, minimalista, de alto contraste | M | M | 5b |
 | Modo horizontal y soporte | Pensado para dejarlo apoyado frente a ti | M | M | 5b |
@@ -68,10 +68,10 @@ Se propone una sección "Reloj" accesible desde Inicio, desde la barra persisten
 
 | Idea | Detalle | E | V | Fase |
 |---|---|---|---|---|
-| Aviso antes del fin del descanso | Vibración 10 s antes para preparar la siguiente serie | B | A | 5 |
-| Fases por tiempo o por repeticiones | Una fase avanza al tocar "listo" cuando terminas las repeticiones | M | A | 5 |
-| Anuncio de mitad y últimos segundos | "Mitad", "quedan 10 segundos", configurable | B | M | 5 |
-| Autotest de precisión | Mide la desviación real del reloj en el teléfono | B | M | 5 |
+| Aviso antes del fin del descanso | Vibración 10 s antes para preparar la siguiente serie | B | A | Hecha |
+| Fases por tiempo o por repeticiones | Una fase avanza al tocar "listo" cuando terminas las repeticiones | M | A | 5b |
+| Anuncio de mitad y últimos segundos | "Mitad", "quedan 10 segundos", configurable | B | M | Hecha |
+| Autotest de precisión | Mide la desviación real del reloj en el teléfono | B | M | 5b |
 | Rutina como secuencia de timer | Convierte un circuito de la rutina en una secuencia con un toque | M | A | 5b |
 | Práctica de habilidad | Isométricos (pino, plancha frontal) con descanso automático y mejor tiempo | M | A | 5b |
 | Etiquetas de vuelta | Nombrar una vuelta (subida, bajada) con un toque | B | M | 5b |

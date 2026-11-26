@@ -43,6 +43,7 @@ Entregables:
 - Unir un timer a un ejercicio o rutina, guardar vueltas como parciales, etiquetas de vuelta, historial con mejor, peor y promedio, exportar vueltas a CSV.
 - Compartir perfiles por archivo y por código QR (librería a VERIFICAR: licencia libre y sin servicios).
 - Calculadora de discos gráfica: barra dibujada con los discos por lado, colores y tamaños según el peso.
+- Pasados de la Fase 5 (2026-11-26): multitemporizador, contador de rondas en AMRAP, editor de secuencias personalizadas con calentamiento y enfriamiento, fases por repeticiones con botón "listo", voz del próximo ejercicio y autotest de precisión en pantalla.
 - Del motor: cuenta regresiva antes de una serie cronometrada, registro de isométricos con récord, práctica de habilidad, calentamiento y movilidad guiados, rutina convertida en secuencia de timer; test de campo (course navette, sprint de 30 m y Yo-Yo) con pitidos generados por la app.
 
 Criterios de aceptación:

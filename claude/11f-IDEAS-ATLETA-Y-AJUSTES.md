@@ -6,7 +6,7 @@ Banco de ideas del 2026-11-24, pensado desde un experto en deportes para una app
 
 | Idea | Detalle | E | V | Fase |
 |---|---|---|---|---|
-| Bienvenida en tres tarjetas | Registrar, planificar y progresar; sin tutorial largo | B | M | 5 |
+| Bienvenida en tres tarjetas | Registrar, planificar y progresar; sin tutorial largo | B | M | Hecha |
 | Usar sin cuenta | Datos solo en el teléfono; la cuenta se crea al querer sincronizar | A | A | Fuera (descartada por el autor, 2026-11-24) |
 | Fortaleza de contraseña | Medidor local y botón para mostrar u ocultar | B | M | 9 |
 | Recordar correo y abrir con huella | Reabrir la app sin escribir de nuevo | B | M | 9 |
@@ -18,18 +18,18 @@ Unos 5 pasos con tarjetas; cada paso se puede omitir y todo se edita después en
 
 | Idea | Detalle | E | V | Fase |
 |---|---|---|---|---|
-| Datos corporales | Año de nacimiento, sexo opcional con "Prefiero no decir", altura y peso | B | A | 5 |
-| Experiencia | Años entrenando, nivel y disciplinas; si elige calistenia se ofrecen nombres en inglés | B | A | 5 |
-| Objetivo y disponibilidad | Objetivo principal y secundario, días por semana, minutos por sesión, lugar y equipo | B | A | 5 |
-| Salud previa | Molestias o lesiones actuales y cuestionario de aptitud física (PAR-Q+ si su licencia lo permite, VERIFICAR) con aviso de consultar a un profesional | M | A | 5 |
-| Programa sugerido | Plantilla del catálogo elegida por reglas según días, objetivo y equipo | M | A | 5 |
-| Test iniciales opcionales | Flexiones y dominadas máximas, plancha y 1RM estimado de básicos como punto de partida | B | A | 5 |
+| Datos corporales | Año de nacimiento, sexo opcional con "Prefiero no decir", altura y peso | B | A | Hecha |
+| Experiencia | Años entrenando, nivel y disciplinas; si elige calistenia se ofrecen nombres en inglés | B | A | Hecha |
+| Objetivo y disponibilidad | Objetivo principal y secundario, días por semana, minutos por sesión, lugar y equipo | B | A | Hecha |
+| Salud previa | Molestias o lesiones actuales y cuestionario de aptitud física (PAR-Q+ si su licencia lo permite, VERIFICAR) con aviso de consultar a un profesional | M | A | Hecha |
+| Programa sugerido | Plantilla del catálogo elegida por reglas según días, objetivo y equipo | M | A | Hecha |
+| Test iniciales opcionales | Flexiones y dominadas máximas, plancha y 1RM estimado de básicos como punto de partida | B | A | Hecha |
 
 ## Perfil del atleta
 
 | Idea | Detalle | E | V | Fase |
 |---|---|---|---|---|
-| Ficha editable | Datos, experiencia, objetivos, disciplinas, lesiones activas y perfiles de equipo | M | A | 5 |
+| Ficha editable | Datos, experiencia, objetivos, disciplinas, lesiones activas y perfiles de equipo | M | A | Hecha |
 | Nivel y edad de entrenamiento | Calculados con el historial, con el dato que los sustenta | M | M | 6 |
 | Récords destacados | Los mejores del atleta en su perfil | B | M | 6 |
 | Zonas de ritmo | Calculadas con una marca reciente de carrera | M | A | 7 |
@@ -48,7 +48,7 @@ Unos 5 pasos con tarjetas; cada paso se puede omitir y todo se edita después en
 
 | Idea | Detalle | E | V | Fase |
 |---|---|---|---|---|
-| Estados vacíos con siguiente paso | Toda pantalla vacía explica qué hacer; regla común desde la Fase 5 | B | A | 5 |
+| Estados vacíos con siguiente paso | Toda pantalla vacía explica qué hacer; regla común desde la Fase 5 | B | A | Hecha |
 | Paleta de datos accesible | Colores de gráficos, zonas y escala de RPE aptos para daltonismo, con prueba de contraste | M | A | 6 |
 | Celebración sobria de récord | Animación breve sin emojis que respeta "reducir movimiento" | B | M | 6 |
 | Tema negro puro | Para pantallas AMOLED | B | M | 9 |
@@ -69,8 +69,8 @@ Unos 5 pasos con tarjetas; cada paso se puede omitir y todo se edita después en
 
 | Idea | Detalle | E | V | Fase |
 |---|---|---|---|---|
-| Glosario "Aprende" | RPE, RIR, 1RM, descarga, sRPE y más; se abre al tocar un término y desde "Cómo usar" | B | A | 5 |
-| Estado de sincronización visible | Cambios pendientes, última sincronización y botón para reintentar | B | A | 5 |
+| Glosario "Aprende" | RPE, RIR, 1RM, descarga, sRPE y más; se abre al tocar un término y desde "Cómo usar" | B | A | Hecha |
+| Estado de sincronización visible | Cambios pendientes, última sincronización y botón para reintentar | B | A | Hecha |
 | Calculadora de discos gráfica | Barra dibujada con los discos recomendados por lado, en colores y tamaños según el peso, con el total y lo que falta si no se llega exacto; usa el juego de discos configurado | B | A | 5b |
 | Cumplimiento del plan | Sesiones y series planificadas contra hechas, por semana y por bloque | B | A | 6b |
 | Condiciones de la sesión | Temperatura, humedad o altitud anotadas a mano, sin servicio de clima externo | B | M | 7 |

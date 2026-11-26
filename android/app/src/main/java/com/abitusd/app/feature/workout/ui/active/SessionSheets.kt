@@ -85,15 +85,9 @@ fun PlateCalculatorSheet(
             }, Modifier.weight(1f), decimal = true)
         }
         val result = PlateCalculator.perSide(target, bar)
-        InfoPill(
-            stringResource(
-                R.string.plate_per_side,
-                result.perSide.joinToString(" + ") {
-                    formatKg(it)
-                },
-            ),
-            emphasized = true,
-        )
+        val perSide = stringResource(R.string.plate_per_side, result.perSide.joinToString(" + ") { formatKg(it) })
+        PlateBar(result.perSide, perSide)
+        InfoPill(perSide, emphasized = true)
         if (!result.exact(target)) InfoPill(stringResource(R.string.plate_not_exact, formatKg(result.reachedKg)))
     }
 }
