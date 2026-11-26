@@ -16,7 +16,7 @@ object BodyShapes {
             "C34 192 29 221 27 248 L23 276 C26 282 32 282 35 278 L38 252 C44 226 50 199 54 172 " +
             "L60 130 C62 152 64 180 66 205 C61 222 61 238 63 252 C63 290 67 320 72 334 " +
             "C69 362 72 394 76 420 L72 432 C80 436 90 436 95 432 L93 420 C95 392 97 362 95 336 " +
-            "C98 310 99 280 100 252 Z"
+            "C98 310 99 280 100 252"
 
     val front: Map<String, String> =
         mapOf(
@@ -51,6 +51,7 @@ object BodyShapes {
     val frontDetail = listOf("M89 146 L99 146", "M89 168 L99 168", "M99 80 L99 124", "M74 333 C80 337 88 337 92 333")
     val backDetail = listOf("M99 72 L99 206", "M72 258 C82 264 92 262 99 256")
 
+    /** Open halves: filled they close on the midline, stroked they leave no line down the body. */
     fun outline(): Path = (parse(OUTLINE, false).also { it.addPath(parse(OUTLINE, true)) })
 
     /** Both sides of a left-side shape. */

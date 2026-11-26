@@ -53,6 +53,7 @@ fun ProgressScreen(
                 listOf(
                     R.string.progress_tab_summary,
                     R.string.progress_tab_exercises,
+                    R.string.progress_tab_body,
                     R.string.progress_tab_measures,
                     R.string.progress_tab_settings,
                 )

@@ -26,6 +26,22 @@ Hecho, con commit y push (Detekt, ktlint, lint, pruebas y compilación en verde)
   - Ajustes del análisis.
 - **Gráfico propio:** `core/designsystem/chart/LineChart.kt` (sin librería, con valor al tocar).
 
+## Rediseño obligatorio de Progreso (rechazado por el autor el 2026-11-26)
+
+El autor calificó el diseño actual de Progreso como poco profesional y fuera del estilo del resto de la app. La lógica y los datos sirven; la interfaz se rehace antes de seguir:
+- **Navegación:** las 5 pestañas no caben en el selector de píldora (los textos se cortan).
+  - Dejar 3 o 4 secciones legibles; los ajustes del análisis van a un icono de engranaje en el encabezado que abre una hoja inferior.
+  - Tomar como referencia las pestañas de Entrenar y su calendario.
+- **Resumen:** reemplazar las líneas de texto por tarjetas de cifra grande (sesiones, series, volumen, minutos) con la variación contra la semana anterior y una flecha más palabra.
+  - Los ejercicios que progresan y los estancados van en `ListItemCard` con `IconBadge` e `InfoPill` para el veredicto.
+- **Series por músculo:** reemplazar el texto corrido por `VolumeBars`, que ya existe, con la franja del rango objetivo (min y max de los ajustes). Cada fila lleva el nombre, la barra, la cifra y el estado en una píldora.
+- **Mapa corporal:** el dibujo actual parece "slenderman" (cuerpo de unas 10 cabezas, hombros y brazos finos).
+  - Rehacerlo con proporciones atléticas de 7,5 a 8 cabezas: hombros anchos, forma en V, brazos y piernas con volumen, y músculos con forma anatómica reconocible (pectoral en abanico, deltoides redondeados, recto abdominal en bloques, cuádriceps con vasto lateral y medial).
+  - Mostrar un solo cuerpo grande a todo el ancho con un selector Frente o Espalda, no dos cuerpos pequeños lado a lado.
+  - Contorno suave, relleno por intensidad, leyenda con muestras de color.
+  - Opción a consultar con el autor antes de usarla: una ilustración anatómica de licencia libre (MIT o CC0, por ejemplo la de `react-body-highlighter`), con su atribución en `distribution/THIRD_PARTY.md`.
+- **Verificación visual obligatoria:** capturas del emulador en claro y oscuro, y al 200 % de texto, comparadas con Inicio, Entrenar y Reloj antes de dar algo por terminado. Guía visual: `05d-UI-DIRECCION-VISUAL.md`.
+
 ## Pendiente de la Fase 6 (en este orden)
 
 1. **Mapa corporal 2D** (`BodyMap`), un pedido del autor que debe quedar impecable:
@@ -65,7 +81,7 @@ Toda la fase 6b está por hacer, según `02l-MEMORIA-FASE-6B.md`. Al cerrar: eti
 Eres el ingeniero principal de Abitus-D. Continúa las Fases 6 y 6b hasta cerrarlas, sin detenerte entre tareas.
 
 1. Lee AGENTS.md, CLAUDE.md, claude/02-MEMORIA.md, claude/03-REGLAS-DE-ORO.md, claude/18b-OPENCODE-FASE-6.md (estado y pendientes), claude/02k-MEMORIA-FASE-6.md y claude/02l-MEMORIA-FASE-6B.md. Revisa el código que ya existe en android/app/src/main/java/com/abitusd/app/feature/progress y core/designsystem/chart antes de crear nada.
-2. Sigue la lista "Pendiente de la Fase 6" de 18b en orden y después toda la 6b. El mapa corporal 2D debe ser un dibujo propio, anatómico y de calidad alta: revísalo con capturas del emulador en claro y oscuro antes de darlo por terminado.
+2. Empieza por el "Rediseño obligatorio de Progreso" de 18b (el autor rechazó el diseño actual) y después sigue la lista "Pendiente de la Fase 6" en orden y toda la 6b. El mapa corporal 2D debe ser un dibujo propio, anatómico y de calidad alta: revísalo con capturas del emulador en claro y oscuro antes de darlo por terminado.
 3. Por cada tarea: impleméntala con el estilo aprobado (tarjetas con icono, desplegables, hojas inferiores), textos en strings es y en, máximo 150 líneas por archivo, cero emojis, unidades SI, y sin librerías nuevas de gráficos. Prueba con npm test (backend) y ./gradlew detekt ktlintCheck testDebugUnitTest lintDebug assembleDebug (JAVA_HOME="C:\Program Files\Java\jdk-22"), más node tools/check-file-length.mjs y node tools/check-no-emoji.mjs. Haz un commit convencional y un push por cada tarea verificada.
 4. Las pruebas en el emulador las haces tú: SDK en C:\Users\David\AppData\Local\Android\Sdk, AVD abitusd_api29, backend con npm run dev en el puerto 3000 (la app usa http://10.0.2.2:3000). Mide cada criterio de 02k y 02l y anota las cifras reales.
 5. Al cerrar cada subfase: filas "Hecha" en los bancos, memoria completada (02k o 02l), etiqueta fase-6 o fase-6b subida, y 02-MEMORIA.md al día.

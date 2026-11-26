@@ -68,7 +68,7 @@ fun BodyMap(
             drawOval(colors.surface, Offset(HEAD_X, HEAD_Y), Size(HEAD_W, HEAD_H))
             drawOval(colors.textSecondary, Offset(HEAD_X, HEAD_Y), Size(HEAD_W, HEAD_H), style = line)
             drawPath(outline, colors.surface)
-            paths.forEach { (key, p) -> drawPath(p, colorOf(key) ?: colors.outline.copy(alpha = EMPTY_ALPHA)) }
+            paths.forEach { (key, p) -> drawPath(p, colorOf(key) ?: colors.outline) }
             details.forEach {
                 drawPath(
                     it,
@@ -105,5 +105,4 @@ private const val LINE = 2.5f
 private const val SEAM = 2f
 private const val SELECTED = 4f
 private const val DETAIL = 1.2f
-private const val EMPTY_ALPHA = 0.45f
 private const val DETAIL_ALPHA = 0.5f

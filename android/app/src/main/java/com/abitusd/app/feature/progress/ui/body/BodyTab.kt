@@ -3,6 +3,7 @@ package com.abitusd.app.feature.progress.ui.body
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -13,12 +14,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.abitusd.app.R
 import com.abitusd.app.core.designsystem.component.AppDropdown
 import com.abitusd.app.core.designsystem.component.ChoiceOption
-import com.abitusd.app.core.designsystem.component.InfoPill
 import com.abitusd.app.core.designsystem.component.SectionCard
 import com.abitusd.app.core.designsystem.icon.AppIcons
 import com.abitusd.app.core.designsystem.theme.AppColors
@@ -53,22 +54,7 @@ fun BodyTab(vm: BodyViewModel = hiltViewModel()) {
                 Modifier.weight(1f),
             )
         }
-        Row(horizontalArrangement = Arrangement.spacedBy(AppSpacing.xs)) {
-            STATUS_LABELS.forEach { (st, label) ->
-                InfoPill(
-                    stringResource(
-                        label,
-                        if (st ==
-                            LOW
-                        ) {
-                            s.minSets
-                        } else {
-                            s.maxSets
-                        },
-                    ),
-                )
-            }
-        }
+        Legend(s.minSets, s.maxSets)
     }
     selected?.let { key ->
         val m = s.byKey[key]
@@ -107,7 +93,7 @@ fun BodyTab(vm: BodyViewModel = hiltViewModel()) {
 @Composable
 private fun perWeek(v: Double) = String.format(LocalConfiguration.current.locales[0], "%.1f", v)
 
-private const val LOW = 0
+internal const val LOW = 0
 private const val IN_RANGE = 1
 private const val HIGH = 2
 
@@ -121,7 +107,7 @@ private fun status(
     else -> IN_RANGE
 }
 
-private fun statusColor(
+internal fun statusColor(
     status: Int,
     c: AppColors,
 ): Color =
@@ -131,7 +117,7 @@ private fun statusColor(
         else -> c.success
     }
 
-private val STATUS_LABELS =
+internal val STATUS_LABELS =
     listOf(
         LOW to R.string.body_low,
         IN_RANGE to R.string.body_in_range,
