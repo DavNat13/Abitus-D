@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="progress_change_more">%1$d more than last week</string>
+    <string name="progress_change_less">%1$d fewer than last week</string>
+    <string name="progress_change_same">Same as last week</string>
+    <string name="body_deep_muscle_note">Rhomboids are not shown in this superficial illustration. Their sets appear in the list.</string>
+</resources>

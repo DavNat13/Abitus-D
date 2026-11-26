@@ -1,6 +1,16 @@
 # 02k - Memoria de las Fases 6 y 6b (Analítica)
 
-Estado: plan aprobado por el autor el 2026-11-26; sin implementar. Al cerrar cada subfase se agregan aquí los criterios medidos.
+Estado: implementación parcial descrita en `18b`; importación y rediseño en curso. Sin criterios finales medidos.
+
+### Verificación de la ilustración (2026-11-26)
+- Decisión más reciente del autor: `vulovix/body-muscles` sustituye muscle-svg (que no publica el arte). No crear un dibujo propio.
+- Fuente: https://github.com/vulovix/body-muscles, revisión `15c8085ee97cb94c51f92c75224416b15f955b5c`.
+- LICENSE Apache-2.0 y NOTICE verificados antes de importar: `Copyright 2024 Ivan Vulović`; aviso íntegro y licencia incluidos en recursos y Créditos.
+- Importador reproducible `tools/import-body-muscles.mjs`: 40 regiones anteriores y 49 posteriores; conversión XML y Path Compose sin librerías nuevas.
+- Limitación: la fuente no tiene región de romboides; se conservan las regiones originales y no se inventa una atribución anatómica. Revisar cobertura de los 21 grupos antes del cierre. Capturas y validaciones pendientes.
+- Primera entrega: 89 regiones importadas, 20/21 grupos con trazos; selector Frente/Espalda, detalle en hoja, barras con rango y estado; Créditos con NOTICE y acceso a licencia íntegra. Cuatro secciones de Progreso, ajustes en hoja y métricas en tarjetas; con texto ampliado se usa desplegable de sección.
+- Verificación: backend 69/69 (`npm test -- --maxWorkers=1`; el intento concurrente tuvo caídas nativas de workers). Android detekt, ktlintCheck, testDebugUnitTest, lintDebug y assembleDebug en verde con `--no-daemon --max-workers=1 -Dorg.gradle.jvmargs=-Xmx2g`; no se modificó configuración persistente.
+- Entorno: daemon de Gradle desapareció y el emulador cayó con errores GLES durante la corrida concurrente; Windows reportó 183.920 KiB de RAM libre. Se reintenta emulador después de compilar, con SwiftShader sin Vulkan y 1.536 MiB. No hay capturas del mapa aún; no cerrar la tarea visual ni la fase.
 
 ## Contexto
 La pestaña Progreso existe, pero está vacía. Ya hay datos suficientes para analizar:
@@ -16,7 +26,7 @@ Alcance: todas las filas con "6" o "6b" en los bancos `11b` a `11f`, más los en
 
 Decisiones del autor (2026-11-26):
 - **Gráficos:** propios con Compose (sin librería), igual que el `VolumeBars` que ya existe.
-- **Mapa corporal 2D:** ilustración `VVGowda/muscle-svg` (MIT, con atribución), elegida por el autor el 2026-11-26 tras rechazar el dibujo propio; frente y espalda, agrupada en los 21 grupos del catálogo.
+- **Mapa corporal 2D:** ilustración `vulovix/body-muscles` (Apache-2.0, con LICENSE y NOTICE), elegida por el autor el 2026-11-26; frente y espalda para los grupos del catálogo, con la limitación anatómica indicada arriba.
 - **Ajustes del análisis:** fórmula de 1RM, umbrales y ventana del veredicto, rango de series por músculo. Van en una tarjeta dentro de Progreso y pasan a Ajustes en la Fase 9.
 - **Orden:** 6 y 6b en un mismo plan, con las etiquetas `fase-6` y `fase-6b`.
 

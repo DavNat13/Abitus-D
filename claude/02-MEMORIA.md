@@ -8,7 +8,7 @@ Archivo vivo. Claude Code lo lee al iniciar cada sesión y lo actualiza al termi
 - Fase actual: Fases 5 y 5b cerradas (fase-5 y fase-5b, 2026-11-26; detalle en `02j-MEMORIA-FASE-5.md`). Fase 4b cerrada (`02i`). Siguiente: Fase 6 según `10c`.
 - Repositorio remoto: https://github.com/DavNat13/Abitus-D (público). Versionado: un commit convencional por tarea verificada, push tras cada tarea y etiqueta `fase-N` al cerrar cada fase. Al ser público, revisar secretos antes de cada push.
 - Código: autenticación completa (backend, base de datos y app Android); detalle y decisiones de la Fase 1 en `02d-MEMORIA-FASE-1.md`. Verificaciones externas en `02c-MEMORIA-VERIFICACIONES.md`.
-- Siguiente paso: Fases 6 y 6b en curso; estado, pendientes y prompt en `18b-OPENCODE-FASE-6.md` (plan en `02k` y `02l`).
+- Siguiente paso: Fases 6 y 6b en curso; rediseño en `18b`. Importación de `vulovix/body-muscles` en curso (Apache-2.0); verificaciones y limitaciones anatómicas en `02k`.
 - Pedido del autor para la Fase 4 (2026-11-23): en programas y calendario, cada día se elige como entrenamiento, descanso o descanso activo (hoy solo existe descanso con un aviso). Requiere un tipo de día en program_days (migración en servidor y Room, sincronización), el selector en el editor de programas y que Inicio y Calendario muestren el descanso activo con su sugerencia. Pendiente al final: Vercel, Neon, keystore.
 
 Fase 0: tareas 1 a 7 hechas y verificadas (estructura, verificaciones, scripts, backend, database, Docker, Android en emulador API 29); tarea 8 (despliegue en Vercel) diferida al final. Detalle en el historial de Git.
@@ -37,7 +37,7 @@ Nota: la ronda 2 de decisiones (nombre Abitus-D, hosting sin tarjeta, correo, ed
 | Fecha | Decisión | Motivo |
 |---|---|---|
 | 2026-11-25 | Salud: pregunta propia sí/no, aviso profesional y enlace al PAR-Q+ oficial si responde sí; paso omitible y lista de molestias o lesiones | Decisión del autor; no integrar ni adaptar PAR-Q+ |
-| 2026-11-26 | Mapa corporal 2D con `VVGowda/muscle-svg` (MIT, con atribución), no dibujo propio; 3D de la Fase 8 con el écorché de muscleBurn (CC BY-SA) | El autor rechazó el dibujo propio de la Fase 6 por poco profesional; detalle en `18b` |
+| 2026-11-26 | Mapa 2D con `vulovix/body-muscles` (Apache-2.0, LICENSE y NOTICE incluidos), no dibujo propio; 3D de Fase 8 con écorché de muscleBurn (CC BY-SA) | Decisión más reciente del autor: sustituye muscle-svg, que no publica el arte; detalle en `02k` y `18b` |
 | 2026-11-24 | Uso personal: sin modo entrenador con alumnos; onboarding y perfil del atleta al inicio de la Fase 5 | Pedido del autor; las ideas de preparador se aplican al propio atleta (banco 11f) |
 | 2026-11-22 | Android nativo (Kotlin, Jetpack Compose) como producto principal | Timers en segundo plano, GPS, Health Connect y calidad de interfaz |
 | 2026-11-22 | Versión mínima de Android 10 (API 29) | Decisión del autor |
@@ -110,6 +110,8 @@ Verificaciones de la Fase 0 (Android fuera de Play, Vercel, Neon, Gmail y versio
 ## Registro de progreso
 
 Formato de cada entrada: `AAAA-MM-DD | área | qué se hizo | resultado de la verificación | siguiente paso`.
+
+- 2026-11-26 | progreso | Importación body-muscles Apache-2.0, atribución y licencia en Créditos; rediseño inicial de mapa y tarjetas | Backend 69/69 y Android completo en verde ejecutados con menos concurrencia; scripts OK | Capturas pendientes por caídas del emulador; cobertura 20/21 (sin romboides), detalle en `02k`; fases sin cerrar
 
 - 2026-11-22 | documentación | Creada la carpeta `claude/` y el archivo `CLAUDE.md` | Sin código aún | Cerrar decisiones pendientes y arrancar Fase 0
 - 2026-11-22 | entorno | SDK de Android por línea de comandos (licencias aceptadas con autorización del autor), AVD `abitusd_api29` | Paquetes instalados | -

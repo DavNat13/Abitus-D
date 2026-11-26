@@ -39,13 +39,13 @@ El autor calificó el diseño actual de Progreso como poco profesional y fuera d
   - Rehacerlo con proporciones atléticas de 7,5 a 8 cabezas: hombros anchos, forma en V, brazos y piernas con volumen, y músculos con forma anatómica reconocible (pectoral en abanico, deltoides redondeados, recto abdominal en bloques, cuádriceps con vasto lateral y medial).
   - Mostrar un solo cuerpo grande a todo el ancho con un selector Frente o Espalda, no dos cuerpos pequeños lado a lado.
   - Contorno suave, relleno por intensidad, leyenda con muestras de color.
-  - Decisión del autor (2026-11-26): usar una ilustración anatómica de licencia libre en vez del dibujo propio. Elegida por el autor (2026-11-26): `VVGowda/muscle-svg` (https://github.com/VVGowda/muscle-svg, MIT, 157 regiones en 41 grupos, archivos de frente y espalda separados). Antes de copiar: verificar su LICENSE y la procedencia del dibujo de líneas de origen. Agrupar sus regiones en los 21 `svgKey` del catálogo y mostrar al autor una captura antes de cerrar. Para la Fase 8 (3D) queda anotado el modelo écorché de muscleBurn (CC BY-SA 4.0, basado en BodyParts3D y Z-Anatomy).com/HichamELBSI/react-native-body-highlighter). VERIFICAR la licencia de ambos repositorios (archivo LICENSE) antes de copiar los datos. Pasar los polígonos a `BodyShapes` con un `svgKey` por cada uno de los 21 grupos del catálogo, y registrar la fuente, la licencia y la atribución en `distribution/THIRD_PARTY.md` y en Acerca de o Créditos. Si ninguna licencia resulta compatible o el dibujo no tiene calidad profesional, buscar otra ilustración MIT o CC0 y consultar al autor.
+   - Decisión más reciente del autor (2026-11-26): usar `vulovix/body-muscles` (https://github.com/vulovix/body-muscles, Apache-2.0). Sustituye muscle-svg, que no publica la ilustración. LICENSE y NOTICE verificados; importar `src/data/muscles.front.ts` y `muscles.back.ts` como Path Compose y atribuir en `distribution/THIRD_PARTY.md` y Créditos. Conservar el aviso `Copyright 2024 Ivan Vulović` y la licencia completa. Revisar cobertura de los 21 `svgKey`: la fuente no dibuja romboides (ver `02k`). Mostrar capturas en claro y oscuro antes del cierre. Para Fase 8 queda el écorché de muscleBurn (CC BY-SA 4.0), pendiente de verificar.
 - **Verificación visual obligatoria:** capturas del emulador en claro y oscuro, y al 200 % de texto, comparadas con Inicio, Entrenar y Reloj antes de dar algo por terminado. Guía visual: `05d-UI-DIRECCION-VISUAL.md`.
 
 ## Pendiente de la Fase 6 (en este orden)
 
 1. **Mapa corporal 2D** (`BodyMap`), un pedido del autor que debe quedar impecable:
-   - frente y espalda a partir de `VVGowda/muscle-svg` (MIT), convertidos a `Path` en Compose (ver la sección de rediseño);
+   - frente y espalda a partir de `vulovix/body-muscles` (Apache-2.0), convertidos a `Path` en Compose (ver la sección de rediseño);
    - una región por `svgKey` de `MuscleGroupEntity` (consultar los `svgKey` reales del catálogo en Room);
    - proporciones anatómicas, contorno y músculos con forma propia, modo claro y oscuro;
    - color por series semanales promedio (`VolumeCalculator.byMuscle`) con una leyenda que no dependa solo del color;
@@ -81,9 +81,15 @@ Toda la fase 6b está por hacer, según `02l-MEMORIA-FASE-6B.md`. Al cerrar: eti
 Eres el ingeniero principal de Abitus-D. Continúa las Fases 6 y 6b hasta cerrarlas, sin detenerte entre tareas.
 
 1. Lee AGENTS.md, CLAUDE.md, claude/02-MEMORIA.md, claude/03-REGLAS-DE-ORO.md, claude/18b-OPENCODE-FASE-6.md (estado y pendientes), claude/02k-MEMORIA-FASE-6.md y claude/02l-MEMORIA-FASE-6B.md. Revisa el código que ya existe en android/app/src/main/java/com/abitusd/app/feature/progress y core/designsystem/chart antes de crear nada.
-2. Empieza por el "Rediseño obligatorio de Progreso" de 18b (el autor rechazó el diseño actual) y después sigue la lista "Pendiente de la Fase 6" en orden y toda la 6b. El mapa corporal 2D usa VVGowda/muscle-svg (MIT), según la decisión del autor en 02-MEMORIA.md y 18b; no es un dibujo propio. Revísalo con capturas del emulador en claro y oscuro y muéstraselas al autor antes de darlo por terminado.
+2. Empieza por el "Rediseño obligatorio de Progreso" y después sigue los pendientes de Fase 6 y toda la 6b. El mapa usa vulovix/body-muscles (Apache-2.0); no es un dibujo propio. Revísalo con capturas del emulador en claro y oscuro y muéstraselas al autor antes de darlo por terminado.
 3. Por cada tarea: impleméntala con el estilo aprobado (tarjetas con icono, desplegables, hojas inferiores), textos en strings es y en, máximo 150 líneas por archivo, cero emojis, unidades SI, y sin librerías nuevas de gráficos. Prueba con npm test (backend) y ./gradlew detekt ktlintCheck testDebugUnitTest lintDebug assembleDebug (JAVA_HOME="C:\Program Files\Java\jdk-22"), más node tools/check-file-length.mjs y node tools/check-no-emoji.mjs. Haz un commit convencional y un push por cada tarea verificada.
 4. Las pruebas en el emulador las haces tú: SDK en C:\Users\David\AppData\Local\Android\Sdk, AVD abitusd_api29, backend con npm run dev en el puerto 3000 (la app usa http://10.0.2.2:3000). Mide cada criterio de 02k y 02l y anota las cifras reales.
 5. Al cerrar cada subfase: filas "Hecha" en los bancos, memoria completada (02k o 02l), etiqueta fase-6 o fase-6b subida, y 02-MEMORIA.md al día.
 6. Mensajes para mí: breves y en español. Pregunta solo si una decisión de producto, costo, privacidad o alcance no está en los documentos. No termines tu turno hasta cerrar la fase 6b o quedar bloqueado.
 ```
+
+## Revisión de Claude (2026-11-26)
+
+- Verde: Detekt, ktlint, lint, pruebas y compilación. El resumen con tarjetas de cifras se ve bien.
+- Mapa con body-muscles: aparece recortado (la cabeza ocupa un tercio y solo se ve el torso), con huecos entre piezas. Revisar la escala de `BodyShapes` (WIDTH 340, HEIGHT 940) contra los trazos relativos importados. Las etiquetas Frente y Espalda se cortan: usar textos cortos.
+- El dibujo de body-muscles es de estilo geométrico por facetas. Mostrar al autor una captura con la escala corregida y, si no lo aprueba, cambiar a `lilbuda/muscle-graph` (MIT, trazos suaves).

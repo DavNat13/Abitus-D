@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="progress_change_more">%1$d más que la semana anterior</string>
+    <string name="progress_change_less">%1$d menos que la semana anterior</string>
+    <string name="progress_change_same">Igual que la semana anterior</string>
+    <string name="body_deep_muscle_note">Los romboides no aparecen en esta ilustración superficial. Sus series se muestran en la lista.</string>
+</resources>
