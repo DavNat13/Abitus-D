@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="progress_tab_body">Cuerpo</string>
+    <string name="progress_info_body">Mapa de frente y espalda con las series semanales de cada músculo: bajo, en rango o alto según tus ajustes. Toca un músculo para ver sus cifras.</string>
+    <string name="body_period">Periodo</string>
+    <string name="body_week">Última semana</string>
+    <string name="body_month">Últimas 4 semanas</string>
+    <string name="body_year">Último año</string>
+    <string name="body_map">Series por semana</string>
+    <string name="body_front">Mapa corporal de frente; toca un músculo para ver sus series.</string>
+    <string name="body_back">Mapa corporal de espalda; toca un músculo para ver sus series.</string>
+    <string name="body_low">Bajo: menos de %1$d</string>
+    <string name="body_in_range" formatted="false">En rango</string>
+    <string name="body_high">Alto: más de %1$d</string>
+    <string name="body_no_sets">Sin series en el periodo</string>
+    <string name="body_detail">%1$s series por semana (periodo anterior: %2$s).</string>
+    <string name="body_list">Series por músculo</string>
+    <string name="body_empty">Aún no hay series en este periodo. Entrena y aquí verás qué músculos trabajas y cuáles descuidas.</string>
+    <string name="body_row">%1$s: %2$s por semana (%3$s)</string>
+</resources>

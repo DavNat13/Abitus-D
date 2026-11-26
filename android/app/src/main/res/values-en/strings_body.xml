@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="progress_tab_body">Body</string>
+    <string name="progress_info_body">Front and back map with the weekly sets of each muscle: low, in range or high by your settings. Tap a muscle to see its numbers.</string>
+    <string name="body_period">Period</string>
+    <string name="body_week">Last week</string>
+    <string name="body_month">Last 4 weeks</string>
+    <string name="body_year">Last year</string>
+    <string name="body_map">Sets per week</string>
+    <string name="body_front">Front body map; tap a muscle to see its sets.</string>
+    <string name="body_back">Back body map; tap a muscle to see its sets.</string>
+    <string name="body_low">Low: under %1$d</string>
+    <string name="body_in_range" formatted="false">In range</string>
+    <string name="body_high">High: over %1$d</string>
+    <string name="body_no_sets">No sets in the period</string>
+    <string name="body_detail">%1$s sets per week (previous period: %2$s).</string>
+    <string name="body_list">Sets per muscle</string>
+    <string name="body_empty">No sets in this period yet. Train and here you will see which muscles you work and which you neglect.</string>
+    <string name="body_row">%1$s: %2$s per week (%3$s)</string>
+</resources>

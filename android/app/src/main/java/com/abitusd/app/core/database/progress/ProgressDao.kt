@@ -13,6 +13,18 @@ data class TrainedExercise(
     val lastAt: Long,
 )
 
+/** Completed work sets of one exercise in a range. */
+data class ExerciseSetCount(
+    val exerciseId: String,
+    val sets: Int,
+)
+
+/** Catalog muscle group with its drawing key. */
+data class MuscleKey(
+    val id: Int,
+    val svgKey: String,
+)
+
 /** Totals of the sessions that started in a time range. */
 data class RangeTotals(
     val sessions: Int,
@@ -66,4 +78,21 @@ interface ProgressDao {
         from: Long,
         to: Long,
     ): Flow<RangeTotals>
+
+    @Query(
+        """
+        SELECT s.exerciseId AS exerciseId, COUNT(s.id) AS sets
+        FROM sets s JOIN session_exercises e ON e.id = s.sessionExerciseId
+        WHERE s.deletedAt IS NULL AND s.completedAt IS NOT NULL AND s.setType != 'warmup' AND e.deletedAt IS NULL
+            AND s.performedAt >= :from AND s.performedAt < :to
+        GROUP BY s.exerciseId
+        """,
+    )
+    suspend fun setsPerExercise(
+        from: Long,
+        to: Long,
+    ): List<ExerciseSetCount>
+
+    @Query("SELECT id, svgKey FROM muscle_groups")
+    suspend fun muscleKeys(): List<MuscleKey>
 }

@@ -66,6 +66,11 @@ fun ProgressScreen(
                     AnalysisSettingsCard(s.settings, viewModel::settings)
                 }
 
+                tab == TAB_BODY -> {
+                    com.abitusd.app.feature.progress.ui.body
+                        .BodyTab()
+                }
+
                 tab == TAB_MEASURES -> {
                     MeasurementsTab(s)
                 }
@@ -93,9 +98,11 @@ private val INFO =
     listOf(
         InfoEntry(AppIcons.Today, R.string.progress_tab_summary, R.string.progress_info_summary),
         InfoEntry(AppIcons.Progress, R.string.progress_tab_exercises, R.string.progress_info_exercises),
+        InfoEntry(AppIcons.Muscles, R.string.progress_tab_body, R.string.progress_info_body),
         InfoEntry(AppIcons.Weight, R.string.progress_tab_measures, R.string.progress_info_measures),
         InfoEntry(AppIcons.Filter, R.string.progress_tab_settings, R.string.progress_info_settings),
     )
 
-private const val TAB_MEASURES = 2
-private const val TAB_SETTINGS = 3
+private const val TAB_BODY = 2
+private const val TAB_MEASURES = 3
+private const val TAB_SETTINGS = 4
