@@ -4,6 +4,7 @@
 import { z } from 'zod';
 import { ATHLETE_NUMERIC_COLUMNS, athleteSchemas } from './athlete-tables.js';
 import { clockSchemas } from './clock-tables.js';
+import { PROGRESS_NUMERIC_COLUMNS, progressSchemas } from './progress-tables.js';
 
 import { PERIODIZATION_NUMERIC_COLUMNS, periodizationSchemas } from './periodization-tables.js';
 import {
@@ -83,6 +84,7 @@ export const planningSchemas = {
   ...periodizationSchemas,
   ...athleteSchemas,
   ...clockSchemas,
+  ...progressSchemas,
 } as const;
 
 export type PlanningTable = keyof typeof planningSchemas;
@@ -96,6 +98,7 @@ const NUMERIC_COLUMNS = new Set([
   ...SESSION_NUMERIC_COLUMNS,
   ...PERIODIZATION_NUMERIC_COLUMNS,
   ...ATHLETE_NUMERIC_COLUMNS,
+  ...PROGRESS_NUMERIC_COLUMNS,
 ]);
 
 export const toSnake = (key: string): string => key.replace(/[A-Z]/g, (c) => `_${c.toLowerCase()}`);

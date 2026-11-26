@@ -91,6 +91,7 @@ class AuthRepository
             periodization.clearSubstitutions()
             periodization.clearTargets()
             database.athleteDao().clear()
+            database.measurementDao().clear()
             database.clockDao().clearFavorites()
             database.clockDao().clearProfiles()
             clockStore.clearAll()

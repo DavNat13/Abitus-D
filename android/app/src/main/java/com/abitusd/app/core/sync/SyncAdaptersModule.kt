@@ -98,6 +98,6 @@ object SyncAdaptersModule {
                 ),
             ),
         ) + sessionAdapters(database) + periodizationAdapters(database) + athleteAdapter(database) +
-            clockAdapters(database)
+            clockAdapters(database) + progressAdapters(database)
     }
 }

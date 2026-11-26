@@ -36,6 +36,7 @@ class ProgressRepository
         database: AbitusDatabase,
         private val names: ExerciseNames,
         private val athlete: AthleteRepository,
+        private val measurements: MeasurementRepository,
     ) {
         private val dao = database.progressDao()
         val trained = dao.trainedExercises()
@@ -47,7 +48,8 @@ class ProgressRepository
 
         suspend fun nameMap(): Map<String, String> = names.all()
 
-        private suspend fun bodyweight(): Double? = athlete.profile.first()?.weightKg
+        /** Latest measured weight, or the athlete profile weight when nothing was measured yet. */
+        suspend fun bodyweight(): Double? = measurements.latestWeight() ?: athlete.profile.first()?.weightKg
 
         suspend fun analyze(
             exercise: TrainedExercise,
