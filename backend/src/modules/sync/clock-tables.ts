@@ -4,6 +4,8 @@ const stamp = z.iso.datetime({ offset: true });
 const phase = z.strictObject({
   kind: z.enum(['work', 'rest', 'prepare', 'inhale', 'hold', 'exhale']),
   durationS: z.number().int().min(1).max(86400),
+  reps: z.number().int().min(1).max(1000).nullable().optional(),
+  label: z.string().trim().min(1).max(60).nullable().optional(),
 });
 export const timerSpec = z.strictObject({
   phases: z.array(phase).max(50),

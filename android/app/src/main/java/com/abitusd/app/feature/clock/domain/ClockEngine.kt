@@ -1,41 +1,8 @@
 package com.abitusd.app.feature.clock.domain
 
-import kotlinx.serialization.Serializable
-
-/**
- * A running clock as wall-clock marks (09c): never counts ticks, so it survives process death and
- * reboots. [skipMs] moves the timeline forward; [extraS] lengthens single phases (+15 s).
- */
-@Serializable
-data class ClockRun(
-    val name: String,
-    val mode: String,
-    val spec: ClockSpec,
-    val startedAt: Long,
-    val pausedAt: Long? = null,
-    val pausedTotalMs: Long = 0,
-    val skipMs: Long = 0,
-    val extraS: Map<Int, Int> = emptyMap(),
-    val lapsMs: List<Long> = emptyList(),
-    val count: Int = 0,
-)
-
-data class ClockStatus(
-    val index: Int,
-    val round: Int,
-    val rounds: Int,
-    val kind: String,
-    val elapsedMs: Long,
-    val remainingMs: Long,
-    val phaseMs: Long,
-    val done: Boolean,
-) {
-    /** Wall time of the next phase change while running, or null. */
-    fun boundary(now: Long): Long? = if (done || remainingMs == Long.MAX_VALUE) null else now + remainingMs
-}
-
 object ClockEngine {
     private const val MS = 1000L
+    private const val OPEN = Long.MAX_VALUE / 4
 
     fun elapsed(
         run: ClockRun,
@@ -47,6 +14,7 @@ object ClockEngine {
         index: Int,
     ): Long {
         val phase = run.spec.phases[index % run.spec.phases.size]
+        if (phase.reps != null) return run.doneMs[index] ?: OPEN
         return (phase.durationS + (run.extraS[index] ?: 0)) * MS
     }
 
@@ -77,8 +45,35 @@ object ClockEngine {
         }
         val d = duration(run, i)
         val done = left >= d
-        val remaining = if (done) 0 else d - left
-        return ClockStatus(i, i / n + 1, run.spec.rounds, run.spec.phases[i % n].kind, elapsed, remaining, d, done)
+        val phase = run.spec.phases[i % n]
+        val waiting = d == OPEN
+        val remaining =
+            if (waiting) {
+                Long.MAX_VALUE
+            } else if (done) {
+                0
+            } else {
+                d - left
+            }
+        val next =
+            run.spec.phases
+                .getOrNull((i + 1) % n)
+                ?.label
+                .takeIf { i + 1 < total }
+        return ClockStatus(
+            i,
+            i / n + 1,
+            run.spec.rounds,
+            phase.kind,
+            elapsed,
+            remaining,
+            d,
+            done,
+            left,
+            phase.reps,
+            phase.label,
+            next,
+        )
     }
 
     fun pause(
@@ -112,6 +107,21 @@ object ClockEngine {
         run: ClockRun,
         now: Long,
     ) = run.copy(lapsMs = run.lapsMs + elapsed(run, now))
+
+    /** Ends a repetition phase, keeping the time it took so the timeline stays exact. */
+    fun ready(
+        run: ClockRun,
+        now: Long,
+    ): ClockRun {
+        val s = status(run, now)
+        return if (s.reps == null ||
+            s.done
+        ) {
+            run
+        } else {
+            run.copy(doneMs = run.doneMs + (s.index to maxOf(1, s.phaseElapsedMs)))
+        }
+    }
 
     /** Rounds completed in an AMRAP, counted by the athlete. */
     @Suppress("UnusedParameter")

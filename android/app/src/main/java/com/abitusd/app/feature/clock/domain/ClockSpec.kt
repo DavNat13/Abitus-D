@@ -7,6 +7,10 @@ import kotlinx.serialization.Serializable
 data class ClockPhase(
     val kind: String,
     val durationS: Int,
+    /** Repetition phase: it ends when the athlete taps "Listo", not by time. */
+    val reps: Int? = null,
+    /** Exercise or step name, spoken as the next one. */
+    val label: String? = null,
 )
 
 /** Phases repeated [rounds] times. Same JSON the server validates (clock-tables.ts). */

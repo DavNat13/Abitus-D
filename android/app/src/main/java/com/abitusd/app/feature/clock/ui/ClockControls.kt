@@ -24,6 +24,9 @@ internal fun ClockControls(
     countsUp: Boolean,
     vm: ClockViewModel,
 ) {
+    if (status.reps != null && !status.done) {
+        AppButton(stringResource(R.string.clock_ready), { vm.act(ClockEngine::ready) }, icon = AppIcons.Check)
+    }
     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(AppSpacing.xs)) {
         val m = Modifier.weight(1f)
         if (!status.done) {

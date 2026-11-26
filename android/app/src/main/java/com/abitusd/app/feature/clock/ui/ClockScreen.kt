@@ -42,6 +42,7 @@ fun ClockScreen(
             ClockShare(s.draft)
             MetronomeCard()
             ClockExtras()
+            FieldTestCard()
         }
         val signals =
             listOf(

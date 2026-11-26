@@ -73,8 +73,10 @@ fun ClockDisplay(
                     color = color,
                     modifier = Modifier.semantics { liveRegion = LiveRegionMode.Polite },
                 )
+                status.label?.let { Text(it, style = AppTheme.typography.titleMedium, color = colors.textPrimary) }
                 Text(
-                    ClockLabels.time(shown, tenths = countsUp && run.spec.phases.isEmpty()),
+                    status.reps?.let { stringResource(R.string.clock_reps, it) }
+                        ?: ClockLabels.time(shown, tenths = countsUp && run.spec.phases.isEmpty()),
                     style = AppTheme.typography.displayNumeric.copy(fontSize = BIG.sp),
                     color = colors.textPrimary,
                     textAlign = TextAlign.Center,

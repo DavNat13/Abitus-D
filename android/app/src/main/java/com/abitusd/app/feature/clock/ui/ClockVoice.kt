@@ -25,14 +25,38 @@ fun ClockVoice(
     val cue = status?.let(::cueOf)
     val phrase =
         when (cue) {
-            null -> null
-            Cue.DONE -> stringResource(R.string.clock_done)
-            Cue.HALF -> stringResource(R.string.clock_cue_half)
-            Cue.TEN -> stringResource(R.string.clock_cue_ten)
-            Cue.THREE -> "3"
-            Cue.TWO -> "2"
-            Cue.ONE -> "1"
-            Cue.PHASE -> stringResource(ClockLabels.kind(status.kind))
+            null -> {
+                null
+            }
+
+            Cue.DONE -> {
+                stringResource(R.string.clock_done)
+            }
+
+            Cue.HALF -> {
+                stringResource(R.string.clock_cue_half)
+            }
+
+            Cue.TEN -> {
+                stringResource(R.string.clock_cue_ten) +
+                    (status.nextLabel?.let { ". " + stringResource(R.string.clock_cue_next, it) } ?: "")
+            }
+
+            Cue.THREE -> {
+                "3"
+            }
+
+            Cue.TWO -> {
+                "2"
+            }
+
+            Cue.ONE -> {
+                "1"
+            }
+
+            Cue.PHASE -> {
+                listOfNotNull(stringResource(ClockLabels.kind(status.kind)), status.label).joinToString(". ")
+            }
         }
     LaunchedEffect(status?.index, cue) {
         if (!silent && phrase != null) tts.speak(phrase, TextToSpeech.QUEUE_FLUSH, null, "clock")
