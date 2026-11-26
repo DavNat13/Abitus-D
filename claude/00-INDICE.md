@@ -49,6 +49,7 @@ Carpeta de contexto para Claude Code. Cada archivo cubre un área; léelo antes 
 | 15b-CORREOS-PLANTILLAS.md | Diseño y contenido de cada plantilla | Al diseñar o implementar plantillas |
 | 16-ESTRUCTURA-CARPETAS.md | Estructura exacta de carpetas y convenciones de nombres | Al crear archivos o módulos |
 | 17-CALIDAD-Y-PRUEBAS.md | Definición de terminado, pruebas, presupuestos de rendimiento | Al cerrar cualquier tarea |
+| 18b-OPENCODE-FASE-6.md | Estado, pendientes y prompt para seguir las Fases 6 y 6b con opencode | Al retomar la Fase 6 con otro agente |
 | 18-PROMPT-DE-INICIO.md | Prompts para arrancar Claude Code y para sesiones y fases nuevas | Al abrir una sesión nueva |
 
 Regla de tamaño: ningún archivo de esta carpeta supera 150 líneas. Cuando un tema crece, se divide en un archivo principal y complementarios con sufijo `b`, `c` y se actualiza esta tabla.

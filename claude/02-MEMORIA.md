@@ -8,7 +8,7 @@ Archivo vivo. Claude Code lo lee al iniciar cada sesión y lo actualiza al termi
 - Fase actual: Fases 5 y 5b cerradas (fase-5 y fase-5b, 2026-11-26; detalle en `02j-MEMORIA-FASE-5.md`). Fase 4b cerrada (`02i`). Siguiente: Fase 6 según `10c`.
 - Repositorio remoto: https://github.com/DavNat13/Abitus-D (público). Versionado: un commit convencional por tarea verificada, push tras cada tarea y etiqueta `fase-N` al cerrar cada fase. Al ser público, revisar secretos antes de cada push.
 - Código: autenticación completa (backend, base de datos y app Android); detalle y decisiones de la Fase 1 en `02d-MEMORIA-FASE-1.md`. Verificaciones externas en `02c-MEMORIA-VERIFICACIONES.md`.
-- Siguiente paso: Fase 6 y 6b según el plan aprobado en `02k-MEMORIA-FASE-6.md` (gráficos propios con Compose, mapa 2D de dibujo propio, ajustes del análisis en Progreso). Cada tarea: base de datos, backend, Room y sincronización, pantallas y pruebas; criterios medidos antes de etiquetar.
+- Siguiente paso: Fases 6 y 6b en curso; estado, pendientes y prompt en `18b-OPENCODE-FASE-6.md` (plan en `02k` y `02l`).
 - Pedido del autor para la Fase 4 (2026-11-23): en programas y calendario, cada día se elige como entrenamiento, descanso o descanso activo (hoy solo existe descanso con un aviso). Requiere un tipo de día en program_days (migración en servidor y Room, sincronización), el selector en el editor de programas y que Inicio y Calendario muestren el descanso activo con su sugerencia. Pendiente al final: Vercel, Neon, keystore.
 
 Fase 0: tareas 1 a 7 hechas y verificadas (estructura, verificaciones, scripts, backend, database, Docker, Android en emulador API 29); tarea 8 (despliegue en Vercel) diferida al final. Detalle en el historial de Git.
