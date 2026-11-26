@@ -45,7 +45,7 @@ El autor calificó el diseño actual de Progreso como poco profesional y fuera d
 ## Pendiente de la Fase 6 (en este orden)
 
 1. **Mapa corporal 2D** (`BodyMap`), un pedido del autor que debe quedar impecable:
-   - frente y espalda dibujados con `Path` en Compose, dibujo propio y sin licencias de terceros;
+   - frente y espalda a partir de `VVGowda/muscle-svg` (MIT), convertidos a `Path` en Compose (ver la sección de rediseño);
    - una región por `svgKey` de `MuscleGroupEntity` (consultar los `svgKey` reales del catálogo en Room);
    - proporciones anatómicas, contorno y músculos con forma propia, modo claro y oscuro;
    - color por series semanales promedio (`VolumeCalculator.byMuscle`) con una leyenda que no dependa solo del color;
@@ -81,7 +81,7 @@ Toda la fase 6b está por hacer, según `02l-MEMORIA-FASE-6B.md`. Al cerrar: eti
 Eres el ingeniero principal de Abitus-D. Continúa las Fases 6 y 6b hasta cerrarlas, sin detenerte entre tareas.
 
 1. Lee AGENTS.md, CLAUDE.md, claude/02-MEMORIA.md, claude/03-REGLAS-DE-ORO.md, claude/18b-OPENCODE-FASE-6.md (estado y pendientes), claude/02k-MEMORIA-FASE-6.md y claude/02l-MEMORIA-FASE-6B.md. Revisa el código que ya existe en android/app/src/main/java/com/abitusd/app/feature/progress y core/designsystem/chart antes de crear nada.
-2. Empieza por el "Rediseño obligatorio de Progreso" de 18b (el autor rechazó el diseño actual) y después sigue la lista "Pendiente de la Fase 6" en orden y toda la 6b. El mapa corporal 2D debe ser un dibujo propio, anatómico y de calidad alta: revísalo con capturas del emulador en claro y oscuro antes de darlo por terminado.
+2. Empieza por el "Rediseño obligatorio de Progreso" de 18b (el autor rechazó el diseño actual) y después sigue la lista "Pendiente de la Fase 6" en orden y toda la 6b. El mapa corporal 2D usa VVGowda/muscle-svg (MIT), según la decisión del autor en 02-MEMORIA.md y 18b; no es un dibujo propio. Revísalo con capturas del emulador en claro y oscuro y muéstraselas al autor antes de darlo por terminado.
 3. Por cada tarea: impleméntala con el estilo aprobado (tarjetas con icono, desplegables, hojas inferiores), textos en strings es y en, máximo 150 líneas por archivo, cero emojis, unidades SI, y sin librerías nuevas de gráficos. Prueba con npm test (backend) y ./gradlew detekt ktlintCheck testDebugUnitTest lintDebug assembleDebug (JAVA_HOME="C:\Program Files\Java\jdk-22"), más node tools/check-file-length.mjs y node tools/check-no-emoji.mjs. Haz un commit convencional y un push por cada tarea verificada.
 4. Las pruebas en el emulador las haces tú: SDK en C:\Users\David\AppData\Local\Android\Sdk, AVD abitusd_api29, backend con npm run dev en el puerto 3000 (la app usa http://10.0.2.2:3000). Mide cada criterio de 02k y 02l y anota las cifras reales.
 5. Al cerrar cada subfase: filas "Hecha" en los bancos, memoria completada (02k o 02l), etiqueta fase-6 o fase-6b subida, y 02-MEMORIA.md al día.

@@ -16,7 +16,7 @@ Alcance: todas las filas con "6" o "6b" en los bancos `11b` a `11f`, más los en
 
 Decisiones del autor (2026-11-26):
 - **Gráficos:** propios con Compose (sin librería), igual que el `VolumeBars` que ya existe.
-- **Mapa corporal 2D:** dibujo propio, anatómico y de calidad alta ("10/10"): frente y espalda, una zona por músculo.
+- **Mapa corporal 2D:** ilustración `VVGowda/muscle-svg` (MIT, con atribución), elegida por el autor el 2026-11-26 tras rechazar el dibujo propio; frente y espalda, agrupada en los 21 grupos del catálogo.
 - **Ajustes del análisis:** fórmula de 1RM, umbrales y ventana del veredicto, rango de series por músculo. Van en una tarjeta dentro de Progreso y pasan a Ajustes en la Fase 9.
 - **Orden:** 6 y 6b en un mismo plan, con las etiquetas `fase-6` y `fase-6b`.
 
