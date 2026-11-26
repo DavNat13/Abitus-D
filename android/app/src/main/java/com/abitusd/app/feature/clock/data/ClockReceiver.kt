@@ -80,7 +80,7 @@ class ClockReceiver : BroadcastReceiver() {
                 controller.stop()
             }
 
-            Intent.ACTION_BOOT_COMPLETED, Intent.ACTION_MY_PACKAGE_REPLACED -> {
+            ACTION_RECOVER -> {
                 recover()
             }
         }
@@ -102,6 +102,7 @@ class ClockReceiver : BroadcastReceiver() {
         const val ACTION_SKIP = "com.abitusd.app.clock.SKIP"
         const val ACTION_LAP = "com.abitusd.app.clock.LAP"
         const val ACTION_STOP = "com.abitusd.app.clock.STOP"
+        const val ACTION_RECOVER = "com.abitusd.app.clock.RECOVER"
         const val EXTRA_AT = "at"
         const val EXTRA_S = 15
         private const val TAG = "AbitusClock"

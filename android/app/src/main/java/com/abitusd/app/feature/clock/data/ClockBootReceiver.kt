@@ -15,6 +15,6 @@ class ClockBootReceiver : BroadcastReceiver() {
     ) {
         val action = intent.action
         if (action != Intent.ACTION_BOOT_COMPLETED && action != Intent.ACTION_MY_PACKAGE_REPLACED) return
-        context.sendBroadcast(Intent(context, ClockReceiver::class.java).setAction(action))
+        context.sendBroadcast(Intent(context, ClockReceiver::class.java).setAction(ClockReceiver.ACTION_RECOVER))
     }
 }

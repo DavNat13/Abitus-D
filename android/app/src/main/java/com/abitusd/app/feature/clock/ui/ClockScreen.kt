@@ -25,12 +25,13 @@ fun ClockScreen(
     val run = s.run
     val status = s.status
     val view = LocalView.current
-    val running = run != null && run.pausedAt == null && status?.done == false
+    val running = s.keepOn && run != null && run.pausedAt == null && status?.done == false
     DisposableEffect(running) {
         view.keepScreenOn = running
         onDispose { view.keepScreenOn = false }
     }
     ClockVoice(status, s.silent)
+    NotificationRequest()
     FormScreen(title = stringResource(R.string.clock_title), onBack = onBack, info = {
         InfoButton(R.string.clock_title, INFO)
     }) {
@@ -44,7 +45,23 @@ fun ClockScreen(
                 ChoiceOption(false, stringResource(R.string.clock_signals_sound)),
                 ChoiceOption(true, stringResource(R.string.clock_signals_silent)),
             )
-        AppDropdown(stringResource(R.string.clock_signals), signals, s.silent, { viewModel.setSilent(it == true) })
+        AppDropdown(
+            stringResource(R.string.clock_signals),
+            signals,
+            s.silent,
+            { viewModel.setSignals(it == true, s.keepOn) },
+        )
+        val screen =
+            listOf(
+                ChoiceOption(false, stringResource(R.string.clock_screen_normal)),
+                ChoiceOption(true, stringResource(R.string.clock_screen_on)),
+            )
+        AppDropdown(
+            stringResource(R.string.clock_screen),
+            screen,
+            s.keepOn,
+            { viewModel.setSignals(s.silent, it == true) },
+        )
     }
 }
 
@@ -54,3 +71,23 @@ private val INFO =
         InfoEntry(AppIcons.Pause, R.string.clock_info_background, R.string.clock_info_background_d),
         InfoEntry(AppIcons.Favorite, R.string.clock_info_profiles, R.string.clock_info_profiles_d),
     )
+
+/** Android 13+ asks once for notifications so the live clock is visible with the screen off. */
+@Composable
+private fun NotificationRequest() {
+    val context = androidx.compose.ui.platform.LocalContext.current
+    val launcher =
+        androidx.activity.compose.rememberLauncherForActivityResult(
+            androidx.activity.result.contract.ActivityResultContracts
+                .RequestPermission(),
+        ) {}
+    androidx.compose.runtime.LaunchedEffect(Unit) {
+        val modern = android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU
+        if (modern &&
+            !com.abitusd.app.core.timer
+                .canNotify(context)
+        ) {
+            launcher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
+        }
+    }
+}

@@ -85,8 +85,7 @@ class WorkoutReminders
                 title: String,
             ) {
                 val granted =
-                    ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) ==
-                        PackageManager.PERMISSION_GRANTED
+                    canNotify(context)
                 if (!granted) return
                 val open =
                     PendingIntent.getActivity(

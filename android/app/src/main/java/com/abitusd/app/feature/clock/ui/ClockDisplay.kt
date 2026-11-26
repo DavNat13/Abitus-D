@@ -91,13 +91,7 @@ fun ClockDisplay(
     ClockControls(run, status, countsUp, vm)
     if (run.lapsMs.isNotEmpty()) {
         SectionCard(stringResource(R.string.clock_laps), icon = AppIcons.Lap) {
-            run.lapsMs.reversed().forEachIndexed { i, ms ->
-                val n = run.lapsMs.size - i
-                Text(
-                    stringResource(R.string.clock_lap_row, n, ClockLabels.time(ms, tenths = true)),
-                    style = AppTheme.typography.body,
-                )
-            }
+            LapList(run.lapsMs)
         }
     }
 }

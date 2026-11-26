@@ -86,8 +86,7 @@ object RestNotifications {
         notification: android.app.Notification,
     ) {
         val granted =
-            ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) ==
-                PackageManager.PERMISSION_GRANTED
+            canNotify(context)
         if (granted) NotificationManagerCompat.from(context).notify(id, notification)
     }
 

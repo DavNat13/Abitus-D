@@ -39,9 +39,15 @@ class ClockStore
             get() = prefs.getBoolean(SILENT, false)
             set(value) = prefs.edit { putBoolean(SILENT, value) }
 
+        /** Keep the screen on while the clock runs; off by default to save battery. */
+        var keepOn: Boolean
+            get() = prefs.getBoolean(KEEP_ON, false)
+            set(value) = prefs.edit { putBoolean(KEEP_ON, value) }
+
         private companion object {
             const val PREFS = "abitusd_clock"
             const val KEY = "active"
             const val SILENT = "silent"
+            const val KEEP_ON = "keep_on"
         }
     }

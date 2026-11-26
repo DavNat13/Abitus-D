@@ -60,6 +60,13 @@
     <string name="sync_last">Last sync: %1$s</string>
     <string name="sync_never">Not synced on this device yet.</string>
     <string name="sync_retry">Sync now</string>
+    <string name="clock_cue_half">Halfway</string>
+    <string name="clock_cue_ten">10 seconds left</string>
+    <string name="clock_lap_best">Best</string>
+    <string name="clock_lap_worst">Slowest</string>
+    <string name="clock_screen">Screen on</string>
+    <string name="clock_screen_on">On while running (uses more battery)</string>
+    <string name="clock_screen_normal">Normal</string>
     <plurals name="sync_pending">
         <item quantity="one">%1$d change waiting to be sent</item>
         <item quantity="other">%1$d changes waiting to be sent</item>

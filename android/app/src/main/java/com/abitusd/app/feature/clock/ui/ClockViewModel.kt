@@ -37,6 +37,7 @@ data class ClockUiState(
     val draft: ClockDraft = ClockDraft(),
     val profiles: List<TimerProfileEntity> = emptyList(),
     val silent: Boolean = false,
+    val keepOn: Boolean = false,
 )
 
 @HiltViewModel
@@ -47,7 +48,7 @@ class ClockViewModel
         private val profiles: ClockProfiles,
     ) : ViewModel() {
         private val draft = MutableStateFlow(ClockDraft())
-        private val silent = MutableStateFlow(controller.store.silent)
+        private val silent = MutableStateFlow(controller.store.silent to controller.store.keepOn)
         private val ticker =
             flow {
                 while (true) {
@@ -58,7 +59,7 @@ class ClockViewModel
 
         val state: StateFlow<ClockUiState> =
             combine(controller.store.run, ticker, draft, profiles.all, silent) { run, now, d, p, s ->
-                ClockUiState(run, run?.let { ClockEngine.status(it, now) }, d, p, s)
+                ClockUiState(run, run?.let { ClockEngine.status(it, now) }, d, p, s.first, s.second)
             }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_MS), ClockUiState())
 
         init {
@@ -89,9 +90,13 @@ class ClockViewModel
 
         fun stop() = controller.stop()
 
-        fun setSilent(value: Boolean) {
-            controller.store.silent = value
-            silent.value = value
+        fun setSignals(
+            quiet: Boolean,
+            keepOn: Boolean,
+        ) {
+            controller.store.silent = quiet
+            controller.store.keepOn = keepOn
+            silent.value = quiet to keepOn
         }
 
         fun saveProfile(name: String) {

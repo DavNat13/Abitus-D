@@ -12,6 +12,7 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import com.abitusd.app.MainActivity
 import com.abitusd.app.R
+import com.abitusd.app.core.timer.canNotify
 import com.abitusd.app.feature.clock.domain.ClockMode
 import com.abitusd.app.feature.clock.domain.ClockRun
 import com.abitusd.app.feature.clock.domain.ClockStatus
@@ -44,8 +45,7 @@ object ClockNotifications {
         now: Long,
     ) {
         val granted =
-            ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) ==
-                PackageManager.PERMISSION_GRANTED
+            canNotify(context)
         if (!granted) return
         val countsUp = ClockMode.of(run.mode).countsUp
         val paused = run.pausedAt != null

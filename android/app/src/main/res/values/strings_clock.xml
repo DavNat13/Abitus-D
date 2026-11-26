@@ -60,6 +60,13 @@
     <string name="sync_last">Última sincronización: %1$s</string>
     <string name="sync_never">Aún no se sincroniza en este dispositivo.</string>
     <string name="sync_retry">Sincronizar ahora</string>
+    <string name="clock_cue_half">Mitad</string>
+    <string name="clock_cue_ten">Quedan 10 segundos</string>
+    <string name="clock_lap_best">Mejor</string>
+    <string name="clock_lap_worst">Peor</string>
+    <string name="clock_screen">Pantalla encendida</string>
+    <string name="clock_screen_on">Encendida mientras corre (usa más batería)</string>
+    <string name="clock_screen_normal">Normal</string>
     <plurals name="sync_pending">
         <item quantity="one">%1$d cambio pendiente de enviar</item>
         <item quantity="many">%1$d cambios pendientes de enviar</item>
