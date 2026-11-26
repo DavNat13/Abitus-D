@@ -45,12 +45,6 @@
     <string name="clock_preset_pool">Pool</string>
     <string name="clock_preset_pomodoro">Pomodoro</string>
     <string name="clock_preset_cooking">Cooking</string>
-    <string name="clock_info_modes">Modes</string>
-    <string name="clock_info_modes_d">Pick a mode, adjust times and rounds, and start. Time keeps counting even if you close the app.</string>
-    <string name="clock_info_background">In the background</string>
-    <string name="clock_info_background_d">The notification shows the time and lets you pause, add 15 s or skip. It warns you 10 s before a rest ends.</string>
-    <string name="clock_info_profiles">Profiles</string>
-    <string name="clock_info_profiles_d">Save your settings as a profile to use them on any of your devices.</string>
     <string name="favorite_add">Add to favorites</string>
     <string name="favorite_remove">Remove from favorites</string>
     <string name="library_favorites">Favorites</string>

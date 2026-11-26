@@ -12,7 +12,12 @@ import com.abitusd.app.core.designsystem.theme.AppTheme
 /** "Aprende" glossary (11f): the training terms the app uses, in plain language. */
 @Composable
 fun GlossaryScreen(onBack: () -> Unit) {
-    FormScreen(title = stringResource(R.string.glossary_title), onBack = onBack) {
+    FormScreen(title = stringResource(R.string.glossary_title), onBack = onBack, info = {
+        com.abitusd.app.core.designsystem.component.InfoButton(
+            R.string.glossary_title,
+            com.abitusd.app.feature.train.ui.EditorInfo.glossary,
+        )
+    }) {
         TERMS.forEach { (term, text) ->
             SectionCard(stringResource(term), icon = AppIcons.Library) {
                 Text(stringResource(text), style = AppTheme.typography.body, color = AppTheme.colors.textSecondary)

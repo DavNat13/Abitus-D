@@ -45,12 +45,6 @@
     <string name="clock_preset_pool">Piscina</string>
     <string name="clock_preset_pomodoro">Pomodoro</string>
     <string name="clock_preset_cooking">Cocina</string>
-    <string name="clock_info_modes">Modos</string>
-    <string name="clock_info_modes_d">Elige un modo, ajusta los tiempos y las rondas, e inicia. El tiempo sigue contando aunque cierres la app.</string>
-    <string name="clock_info_background">En segundo plano</string>
-    <string name="clock_info_background_d">La notificación muestra el tiempo y permite pausar, sumar 15 s o saltar. Avisa 10 s antes de que termine un descanso.</string>
-    <string name="clock_info_profiles">Perfiles</string>
-    <string name="clock_info_profiles_d">Guarda tus ajustes como perfil para usarlos en cualquiera de tus dispositivos.</string>
     <string name="favorite_add">Agregar a favoritos</string>
     <string name="favorite_remove">Quitar de favoritos</string>
     <string name="library_favorites">Favoritos</string>

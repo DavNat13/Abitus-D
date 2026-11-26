@@ -28,7 +28,7 @@
     <string name="info_finish_t">Finish</string>
     <string name="info_finish_d">Opens the summary to save the session with its effort and notes.</string>
     <string name="info_plates_t">Plate calculator</string>
-    <string name="info_plates_d">Tells which plates to load on each side of the bar to reach a weight.</string>
+    <string name="info_plates_d">Draws the bar with the plates per side, in the official colors and with each weight written, and warns when the load is not exact.</string>
     <string name="info_preview_list_d">Exercises and sets of the session, with the approximate time.</string>
     <string name="info_readiness_t">How you feel today</string>
     <string name="info_readiness_d">Optional: note your sleep and energy from 1 to 5 to see later how they affect your performance.</string>

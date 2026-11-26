@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- "Cómo usar" entries added in phases 5 and 5b. -->
+<resources>
+    <string name="info_clock_t">Reloj</string>
+    <string name="info_home_clock_d">El icono del reloj abre cronómetro, temporizador, intervalos, Tabata, EMOM y más. También está en la sesión activa.</string>
+    <string name="info_favorites_t">Favoritos</string>
+    <string name="info_favorites_d">Marca ejercicios con la estrella en su detalle. Salen primero en la lista y al elegir un ejercicio, y en Filtros puedes ver solo favoritos.</string>
+    <string name="info_detail_favorite_d">Agrégalo o quítalo de favoritos; el cambio llega a tus otros dispositivos.</string>
+    <string name="info_athlete_t">Perfil de atleta</string>
+    <string name="info_athlete_d">Tus datos corporales, experiencia, objetivo, disponibilidad y salud. Se usan para sugerirte un programa y puedes editarlos cuando quieras.</string>
+    <string name="info_sync_t">Sincronización</string>
+    <string name="info_sync_d">Muestra los cambios que faltan por enviar y la última sincronización. Todo se guarda primero en el teléfono; con "Sincronizar ahora" reintentas al instante.</string>
+    <string name="info_learn_t">Aprende</string>
+    <string name="info_learn_d">Glosario con RPE, RIR, 1RM, descarga y otros términos. Los términos subrayados en estas hojas también lo abren.</string>
+    <string name="info_session_clock_d">El icono del reloj del encabezado lo abre sin salir de la sesión. "Reloj para este ejercicio" lo abre con su nombre, y las vueltas del cronómetro se guardan en las notas de la sesión.</string>
+    <string name="info_athlete_steps_t">Cinco pasos opcionales</string>
+    <string name="info_athlete_steps_d">Cuerpo, experiencia, objetivo y disponibilidad, salud y punto de partida. Guarda o salta cada paso; todo se edita después en Perfil.</string>
+    <string name="info_athlete_health_t">Salud previa</string>
+    <string name="info_athlete_health_d">Solo con tu consentimiento. Si marcas una condición, te recomendamos consultar a un profesional y puedes abrir el PAR-Q+ oficial. No es un diagnóstico.</string>
+    <string name="info_athlete_plan_t">Programa sugerido</string>
+    <string name="info_athlete_plan_d">Una plantilla del catálogo elegida por tus días, objetivo y equipo. Nunca se agrega sin que lo confirmes.</string>
+    <string name="info_clock_modes_t">Modos y perfiles</string>
+    <string name="info_clock_modes_d">Elige un modo o una rutina, ajusta tiempos y rondas, y guárdalo como perfil. Las secuencias admiten fases por tiempo o por repeticiones, que terminan con "Listo".</string>
+    <string name="info_clock_background_t">Con la app cerrada</string>
+    <string name="info_clock_background_d">El reloj sigue en segundo plano con su notificación: pausar, sumar 15 s, saltar o marcar vuelta. Avisa 10 s antes de que termine un descanso y se recupera si reinicias el teléfono.</string>
+    <string name="info_clock_signals_t">Señales y control sin mirar</string>
+    <string name="info_clock_signals_d">Color, vibración, sonido y voz en cada fase, o solo vibración. Botón de volumen arriba pausa; abajo marca vuelta o salta. Puedes activar el mando por voz y la pausa con llamadas.</string>
+    <string name="info_clock_tools_t">Más herramientas</string>
+    <string name="info_clock_tools_d">Multitemporizador, metrónomo, isométricos con récord, test de campo, hora grande, cuenta regresiva a una fecha e historial de vueltas con exportación a CSV.</string>
+    <string name="info_clock_share_t">Compartir y accesos</string>
+    <string name="info_clock_share_d">Comparte un perfil por archivo o QR. Mantén pulsado el icono de la app, usa el mosaico de ajustes rápidos o el widget para abrir el reloj al instante.</string>
+    <string name="info_glossary_t">Cómo leerlo</string>
+    <string name="info_glossary_d">Cada tarjeta explica un término que la app usa. Vuelve aquí cuando veas un término subrayado en "Cómo usar".</string>
+</resources>

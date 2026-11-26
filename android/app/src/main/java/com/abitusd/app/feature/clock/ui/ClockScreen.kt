@@ -37,7 +37,7 @@ fun ClockScreen(
     DisposableEffect(Unit) { onDispose { ClockPending.label = null } }
     NotificationRequest()
     FormScreen(title = stringResource(R.string.clock_title), onBack = onBack, info = {
-        InfoButton(R.string.clock_title, INFO)
+        InfoButton(R.string.clock_title, com.abitusd.app.feature.train.ui.EditorInfo.clock)
     }) {
         if (run != null && status != null) {
             ClockDisplay(run, status, viewModel, theme)
@@ -74,13 +74,6 @@ fun ClockScreen(
         )
     }
 }
-
-private val INFO =
-    listOf(
-        InfoEntry(AppIcons.Timer, R.string.clock_info_modes, R.string.clock_info_modes_d),
-        InfoEntry(AppIcons.Pause, R.string.clock_info_background, R.string.clock_info_background_d),
-        InfoEntry(AppIcons.Favorite, R.string.clock_info_profiles, R.string.clock_info_profiles_d),
-    )
 
 /** Android 13+ asks once for notifications so the live clock is visible with the screen off. */
 @Composable

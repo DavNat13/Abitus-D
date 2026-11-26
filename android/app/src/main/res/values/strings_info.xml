@@ -28,7 +28,7 @@
     <string name="info_finish_t">Terminar</string>
     <string name="info_finish_d">Abre el resumen para guardar la sesión con su esfuerzo y notas.</string>
     <string name="info_plates_t">Calculadora de discos</string>
-    <string name="info_plates_d">Dice qué discos poner a cada lado de la barra para llegar a un peso.</string>
+    <string name="info_plates_d">Dibuja la barra con los discos por lado, en los colores oficiales y con el peso escrito, y avisa si no se llega exacto.</string>
     <string name="info_preview_list_d">Ejercicios y series que tiene la sesión, con el tiempo aproximado.</string>
     <string name="info_readiness_t">Cómo llegas hoy</string>
     <string name="info_readiness_d">Opcional: anota tu sueño y energía de 1 a 5 para ver después cómo influyen en tu rendimiento.</string>

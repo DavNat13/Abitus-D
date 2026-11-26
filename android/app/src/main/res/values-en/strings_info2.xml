@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- "How to use" entries added in phases 5 and 5b. -->
+<resources>
+    <string name="info_clock_t">Clock</string>
+    <string name="info_home_clock_d">The clock icon opens the stopwatch, timer, intervals, Tabata, EMOM and more. It is also in the active session.</string>
+    <string name="info_favorites_t">Favorites</string>
+    <string name="info_favorites_d">Star exercises in their detail. They come first in the list and when you pick an exercise, and Filters can show favorites only.</string>
+    <string name="info_detail_favorite_d">Add it to or remove it from favorites; the change reaches your other devices.</string>
+    <string name="info_athlete_t">Athlete profile</string>
+    <string name="info_athlete_d">Your body data, experience, goal, availability and health. They are used to suggest a program and you can edit them anytime.</string>
+    <string name="info_sync_t">Sync</string>
+    <string name="info_sync_d">Shows the changes waiting to be sent and the last sync. Everything is saved on the phone first; "Sync now" retries right away.</string>
+    <string name="info_learn_t">Learn</string>
+    <string name="info_learn_d">Glossary with RPE, RIR, 1RM, deload and other terms. Underlined terms in these sheets open it too.</string>
+    <string name="info_session_clock_d">The clock icon in the header opens it without leaving the session. "Clock for this exercise" opens it with the exercise name, and stopwatch laps are saved in the session notes.</string>
+    <string name="info_athlete_steps_t">Five optional steps</string>
+    <string name="info_athlete_steps_d">Body, experience, goal and availability, health and starting point. Save or skip each step; you can edit everything later in Profile.</string>
+    <string name="info_athlete_health_t">Health history</string>
+    <string name="info_athlete_health_d">Only with your consent. If you report a condition, we recommend seeing a professional and you can open the official PAR-Q+. It is not a diagnosis.</string>
+    <string name="info_athlete_plan_t">Suggested program</string>
+    <string name="info_athlete_plan_d">A catalog template chosen from your days, goal and equipment. It is never added without your confirmation.</string>
+    <string name="info_clock_modes_t">Modes and profiles</string>
+    <string name="info_clock_modes_d">Pick a mode or a routine, adjust times and rounds, and save it as a profile. Sequences accept timed phases or rep phases that end with "Done".</string>
+    <string name="info_clock_background_t">With the app closed</string>
+    <string name="info_clock_background_d">The clock keeps running in the background with its notification: pause, add 15 s, skip or mark a lap. It warns 10 s before a rest ends and recovers if you restart the phone.</string>
+    <string name="info_clock_signals_t">Signals and hands-free control</string>
+    <string name="info_clock_signals_d">Color, vibration, sound and voice for each phase, or vibration only. Volume up pauses; volume down marks a lap or skips. You can turn on voice control and pause on calls.</string>
+    <string name="info_clock_tools_t">More tools</string>
+    <string name="info_clock_tools_d">Multi timer, metronome, holds with records, field tests, large time of day, countdown to a date and lap history with CSV export.</string>
+    <string name="info_clock_share_t">Sharing and shortcuts</string>
+    <string name="info_clock_share_d">Share a profile by file or QR. Long press the app icon, use the quick settings tile or the widget to open the clock at once.</string>
+    <string name="info_glossary_t">How to read it</string>
+    <string name="info_glossary_d">Each card explains a term the app uses. Come back here when you see an underlined term in "How to use".</string>
+</resources>

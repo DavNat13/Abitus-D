@@ -27,7 +27,8 @@ fun AthleteScreen(
     FormScreen(stringResource(R.string.athlete_title), info = {
         InfoButton(
             R.string.athlete_help,
-            listOf(InfoEntry(AppIcons.Profile, R.string.athlete_title, R.string.athlete_help_body)),
+            listOf(InfoEntry(AppIcons.Profile, R.string.athlete_title, R.string.athlete_help_body)) +
+                com.abitusd.app.feature.train.ui.EditorInfo.athlete,
         )
     }) {
         Text(stringResource(R.string.athlete_intro), style = AppTheme.typography.body)

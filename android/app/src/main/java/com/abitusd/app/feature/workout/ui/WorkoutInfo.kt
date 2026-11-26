@@ -16,6 +16,7 @@ object WorkoutInfo {
             InfoEntry(AppIcons.Undo, R.string.info_undo_t, R.string.info_undo_d),
             InfoEntry(AppIcons.Steps, R.string.info_map_t, R.string.info_map_d),
             InfoEntry(AppIcons.Timer, R.string.info_time_t, R.string.info_time_d),
+            InfoEntry(AppIcons.Timer, R.string.info_clock_t, R.string.info_session_clock_d),
             InfoEntry(AppIcons.Finish, R.string.info_finish_t, R.string.info_finish_d),
             InfoEntry(AppIcons.Calculator, R.string.info_plates_t, R.string.info_plates_d),
         )
@@ -53,12 +54,14 @@ object WorkoutInfo {
             InfoEntry(AppIcons.FilterList, R.string.info_filters_t, R.string.info_filters_d),
             InfoEntry(AppIcons.Train, R.string.info_card_t, R.string.info_card_d),
             InfoEntry(AppIcons.Add, R.string.info_create_t, R.string.info_create_d),
+            InfoEntry(AppIcons.Favorite, R.string.info_favorites_t, R.string.info_favorites_d),
         )
 
     val home =
         listOf(
             InfoEntry(AppIcons.Today, R.string.info_today_t, R.string.info_home_today_d),
             InfoEntry(AppIcons.Calendar, R.string.info_next_t, R.string.info_next_d),
+            InfoEntry(AppIcons.Timer, R.string.info_clock_t, R.string.info_home_clock_d),
             InfoEntry(AppIcons.Profile, R.string.info_profile_t, R.string.info_profile_d),
         )
 }
