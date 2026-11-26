@@ -12,7 +12,6 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import com.abitusd.app.MainActivity
 import com.abitusd.app.R
-import com.abitusd.app.core.timer.canNotify
 import com.abitusd.app.core.timer.notifyIfAllowed
 import com.abitusd.app.feature.clock.domain.ClockMode
 import com.abitusd.app.feature.clock.domain.ClockRun
@@ -22,7 +21,7 @@ import com.abitusd.app.feature.clock.ui.ClockLabels
 /** Live clock notification with the system chronometer and its actions (11e). */
 object ClockNotifications {
     private const val CHANNEL = "clock_live"
-    private const val ID = 7301
+    const val ID = 7301
     private val LABELS =
         mapOf(
             ClockReceiver.ACTION_RESUME to R.string.clock_resume,
@@ -44,10 +43,14 @@ object ClockNotifications {
         run: ClockRun,
         status: ClockStatus,
         now: Long,
-    ) {
-        val granted =
-            canNotify(context)
-        if (!granted) return
+    ) = notifyIfAllowed(context, ID, build(context, run, status, now))
+
+    fun build(
+        context: Context,
+        run: ClockRun,
+        status: ClockStatus,
+        now: Long,
+    ): android.app.Notification {
         val countsUp = ClockMode.of(run.mode).countsUp
         val paused = run.pausedAt != null
         val text =
@@ -96,7 +99,7 @@ object ClockNotifications {
         (listOfNotNull(toggle.takeIf { !status.done }) + actions + ClockReceiver.ACTION_STOP).forEach {
             builder.addAction(0, context.getString(LABELS.getValue(it)), action(context, it))
         }
-        notifyIfAllowed(context, ID, builder.build())
+        return builder.build()
     }
 
     fun cancel(context: Context) = NotificationManagerCompat.from(context).cancel(ID)

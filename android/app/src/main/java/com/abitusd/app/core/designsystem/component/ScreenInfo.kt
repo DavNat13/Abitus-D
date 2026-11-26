@@ -61,7 +61,7 @@ fun InfoButton(
                             style = AppTheme.typography.titleMedium,
                             color = AppTheme.colors.textPrimary,
                         )
-                        Text(
+                        GlossaryText(
                             stringResource(entry.text),
                             style = AppTheme.typography.body,
                             color = AppTheme.colors.textSecondary,

@@ -84,8 +84,15 @@ fun ClockExtras(vm: ClockExtrasViewModel = hiltViewModel()) {
         }, style = AppButtonStyle.Tonal, icon = AppIcons.Calendar)
     }
     val history = remember { vm.store.history() }
-    if (history.isEmpty()) return
     SectionCard(stringResource(R.string.clock_history), icon = AppIcons.Lap) {
+        if (history.isEmpty()) {
+            Text(
+                stringResource(R.string.clock_history_empty),
+                style = AppTheme.typography.body,
+                color = AppTheme.colors.textSecondary,
+            )
+            return@SectionCard
+        }
         history.take(SHOWN).forEach { record ->
             val splits = record.lapsMs.mapIndexed { i, ms -> ms - (record.lapsMs.getOrNull(i - 1) ?: 0L) }
             val t = { ms: Long -> ClockLabels.time(ms, tenths = true) }

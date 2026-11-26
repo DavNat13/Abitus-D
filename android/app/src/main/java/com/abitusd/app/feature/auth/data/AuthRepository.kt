@@ -93,7 +93,7 @@ class AuthRepository
             database.athleteDao().clear()
             database.clockDao().clearFavorites()
             database.clockDao().clearProfiles()
-            clockStore.set(null)
+            clockStore.clearAll()
             syncState.clear()
             sessions.clear()
         }

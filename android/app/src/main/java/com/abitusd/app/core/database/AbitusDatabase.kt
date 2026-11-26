@@ -45,6 +45,7 @@ import com.abitusd.app.core.database.session.WorkoutSessionEntity
         com.abitusd.app.core.database.athlete.AthleteProfileEntity::class,
         com.abitusd.app.core.database.clock.ExerciseFavoriteEntity::class,
         com.abitusd.app.core.database.clock.TimerProfileEntity::class,
+        com.abitusd.app.core.database.clock.ClockStateEntity::class,
         DisciplineEntity::class,
         DisciplineTextEntity::class,
         MuscleGroupEntity::class,
@@ -69,7 +70,7 @@ import com.abitusd.app.core.database.session.WorkoutSessionEntity
         com.abitusd.app.core.database.planning.BlockSubstitutionEntity::class,
         com.abitusd.app.core.database.planning.MuscleTargetEntity::class,
     ],
-    version = 7,
+    version = 8,
     exportSchema = true,
     autoMigrations = [
         AutoMigration(
@@ -79,6 +80,7 @@ import com.abitusd.app.core.database.session.WorkoutSessionEntity
         AutoMigration(from = 4, to = 5),
         AutoMigration(from = 5, to = 6),
         AutoMigration(from = 6, to = 7),
+        AutoMigration(from = 7, to = 8),
     ],
 )
 @ColumnTypeConverters(StringListConverter::class)

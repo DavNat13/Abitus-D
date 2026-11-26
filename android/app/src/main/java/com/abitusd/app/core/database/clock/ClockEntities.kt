@@ -29,3 +29,10 @@ data class TimerProfileEntity(
     override val deletedAt: Long? = null,
     override val dirty: Boolean = false,
 ) : SyncRow
+
+/** Local-only key value rows of the clock: the active run and the lap history (never synced). */
+@Entity(tableName = "clock_state")
+data class ClockStateEntity(
+    @PrimaryKey val key: String,
+    val value: String,
+)

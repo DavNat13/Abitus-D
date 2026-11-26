@@ -41,6 +41,17 @@ interface ClockDao {
         at: Long,
     )
 
+    @Query("SELECT value FROM clock_state WHERE `key` = :key")
+    suspend fun state(key: String): String?
+
+    @Upsert suspend fun putState(row: ClockStateEntity)
+
+    @Query("DELETE FROM clock_state WHERE `key` = :key")
+    suspend fun deleteState(key: String)
+
+    @Query("DELETE FROM clock_state")
+    suspend fun clearState()
+
     @Query("DELETE FROM exercise_favorites")
     suspend fun clearFavorites()
 

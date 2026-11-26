@@ -42,6 +42,7 @@ class ClockController
             cancelAlarms()
             ClockNotifications.cancel(context)
             store.set(null)
+            ClockService.sync(context, active = false)
         }
 
         /** Called after an alarm or a reboot: re-arms whatever is still pending. */
@@ -55,6 +56,7 @@ class ClockController
             val now = System.currentTimeMillis()
             val status = ClockEngine.status(run, now)
             ClockNotifications.show(context, run, status, now)
+            ClockService.sync(context, active = !status.done)
             if (run.pausedAt != null) return
             val boundary = status.boundary(now) ?: return
             set(boundary, ClockReceiver.ACTION_PHASE, REQUEST_PHASE)

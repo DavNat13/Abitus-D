@@ -8,6 +8,8 @@
     <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
     <!-- Clock signals and reboot recovery of the clock and calendar reminders (11e, 09c). -->
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
@@ -53,6 +55,14 @@
         <receiver android:name=".core.timer.RestAlarmReceiver" android:exported="false" />
         <receiver android:name=".core.timer.WorkoutReminderReceiver" android:exported="false" />
         <receiver android:name=".feature.clock.data.ClockReceiver" android:exported="false" />
+        <service
+            android:name=".feature.clock.data.ClockService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Workout interval timer that keeps counting with the screen off" />
+        </service>
         <receiver android:name=".feature.clock.data.ClockWidget" android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
