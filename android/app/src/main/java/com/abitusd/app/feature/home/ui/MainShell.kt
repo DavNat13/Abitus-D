@@ -44,6 +44,7 @@ enum class MainTab(
 @Composable
 fun MainShell(
     onOpenProfile: () -> Unit,
+    onOpenClock: () -> Unit,
     onOpenExercise: (String) -> Unit,
     onCreateExercise: () -> Unit,
     onOpenRoutine: (String?) -> Unit,
@@ -89,7 +90,7 @@ fun MainShell(
         if (selected == MainTab.LIBRARY) {
             LibraryScreen(onOpenExercise, onCreateExercise, Modifier.padding(padding))
         } else if (selected == MainTab.HOME) {
-            HomeScreen(onOpenProfile, { selected = MainTab.TRAIN }, Modifier.padding(padding))
+            HomeScreen(onOpenProfile, onOpenClock, { selected = MainTab.TRAIN }, Modifier.padding(padding))
         } else if (selected == MainTab.TRAIN) {
             TrainScreen(onOpenRoutine, onOpenProgram, workout, Modifier.padding(padding))
         } else {

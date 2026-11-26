@@ -3,6 +3,7 @@
 // columns can ever be written by the generic sync (identifiers are never user input).
 import { z } from 'zod';
 import { ATHLETE_NUMERIC_COLUMNS, athleteSchemas } from './athlete-tables.js';
+import { clockSchemas } from './clock-tables.js';
 
 import { PERIODIZATION_NUMERIC_COLUMNS, periodizationSchemas } from './periodization-tables.js';
 import {
@@ -81,6 +82,7 @@ export const planningSchemas = {
   ...sessionSchemas,
   ...periodizationSchemas,
   ...athleteSchemas,
+  ...clockSchemas,
 } as const;
 
 export type PlanningTable = keyof typeof planningSchemas;

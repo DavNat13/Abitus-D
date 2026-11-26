@@ -43,6 +43,8 @@ import com.abitusd.app.core.database.session.WorkoutSessionEntity
     entities = [
         SyncStateEntity::class,
         com.abitusd.app.core.database.athlete.AthleteProfileEntity::class,
+        com.abitusd.app.core.database.clock.ExerciseFavoriteEntity::class,
+        com.abitusd.app.core.database.clock.TimerProfileEntity::class,
         DisciplineEntity::class,
         DisciplineTextEntity::class,
         MuscleGroupEntity::class,
@@ -67,7 +69,7 @@ import com.abitusd.app.core.database.session.WorkoutSessionEntity
         com.abitusd.app.core.database.planning.BlockSubstitutionEntity::class,
         com.abitusd.app.core.database.planning.MuscleTargetEntity::class,
     ],
-    version = 6,
+    version = 7,
     exportSchema = true,
     autoMigrations = [
         AutoMigration(
@@ -76,11 +78,14 @@ import com.abitusd.app.core.database.session.WorkoutSessionEntity
         ), AutoMigration(from = 2, to = 3), AutoMigration(from = 3, to = 4),
         AutoMigration(from = 4, to = 5),
         AutoMigration(from = 5, to = 6),
+        AutoMigration(from = 6, to = 7),
     ],
 )
 @ColumnTypeConverters(StringListConverter::class)
 abstract class AbitusDatabase : RoomDatabase() {
     abstract fun athleteDao(): com.abitusd.app.core.database.athlete.AthleteDao
+
+    abstract fun clockDao(): com.abitusd.app.core.database.clock.ClockDao
 
     abstract fun syncStateDao(): SyncStateDao
 

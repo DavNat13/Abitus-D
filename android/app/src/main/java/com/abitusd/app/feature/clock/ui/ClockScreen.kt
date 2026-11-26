@@ -1,0 +1,56 @@
+package com.abitusd.app.feature.clock.ui
+
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.res.stringResource
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.abitusd.app.R
+import com.abitusd.app.core.designsystem.component.AppDropdown
+import com.abitusd.app.core.designsystem.component.ChoiceOption
+import com.abitusd.app.core.designsystem.component.FormScreen
+import com.abitusd.app.core.designsystem.component.InfoButton
+import com.abitusd.app.core.designsystem.component.InfoEntry
+import com.abitusd.app.core.designsystem.icon.AppIcons
+
+/** Clock (11e): one engine for every mode; the screen stays on while it runs. */
+@Composable
+fun ClockScreen(
+    onBack: () -> Unit,
+    viewModel: ClockViewModel = hiltViewModel(),
+) {
+    val s by viewModel.state.collectAsStateWithLifecycle()
+    val run = s.run
+    val status = s.status
+    val view = LocalView.current
+    val running = run != null && run.pausedAt == null && status?.done == false
+    DisposableEffect(running) {
+        view.keepScreenOn = running
+        onDispose { view.keepScreenOn = false }
+    }
+    ClockVoice(status, s.silent)
+    FormScreen(title = stringResource(R.string.clock_title), onBack = onBack, info = {
+        InfoButton(R.string.clock_title, INFO)
+    }) {
+        if (run != null && status != null) {
+            ClockDisplay(run, status, viewModel)
+        } else {
+            ClockSetup(s, viewModel)
+        }
+        val signals =
+            listOf(
+                ChoiceOption(false, stringResource(R.string.clock_signals_sound)),
+                ChoiceOption(true, stringResource(R.string.clock_signals_silent)),
+            )
+        AppDropdown(stringResource(R.string.clock_signals), signals, s.silent, { viewModel.setSilent(it == true) })
+    }
+}
+
+private val INFO =
+    listOf(
+        InfoEntry(AppIcons.Timer, R.string.clock_info_modes, R.string.clock_info_modes_d),
+        InfoEntry(AppIcons.Pause, R.string.clock_info_background, R.string.clock_info_background_d),
+        InfoEntry(AppIcons.Favorite, R.string.clock_info_profiles, R.string.clock_info_profiles_d),
+    )

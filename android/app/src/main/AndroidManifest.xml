@@ -6,6 +6,9 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <!-- Rest timer end (10f, 02h): granted automatically to timer apps; no foreground service. -->
     <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+    <!-- Clock signals and reboot recovery of the clock and calendar reminders (11e, 09c). -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:name=".AbitusApp"
@@ -48,6 +51,13 @@
         </provider>
         <receiver android:name=".core.timer.RestAlarmReceiver" android:exported="false" />
         <receiver android:name=".core.timer.WorkoutReminderReceiver" android:exported="false" />
+        <receiver android:name=".feature.clock.data.ClockReceiver" android:exported="false" />
+        <receiver android:name=".feature.clock.data.ClockBootReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

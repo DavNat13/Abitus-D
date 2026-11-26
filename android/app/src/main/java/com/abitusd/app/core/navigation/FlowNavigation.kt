@@ -19,6 +19,7 @@ import com.abitusd.app.feature.legal.LegalDocument
 import com.abitusd.app.feature.legal.LegalDocumentScreen
 import com.abitusd.app.feature.library.ui.detail.ExerciseDetailScreen
 import com.abitusd.app.feature.library.ui.form.OwnExerciseFormScreen
+import com.abitusd.app.feature.onboarding.ui.AthleteScreen
 import com.abitusd.app.feature.profile.ui.ProfileScreen
 import com.abitusd.app.feature.train.ui.WorkoutActions
 import com.abitusd.app.feature.train.ui.programs.ProgramEditorScreen
@@ -83,10 +84,22 @@ fun AuthNavigation() {
 fun MainNavigation() {
     val stack = rememberNavBackStack(MainRoute)
     val back: () -> Unit = { stack.removeLastOrNull() }
+    androidx.compose.runtime.CompositionLocalProvider(
+        com.abitusd.app.core.designsystem.component.LocalOpenGlossary provides { stack.add(GlossaryRoute) },
+        com.abitusd.app.core.designsystem.component.LocalOpenClock provides { stack.add(ClockRoute) },
+    ) { MainEntries(stack, back) }
+}
+
+@Composable
+private fun MainEntries(
+    stack: NavBackStack<NavKey>,
+    back: () -> Unit,
+) {
     FlowDisplay(stack) {
         entry<MainRoute> {
             MainShell(
                 onOpenProfile = { stack.add(ProfileRoute) },
+                onOpenClock = { stack.add(ClockRoute) },
                 onOpenExercise = { stack.add(ExerciseDetailRoute(it)) },
                 onCreateExercise = { stack.add(OwnExerciseFormRoute()) },
                 onOpenRoutine = { stack.add(RoutineEditorRoute(it)) },
@@ -119,19 +132,18 @@ fun MainNavigation() {
         entry<RoutineEditorRoute> { key -> RoutineEditorScreen(key.id, onBack = back) }
         entry<ProgramEditorRoute> { key -> ProgramEditorScreen(key.id, onBack = back) }
         workoutEntries(stack, back)
+        clockEntries(back)
         entry<ProfileRoute> {
             ProfileScreen(
                 onBack = back,
                 onOpenAthlete = { stack.add(AthleteRoute) },
+                onOpenGlossary = { stack.add(GlossaryRoute) },
                 onOpenPrivacy = { stack.add(LegalRoute(LegalDocument.PRIVACY)) },
                 onOpenTerms = { stack.add(LegalRoute(LegalDocument.TERMS)) },
                 onOpenCredits = { stack.add(LegalRoute(LegalDocument.CREDITS)) },
             )
         }
-        entry<AthleteRoute> {
-            com.abitusd.app.feature.onboarding.ui
-                .AthleteScreen(onDone = back)
-        }
+        entry<AthleteRoute> { AthleteScreen(onDone = back) }
         entry<LegalRoute> { key -> LegalDocumentScreen(document = key.document, onBack = back) }
     }
 }

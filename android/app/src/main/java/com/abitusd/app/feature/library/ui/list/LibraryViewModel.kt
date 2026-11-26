@@ -8,6 +8,7 @@ import com.abitusd.app.core.database.catalog.NamedRef
 import com.abitusd.app.core.i18n.AppLocale
 import com.abitusd.app.core.i18n.SearchText
 import com.abitusd.app.core.sync.SyncScheduler
+import com.abitusd.app.feature.library.data.FavoritesRepository
 import com.abitusd.app.feature.library.domain.EnglishNamesStore
 import com.abitusd.app.feature.library.domain.EquipmentProfile
 import com.abitusd.app.feature.library.domain.EquipmentProfileStore
@@ -27,8 +28,10 @@ data class LibraryFilters(
     val muscleId: Int? = null,
     val equipmentId: Int? = null,
     val difficulty: Int? = null,
+    val favoritesOnly: Boolean = false,
 ) {
-    val activeCount: Int get() = listOfNotNull(disciplineId, muscleId, equipmentId, difficulty).size
+    val activeCount: Int
+        get() = listOfNotNull(disciplineId, muscleId, equipmentId, difficulty).size + if (favoritesOnly) 1 else 0
 }
 
 data class LibraryState(
@@ -62,6 +65,7 @@ class LibraryViewModel
         private val syncScheduler: SyncScheduler,
         private val profiles: EquipmentProfileStore,
         private val englishNames: EnglishNamesStore,
+        private val favorites: FavoritesRepository,
     ) : ViewModel() {
         val profile = profiles.profile
 
@@ -88,17 +92,20 @@ class LibraryViewModel
                     } else {
                         2
                     }
-                dao.exercises(
-                    locale,
-                    SearchText.normalize(iq.query),
-                    f.disciplineId,
-                    f.muscleId,
-                    f.equipmentId,
-                    f.difficulty,
-                    mode,
-                    p.allowed.orEmpty().toList(),
-                    iq.english.toList(),
-                )
+                combine(
+                    dao.exercises(
+                        locale,
+                        SearchText.normalize(iq.query),
+                        f.disciplineId,
+                        f.muscleId,
+                        f.equipmentId,
+                        f.difficulty,
+                        mode,
+                        p.allowed.orEmpty().toList(),
+                        iq.english.toList(),
+                    ),
+                    favorites.ids,
+                ) { list, fav -> FavoritesRepository.arrange(list, fav, f.favoritesOnly) { it.id } }
             }
 
         private val references =

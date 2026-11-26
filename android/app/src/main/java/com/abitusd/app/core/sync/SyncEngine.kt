@@ -29,6 +29,7 @@ class SyncEngine
         suspend fun run(): SyncOutcome {
             // Each step runs only if the previous one did not ask for a retry.
             val completed = !catalog.refresh().needsRetry() && push() && pull()
+            if (completed) syncState.put(SyncStateEntity(LAST_SYNC_KEY, System.currentTimeMillis().toString()))
             return if (completed) SyncOutcome.DONE else SyncOutcome.RETRY
         }
 
@@ -61,8 +62,9 @@ class SyncEngine
 
         private fun ApiResult<*>.needsRetry(): Boolean = this is ApiResult.Offline || this is ApiResult.Unexpected
 
-        private companion object {
-            const val BATCH = 200
-            const val CURSOR_KEY = "pull_cursor"
+        companion object {
+            const val LAST_SYNC_KEY = "last_sync_at"
+            private const val BATCH = 200
+            private const val CURSOR_KEY = "pull_cursor"
         }
     }

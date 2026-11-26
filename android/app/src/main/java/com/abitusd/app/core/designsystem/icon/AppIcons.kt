@@ -125,4 +125,14 @@ object AppIcons {
     @DrawableRes val ActiveRest = R.drawable.ic_directions_walk
 
     @DrawableRes val ScreenInfo = R.drawable.ic_error
+
+    @DrawableRes val Favorite = R.drawable.ic_star
+
+    @DrawableRes val FavoriteOn = R.drawable.ic_star_filled
+
+    @DrawableRes val Pause = R.drawable.ic_pause
+
+    @DrawableRes val Reset = R.drawable.ic_replay
+
+    @DrawableRes val Lap = R.drawable.ic_flag
 }

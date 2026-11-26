@@ -54,6 +54,11 @@ fun SessionHeader(
             overflow = TextOverflow.Ellipsis,
             modifier = Modifier.weight(1f).semantics { heading() },
         )
+        com.abitusd.app.core.designsystem.component.LocalOpenClock.current?.let { openClock ->
+            IconButton(onClick = openClock) {
+                Icon(painterResource(AppIcons.Timer), stringResource(R.string.clock_title), tint = colors.textPrimary)
+            }
+        }
         InfoButton(R.string.info_screen_session, WorkoutInfo.session)
     }
 }

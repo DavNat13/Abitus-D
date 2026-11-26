@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="glossary_title">Aprende</string>
+    <string name="glossary_open">Ver el glosario</string>
+    <string name="glossary_rpe">RPE</string>
+    <string name="glossary_rpe_d">Esfuerzo percibido de 1 a 10. En fuerza, 10 significa que no podías hacer otra repetición ni subir la carga.</string>
+    <string name="glossary_rir">RIR</string>
+    <string name="glossary_rir_d">Repeticiones en reserva: cuántas más podías hacer con buena técnica. RIR 2 equivale más o menos a RPE 8.</string>
+    <string name="glossary_1rm">1RM</string>
+    <string name="glossary_1rm_d">La carga máxima que puedes levantar una sola vez con técnica correcta en un ejercicio.</string>
+    <string name="glossary_e1rm">1RM estimado</string>
+    <string name="glossary_e1rm_d">Cálculo del 1RM a partir de una serie de varias repeticiones con una fórmula como la de Epley. Es orientativo y pierde precisión por encima de unas 10 repeticiones.</string>
+    <string name="glossary_volume">Volumen</string>
+    <string name="glossary_volume_d">Cantidad de trabajo. La app cuenta las series efectivas por músculo y también el tonelaje (carga por repeticiones).</string>
+    <string name="glossary_deload">Descarga</string>
+    <string name="glossary_deload_d">Semana con menos series o menos carga para recuperarte y consolidar lo ganado antes del siguiente bloque.</string>
+    <string name="glossary_meso">Mesociclo</string>
+    <string name="glossary_meso_d">Bloque de varias semanas, por lo general de 3 a 6, con un objetivo concreto. Suele terminar con una descarga.</string>
+    <string name="glossary_progression">Sobrecarga progresiva</string>
+    <string name="glossary_progression_d">Aumentar de a poco la exigencia, con más carga, repeticiones o series, para seguir progresando.</string>
+    <string name="glossary_superset">Superserie</string>
+    <string name="glossary_superset_d">Dos ejercicios seguidos sin descanso entre ellos; descansas al terminar ambos.</string>
+    <string name="glossary_srpe">Carga de la sesión (sRPE)</string>
+    <string name="glossary_srpe_d">El RPE de toda la sesión multiplicado por sus minutos. Sirve para seguir tu carga interna semana a semana.</string>
+    <string name="glossary_emom">EMOM</string>
+    <string name="glossary_emom_d">Cada minuto, al empezar el minuto, haces el trabajo indicado y descansas lo que sobre hasta el siguiente. E2MOM es lo mismo cada 2 minutos.</string>
+    <string name="glossary_amrap">AMRAP</string>
+    <string name="glossary_amrap_d">Tantas rondas o repeticiones como puedas dentro de un tiempo fijo.</string>
+    <string name="glossary_tabata">Tabata</string>
+    <string name="glossary_tabata_d">8 rondas de 20 segundos de trabajo muy intenso con 10 segundos de descanso: 4 minutos en total.</string>
+    <string name="glossary_fortime">For time</string>
+    <string name="glossary_fortime_d">Terminar un trabajo fijo en el menor tiempo posible, a veces con un tiempo límite.</string>
+</resources>

@@ -61,6 +61,7 @@ fun ExerciseDetailScreen(
             InfoPill(stringResource(LibraryLabels.metric(exercise.metricType)))
             InfoPill(stringResource(LibraryLabels.pattern(exercise.movementPattern)))
         }
+        FavoriteButton(id)
         DetailParagraph(
             if (exercise.isOwn) R.string.detail_notes else R.string.detail_summary,
             if (exercise.isOwn) AppIcons.Notes else AppIcons.Info,

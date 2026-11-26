@@ -50,6 +50,11 @@ fun LibraryFilterSheet(
         AppDropdown(stringResource(R.string.library_filter_equipment), state.equipment.options(), f.equipmentId, { v ->
             onFilters { it.copy(equipmentId = v) }
         }, noneLabel = any)
+        val shows =
+            listOf(ChoiceOption(false, any), ChoiceOption(true, stringResource(R.string.library_favorites_only)))
+        AppDropdown(stringResource(R.string.library_favorites), shows, f.favoritesOnly, { v ->
+            onFilters { it.copy(favoritesOnly = v == true) }
+        })
         val levels = LibraryLabels.DIFFICULTIES.map { ChoiceOption(it, stringResource(R.string.difficulty_value, it)) }
         AppDropdown(stringResource(R.string.library_filter_difficulty), levels, f.difficulty, { v ->
             onFilters { it.copy(difficulty = v) }

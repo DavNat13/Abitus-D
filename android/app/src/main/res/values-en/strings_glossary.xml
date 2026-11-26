@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="glossary_title">Learn</string>
+    <string name="glossary_open">Open the glossary</string>
+    <string name="glossary_rpe">RPE</string>
+    <string name="glossary_rpe_d">Perceived effort from 1 to 10. In strength work, 10 means you could not do another rep or add load.</string>
+    <string name="glossary_rir">RIR</string>
+    <string name="glossary_rir_d">Reps in reserve: how many more you could do with good technique. RIR 2 is roughly RPE 8.</string>
+    <string name="glossary_1rm">1RM</string>
+    <string name="glossary_1rm_d">The heaviest load you can lift once with correct technique in an exercise.</string>
+    <string name="glossary_e1rm">Estimated 1RM</string>
+    <string name="glossary_e1rm_d">Your 1RM calculated from a set of several reps with a formula such as Epley. It is an estimate and loses accuracy above about 10 reps.</string>
+    <string name="glossary_volume">Volume</string>
+    <string name="glossary_volume_d">Amount of work. The app counts effective sets per muscle and also tonnage (load times reps).</string>
+    <string name="glossary_deload">Deload</string>
+    <string name="glossary_deload_d">A week with fewer sets or less load to recover and keep your gains before the next block.</string>
+    <string name="glossary_meso">Mesocycle</string>
+    <string name="glossary_meso_d">A block of several weeks, usually 3 to 6, with one goal. It often ends with a deload.</string>
+    <string name="glossary_progression">Progressive overload</string>
+    <string name="glossary_progression_d">Gradually raising the demand, with more load, reps or sets, to keep progressing.</string>
+    <string name="glossary_superset">Superset</string>
+    <string name="glossary_superset_d">Two exercises back to back with no rest between them; you rest after both.</string>
+    <string name="glossary_srpe">Session load (sRPE)</string>
+    <string name="glossary_srpe_d">The RPE of the whole session times its minutes. It tracks your internal load week by week.</string>
+    <string name="glossary_emom">EMOM</string>
+    <string name="glossary_emom_d">Every minute on the minute: do the set work at the start of each minute and rest for what is left. E2MOM is the same every 2 minutes.</string>
+    <string name="glossary_amrap">AMRAP</string>
+    <string name="glossary_amrap_d">As many rounds or reps as possible within a fixed time.</string>
+    <string name="glossary_tabata">Tabata</string>
+    <string name="glossary_tabata_d">8 rounds of 20 seconds of very hard work with 10 seconds of rest: 4 minutes in total.</string>
+    <string name="glossary_fortime">For time</string>
+    <string name="glossary_fortime_d">Finish a fixed amount of work as fast as possible, sometimes with a time cap.</string>
+</resources>

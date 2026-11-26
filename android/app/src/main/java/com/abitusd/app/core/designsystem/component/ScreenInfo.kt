@@ -30,6 +30,12 @@ data class InfoEntry(
     @param:StringRes val text: Int,
 )
 
+/** Opens the glossary from every "How to use" sheet; null where no navigation exists (sign in). */
+val LocalOpenGlossary = androidx.compose.runtime.staticCompositionLocalOf<(() -> Unit)?> { null }
+
+/** Opens the clock from the active session without passing callbacks through every layer. */
+val LocalOpenClock = androidx.compose.runtime.staticCompositionLocalOf<(() -> Unit)?> { null }
+
 /**
  * Header info button (author's request, 2026-11-23): headers show only the screen name and this
  * button, which opens a sheet explaining every element of the screen.
@@ -62,6 +68,13 @@ fun InfoButton(
                         )
                     }
                 }
+            }
+            LocalOpenGlossary.current?.let { openGlossary ->
+                HorizontalDivider(color = AppTheme.colors.outline)
+                NavRow(stringResource(R.string.glossary_open), {
+                    open = false
+                    openGlossary()
+                })
             }
         }
     }

@@ -23,6 +23,8 @@ class AbitusApp :
     override fun onCreate() {
         super.onCreate()
         RestNotifications.createChannels(this)
+        com.abitusd.app.feature.clock.data.ClockNotifications
+            .createChannel(this)
         com.abitusd.app.core.timer.WorkoutReminders
             .createChannel(this)
     }

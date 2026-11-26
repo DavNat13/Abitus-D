@@ -39,6 +39,7 @@ import java.time.format.DateTimeFormatter
 @Composable
 fun HomeScreen(
     onOpenProfile: () -> Unit,
+    onOpenClock: () -> Unit,
     onGoTrain: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = hiltViewModel(),
@@ -57,6 +58,13 @@ fun HomeScreen(
     ) {
         ScreenHeader(stringResource(R.string.nav_home)) {
             InfoButton(R.string.info_screen_home, WorkoutInfo.home)
+            IconButton(onClick = onOpenClock) {
+                Icon(
+                    painterResource(AppIcons.Timer),
+                    stringResource(R.string.clock_title),
+                    tint = AppTheme.colors.textPrimary,
+                )
+            }
             IconButton(onClick = onOpenProfile) {
                 Icon(
                     painterResource(AppIcons.Profile),

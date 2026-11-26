@@ -56,6 +56,7 @@ fun ProfileScreen(
     onOpenTerms: () -> Unit,
     onOpenCredits: () -> Unit,
     onOpenAthlete: () -> Unit,
+    onOpenGlossary: () -> Unit,
     viewModel: ProfileViewModel = hiltViewModel(),
 ) {
     val signingOut by viewModel.signingOut.collectAsStateWithLifecycle()
@@ -65,6 +66,10 @@ fun ProfileScreen(
     }) {
         SectionCard(stringResource(R.string.athlete_title), icon = AppIcons.Profile) {
             NavRow(stringResource(R.string.athlete_title), onOpenAthlete)
+        }
+        SyncStatusCard()
+        SectionCard(stringResource(R.string.glossary_title), icon = AppIcons.Library) {
+            NavRow(stringResource(R.string.glossary_open), onOpenGlossary)
         }
         SectionCard(stringResource(R.string.profile_preferences), icon = AppIcons.Filter) {
             LanguagePicker()

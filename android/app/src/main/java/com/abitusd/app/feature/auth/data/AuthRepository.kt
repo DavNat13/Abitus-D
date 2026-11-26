@@ -41,6 +41,7 @@ class AuthRepository
         private val workouts: com.abitusd.app.core.database.session.SessionDao,
         private val periodization: com.abitusd.app.core.database.planning.PeriodizationDao,
         private val database: com.abitusd.app.core.database.AbitusDatabase,
+        private val clockStore: com.abitusd.app.feature.clock.data.ClockStore,
     ) {
         suspend fun register(
             email: String,
@@ -90,6 +91,9 @@ class AuthRepository
             periodization.clearSubstitutions()
             periodization.clearTargets()
             database.athleteDao().clear()
+            database.clockDao().clearFavorites()
+            database.clockDao().clearProfiles()
+            clockStore.set(null)
             syncState.clear()
             sessions.clear()
         }
