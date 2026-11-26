@@ -89,6 +89,8 @@ abstract class AbitusDatabase : RoomDatabase() {
 
     abstract fun clockDao(): com.abitusd.app.core.database.clock.ClockDao
 
+    abstract fun progressDao(): com.abitusd.app.core.database.progress.ProgressDao
+
     abstract fun syncStateDao(): SyncStateDao
 
     abstract fun catalogWriteDao(): CatalogWriteDao
