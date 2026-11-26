@@ -24,6 +24,8 @@ class ClockReceiver : BroadcastReceiver() {
 
     @Inject lateinit var reminders: WorkoutReminders
 
+    @Inject lateinit var multi: MultiTimers
+
     override fun onReceive(
         context: Context,
         intent: Intent,
@@ -83,6 +85,12 @@ class ClockReceiver : BroadcastReceiver() {
                 controller.stop()
             }
 
+            ACTION_MULTI -> {
+                ClockSignals.phase(context, null, silent)
+                ClockNotifications.timerDone(context, intent.getStringExtra(EXTRA_NAME).orEmpty())
+                intent.getStringExtra(EXTRA_ID)?.let(multi::remove)
+            }
+
             ACTION_RECOVER -> {
                 recover()
             }
@@ -106,6 +114,9 @@ class ClockReceiver : BroadcastReceiver() {
         const val ACTION_LAP = "com.abitusd.app.clock.LAP"
         const val ACTION_STOP = "com.abitusd.app.clock.STOP"
         const val ACTION_RECOVER = "com.abitusd.app.clock.RECOVER"
+        const val ACTION_MULTI = "com.abitusd.app.clock.MULTI"
+        const val EXTRA_NAME = "name"
+        const val EXTRA_ID = "id"
         const val EXTRA_AT = "at"
         const val EXTRA_S = 15
         private const val TAG = "AbitusClock"

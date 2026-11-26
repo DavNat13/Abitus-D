@@ -52,6 +52,12 @@ interface ClockDao {
     @Query("DELETE FROM clock_state")
     suspend fun clearState()
 
+    @Query(
+        "SELECT COALESCE(r.name, '') FROM scheduled_workouts s LEFT JOIN routines r ON r.id = s.routineId " +
+            "WHERE s.date = :today AND s.deletedAt IS NULL AND s.status = 'planned' ORDER BY s.plannedTime LIMIT 1",
+    )
+    suspend fun todayWorkout(today: String): String?
+
     @Query("DELETE FROM exercise_favorites")
     suspend fun clearFavorites()
 

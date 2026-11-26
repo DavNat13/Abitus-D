@@ -102,6 +102,22 @@ object ClockNotifications {
         return builder.build()
     }
 
+    /** One-off notice when a named timer of the multi timer ends. */
+    fun timerDone(
+        context: Context,
+        name: String,
+    ) {
+        val n =
+            NotificationCompat
+                .Builder(context, CHANNEL)
+                .setSmallIcon(R.drawable.ic_timer)
+                .setContentTitle(context.getString(R.string.multi_done, name))
+                .setAutoCancel(true)
+                .setContentIntent(open(context))
+                .build()
+        notifyIfAllowed(context, name.hashCode(), n)
+    }
+
     fun cancel(context: Context) = NotificationManagerCompat.from(context).cancel(ID)
 
     private fun open(context: Context): PendingIntent =

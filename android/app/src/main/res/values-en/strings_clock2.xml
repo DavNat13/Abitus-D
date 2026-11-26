@@ -52,4 +52,19 @@
     <string name="clock_call">Pause on calls</string>
     <string name="clock_call_off">Off</string>
     <string name="clock_call_on">On (asks for phone state permission)</string>
+    <string name="multi_title">Multi timer</string>
+    <string name="multi_empty">Add several named timers; each one rings on its own, even with the app closed.</string>
+    <string name="multi_name">Name (for example, oven or stretch)</string>
+    <string name="multi_minutes">Minutes</string>
+    <string name="multi_add">Add timer</string>
+    <string name="multi_remove">Remove</string>
+    <string name="multi_done">Finished: %1$s</string>
+    <string name="clock_theme">Clock style</string>
+    <string name="clock_theme_digital">Digital with ring</string>
+    <string name="clock_theme_minimal">Minimal</string>
+    <string name="clock_theme_analog">Analog</string>
+    <string name="clock_lap_label">Name of lap %1$d</string>
+    <string name="clock_lap_save">Save name</string>
+    <string name="widget_today">Today: %1$s</string>
+    <string name="widget_rest">Today: rest</string>
 </resources>

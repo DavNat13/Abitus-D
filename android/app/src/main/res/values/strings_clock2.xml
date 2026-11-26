@@ -52,4 +52,19 @@
     <string name="clock_call">Pausar con llamadas</string>
     <string name="clock_call_off">No</string>
     <string name="clock_call_on">Sí (pide permiso de estado del teléfono)</string>
+    <string name="multi_title">Multitemporizador</string>
+    <string name="multi_empty">Agrega varios temporizadores con nombre; cada uno suena por su cuenta, aunque cierres la app.</string>
+    <string name="multi_name">Nombre (por ejemplo, horno o estiramiento)</string>
+    <string name="multi_minutes">Minutos</string>
+    <string name="multi_add">Agregar temporizador</string>
+    <string name="multi_remove">Quitar</string>
+    <string name="multi_done">Terminó: %1$s</string>
+    <string name="clock_theme">Estilo del reloj</string>
+    <string name="clock_theme_digital">Digital con anillo</string>
+    <string name="clock_theme_minimal">Minimalista</string>
+    <string name="clock_theme_analog">Analógico</string>
+    <string name="clock_lap_label">Nombre de la vuelta %1$d</string>
+    <string name="clock_lap_save">Guardar nombre</string>
+    <string name="widget_today">Hoy: %1$s</string>
+    <string name="widget_rest">Hoy: descanso</string>
 </resources>

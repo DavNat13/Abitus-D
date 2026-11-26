@@ -21,7 +21,9 @@ import com.abitusd.app.core.designsystem.icon.AppIcons
 fun ClockScreen(
     onBack: () -> Unit,
     viewModel: ClockViewModel = hiltViewModel(),
+    extras: ClockExtrasViewModel = hiltViewModel(),
 ) {
+    var theme by androidx.compose.runtime.remember { androidx.compose.runtime.mutableStateOf(extras.store.theme) }
     val s by viewModel.state.collectAsStateWithLifecycle()
     val run = s.run
     val status = s.status
@@ -38,12 +40,13 @@ fun ClockScreen(
         InfoButton(R.string.clock_title, INFO)
     }) {
         if (run != null && status != null) {
-            ClockDisplay(run, status, viewModel)
+            ClockDisplay(run, status, viewModel, theme)
         } else {
             ClockSetup(s, viewModel)
             ClockShare(s.draft)
             MetronomeCard()
             ClockExtras()
+            MultiTimerCard()
             HoldCard()
             FieldTestCard()
         }

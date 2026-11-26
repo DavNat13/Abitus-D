@@ -28,7 +28,7 @@ fun HoldCard(vm: ClockExtrasViewModel = hiltViewModel()) {
     var name by rememberSaveable { mutableStateOf(ClockPending.label.orEmpty()) }
     var startedAt by rememberSaveable { mutableLongStateOf(0L) }
     var shown by remember { mutableLongStateOf(0L) }
-    var holds by remember { mutableStateOf(vm.store.holds()) }
+    var holds by remember { mutableStateOf(vm.records.holds()) }
     var record by remember { mutableStateOf<Long?>(null) }
     LaunchedEffect(startedAt) {
         while (startedAt > 0) {
@@ -77,8 +77,8 @@ fun HoldCard(vm: ClockExtrasViewModel = hiltViewModel()) {
                     val ms = SystemClock.elapsedRealtime() - startedAt
                     val key = name.trim()
                     val best = holds[key].orEmpty().maxOrNull() ?: 0L
-                    vm.store.addHold(key, ms)
-                    holds = vm.store.holds()
+                    vm.records.addHold(key, ms)
+                    holds = vm.records.holds()
                     record = ms.takeIf { it > best }
                     startedAt = 0
                 } else {

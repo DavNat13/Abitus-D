@@ -38,6 +38,7 @@ fun ClockDisplay(
     run: ClockRun,
     status: ClockStatus,
     vm: ClockViewModel,
+    theme: String = THEME_DIGITAL,
 ) {
     val colors = AppTheme.colors
     val countsUp = ClockMode.of(run.mode).countsUp
@@ -60,13 +61,7 @@ fun ClockDisplay(
     Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
         Text(run.name, style = AppTheme.typography.titleMedium, color = colors.textSecondary)
         Box(contentAlignment = Alignment.Center) {
-            CircularProgressIndicator(
-                progress = { progress },
-                modifier = Modifier.size(RING.dp),
-                color = color,
-                strokeWidth = STROKE.dp,
-                trackColor = colors.outline,
-            )
+            ClockRing(theme, progress, color)
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(
                     label.uppercase(),
@@ -82,7 +77,7 @@ fun ClockDisplay(
                     color = colors.textPrimary,
                     textAlign = TextAlign.Center,
                 )
-                if (!countsUp) {
+                if (!countsUp && theme != THEME_MINIMAL) {
                     InfoPill(
                         stringResource(R.string.clock_round, status.round, status.rounds),
                         emphasized = true,
@@ -95,11 +90,16 @@ fun ClockDisplay(
     ClockVoiceCommands(vm)
     if (run.lapsMs.isNotEmpty()) {
         SectionCard(stringResource(R.string.clock_laps), icon = AppIcons.Lap) {
-            LapList(run.lapsMs)
+            LapList(run.lapsMs, run.lapLabels) { i, text ->
+                vm.act { r, _ ->
+                    r.copy(
+                        lapLabels =
+                            r.lapLabels + (i to text),
+                    )
+                }
+            }
         }
     }
 }
 
-private const val RING = 260
-private const val STROKE = 10
 private const val BIG = 64

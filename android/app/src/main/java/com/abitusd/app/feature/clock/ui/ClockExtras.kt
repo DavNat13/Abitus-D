@@ -36,6 +36,7 @@ class ClockExtrasViewModel
     @Inject
     constructor(
         val store: ClockStore,
+        val records: com.abitusd.app.feature.clock.data.ClockRecords,
     ) : ViewModel()
 
 /** Wall clock, countdown to a date, lap history with CSV export and the measured deviation (11e). */
@@ -83,7 +84,7 @@ fun ClockExtras(vm: ClockExtrasViewModel = hiltViewModel()) {
             }, start.year, start.monthValue - 1, start.dayOfMonth).show()
         }, style = AppButtonStyle.Tonal, icon = AppIcons.Calendar)
     }
-    val history = remember { vm.store.history() }
+    val history = remember { vm.records.history() }
     SectionCard(stringResource(R.string.clock_history), icon = AppIcons.Lap) {
         if (history.isEmpty()) {
             Text(

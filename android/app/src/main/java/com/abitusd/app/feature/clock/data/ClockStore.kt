@@ -42,6 +42,14 @@ class ClockStore
             value: String?,
         ) = db { if (value == null) dao.deleteState(key) else dao.putState(ClockStateEntity(key, value)) }
 
+        /** Other local clock rows (multi timers) stored as JSON next to the active run. */
+        fun raw(key: String): String? = value(key)
+
+        fun putRaw(
+            key: String,
+            json: String,
+        ) = put(key, json)
+
         private fun read(): ClockRun? =
             value(KEY)?.let { runCatching { json.decodeFromString<ClockRun>(it) }.getOrNull() }
 
@@ -51,28 +59,6 @@ class ClockStore
         fun set(value: ClockRun?) {
             put(KEY, value?.let { json.encodeToString(it) })
             mutable.value = value
-        }
-
-        /** Finished stopwatch runs with laps, newest first, kept on this phone only (11e). */
-        fun history(): List<LapRecord> =
-            value(HISTORY)?.let { runCatching { json.decodeFromString<List<LapRecord>>(it) }.getOrNull() }.orEmpty()
-
-        fun addHistory(record: LapRecord) {
-            put(HISTORY, json.encodeToString((listOf(record) + history()).take(MAX_HISTORY)))
-        }
-
-        /** Isometric holds and skill attempts by name, in ms, newest first (11b, 11c). */
-        fun holds(): Map<String, List<Long>> =
-            value(
-                HOLDS,
-            )?.let { runCatching { json.decodeFromString<Map<String, List<Long>>>(it) }.getOrNull() }.orEmpty()
-
-        fun addHold(
-            name: String,
-            ms: Long,
-        ) {
-            val all = holds()
-            put(HOLDS, json.encodeToString(all + (name to (listOf(ms) + all[name].orEmpty()).take(MAX_HISTORY))))
         }
 
         /** Removes the active clock and the history on sign out. */
@@ -101,6 +87,11 @@ class ClockStore
             get() = prefs.getBoolean(CALL_PAUSED, false)
             set(value) = prefs.edit { putBoolean(CALL_PAUSED, value) }
 
+        /** Clock style: digital (default), minimal or analog. */
+        var theme: String
+            get() = prefs.getString(THEME, null) ?: "digital"
+            set(value) = prefs.edit { putString(THEME, value) }
+
         /** Vibration and visible signals only; tones off. */
         var silent: Boolean
             get() = prefs.getBoolean(SILENT, false)
@@ -116,13 +107,11 @@ class ClockStore
             const val KEY = "active"
             const val SILENT = "silent"
             const val KEEP_ON = "keep_on"
-            const val HISTORY = "history"
-            const val HOLDS = "holds"
             const val CALL = "pause_on_call"
+            const val THEME = "theme"
             const val CALL_PAUSED = "paused_by_call"
             const val DRIFT = "drift_ms"
             const val TARGET = "target_date"
-            const val MAX_HISTORY = 20
         }
     }
 

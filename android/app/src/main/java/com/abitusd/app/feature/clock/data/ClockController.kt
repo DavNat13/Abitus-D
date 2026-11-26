@@ -23,6 +23,7 @@ class ClockController
     constructor(
         @param:ApplicationContext private val context: Context,
         val store: ClockStore,
+        private val records: ClockRecords,
     ) {
         private val alarms = context.getSystemService(AlarmManager::class.java)
 
@@ -38,7 +39,7 @@ class ClockController
                 .refresh()
                 ?.takeIf {
                     it.lapsMs.isNotEmpty()
-                }?.let { store.addHistory(LapRecord(it.name, it.startedAt, it.lapsMs)) }
+                }?.let { records.addHistory(LapRecord(it.name, it.startedAt, it.lapsMs)) }
             cancelAlarms()
             ClockNotifications.cancel(context)
             store.set(null)
