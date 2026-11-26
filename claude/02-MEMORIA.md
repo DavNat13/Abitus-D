@@ -37,7 +37,7 @@ Nota: la ronda 2 de decisiones (nombre Abitus-D, hosting sin tarjeta, correo, ed
 | Fecha | Decisión | Motivo |
 |---|---|---|
 | 2026-11-25 | Salud: pregunta propia sí/no, aviso profesional y enlace al PAR-Q+ oficial si responde sí; paso omitible y lista de molestias o lesiones | Decisión del autor; no integrar ni adaptar PAR-Q+ |
-| 2026-11-26 | Mapa corporal 2D con ilustración anatómica de licencia libre (MIT o CC0, con atribución), no dibujo propio | El autor rechazó el dibujo propio de la Fase 6 por poco profesional; detalle en `18b` |
+| 2026-11-26 | Mapa corporal 2D con `VVGowda/muscle-svg` (MIT, con atribución), no dibujo propio; 3D de la Fase 8 con el écorché de muscleBurn (CC BY-SA) | El autor rechazó el dibujo propio de la Fase 6 por poco profesional; detalle en `18b` |
 | 2026-11-24 | Uso personal: sin modo entrenador con alumnos; onboarding y perfil del atleta al inicio de la Fase 5 | Pedido del autor; las ideas de preparador se aplican al propio atleta (banco 11f) |
 | 2026-11-22 | Android nativo (Kotlin, Jetpack Compose) como producto principal | Timers en segundo plano, GPS, Health Connect y calidad de interfaz |
 | 2026-11-22 | Versión mínima de Android 10 (API 29) | Decisión del autor |
