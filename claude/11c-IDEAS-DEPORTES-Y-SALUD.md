@@ -18,7 +18,7 @@ Banco de ideas, no compromisos. Mismas reglas y columnas que `11b-IDEAS-REGISTRO
 | Desnivel y ritmo ajustado por pendiente | Con altitud del GPS | M | M | 7 |
 | Fartlek y rodajes progresivos | Plantillas con cambios de ritmo por sensación | B | M | 7 |
 | Pruebas estandarizadas | Test de Cooper y test de 5 km con seguimiento | B | M | 7 |
-| Marcador de vueltas en pista | Contador de vueltas de 400 m | B | M | 5b |
+| Marcador de vueltas en pista | Contador de vueltas de 400 m | B | M | Hecha |
 | Rutas repetidas | Detecta un recorrido habitual y compara tus tiempos | M | A | 12 |
 | Trazado sin mapa base | Ruta dibujada sin proveedor de mapas de pago | M | M | 7 |
 | Modo ahorro de GPS | Menos frecuencia de ubicación para ahorrar batería | M | A | 7 |
@@ -48,7 +48,7 @@ Banco de ideas, no compromisos. Mismas reglas y columnas que `11b-IDEAS-REGISTRO
 |---|---|---|---|---|
 | Árbol de progresiones | De flexión estándar a una mano, de dominada a muscle-up | A | A | 11b |
 | Seguimiento de habilidades | Invertida, bandera, plancha frontal con tiempo máximo | M | A | 11b |
-| Registro de isométricos | Cronómetro integrado y récord de tiempo | B | A | 5b |
+| Registro de isométricos | Cronómetro integrado y récord de tiempo | B | A | Hecha |
 | Test de repeticiones máximas | Y su evolución en el tiempo | B | A | 11b |
 | Lastre y asistencia | Peso añadido o banda elástica como carga negativa | B | A | 11b |
 | Fuerza relativa | Carga dividida entre tu peso corporal | B | M | 6 |
@@ -74,11 +74,11 @@ Banco de ideas, no compromisos. Mismas reglas y columnas que `11b-IDEAS-REGISTRO
 
 | Idea | Detalle | E | V | Fase |
 |---|---|---|---|---|
-| Rutinas guiadas | Cada postura con temporizador y cambio automático | M | A | 5b |
+| Rutinas guiadas | Cada postura con temporizador y cambio automático | M | A | Hecha |
 | Flexibilidad medida | Tocar los pies, apertura de cadera, con evolución | B | M | 12 |
 | Rutinas por zona | Cuello, hombros, espalda, cadera, tobillos | M | A | 11 |
-| Respiración guiada | Patrones como caja o 4-7-8 con animación | B | M | 5b |
-| Rutina de vuelta a la calma | Al terminar una sesión intensa | B | M | 5b |
+| Respiración guiada | Patrones como caja o 4-7-8 con animación | B | M | Hecha |
+| Rutina de vuelta a la calma | Al terminar una sesión intensa | B | M | Hecha |
 
 ## Recuperación y salud
 
@@ -93,7 +93,7 @@ Banco de ideas, no compromisos. Mismas reglas y columnas que `11b-IDEAS-REGISTRO
 | Rehabilitación educativa | Ejercicios sugeridos con aviso de consultar a un profesional | M | M | 12 |
 | Ánimo y energía | Valor de 1 a 5 antes y después de entrenar | B | M | Hecha (antes); después en 12 |
 | Hidratación y sueño manual | Registro de agua y horas si no hay Health Connect | B | M | 12 |
-| Contraste y recuperación activa | Registro de baños fríos, sauna, masaje con temporizador | B | M | 5b |
+| Contraste y recuperación activa | Registro de baños fríos, sauna, masaje con temporizador | B | M | Hecha |
 
 ## Medidas y composición corporal
 

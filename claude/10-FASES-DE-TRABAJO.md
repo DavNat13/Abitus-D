@@ -11,7 +11,7 @@ Una fase a la vez. No se avanza sin cumplir los criterios de aceptación y sin a
 | 2 | Biblioteca de ejercicios | Buscar ejercicios reales y crear propios |
 | 3 | Planificación | Armar rutinas, programas y calendario |
 | 4 y 4b | Registro y planificación avanzada | Entrenar, registrar series y periodizar por bloques (hechas) |
-| 5 y 5b | Atleta y reloj | Onboarding y perfil del atleta; cronómetro, intervalos y perfiles para todo; extras del reloj; favoritos |
+| 5 y 5b | Atleta y reloj | Onboarding y perfil del atleta; cronómetro, intervalos y perfiles para todo; extras del reloj; favoritos (hechas) |
 | 6 y 6b | Analítica | Saber si progresa, con mapa corporal 2D; comparar y sostener hábitos |
 | 7 y 7b | Cardio, natación y Health Connect | Running y cardio con GPS; natación y datos de salud |
 | 8 | Cuerpo 3D | Ver el mapa de calor sobre un modelo 3D |

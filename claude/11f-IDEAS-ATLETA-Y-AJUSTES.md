@@ -59,7 +59,7 @@ Unos 5 pasos con tarjetas; cada paso se puede omitir y todo se edita después en
 |---|---|---|---|---|
 | Carga interna de la sesión | RPE de sesión por minutos (sRPE); carga semanal, monotonía y tensión | M | A | 6b |
 | Evaluaciones periódicas | Batería de test cada 4 a 8 semanas comparada con la anterior | M | A | 6b |
-| Test de campo con señales propias | Course navette, sprint de 30 m y Yo-Yo con pitidos generados por la app | M | M | 5b |
+| Test de campo con señales propias | Course navette, sprint de 30 m y Yo-Yo con pitidos generados por la app | M | M | Hecha |
 | Partidos y competencias | Resultado, minutos jugados y sensación; amplía la actividad libre | B | M | 7 |
 | Competencia con puesta a punto | Fecha objetivo y reducción de volumen en las semanas previas | M | A | 11 |
 | Fuerza complementaria por deporte | Para corredores, nadadores o fútbol; programas de prevención reconocidos si su uso es libre (VERIFICAR) | M | A | 11 |
@@ -71,7 +71,7 @@ Unos 5 pasos con tarjetas; cada paso se puede omitir y todo se edita después en
 |---|---|---|---|---|
 | Glosario "Aprende" | RPE, RIR, 1RM, descarga, sRPE y más; se abre al tocar un término y desde "Cómo usar" | B | A | Hecha |
 | Estado de sincronización visible | Cambios pendientes, última sincronización y botón para reintentar | B | A | Hecha |
-| Calculadora de discos gráfica | Barra dibujada con los discos recomendados por lado, en colores y tamaños según el peso, con el total y lo que falta si no se llega exacto; usa el juego de discos configurado | B | A | 5b |
+| Calculadora de discos gráfica | Barra dibujada con los discos recomendados por lado, en colores y tamaños según el peso, con el total y lo que falta si no se llega exacto; usa el juego de discos configurado | B | A | Hecha |
 | Cumplimiento del plan | Sesiones y series planificadas contra hechas, por semana y por bloque | B | A | 6b |
 | Condiciones de la sesión | Temperatura, humedad o altitud anotadas a mano, sin servicio de clima externo | B | M | 7 |
 | Búsqueda global | Ejercicios, rutinas, sesiones y notas en un solo buscador | M | A | 9 |

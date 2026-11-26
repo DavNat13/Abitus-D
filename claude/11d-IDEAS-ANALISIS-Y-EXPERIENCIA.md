@@ -43,13 +43,13 @@ Banco de ideas, no compromisos. Mismas reglas y columnas que `11b` (E esfuerzo, 
 | Historial de versiones de una rutina | Qué cambió y cuándo | M | M | 9 |
 | Restaurar elementos borrados | Papelera de 30 días | M | A | 9 |
 | Detección de duplicados | Ejercicios propios que ya existen en el catálogo | M | M | 9 |
-| Lectura de códigos QR | Importar una rutina compartida escaneándola | M | M | 5b |
+| Lectura de códigos QR | Importar una rutina compartida escaneándola | M | M | Hecha |
 
 ## Experiencia y accesibilidad
 
 | Idea | Detalle | E | V | Fase |
 |---|---|---|---|---|
-| Widget con el entrenamiento de hoy | Ya aprobada; varios tamaños | M | A | 5b |
+| Widget con el entrenamiento de hoy | Ya aprobada; varios tamaños | M | A | Hecha |
 | Notificación de descanso con controles | Sumar 15 s o saltar desde la pantalla de bloqueo | M | A | Hecha |
 | Comandos de voz | "Serie lista", "siguiente ejercicio", "descanso 90" | A | M | 13 |
 | Registro de series por voz | Ya aprobada; frases cortas en español | A | M | 13 |
@@ -58,9 +58,9 @@ Banco de ideas, no compromisos. Mismas reglas y columnas que `11b` (E esfuerzo, 
 | Acentos de color | Variantes dentro de la paleta de marca | B | M | 9 |
 | Modo de bajo consumo | Pantalla atenuada y menos animaciones durante el entrenamiento | M | A | 13 |
 | Ayudas contextuales | Pistas breves la primera vez que usas cada función | B | M | 9 |
-| Accesos directos de Android | Mantener pulsado el icono: iniciar sesión, cronómetro, pesar | B | A | 5b |
+| Accesos directos de Android | Mantener pulsado el icono: iniciar sesión, cronómetro, pesar | B | A | Hecha |
 | Modo una mano | Controles al alcance del pulgar | M | A | 13 |
-| Orientación horizontal en tableta o soporte | Para ver el reloj a distancia | M | M | 5b |
+| Orientación horizontal en tableta o soporte | Para ver el reloj a distancia | M | M | Hecha |
 | Fuentes más grandes y alto contraste | Más allá del 200 % cuando haga falta | B | A | 9 |
 | Lector de pantalla con lenguaje claro | Descripciones que leen series completas | M | A | 13 |
 | Calculadora de discos | Ya aprobada; con juego de discos configurable | B | A | Hecha |

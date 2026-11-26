@@ -10,8 +10,8 @@ Banco de ideas, no compromisos. Reglas de `11-IDEAS-Y-FUTURO.md`: costo cero, si
 | Aviso de serie atípica | Pide confirmar valores muy distintos al historial (100 kg en vez de 10) | B | A | 11 |
 | Tipos de serie especiales | Drop set, rest-pause, cluster, AMRAP, al fallo, isométrica y negativa | M | A | Hecha en parte; resto 11 |
 | Registro de tempo | Cadencia (por ejemplo 3-1-1-0) como recordatorio por ejercicio | B | M | 11 |
-| Metrónomo de cadencia | Sonido o vibración que marca bajada, pausa y subida | M | M | 5b |
-| Cuenta regresiva previa | 5 segundos antes de una serie cronometrada | B | M | 5b |
+| Metrónomo de cadencia | Sonido o vibración que marca bajada, pausa y subida | M | M | Hecha |
+| Cuenta regresiva previa | 5 segundos antes de una serie cronometrada | B | M | Hecha |
 | Notas rápidas con etiquetas | "Molestia en hombro", "mal sueño", filtrables después | B | A | 6b |
 | Molestia por zona | Un toque en el mapa corporal queda ligado a la sesión | M | A | Hecha (lista); mapa en 8 |
 | Equipo y ajustes usados | Máquina, agarre, ancho, altura de asiento; se recuerdan por ejercicio | B | A | 11 |
@@ -33,12 +33,12 @@ Banco de ideas, no compromisos. Reglas de `11-IDEAS-Y-FUTURO.md`: costo cero, si
 | Idea | Detalle | E | V | Fase |
 |---|---|---|---|---|
 | Calentamiento por rutina | Movilidad y activación según los músculos del día | M | A | 11 |
-| Calentamiento general de 5 minutos | Perfiles guardados y listos | B | M | 5b |
+| Calentamiento general de 5 minutos | Perfiles guardados y listos | B | M | Hecha |
 | Movilidad según molestias | Si marcaste dolor de cadera, propone ejercicios de ese grupo | M | A | 11 |
 | Lista previa a la sesión | Sueño, comida y ánimo en dos toques; alimenta el análisis | B | A | Hecha |
 | Aviso de calentamiento omitido | Recordatorio amable al ir directo a la carga de trabajo | B | M | 11 |
 | Series de aproximación por ejercicio | Escalera de cargas para llegar a la carga de trabajo (ya aprobada) | M | A | Hecha |
-| Calentamiento guiado con timer | Cada postura con su tiempo y cambio automático | M | A | 5b |
+| Calentamiento guiado con timer | Cada postura con su tiempo y cambio automático | M | A | Hecha |
 | Circuito de activación | Banda elástica, glúteo medio, manguito rotador con un toque | B | M | 11 |
 
 ## Programación inteligente
