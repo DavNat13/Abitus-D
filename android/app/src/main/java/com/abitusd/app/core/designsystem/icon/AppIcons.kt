@@ -135,4 +135,6 @@ object AppIcons {
     @DrawableRes val Reset = R.drawable.ic_replay
 
     @DrawableRes val Lap = R.drawable.ic_flag
+
+    @DrawableRes val Weight = R.drawable.ic_weight
 }

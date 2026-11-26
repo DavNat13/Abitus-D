@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="progress_tab_measures">Body</string>
+    <string name="progress_info_measures">Log weight and girths, see the smoothed trend, the pace toward your goal, indices with their limits and your relative strength.</string>
+    <string name="measure_today">Today\'s measurement</string>
+    <string name="measure_weight">Weight (kg)</string>
+    <string name="measure_waist">Waist (cm)</string>
+    <string name="measure_chest">Chest (cm)</string>
+    <string name="measure_hip">Hip (cm)</string>
+    <string name="measure_arm">Arm (cm)</string>
+    <string name="measure_thigh">Thigh (cm)</string>
+    <string name="measure_save">Save measurement</string>
+    <string name="measure_weight_trend">Weight trend</string>
+    <string name="measure_trend_empty">Log your weight on at least two days to see the trend.</string>
+    <string name="measure_chart_desc">Smoothed weight of %1$d readings; tap a point to see its value.</string>
+    <string name="measure_rate">Pace: %1$s kg per week</string>
+    <string name="measure_too_fast">That pace is above 1 %% of your weight per week; consider a more gradual change and ask a professional if in doubt.</string>
+    <string name="measure_goal">Weight goal (kg)</string>
+    <string name="measure_weeks_goal">At the current pace you would get there in about %1$s weeks.</string>
+    <string name="measure_indices">Indices</string>
+    <string name="measure_indices_missing">They need your height (in Athlete profile) and a logged weight.</string>
+    <string name="measure_bmi">BMI: %1$s</string>
+    <string name="measure_whtr">Waist to height: %1$s</string>
+    <string name="measure_indices_limits">They are only a guide: BMI does not tell muscle from fat and neither is a diagnosis.</string>
+    <string name="measure_relative">Relative strength</string>
+    <string name="measure_relative_empty">It needs a logged weight and loaded exercises.</string>
+    <string name="measure_relative_row">%1$s: %2$s times your weight</string>
+    <string name="measure_history">Entries</string>
+    <string name="measure_history_empty">No measurements yet.</string>
+    <string name="measure_waist_short">waist %1$s cm</string>
+    <string name="measure_delete">Delete measurement</string>
+    <string name="measure_delete_note">It will be deleted on all your devices.</string>
+</resources>

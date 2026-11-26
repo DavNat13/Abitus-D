@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="progress_tab_measures">Medidas</string>
+    <string name="progress_info_measures">Registra peso y perímetros, mira la tendencia suavizada, el ritmo hacia tu objetivo, los índices con sus límites y tu fuerza relativa.</string>
+    <string name="measure_today">Medición de hoy</string>
+    <string name="measure_weight">Peso (kg)</string>
+    <string name="measure_waist">Cintura (cm)</string>
+    <string name="measure_chest">Pecho (cm)</string>
+    <string name="measure_hip">Cadera (cm)</string>
+    <string name="measure_arm">Brazo (cm)</string>
+    <string name="measure_thigh">Muslo (cm)</string>
+    <string name="measure_save">Guardar medición</string>
+    <string name="measure_weight_trend">Tendencia del peso</string>
+    <string name="measure_trend_empty">Registra el peso al menos dos días para ver la tendencia.</string>
+    <string name="measure_chart_desc">Peso suavizado de %1$d registros; toca un punto para ver su valor.</string>
+    <string name="measure_rate">Ritmo: %1$s kg por semana</string>
+    <string name="measure_too_fast">Ese ritmo supera el 1 %% de tu peso por semana; considera un cambio más gradual y consulta a un profesional si tienes dudas.</string>
+    <string name="measure_goal">Objetivo de peso (kg)</string>
+    <string name="measure_weeks_goal">Al ritmo actual llegarías en unas %1$s semanas.</string>
+    <string name="measure_indices">Índices</string>
+    <string name="measure_indices_missing">Necesitan tu altura (en Perfil de atleta) y un peso registrado.</string>
+    <string name="measure_bmi">IMC: %1$s</string>
+    <string name="measure_whtr">Cintura-altura: %1$s</string>
+    <string name="measure_indices_limits">Son orientativos: el IMC no distingue músculo de grasa y ninguno es un diagnóstico.</string>
+    <string name="measure_relative">Fuerza relativa</string>
+    <string name="measure_relative_empty">Necesita un peso registrado y ejercicios con carga.</string>
+    <string name="measure_relative_row">%1$s: %2$s veces tu peso</string>
+    <string name="measure_history">Registros</string>
+    <string name="measure_history_empty">Aún no hay mediciones.</string>
+    <string name="measure_waist_short">cintura %1$s cm</string>
+    <string name="measure_delete">Eliminar medición</string>
+    <string name="measure_delete_note">Se eliminará en todos tus dispositivos.</string>
+</resources>

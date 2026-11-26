@@ -50,15 +50,24 @@ fun ProgressScreen(
             verticalArrangement = Arrangement.spacedBy(AppSpacing.sm),
         ) {
             val labels =
-                listOf(R.string.progress_tab_summary, R.string.progress_tab_exercises, R.string.progress_tab_settings)
+                listOf(
+                    R.string.progress_tab_summary,
+                    R.string.progress_tab_exercises,
+                    R.string.progress_tab_measures,
+                    R.string.progress_tab_settings,
+                )
             SegmentedTabs(labels.map { stringResource(it) }, tab, { tab = it })
             when {
                 s.loading -> {
                     Unit
                 }
 
-                tab == 2 -> {
+                tab == TAB_SETTINGS -> {
                     AnalysisSettingsCard(s.settings, viewModel::settings)
+                }
+
+                tab == TAB_MEASURES -> {
+                    MeasurementsTab(s)
                 }
 
                 s.trained.isEmpty() -> {
@@ -84,5 +93,9 @@ private val INFO =
     listOf(
         InfoEntry(AppIcons.Today, R.string.progress_tab_summary, R.string.progress_info_summary),
         InfoEntry(AppIcons.Progress, R.string.progress_tab_exercises, R.string.progress_info_exercises),
+        InfoEntry(AppIcons.Weight, R.string.progress_tab_measures, R.string.progress_info_measures),
         InfoEntry(AppIcons.Filter, R.string.progress_tab_settings, R.string.progress_info_settings),
     )
+
+private const val TAB_MEASURES = 2
+private const val TAB_SETTINGS = 3
