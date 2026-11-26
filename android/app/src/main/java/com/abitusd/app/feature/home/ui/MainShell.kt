@@ -91,6 +91,9 @@ fun MainShell(
             LibraryScreen(onOpenExercise, onCreateExercise, Modifier.padding(padding))
         } else if (selected == MainTab.HOME) {
             HomeScreen(onOpenProfile, onOpenClock, { selected = MainTab.TRAIN }, Modifier.padding(padding))
+        } else if (selected == MainTab.PROGRESS) {
+            com.abitusd.app.feature.progress.ui
+                .ProgressScreen(Modifier.padding(padding))
         } else if (selected == MainTab.TRAIN) {
             TrainScreen(onOpenRoutine, onOpenProgram, workout, Modifier.padding(padding))
         } else {

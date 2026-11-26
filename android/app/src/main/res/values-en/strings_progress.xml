@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="progress_tab_summary">Summary</string>
+    <string name="progress_tab_exercises">Exercises</string>
+    <string name="progress_tab_settings">Settings</string>
+    <string name="progress_empty_body">No sets to analyze yet. Log workouts and here you will see your progress, records and what you neglect.</string>
+    <string name="progress_info_summary">Your week against the previous one, exercises that improve and those weeks without a record.</string>
+    <string name="progress_info_exercises">Each exercise over time, the verdict with the data behind it, your records and your 10 best sets.</string>
+    <string name="progress_info_settings">1RM formula, verdict window and threshold and weekly set range; everything recalculates when you change them.</string>
+    <string name="progress_week">This week</string>
+    <string name="progress_week_row">%1$s: %2$d (previous week: %3$d)</string>
+    <string name="progress_sessions">Sessions</string>
+    <string name="progress_sets">Sets</string>
+    <string name="progress_volume">Volume (kg)</string>
+    <string name="progress_minutes">Minutes</string>
+    <string name="progress_improving">Improving</string>
+    <string name="progress_improving_none">No exercise shows progress in the chosen window yet.</string>
+    <string name="progress_stagnant">Not progressing</string>
+    <string name="progress_stagnant_none">No exercise is stuck.</string>
+    <string name="progress_stagnant_row">%1$s: %2$d weeks without a record</string>
+    <string name="progress_exercise">Exercise</string>
+    <string name="progress_evolution">Evolution</string>
+    <string name="progress_no_points">This exercise has no valid sets for the chart yet.</string>
+    <string name="progress_chart_desc">Evolution of %1$s over %2$d sessions; tap a point to see its value.</string>
+    <string name="progress_verdict_up">Improving</string>
+    <string name="progress_verdict_stable">Stable</string>
+    <string name="progress_verdict_down">Declining</string>
+    <string name="progress_verdict_none">Not enough data</string>
+    <string name="progress_verdict_none_detail">At least 3 sessions are needed in the window; there are %1$d.</string>
+    <string name="progress_verdict_detail">From %1$s to %2$s in %3$d days (%4$s %% every 4 weeks, %5$d sessions).</string>
+    <string name="progress_records">Records</string>
+    <string name="progress_record_e1rm">Best estimated 1RM: %1$s</string>
+    <string name="progress_record_load">Heaviest load: %1$s</string>
+    <string name="progress_record_reps">Most reps: %1$d</string>
+    <string name="progress_record_time">Longest time: %1$s</string>
+    <string name="progress_top">Top 10 sets</string>
+    <string name="progress_settings_title">Analysis settings</string>
+    <string name="progress_settings_note">Saved on this phone. They will move to Settings in Phase 9.</string>
+    <string name="progress_formula">1RM formula</string>
+    <string name="progress_window">Verdict window (weeks)</string>
+    <string name="progress_threshold">Change threshold every 4 weeks</string>
+    <string name="progress_sets_min">Minimum weekly sets per muscle</string>
+    <string name="progress_sets_max">Maximum weekly sets per muscle</string>
+</resources>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="formula_epley" translatable="false">Epley</string>
+    <string name="formula_brzycki" translatable="false">Brzycki</string>
+    <string name="progress_tab_summary">Resumen</string>
+    <string name="progress_tab_exercises">Ejercicios</string>
+    <string name="progress_tab_settings">Ajustes</string>
+    <string name="progress_empty_body">Aún no hay series para analizar. Registra entrenamientos y aquí verás tu progreso, tus récords y lo que descuidas.</string>
+    <string name="progress_info_summary">Tu semana contra la anterior, los ejercicios que mejoran y los que llevan semanas sin récord.</string>
+    <string name="progress_info_exercises">Evolución de cada ejercicio, el veredicto con el dato que lo sustenta, tus récords y tus 10 mejores series.</string>
+    <string name="progress_info_settings">Fórmula de 1RM, ventana y umbral del veredicto y rango de series semanales; todo se recalcula al cambiarlos.</string>
+    <string name="progress_week">Esta semana</string>
+    <string name="progress_week_row">%1$s: %2$d (semana anterior: %3$d)</string>
+    <string name="progress_sessions">Sesiones</string>
+    <string name="progress_sets">Series</string>
+    <string name="progress_volume">Volumen (kg)</string>
+    <string name="progress_minutes">Minutos</string>
+    <string name="progress_improving">Progresando</string>
+    <string name="progress_improving_none">Aún ningún ejercicio muestra progreso en la ventana elegida.</string>
+    <string name="progress_stagnant">Sin progreso</string>
+    <string name="progress_stagnant_none">Ningún ejercicio está estancado.</string>
+    <string name="progress_stagnant_row">%1$s: %2$d semanas sin récord</string>
+    <string name="progress_exercise">Ejercicio</string>
+    <string name="progress_evolution">Evolución</string>
+    <string name="progress_no_points">Este ejercicio aún no tiene series válidas para el gráfico.</string>
+    <string name="progress_chart_desc">Evolución de %1$s en %2$d sesiones; toca un punto para ver su valor.</string>
+    <string name="progress_verdict_up">Progresando</string>
+    <string name="progress_verdict_stable">Estable</string>
+    <string name="progress_verdict_down">Retroceso</string>
+    <string name="progress_verdict_none">Sin datos suficientes</string>
+    <string name="progress_verdict_none_detail">Hacen falta al menos 3 sesiones en la ventana; hay %1$d.</string>
+    <string name="progress_verdict_detail">De %1$s a %2$s en %3$d días (%4$s %% cada 4 semanas, %5$d sesiones).</string>
+    <string name="progress_records">Récords</string>
+    <string name="progress_record_e1rm">Mejor 1RM estimado: %1$s</string>
+    <string name="progress_record_load">Mayor carga: %1$s</string>
+    <string name="progress_record_reps">Más repeticiones: %1$d</string>
+    <string name="progress_record_time">Mayor tiempo: %1$s</string>
+    <string name="progress_top">Mejores 10 series</string>
+    <string name="progress_settings_title">Ajustes del análisis</string>
+    <string name="progress_settings_note">Se guardan en este teléfono. En la Fase 9 pasarán a Ajustes.</string>
+    <string name="progress_formula">Fórmula de 1RM</string>
+    <string name="progress_window">Ventana del veredicto (semanas)</string>
+    <string name="progress_threshold">Umbral de cambio cada 4 semanas</string>
+    <string name="progress_sets_min">Series semanales mínimas por músculo</string>
+    <string name="progress_sets_max">Series semanales máximas por músculo</string>
+</resources>
