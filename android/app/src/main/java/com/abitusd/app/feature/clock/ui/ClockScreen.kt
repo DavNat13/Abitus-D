@@ -31,6 +31,7 @@ fun ClockScreen(
         onDispose { view.keepScreenOn = false }
     }
     ClockVoice(status, s.silent)
+    DisposableEffect(Unit) { onDispose { ClockPending.label = null } }
     NotificationRequest()
     FormScreen(title = stringResource(R.string.clock_title), onBack = onBack, info = {
         InfoButton(R.string.clock_title, INFO)
@@ -42,6 +43,7 @@ fun ClockScreen(
             ClockShare(s.draft)
             MetronomeCard()
             ClockExtras()
+            HoldCard()
             FieldTestCard()
         }
         val signals =

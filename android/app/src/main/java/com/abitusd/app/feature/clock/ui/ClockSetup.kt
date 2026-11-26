@@ -40,14 +40,15 @@ fun ClockSetup(
     val presetName = d.presetKey?.let { stringResource(ClockLabels.preset(it)) }
     val runName = d.name.ifBlank { presetName.orEmpty() }
     SectionCard(stringResource(R.string.clock_choose), icon = AppIcons.Timer) {
+        val presets = ClockPresets.all + guidedPresets()
         val options =
-            ClockPresets.all.map { ChoiceOption("p:${it.key}", stringResource(ClockLabels.preset(it.key))) } +
+            presets.map { ChoiceOption("p:${it.key}", stringResource(ClockLabels.preset(it.key))) } +
                 s.profiles.map { ChoiceOption("u:${it.id}", it.name) }
         val selected = d.presetKey?.let { "p:$it" } ?: "u:${d.profileId}"
         AppDropdown(stringResource(R.string.clock_mode), options, selected, { v ->
             when {
                 v == null -> Unit
-                v.startsWith("p:") -> vm.choosePreset(v.removePrefix("p:"))
+                v.startsWith("p:") -> presets.firstOrNull { it.key == v.removePrefix("p:") }?.let(vm::choosePreset)
                 else -> s.profiles.firstOrNull { it.id == v.removePrefix("u:") }?.let(vm::chooseProfile)
             }
         })
@@ -59,10 +60,17 @@ fun ClockSetup(
         }
         SpecEditor(d.spec, !d.mode.countsUp, d.mode == ClockMode.CUSTOM, vm::edit)
     }
+    var lead by rememberSaveable { mutableStateOf(false) }
+    val leads =
+        listOf(
+            ChoiceOption(false, stringResource(R.string.clock_lead_none)),
+            ChoiceOption(true, stringResource(R.string.clock_lead_10)),
+        )
+    AppDropdown(stringResource(R.string.clock_lead), leads, lead, { lead = it == true })
     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(AppSpacing.xs)) {
         AppButton(
             stringResource(R.string.clock_start),
-            { vm.start(runName) },
+            { vm.start(runName, if (lead) LEAD_S else 0) },
             Modifier.weight(1f),
             icon = AppIcons.Start,
         )
@@ -101,3 +109,4 @@ fun ClockSetup(
 }
 
 private const val MAX_NAME = 60
+private const val LEAD_S = 10

@@ -61,6 +61,20 @@ class ClockStore
             put(HISTORY, json.encodeToString((listOf(record) + history()).take(MAX_HISTORY)))
         }
 
+        /** Isometric holds and skill attempts by name, in ms, newest first (11b, 11c). */
+        fun holds(): Map<String, List<Long>> =
+            value(
+                HOLDS,
+            )?.let { runCatching { json.decodeFromString<Map<String, List<Long>>>(it) }.getOrNull() }.orEmpty()
+
+        fun addHold(
+            name: String,
+            ms: Long,
+        ) {
+            val all = holds()
+            put(HOLDS, json.encodeToString(all + (name to (listOf(ms) + all[name].orEmpty()).take(MAX_HISTORY))))
+        }
+
         /** Removes the active clock and the history on sign out. */
         fun clearAll() {
             db { dao.clearState() }
@@ -93,6 +107,7 @@ class ClockStore
             const val SILENT = "silent"
             const val KEEP_ON = "keep_on"
             const val HISTORY = "history"
+            const val HOLDS = "holds"
             const val DRIFT = "drift_ms"
             const val TARGET = "target_date"
             const val MAX_HISTORY = 20

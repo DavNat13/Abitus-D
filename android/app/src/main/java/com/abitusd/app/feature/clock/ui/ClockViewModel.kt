@@ -9,6 +9,7 @@ import com.abitusd.app.feature.clock.data.ClockLink
 import com.abitusd.app.feature.clock.data.ClockProfiles
 import com.abitusd.app.feature.clock.domain.ClockEngine
 import com.abitusd.app.feature.clock.domain.ClockMode
+import com.abitusd.app.feature.clock.domain.ClockPreset
 import com.abitusd.app.feature.clock.domain.ClockPresets
 import com.abitusd.app.feature.clock.domain.ClockRun
 import com.abitusd.app.feature.clock.domain.ClockSpec
@@ -56,7 +57,6 @@ class ClockViewModel
         init {
             controller.store.refresh()
             ClockPending.label?.let { draft.value = draft.value.copy(name = it) }
-            ClockPending.label = null
         }
 
         fun fromRoutine(routine: RoutineEntity) {
@@ -66,8 +66,8 @@ class ClockViewModel
             }
         }
 
-        fun choosePreset(key: String) {
-            val preset = ClockPresets.all.first { it.key == key }
+        fun choosePreset(preset: ClockPreset) {
+            val key = preset.key
             draft.value = ClockDraft(key, null, "", preset.mode, preset.spec)
         }
 
@@ -80,9 +80,13 @@ class ClockViewModel
             draft.value = draft.value.copy(spec = spec)
         }
 
-        fun start(name: String) {
+        /** [leadS] seconds of get-ready countdown before the first phase (11b). */
+        fun start(
+            name: String,
+            leadS: Int = 0,
+        ) {
             val d = draft.value
-            controller.start(ClockRun(name, d.mode.key, d.spec, System.currentTimeMillis()))
+            controller.start(ClockRun(name, d.mode.key, d.spec, System.currentTimeMillis() + leadS * MS))
         }
 
         /** Applies an engine change (pause, resume, +15 s, skip, lap) and re-arms the alarms. */
@@ -98,7 +102,7 @@ class ClockViewModel
         /** Starts the stopwatch unless a clock is already running. */
         fun startStopwatch(name: String) {
             if (controller.store.refresh() != null) return
-            choosePreset("stopwatch")
+            choosePreset(ClockPresets.all.first { it.key == "stopwatch" })
             start(name)
         }
 
@@ -118,11 +122,12 @@ class ClockViewModel
 
         fun deleteProfile(id: String) {
             viewModelScope.launch { profiles.delete(id) }
-            if (draft.value.profileId == id) choosePreset("tabata")
+            if (draft.value.profileId == id) choosePreset(ClockPresets.all.first { it.key == "tabata" })
         }
 
         private companion object {
             const val TICK_MS = 100L
+            const val MS = 1000L
             const val STOP_MS = 5_000L
         }
     }

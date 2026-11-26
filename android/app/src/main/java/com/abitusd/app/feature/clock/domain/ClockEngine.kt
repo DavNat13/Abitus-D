@@ -33,6 +33,20 @@ object ClockEngine {
         run: ClockRun,
         now: Long,
     ): ClockStatus {
+        val lead = run.startedAt - (run.pausedAt ?: now)
+        return if (lead >
+            0
+        ) {
+            ClockStatus(-1, 1, run.spec.rounds, PhaseKind.PREPARE, 0, lead, lead, false)
+        } else {
+            timed(run, now)
+        }
+    }
+
+    private fun timed(
+        run: ClockRun,
+        now: Long,
+    ): ClockStatus {
         val elapsed = elapsed(run, now)
         val n = run.spec.phases.size
         if (ClockMode.of(run.mode).countsUp || n == 0) return countUp(run, elapsed)
