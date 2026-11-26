@@ -51,7 +51,31 @@ class ClockProfiles
             scheduler.requestSync()
         }
 
-        private companion object {
-            const val MAX_NAME = 60
+        /** Imports a shared profile; anything that is not a valid profile is ignored. */
+        suspend fun importJson(text: String): Boolean {
+            val shared = runCatching { Json.decodeFromString<SharedProfile>(text) }.getOrNull() ?: return false
+            val valid = shared.format == FORMAT && shared.name.isNotBlank() && shared.spec.rounds in 1..MAX_ROUNDS
+            if (valid) save(shared.name, ClockMode.of(shared.mode), shared.spec)
+            return valid
+        }
+
+        companion object {
+            private const val MAX_NAME = 60
+            private const val MAX_ROUNDS = 100
+            private const val FORMAT = "abitusd-timer-profile-v1"
+
+            fun exportJson(
+                name: String,
+                mode: ClockMode,
+                spec: ClockSpec,
+            ): String = Json.encodeToString(SharedProfile(FORMAT, name, mode.key, spec))
         }
     }
+
+@kotlinx.serialization.Serializable
+private data class SharedProfile(
+    val format: String,
+    val name: String,
+    val mode: String,
+    val spec: ClockSpec,
+)

@@ -103,7 +103,7 @@ class WorkoutReminders
                         .setAutoCancel(true)
                         .setContentIntent(open)
                         .build()
-                NotificationManagerCompat.from(context).notify(NOTIFICATION_ID, notification)
+                notifyIfAllowed(context, NOTIFICATION_ID, notification)
             }
         }
     }

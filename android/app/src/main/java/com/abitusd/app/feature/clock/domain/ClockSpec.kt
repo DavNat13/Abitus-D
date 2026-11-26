@@ -40,6 +40,9 @@ object PhaseKind {
     const val WORK = "work"
     const val REST = "rest"
     const val PREPARE = "prepare"
+    const val INHALE = "inhale"
+    const val HOLD = "hold"
+    const val EXHALE = "exhale"
 }
 
 /** Built-in library (11e). Not synced: the user saves own copies as timer profiles. */
@@ -52,6 +55,9 @@ data class ClockPreset(
 object ClockPresets {
     private const val W = PhaseKind.WORK
     private const val R = PhaseKind.REST
+    private const val IN = PhaseKind.INHALE
+    private const val HO = PhaseKind.HOLD
+    private const val EX = PhaseKind.EXHALE
 
     private fun seq(
         rounds: Int,
@@ -75,5 +81,11 @@ object ClockPresets {
             ClockPreset("pool", ClockMode.INTERVALS, seq(4, W to 600, R to 60)),
             ClockPreset("pomodoro", ClockMode.INTERVALS, seq(4, W to 1500, R to 300)),
             ClockPreset("cooking", ClockMode.COUNTDOWN, seq(1, W to 600)),
+            ClockPreset("pool_send", ClockMode.EMOM, seq(10, W to 90)),
+            ClockPreset("track", ClockMode.STOPWATCH, seq(1)),
+            ClockPreset("box_breathing", ClockMode.CUSTOM, seq(10, IN to 4, HO to 4, EX to 4, HO to 4)),
+            ClockPreset("breathing_478", ClockMode.CUSTOM, seq(4, IN to 4, HO to 7, EX to 8)),
+            ClockPreset("cold", ClockMode.COUNTDOWN, seq(1, W to 180)),
+            ClockPreset("sauna", ClockMode.COUNTDOWN, seq(1, W to 900)),
         )
 }

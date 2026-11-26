@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Launcher shortcuts (11d, 11e): long press the app icon. -->
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_timer"
+        android:shortcutId="clock"
+        android:shortcutShortLabel="@string/clock_title">
+        <intent
+            android:action="com.abitusd.app.OPEN_CLOCK"
+            android:targetClass="com.abitusd.app.MainActivity"
+            android:targetPackage="com.abitusd.app" />
+    </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_flag"
+        android:shortcutId="stopwatch"
+        android:shortcutShortLabel="@string/clock_preset_stopwatch">
+        <intent
+            android:action="com.abitusd.app.START_STOPWATCH"
+            android:targetClass="com.abitusd.app.MainActivity"
+            android:targetPackage="com.abitusd.app" />
+    </shortcut>
+</shortcuts>

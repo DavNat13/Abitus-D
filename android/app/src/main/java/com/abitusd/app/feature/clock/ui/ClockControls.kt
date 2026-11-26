@@ -12,6 +12,7 @@ import com.abitusd.app.core.designsystem.component.AppButtonStyle
 import com.abitusd.app.core.designsystem.icon.AppIcons
 import com.abitusd.app.core.designsystem.theme.AppSpacing
 import com.abitusd.app.feature.clock.domain.ClockEngine
+import com.abitusd.app.feature.clock.domain.ClockMode
 import com.abitusd.app.feature.clock.domain.ClockRun
 import com.abitusd.app.feature.clock.domain.ClockStatus
 
@@ -65,6 +66,12 @@ internal fun ClockControls(
             }, m, AppButtonStyle.Tonal, icon = AppIcons.Skip)
         }
     }
+    if (run.mode == ClockMode.AMRAP.key) {
+        AppButton(stringResource(R.string.clock_round_done, run.count), {
+            vm.act(ClockEngine::count)
+        }, style = AppButtonStyle.Tonal, icon = AppIcons.Add)
+    }
+    ClockKeysEffect(run, countsUp, vm)
 }
 
 private const val EXTRA_S = 15

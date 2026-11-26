@@ -90,6 +90,13 @@ class ClockViewModel
 
         fun stop() = controller.stop()
 
+        /** Starts the stopwatch unless a clock is already running. */
+        fun startStopwatch(name: String) {
+            if (controller.store.refresh() != null) return
+            choosePreset("stopwatch")
+            start(name)
+        }
+
         fun setSignals(
             quiet: Boolean,
             keepOn: Boolean,

@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat
 import com.abitusd.app.MainActivity
 import com.abitusd.app.R
 import com.abitusd.app.core.timer.canNotify
+import com.abitusd.app.core.timer.notifyIfAllowed
 import com.abitusd.app.feature.clock.domain.ClockMode
 import com.abitusd.app.feature.clock.domain.ClockRun
 import com.abitusd.app.feature.clock.domain.ClockStatus
@@ -95,7 +96,7 @@ object ClockNotifications {
         (listOfNotNull(toggle.takeIf { !status.done }) + actions + ClockReceiver.ACTION_STOP).forEach {
             builder.addAction(0, context.getString(LABELS.getValue(it)), action(context, it))
         }
-        NotificationManagerCompat.from(context).notify(ID, builder.build())
+        notifyIfAllowed(context, ID, builder.build())
     }
 
     fun cancel(context: Context) = NotificationManagerCompat.from(context).cancel(ID)

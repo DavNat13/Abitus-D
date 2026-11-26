@@ -87,7 +87,7 @@ object RestNotifications {
     ) {
         val granted =
             canNotify(context)
-        if (granted) NotificationManagerCompat.from(context).notify(id, notification)
+        if (granted) notifyIfAllowed(context, id, notification)
     }
 
     private fun openApp(context: Context): PendingIntent =

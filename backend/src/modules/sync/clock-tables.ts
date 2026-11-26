@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 const stamp = z.iso.datetime({ offset: true });
 const phase = z.strictObject({
-  kind: z.enum(['work', 'rest', 'prepare']),
+  kind: z.enum(['work', 'rest', 'prepare', 'inhale', 'hold', 'exhale']),
   durationS: z.number().int().min(1).max(86400),
 });
 export const timerSpec = z.strictObject({

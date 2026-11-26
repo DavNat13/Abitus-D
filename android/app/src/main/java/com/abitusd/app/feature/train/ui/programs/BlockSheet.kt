@@ -5,6 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import com.abitusd.app.R
@@ -19,7 +20,6 @@ import com.abitusd.app.core.designsystem.component.AppTextField
 import com.abitusd.app.core.designsystem.component.ChoiceOption
 import com.abitusd.app.core.designsystem.component.Stepper
 import com.abitusd.app.core.designsystem.icon.AppIcons
-import java.util.Locale
 
 /** Edits one block: name, phase, goal, length and how loads progress week to week. */
 @Composable
@@ -99,7 +99,7 @@ private fun ProgressionFields(
                         R.string.blocks_step_weekly
                     },
                 ),
-            value = stringResource(it, String.format(Locale.getDefault(), "%.1f", step)),
+            value = stringResource(it, String.format(LocalConfiguration.current.locales[0], "%.1f", step)),
             minusDescription = minus,
             plusDescription = plus,
             onMinus = { onDraft(draft.copy(step = (step - STEP).coerceAtLeast(STEP))) },

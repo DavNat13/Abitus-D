@@ -29,6 +29,8 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        com.abitusd.app.core.navigation.AppShortcuts
+            .receive(intent)
         enableEdgeToEdge()
         setContent {
             val mode by themePreference.mode.collectAsStateWithLifecycle()
@@ -48,5 +50,26 @@ class MainActivity : ComponentActivity() {
                 AppNavigation()
             }
         }
+    }
+
+    override fun onKeyDown(
+        keyCode: Int,
+        event: android.view.KeyEvent,
+    ): Boolean {
+        val keys = com.abitusd.app.feature.clock.ui.ClockKeys
+        val action =
+            when (keyCode) {
+                android.view.KeyEvent.KEYCODE_VOLUME_UP -> keys.onVolumeUp
+                android.view.KeyEvent.KEYCODE_VOLUME_DOWN -> keys.onVolumeDown
+                else -> null
+            } ?: return super.onKeyDown(keyCode, event)
+        action()
+        return true
+    }
+
+    override fun onNewIntent(intent: android.content.Intent) {
+        super.onNewIntent(intent)
+        com.abitusd.app.core.navigation.AppShortcuts
+            .receive(intent)
     }
 }

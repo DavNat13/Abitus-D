@@ -88,6 +88,7 @@ fun MainNavigation() {
         com.abitusd.app.core.designsystem.component.LocalOpenGlossary provides { stack.add(GlossaryRoute) },
         com.abitusd.app.core.designsystem.component.LocalOpenClock provides { stack.add(ClockRoute) },
     ) { MainEntries(stack, back) }
+    ShortcutHandler { stack.add(ClockRoute) }
 }
 
 @Composable

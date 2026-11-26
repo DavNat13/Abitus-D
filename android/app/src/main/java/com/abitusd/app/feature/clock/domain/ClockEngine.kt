@@ -17,6 +17,7 @@ data class ClockRun(
     val skipMs: Long = 0,
     val extraS: Map<Int, Int> = emptyMap(),
     val lapsMs: List<Long> = emptyList(),
+    val count: Int = 0,
 )
 
 data class ClockStatus(
@@ -111,4 +112,11 @@ object ClockEngine {
         run: ClockRun,
         now: Long,
     ) = run.copy(lapsMs = run.lapsMs + elapsed(run, now))
+
+    /** Rounds completed in an AMRAP, counted by the athlete. */
+    @Suppress("UnusedParameter")
+    fun count(
+        run: ClockRun,
+        now: Long,
+    ) = run.copy(count = run.count + 1)
 }

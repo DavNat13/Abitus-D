@@ -12,6 +12,9 @@ object ClockLabels {
         when (kind) {
             PhaseKind.REST -> R.string.clock_kind_rest
             PhaseKind.PREPARE -> R.string.clock_kind_prepare
+            PhaseKind.INHALE -> R.string.clock_kind_inhale
+            PhaseKind.HOLD -> R.string.clock_kind_hold
+            PhaseKind.EXHALE -> R.string.clock_kind_exhale
             else -> R.string.clock_kind_work
         }
 
@@ -21,7 +24,8 @@ object ClockLabels {
         colors: AppColors,
     ): Color =
         when (kind) {
-            PhaseKind.REST -> colors.success
+            PhaseKind.REST, PhaseKind.EXHALE -> colors.success
+            PhaseKind.HOLD -> colors.textSecondary
             PhaseKind.PREPARE -> colors.warning
             else -> colors.primary
         }
@@ -42,6 +46,12 @@ object ClockLabels {
             "pool" to R.string.clock_preset_pool,
             "pomodoro" to R.string.clock_preset_pomodoro,
             "cooking" to R.string.clock_preset_cooking,
+            "pool_send" to R.string.clock_preset_pool_send,
+            "track" to R.string.clock_preset_track,
+            "box_breathing" to R.string.clock_preset_box_breathing,
+            "breathing_478" to R.string.clock_preset_breathing_478,
+            "cold" to R.string.clock_preset_cold,
+            "sauna" to R.string.clock_preset_sauna,
         )
 
     @StringRes
