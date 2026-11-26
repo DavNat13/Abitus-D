@@ -6,6 +6,7 @@ import android.content.Intent
 import android.util.Log
 import com.abitusd.app.core.database.AbitusDatabase
 import com.abitusd.app.core.timer.WorkoutReminders
+import com.abitusd.app.feature.clock.domain.ClockActions
 import com.abitusd.app.feature.clock.domain.ClockEngine
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
@@ -75,7 +76,7 @@ class ClockReceiver : BroadcastReceiver() {
             }
 
             ACTION_LAP -> {
-                controller.update(ClockEngine::lap)
+                controller.update(ClockActions::lap)
             }
 
             ACTION_STOP -> {

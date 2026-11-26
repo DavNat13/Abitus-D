@@ -1,9 +1,12 @@
 package com.abitusd.app.feature.clock
 
+import com.abitusd.app.feature.clock.domain.ClockActions
 import com.abitusd.app.feature.clock.domain.ClockEngine
 import com.abitusd.app.feature.clock.domain.ClockMode
+import com.abitusd.app.feature.clock.domain.ClockPhase
 import com.abitusd.app.feature.clock.domain.ClockPresets
 import com.abitusd.app.feature.clock.domain.ClockRun
+import com.abitusd.app.feature.clock.domain.ClockSpec
 import com.abitusd.app.feature.clock.domain.PhaseKind
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
@@ -45,10 +48,26 @@ class ClockEngineTest {
 
     @Test
     fun stopwatchCountsUpWithLaps() {
-        val sw = ClockEngine.lap(run("stopwatch"), 12_345)
+        val sw = ClockActions.lap(run("stopwatch"), 12_345)
         assertEquals(listOf(12_345L), sw.lapsMs)
         assertNull(ClockEngine.status(sw, 50_000).boundary(50_000))
         assertTrue(ClockMode.of("for_time").countsUp)
         assertTrue(ClockEngine.status(run("for_time"), 1_200_000).done)
+    }
+
+    @Test
+    fun repsPhaseWaitsForReadyAndLeadCountsDown() {
+        val spec =
+            ClockSpec(
+                listOf(ClockPhase(PhaseKind.WORK, 1, reps = 8, label = "Push-up"), ClockPhase(PhaseKind.REST, 30)),
+            )
+        val run = ClockRun("x", ClockMode.CUSTOM.key, spec, startedAt = 10_000)
+        assertEquals(PhaseKind.PREPARE, ClockEngine.status(run, 4_000).kind)
+        val waiting = ClockEngine.status(run, 70_000)
+        assertEquals(8, waiting.reps)
+        assertNull(waiting.boundary(70_000))
+        val ready = ClockActions.ready(run, 70_000)
+        assertEquals(PhaseKind.REST, ClockEngine.status(ready, 70_000).kind)
+        assertEquals(30_000, ClockEngine.status(ready, 70_000).remainingMs)
     }
 }

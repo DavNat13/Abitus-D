@@ -2,6 +2,7 @@ package com.abitusd.app.feature.clock.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import com.abitusd.app.feature.clock.domain.ClockActions
 import com.abitusd.app.feature.clock.domain.ClockEngine
 import com.abitusd.app.feature.clock.domain.ClockMode
 import com.abitusd.app.feature.clock.domain.ClockRun
@@ -25,8 +26,8 @@ fun ClockKeysEffect(
         ClockKeys.onVolumeUp = { vm.act(if (run.pausedAt == null) ClockEngine::pause else ClockEngine::resume) }
         ClockKeys.onVolumeDown = {
             when {
-                countsUp -> vm.act(ClockEngine::lap)
-                run.mode == ClockMode.AMRAP.key -> vm.act(ClockEngine::count)
+                countsUp -> vm.act(ClockActions::lap)
+                run.mode == ClockMode.AMRAP.key -> vm.act(ClockActions::count)
                 else -> vm.act(ClockEngine::skip)
             }
         }

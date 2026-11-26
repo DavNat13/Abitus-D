@@ -116,31 +116,4 @@ object ClockEngine {
         val s = status(run, now)
         return if (s.done || s.remainingMs == Long.MAX_VALUE) run else run.copy(skipMs = run.skipMs + s.remainingMs)
     }
-
-    fun lap(
-        run: ClockRun,
-        now: Long,
-    ) = run.copy(lapsMs = run.lapsMs + elapsed(run, now))
-
-    /** Ends a repetition phase, keeping the time it took so the timeline stays exact. */
-    fun ready(
-        run: ClockRun,
-        now: Long,
-    ): ClockRun {
-        val s = status(run, now)
-        return if (s.reps == null ||
-            s.done
-        ) {
-            run
-        } else {
-            run.copy(doneMs = run.doneMs + (s.index to maxOf(1, s.phaseElapsedMs)))
-        }
-    }
-
-    /** Rounds completed in an AMRAP, counted by the athlete. */
-    @Suppress("UnusedParameter")
-    fun count(
-        run: ClockRun,
-        now: Long,
-    ) = run.copy(count = run.count + 1)
 }

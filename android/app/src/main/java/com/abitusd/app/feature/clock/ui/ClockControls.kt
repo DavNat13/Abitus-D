@@ -11,6 +11,7 @@ import com.abitusd.app.core.designsystem.component.AppButton
 import com.abitusd.app.core.designsystem.component.AppButtonStyle
 import com.abitusd.app.core.designsystem.icon.AppIcons
 import com.abitusd.app.core.designsystem.theme.AppSpacing
+import com.abitusd.app.feature.clock.domain.ClockActions
 import com.abitusd.app.feature.clock.domain.ClockEngine
 import com.abitusd.app.feature.clock.domain.ClockMode
 import com.abitusd.app.feature.clock.domain.ClockRun
@@ -25,7 +26,7 @@ internal fun ClockControls(
     vm: ClockViewModel,
 ) {
     if (status.reps != null && !status.done) {
-        AppButton(stringResource(R.string.clock_ready), { vm.act(ClockEngine::ready) }, icon = AppIcons.Check)
+        AppButton(stringResource(R.string.clock_ready), { vm.act(ClockActions::ready) }, icon = AppIcons.Check)
     }
     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(AppSpacing.xs)) {
         val m = Modifier.weight(1f)
@@ -53,7 +54,7 @@ internal fun ClockControls(
         val m = Modifier.weight(1f)
         if (countsUp) {
             AppButton(stringResource(R.string.clock_lap), {
-                vm.act(ClockEngine::lap)
+                vm.act(ClockActions::lap)
             }, m, AppButtonStyle.Tonal, icon = AppIcons.Lap)
         } else {
             AppButton(stringResource(R.string.clock_add_15), {
@@ -71,7 +72,7 @@ internal fun ClockControls(
     }
     if (run.mode == ClockMode.AMRAP.key) {
         AppButton(stringResource(R.string.clock_round_done, run.count), {
-            vm.act(ClockEngine::count)
+            vm.act(ClockActions::count)
         }, style = AppButtonStyle.Tonal, icon = AppIcons.Add)
     }
     ClockKeysEffect(run, countsUp, vm)
