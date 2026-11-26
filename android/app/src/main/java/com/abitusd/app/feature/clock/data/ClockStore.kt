@@ -34,6 +34,29 @@ class ClockStore
             mutable.value = value
         }
 
+        /** Finished stopwatch runs with laps, newest first, kept on this phone only (11e). */
+        fun history(): List<LapRecord> =
+            prefs
+                .getString(
+                    HISTORY,
+                    null,
+                )?.let { runCatching { json.decodeFromString<List<LapRecord>>(it) }.getOrNull() }
+                .orEmpty()
+
+        fun addHistory(record: LapRecord) {
+            prefs.edit { putString(HISTORY, json.encodeToString((listOf(record) + history()).take(MAX_HISTORY))) }
+        }
+
+        /** Deviation of the last phase alarm in ms, shown as the precision self-test. */
+        var lastDriftMs: Long
+            get() = prefs.getLong(DRIFT, Long.MIN_VALUE)
+            set(value) = prefs.edit { putLong(DRIFT, value) }
+
+        /** Target date (ISO) of the countdown to a competition or test. */
+        var targetDate: String?
+            get() = prefs.getString(TARGET, null)
+            set(value) = prefs.edit { putString(TARGET, value) }
+
         /** Vibration and visible signals only; tones off. */
         var silent: Boolean
             get() = prefs.getBoolean(SILENT, false)
@@ -49,5 +72,16 @@ class ClockStore
             const val KEY = "active"
             const val SILENT = "silent"
             const val KEEP_ON = "keep_on"
+            const val HISTORY = "history"
+            const val DRIFT = "drift_ms"
+            const val TARGET = "target_date"
+            const val MAX_HISTORY = 20
         }
     }
+
+@kotlinx.serialization.Serializable
+data class LapRecord(
+    val name: String,
+    val at: Long,
+    val lapsMs: List<Long>,
+)

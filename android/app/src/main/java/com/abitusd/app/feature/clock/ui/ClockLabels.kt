@@ -40,6 +40,7 @@ object ClockLabels {
             "e2mom" to R.string.clock_preset_e2mom,
             "amrap" to R.string.clock_preset_amrap,
             "for_time" to R.string.clock_preset_for_time,
+            "custom" to R.string.clock_preset_custom,
             "pyramid" to R.string.clock_preset_pyramid,
             "boxing" to R.string.clock_preset_boxing,
             "mobility" to R.string.clock_preset_mobility,

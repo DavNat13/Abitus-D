@@ -34,6 +34,11 @@ class ClockController
         }
 
         fun stop() {
+            store
+                .refresh()
+                ?.takeIf {
+                    it.lapsMs.isNotEmpty()
+                }?.let { store.addHistory(LapRecord(it.name, it.startedAt, it.lapsMs)) }
             cancelAlarms()
             ClockNotifications.cancel(context)
             store.set(null)

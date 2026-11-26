@@ -45,7 +45,9 @@ class ClockReceiver : BroadcastReceiver() {
         when (intent.action) {
             ACTION_PHASE -> {
                 val expected = intent.getLongExtra(EXTRA_AT, 0)
-                Log.i(TAG, "phase drift_ms=${System.currentTimeMillis() - expected}")
+                val drift = System.currentTimeMillis() - expected
+                Log.i(TAG, "phase drift_ms=$drift")
+                controller.store.lastDriftMs = drift
                 controller.rearm()
                 val run = controller.store.run.value ?: return
                 val status = ClockEngine.status(run, System.currentTimeMillis())

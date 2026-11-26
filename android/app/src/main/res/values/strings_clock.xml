@@ -84,6 +84,17 @@
     <string name="clock_share">Compartir perfil</string>
     <string name="clock_import">Importar perfil</string>
     <string name="clock_widget_description">Abre el reloj o inicia el cronómetro</string>
+    <string name="clock_preset_custom">Secuencia personalizada</string>
+    <string name="clock_phase_n">Fase %1$d: %2$s</string>
+    <string name="clock_phase_remove">Quitar fase %1$d</string>
+    <string name="clock_wall">Hora</string>
+    <string name="clock_target">Cuenta regresiva a una fecha</string>
+    <string name="clock_target_pick">Elegir fecha</string>
+    <string name="clock_target_days">Faltan %1$d días (%2$s)</string>
+    <string name="clock_history">Historial de vueltas</string>
+    <string name="clock_history_row">%1$s: %2$d vueltas; mejor %3$s, peor %4$s, promedio %5$s</string>
+    <string name="clock_export_csv">Exportar a CSV</string>
+    <string name="clock_drift">Última desviación medida: %1$d ms</string>
     <plurals name="sync_pending">
         <item quantity="one">%1$d cambio pendiente de enviar</item>
         <item quantity="many">%1$d cambios pendientes de enviar</item>

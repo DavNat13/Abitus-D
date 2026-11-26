@@ -75,6 +75,7 @@ object ClockPresets {
             ClockPreset("e2mom", ClockMode.EMOM, seq(5, W to 120)),
             ClockPreset("amrap", ClockMode.AMRAP, seq(1, W to 720)),
             ClockPreset("for_time", ClockMode.FOR_TIME, seq(1, W to 1200)),
+            ClockPreset("custom", ClockMode.CUSTOM, seq(1, PhaseKind.PREPARE to 10, W to 30, R to 15)),
             ClockPreset("pyramid", ClockMode.CUSTOM, seq(1, W to 30, R to 15, W to 45, R to 15, W to 60)),
             ClockPreset("boxing", ClockMode.INTERVALS, seq(3, W to 180, R to 60)),
             ClockPreset("mobility", ClockMode.INTERVALS, seq(8, W to 45, R to 15)),

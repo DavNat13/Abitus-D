@@ -1,53 +1,74 @@
 package com.abitusd.app.feature.clock.ui
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.abitusd.app.R
+import com.abitusd.app.core.designsystem.component.AppButton
+import com.abitusd.app.core.designsystem.component.AppButtonStyle
 import com.abitusd.app.core.designsystem.component.Stepper
+import com.abitusd.app.core.designsystem.icon.AppIcons
+import com.abitusd.app.core.designsystem.theme.AppSpacing
 import com.abitusd.app.core.designsystem.theme.AppTheme
+import com.abitusd.app.feature.clock.domain.ClockPhase
 import com.abitusd.app.feature.clock.domain.ClockSpec
+import com.abitusd.app.feature.clock.domain.PhaseKind
 
-/** Durations of the first phases and the rounds; longer sequences are shown, not edited. */
+/**
+ * Phase durations and rounds. A custom sequence (11e) edits every phase and can add or remove
+ * work, rest and warm-up phases; other modes edit their first two phases.
+ */
 @Composable
 internal fun SpecEditor(
     spec: ClockSpec,
     countsDown: Boolean,
+    custom: Boolean,
     onChange: (ClockSpec) -> Unit,
 ) {
-    spec.phases.take(EDITABLE).forEachIndexed { i, phase ->
+    val editable = if (custom) spec.phases.size else minOf(EDITABLE, spec.phases.size)
+
+    fun replace(phases: List<ClockPhase>) = onChange(spec.copy(phases = phases))
+    spec.phases.take(editable).forEachIndexed { i, phase ->
         val step = if (phase.durationS >= LONG_S) LONG_STEP else SHORT_STEP
 
-        fun set(value: Int) =
-            onChange(
-                spec.copy(
-                    phases =
-                        spec.phases.mapIndexed { j, p ->
-                            if (j ==
-                                i
-                            ) {
-                                p.copy(durationS = value)
-                            } else {
-                                p
-                            }
-                        },
-                ),
-            )
+        fun set(value: Int) = replace(spec.phases.mapIndexed { j, p -> if (j == i) p.copy(durationS = value) else p })
         Stepper(
-            stringResource(ClockLabels.kind(phase.kind)),
+            stringResource(R.string.clock_phase_n, i + 1, stringResource(ClockLabels.kind(phase.kind))),
             ClockLabels.time(phase.durationS * MS),
             stringResource(R.string.clock_less),
             stringResource(R.string.clock_more),
             { set(maxOf(MIN_S, phase.durationS - step)) },
             { set(minOf(MAX_S, phase.durationS + step)) },
         )
+        if (custom && spec.phases.size > 1) {
+            AppButton(stringResource(R.string.clock_phase_remove, i + 1), {
+                replace(spec.phases.filterIndexed { j, _ -> j != i })
+            }, style = AppButtonStyle.Secondary, icon = AppIcons.Remove)
+        }
     }
-    if (spec.phases.size > EDITABLE) {
+    if (!custom && spec.phases.size > EDITABLE) {
         Text(
             stringResource(R.string.clock_sequence, spec.phases.size),
             style = AppTheme.typography.body,
             color = AppTheme.colors.textSecondary,
         )
+    }
+    if (custom && spec.phases.size < MAX_PHASES) {
+        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(AppSpacing.xs)) {
+            for ((kind, seconds) in listOf(
+                PhaseKind.WORK to WORK_S,
+                PhaseKind.REST to REST_S,
+                PhaseKind.PREPARE to REST_S,
+            )) {
+                AppButton(stringResource(ClockLabels.kind(kind)), {
+                    replace(spec.phases + ClockPhase(kind, seconds))
+                }, Modifier.weight(1f), AppButtonStyle.Tonal, icon = AppIcons.Add)
+            }
+        }
     }
     if (countsDown) {
         Stepper(
@@ -62,6 +83,9 @@ internal fun SpecEditor(
 }
 
 private const val EDITABLE = 2
+private const val MAX_PHASES = 50
+private const val WORK_S = 30
+private const val REST_S = 15
 private const val MS = 1000L
 private const val MIN_S = 5
 private const val MAX_S = 86_400

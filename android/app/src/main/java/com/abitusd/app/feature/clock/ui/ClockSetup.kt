@@ -24,6 +24,7 @@ import com.abitusd.app.core.designsystem.component.Stepper
 import com.abitusd.app.core.designsystem.icon.AppIcons
 import com.abitusd.app.core.designsystem.theme.AppSpacing
 import com.abitusd.app.core.designsystem.theme.AppTheme
+import com.abitusd.app.feature.clock.domain.ClockMode
 import com.abitusd.app.feature.clock.domain.ClockPresets
 import com.abitusd.app.feature.clock.domain.ClockSpec
 
@@ -50,7 +51,7 @@ fun ClockSetup(
                 else -> s.profiles.firstOrNull { it.id == v.removePrefix("u:") }?.let(vm::chooseProfile)
             }
         })
-        SpecEditor(d.spec, !d.mode.countsUp, vm::edit)
+        SpecEditor(d.spec, !d.mode.countsUp, d.mode == ClockMode.CUSTOM, vm::edit)
     }
     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(AppSpacing.xs)) {
         AppButton(
