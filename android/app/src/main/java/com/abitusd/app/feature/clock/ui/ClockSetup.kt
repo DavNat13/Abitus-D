@@ -38,7 +38,7 @@ fun ClockSetup(
     var naming by rememberSaveable { mutableStateOf(false) }
     var deleting by rememberSaveable { mutableStateOf(false) }
     val presetName = d.presetKey?.let { stringResource(ClockLabels.preset(it)) }
-    val runName = presetName ?: d.name
+    val runName = d.name.ifBlank { presetName.orEmpty() }
     SectionCard(stringResource(R.string.clock_choose), icon = AppIcons.Timer) {
         val options =
             ClockPresets.all.map { ChoiceOption("p:${it.key}", stringResource(ClockLabels.preset(it.key))) } +
@@ -51,6 +51,12 @@ fun ClockSetup(
                 else -> s.profiles.firstOrNull { it.id == v.removePrefix("u:") }?.let(vm::chooseProfile)
             }
         })
+        if (s.routines.isNotEmpty()) {
+            val routines = s.routines.map { ChoiceOption(it.id, it.name) }
+            AppDropdown(stringResource(R.string.clock_from_routine), routines, null, { id ->
+                s.routines.firstOrNull { it.id == id }?.let(vm::fromRoutine)
+            }, noneLabel = stringResource(R.string.clock_from_routine_none))
+        }
         SpecEditor(d.spec, !d.mode.countsUp, d.mode == ClockMode.CUSTOM, vm::edit)
     }
     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(AppSpacing.xs)) {

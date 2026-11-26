@@ -58,6 +58,12 @@ fun ExerciseTools(
             style = AppButtonStyle.Text,
             icon = AppIcons.Calculator,
         )
+        com.abitusd.app.core.designsystem.component.LocalOpenClock.current?.let { openClock ->
+            AppButton(stringResource(R.string.clock_for_exercise), {
+                com.abitusd.app.feature.clock.ui.ClockPending.label = block.name
+                openClock()
+            }, style = AppButtonStyle.Text, icon = AppIcons.Timer)
+        }
     }
     if (swapping) {
         AlternativesSheet(exercise.exerciseId, onPick = { id ->

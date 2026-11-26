@@ -3,7 +3,9 @@ package com.abitusd.app.feature.clock.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.abitusd.app.core.database.clock.TimerProfileEntity
+import com.abitusd.app.core.database.planning.RoutineEntity
 import com.abitusd.app.feature.clock.data.ClockController
+import com.abitusd.app.feature.clock.data.ClockLink
 import com.abitusd.app.feature.clock.data.ClockProfiles
 import com.abitusd.app.feature.clock.domain.ClockEngine
 import com.abitusd.app.feature.clock.domain.ClockMode
@@ -22,30 +24,13 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-/** What will start: a built-in preset (by key) or a saved profile (by id), with edited values. */
-data class ClockDraft(
-    val presetKey: String? = "tabata",
-    val profileId: String? = null,
-    val name: String = "",
-    val mode: ClockMode = ClockMode.TABATA,
-    val spec: ClockSpec = ClockPresets.all.first { it.key == "tabata" }.spec,
-)
-
-data class ClockUiState(
-    val run: ClockRun? = null,
-    val status: ClockStatus? = null,
-    val draft: ClockDraft = ClockDraft(),
-    val profiles: List<TimerProfileEntity> = emptyList(),
-    val silent: Boolean = false,
-    val keepOn: Boolean = false,
-)
-
 @HiltViewModel
 class ClockViewModel
     @Inject
     constructor(
         private val controller: ClockController,
         private val profiles: ClockProfiles,
+        private val link: ClockLink,
     ) : ViewModel() {
         private val draft = MutableStateFlow(ClockDraft())
         private val silent = MutableStateFlow(controller.store.silent to controller.store.keepOn)
@@ -58,12 +43,27 @@ class ClockViewModel
             }
 
         val state: StateFlow<ClockUiState> =
-            combine(controller.store.run, ticker, draft, profiles.all, silent) { run, now, d, p, s ->
-                ClockUiState(run, run?.let { ClockEngine.status(it, now) }, d, p, s.first, s.second)
+            combine(
+                controller.store.run,
+                ticker,
+                draft,
+                combine(profiles.all, link.routines, ::Pair),
+                silent,
+            ) { run, now, d, p, s ->
+                ClockUiState(run, run?.let { ClockEngine.status(it, now) }, d, p.first, s.first, s.second, p.second)
             }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_MS), ClockUiState())
 
         init {
             controller.store.refresh()
+            ClockPending.label?.let { draft.value = draft.value.copy(name = it) }
+            ClockPending.label = null
+        }
+
+        fun fromRoutine(routine: RoutineEntity) {
+            viewModelScope.launch {
+                draft.value =
+                    ClockDraft(null, null, routine.name, ClockMode.CUSTOM, link.routineSpec(routine.id))
+            }
         }
 
         fun choosePreset(key: String) {
@@ -88,7 +88,12 @@ class ClockViewModel
         /** Applies an engine change (pause, resume, +15 s, skip, lap) and re-arms the alarms. */
         fun act(change: (ClockRun, Long) -> ClockRun) = controller.update(change)
 
-        fun stop() = controller.stop()
+        fun stop() {
+            controller.store.run.value
+                ?.takeIf { it.lapsMs.isNotEmpty() }
+                ?.let { r -> viewModelScope.launch { link.saveLaps(r.name, r.lapsMs) } }
+            controller.stop()
+        }
 
         /** Starts the stopwatch unless a clock is already running. */
         fun startStopwatch(name: String) {

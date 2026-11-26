@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="clock_for_exercise">Reloj para este ejercicio</string>
+    <string name="clock_from_routine">Desde una rutina</string>
+    <string name="clock_from_routine_none">Elegir rutina</string>
+</resources>
