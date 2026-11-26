@@ -37,3 +37,18 @@ fun ClockKeysEffect(
         }
     }
 }
+
+/** Voice commands mapped to the same actions as the buttons. */
+@Composable
+fun ClockVoiceCommands(vm: ClockViewModel) {
+    ClockVoiceControl { command ->
+        when (command) {
+            VoiceCommand.PAUSE -> vm.act(ClockEngine::pause)
+            VoiceCommand.RESUME -> vm.act(ClockEngine::resume)
+            VoiceCommand.LAP -> vm.act(ClockActions::lap)
+            VoiceCommand.SKIP -> vm.act(ClockEngine::skip)
+            VoiceCommand.READY -> vm.act(ClockActions::ready)
+            VoiceCommand.STOP -> vm.stop()
+        }
+    }
+}

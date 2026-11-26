@@ -54,6 +54,12 @@ class ClockViewModel
                 ClockUiState(run, run?.let { ClockEngine.status(it, now) }, d, p.first, s.first, s.second, p.second)
             }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_MS), ClockUiState())
 
+        var pauseOnCall: Boolean
+            get() = controller.store.pauseOnCall
+            set(value) {
+                controller.store.pauseOnCall = value
+            }
+
         init {
             controller.store.refresh()
             ClockPending.label?.let { draft.value = draft.value.copy(name = it) }

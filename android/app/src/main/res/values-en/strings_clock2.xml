@@ -36,4 +36,20 @@
     <string name="hold_stop">Release</string>
     <string name="hold_best">Best: %1$s. Last: %2$s</string>
     <string name="hold_new_record">New record: %1$s</string>
+    <string name="clock_qr_show">Show QR</string>
+    <string name="clock_qr_scan">Scan QR</string>
+    <string name="clock_qr_prompt">Point at a clock profile QR</string>
+    <string name="clock_qr_description">Profile QR code</string>
+    <string name="clock_voice">Voice control</string>
+    <string name="clock_voice_on">Listening: pause, resume, lap, skip, done or finish</string>
+    <string name="clock_voice_off">Turn on voice control</string>
+    <string name="clock_voice_words_pause">pause,stop clock</string>
+    <string name="clock_voice_words_resume">resume,continue,go</string>
+    <string name="clock_voice_words_lap">lap</string>
+    <string name="clock_voice_words_skip">skip,next</string>
+    <string name="clock_voice_words_ready">done,ready</string>
+    <string name="clock_voice_words_stop">finish,end</string>
+    <string name="clock_call">Pause on calls</string>
+    <string name="clock_call_off">Off</string>
+    <string name="clock_call_on">On (asks for phone state permission)</string>
 </resources>

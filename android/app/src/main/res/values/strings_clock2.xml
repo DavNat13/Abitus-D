@@ -36,4 +36,20 @@
     <string name="hold_stop">Soltar</string>
     <string name="hold_best">Mejor: %1$s. Últimos: %2$s</string>
     <string name="hold_new_record">Nuevo récord: %1$s</string>
+    <string name="clock_qr_show">Mostrar QR</string>
+    <string name="clock_qr_scan">Escanear QR</string>
+    <string name="clock_qr_prompt">Apunta al QR de un perfil del reloj</string>
+    <string name="clock_qr_description">Código QR del perfil</string>
+    <string name="clock_voice">Mando por voz</string>
+    <string name="clock_voice_on">Escuchando: pausa, sigue, vuelta, salta, listo o termina</string>
+    <string name="clock_voice_off">Activar mando por voz</string>
+    <string name="clock_voice_words_pause">pausa,pausar</string>
+    <string name="clock_voice_words_resume">sigue,seguir,continúa,continuar</string>
+    <string name="clock_voice_words_lap">vuelta</string>
+    <string name="clock_voice_words_skip">salta,saltar,siguiente</string>
+    <string name="clock_voice_words_ready">listo,hecho</string>
+    <string name="clock_voice_words_stop">termina,terminar,fin</string>
+    <string name="clock_call">Pausar con llamadas</string>
+    <string name="clock_call_off">No</string>
+    <string name="clock_call_on">Sí (pide permiso de estado del teléfono)</string>
 </resources>

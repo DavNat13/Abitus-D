@@ -26,6 +26,7 @@ import com.abitusd.app.core.designsystem.component.SectionCard
 import com.abitusd.app.core.designsystem.icon.AppIcons
 import com.abitusd.app.core.designsystem.theme.AppSpacing
 import com.abitusd.app.core.designsystem.theme.AppTheme
+import com.abitusd.app.feature.clock.domain.ClockActions
 import com.abitusd.app.feature.clock.domain.ClockEngine
 import com.abitusd.app.feature.clock.domain.ClockMode
 import com.abitusd.app.feature.clock.domain.ClockRun
@@ -91,6 +92,7 @@ fun ClockDisplay(
         }
     }
     ClockControls(run, status, countsUp, vm)
+    ClockVoiceCommands(vm)
     if (run.lapsMs.isNotEmpty()) {
         SectionCard(stringResource(R.string.clock_laps), icon = AppIcons.Lap) {
             LapList(run.lapsMs)

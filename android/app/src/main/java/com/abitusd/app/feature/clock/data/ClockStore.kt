@@ -91,6 +91,16 @@ class ClockStore
             get() = prefs.getString(TARGET, null)
             set(value) = prefs.edit { putString(TARGET, value) }
 
+        /** Pause the clock while a call rings or is active (11e); needs READ_PHONE_STATE. */
+        var pauseOnCall: Boolean
+            get() = prefs.getBoolean(CALL, false)
+            set(value) = prefs.edit { putBoolean(CALL, value) }
+
+        /** Set when a call paused the clock, so only that pause is resumed after the call. */
+        var pausedByCall: Boolean
+            get() = prefs.getBoolean(CALL_PAUSED, false)
+            set(value) = prefs.edit { putBoolean(CALL_PAUSED, value) }
+
         /** Vibration and visible signals only; tones off. */
         var silent: Boolean
             get() = prefs.getBoolean(SILENT, false)
@@ -108,6 +118,8 @@ class ClockStore
             const val KEEP_ON = "keep_on"
             const val HISTORY = "history"
             const val HOLDS = "holds"
+            const val CALL = "pause_on_call"
+            const val CALL_PAUSED = "paused_by_call"
             const val DRIFT = "drift_ms"
             const val TARGET = "target_date"
             const val MAX_HISTORY = 20

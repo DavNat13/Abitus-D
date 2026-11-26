@@ -3,6 +3,7 @@ package com.abitusd.app.feature.clock.ui
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -96,4 +97,31 @@ private fun NotificationRequest() {
             launcher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
         }
     }
+}
+
+/** Pause on calls: turning it on asks for the phone state permission first. */
+@Composable
+private fun CallPauseSetting(viewModel: ClockViewModel) {
+    var on by androidx.compose.runtime.remember { androidx.compose.runtime.mutableStateOf(viewModel.pauseOnCall) }
+    val ask =
+        androidx.activity.compose.rememberLauncherForActivityResult(
+            androidx.activity.result.contract.ActivityResultContracts
+                .RequestPermission(),
+        ) { granted ->
+            on = granted
+            viewModel.pauseOnCall = granted
+        }
+    val options =
+        listOf(
+            ChoiceOption(false, stringResource(R.string.clock_call_off)),
+            ChoiceOption(true, stringResource(R.string.clock_call_on)),
+        )
+    AppDropdown(stringResource(R.string.clock_call), options, on, { value ->
+        if (value == true) {
+            ask.launch(android.Manifest.permission.READ_PHONE_STATE)
+        } else {
+            on = false
+            viewModel.pauseOnCall = false
+        }
+    })
 }

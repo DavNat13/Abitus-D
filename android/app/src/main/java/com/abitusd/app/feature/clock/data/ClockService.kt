@@ -20,6 +20,15 @@ import javax.inject.Inject
 class ClockService : Service() {
     @Inject lateinit var store: ClockStore
 
+    @Inject lateinit var controller: ClockController
+
+    private val calls by lazy { CallPause(this, controller) }
+
+    override fun onDestroy() {
+        calls.stop()
+        super.onDestroy()
+    }
+
     override fun onBind(intent: Intent?): IBinder? = null
 
     override fun onStartCommand(
@@ -42,6 +51,7 @@ class ClockService : Service() {
             } else {
                 0
             }
+        calls.start()
         ServiceCompat.startForeground(
             this,
             ClockNotifications.ID,

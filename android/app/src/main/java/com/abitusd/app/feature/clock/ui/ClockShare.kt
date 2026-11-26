@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -51,6 +53,17 @@ fun ClockShare(
                 }
             if (text != null && text.length <= MAX_CHARS) vm.import(text)
         }
+    var qr by androidx.compose.runtime.saveable
+        .rememberSaveable { androidx.compose.runtime.mutableStateOf(false) }
+    val scanner =
+        rememberLauncherForActivityResult(com.journeyapps.barcodescanner.ScanContract()) { r ->
+            r.contents
+                ?.takeIf {
+                    it.length <=
+                        MAX_CHARS
+                }?.let(vm::import)
+        }
+    val prompt = stringResource(R.string.clock_qr_prompt)
     val chooser = stringResource(R.string.clock_share)
     val fallback = stringResource(R.string.clock_title)
     val name = draft.name.ifBlank { fallback }
@@ -68,6 +81,13 @@ fun ClockShare(
             picker.launch("*/*")
         }, Modifier.weight(1f), AppButtonStyle.Secondary)
     }
+    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(AppSpacing.xs)) {
+        AppButton(stringResource(R.string.clock_qr_show), { qr = true }, Modifier.weight(1f), AppButtonStyle.Secondary)
+        AppButton(stringResource(R.string.clock_qr_scan), {
+            scanner.launch(qrScanOptions(prompt))
+        }, Modifier.weight(1f), AppButtonStyle.Secondary)
+    }
+    if (qr) ProfileQrSheet(ClockProfiles.exportJson(name, draft.mode, draft.spec)) { qr = false }
 }
 
 private const val MAX_CHARS = 8_000

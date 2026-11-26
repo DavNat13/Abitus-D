@@ -8,9 +8,18 @@
     <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
     <!-- Clock signals and reboot recovery of the clock and calendar reminders (11e, 09c). -->
     <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- Optional clock controls (11e): voice commands and pause on calls, asked only when turned on. -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <queries>
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
+    </queries>
 
     <application
         android:name=".AbitusApp"
