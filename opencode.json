@@ -32,6 +32,7 @@
     { "action": "edit", "resource": "*.gitignore", "effect": "ask" },
     { "action": "edit", "resource": "*legal/*", "effect": "deny" },
     { "action": "edit", "resource": "*distribution/*", "effect": "deny" },
+    { "action": "edit", "resource": "*distribution/THIRD_PARTY.md", "effect": "allow" },
     { "action": "edit", "resource": "*claude/03-REGLAS-DE-ORO.md", "effect": "deny" },
     { "action": "edit", "resource": "*claude/12-DECISIONES-PENDIENTES.md", "effect": "ask" },
 

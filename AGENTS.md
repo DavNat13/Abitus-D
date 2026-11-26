@@ -41,6 +41,13 @@ Actualiza `claude/02-MEMORIA.md` (estado, decisiones, hechos verificados) y la m
 - No agregues dependencias nuevas sin verificar su versión y licencia en la fuente oficial y registrarlo en la memoria; no actualices las existentes salvo que la fase lo exija.
 - No cambies la configuración de herramientas (Gradle, Detekt, ktlint, ESLint, tsconfig, Docker) ni los scripts de `tools/` salvo que la fase lo exija; nunca relajes una regla de lint o una prueba para que pase.
 - No borres ni reescribas pruebas existentes para que pasen; corrige el código.
-- No toques `AGENTS.md`, `CLAUDE.md`, `opencode.json`, `legal/`, `distribution/` ni `claude/03-REGLAS-DE-ORO.md`.
+- No toques `AGENTS.md`, `CLAUDE.md`, `opencode.json`, `legal/` ni `claude/03-REGLAS-DE-ORO.md`. En `distribution/` solo puedes editar `THIRD_PARTY.md` (atribuciones y licencias de terceros).
 - Git: solo `add`, `commit`, `push` normal y `tag` nuevo. Nunca reescribas historial, fuerces un push, borres ramas o etiquetas, ni toques el `.env`.
 - Fuera de `C:\Abitus-D` solo usa el SDK de Android, el JDK y las cachés de Gradle y del emulador.
+
+## Autonomía (pedido del autor, 2026-11-26)
+
+- Trabaja de corrido: después de cada commit, sigue con la tarea siguiente sin escribirme. No me pidas confirmar lo que ya está decidido en los documentos o en mis mensajes.
+- Si dos documentos se contradicen, aplica la decisión más reciente del autor (por fecha en `claude/02-MEMORIA.md` o en su último mensaje), corrige el documento viejo y sigue.
+- Si una restricción de este archivo choca con una tarea que el autor pidió, anótalo en `claude/02-MEMORIA.md` como pendiente para el autor, avanza con todo lo demás y vuelve a eso al final.
+- Solo detente por: una decisión de producto, costo, privacidad o licencia que no esté escrita; un permiso que opencode te pida; o un bloqueo que no puedas resolver. Si te detienes, una línea con lo que falta.
